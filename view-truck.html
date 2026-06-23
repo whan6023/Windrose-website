@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windrose E670 — Full Truck 3D</title>
+  <meta property="og:title" content="Windrose E670 Electric Truck — Interactive 3D Model">
+  <meta property="og:description" content="Explore the Windrose E670 electric semi-truck in full 3D. Drag to rotate, scroll to zoom.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #060f1e;
+      color: #e8eaf2;
+      font-family: 'Barlow Condensed', 'Barlow', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(6,15,30,0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 32px;
+    }
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e8eaf2;
+    }
+    .model-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4b9fff;
+      background: rgba(75,159,255,0.1);
+      border: 1px solid rgba(75,159,255,0.25);
+      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+    }
+    .viewer-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    h1 span {
+      color: #4b9fff;
+    }
+    .sub {
+      font-size: 0.9rem;
+      color: #7a8499;
+      letter-spacing: 0.04em;
+      max-width: 540px;
+    }
+    model-viewer {
+      width: 100%;
+      flex: 1;
+      min-height: 60vh;
+      background: radial-gradient(ellipse at center, #0d1f3c 0%, #060f1e 100%);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: block;
+    }
+    .hint {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #4a5568;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a8499;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .back-link:hover { color: #4b9fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="https://www.windrose.ai">
+      <img src="/assets/logos/windrose-logo-white.svg" alt="Windrose" onerror="this.style.display='none'">
+      <span class="logo-text">Windrose</span>
+    </a>
+    <span class="model-label">Full Truck</span>
+  </header>
+
+  <div class="viewer-wrap">
+    <div>
+      <h1>E670 <span>Electric Truck</span></h1>
+      <p class="sub">The Windrose E670 — a long-haul electric semi-truck engineered for the global market. 400kWh usable capacity, 1,000 km range.</p>
+    </div>
+    <model-viewer
+      src="/assets/Windrose-truck-3D.glb"
+      alt="Windrose E670 electric truck 3D model"
+      auto-rotate
+      auto-rotate-delay="800"
+      rotation-per-second="18deg"
+      camera-controls
+      shadow-intensity="0.8"
+      exposure="1.1"
+      environment-image="neutral"
+      ar
+    ></model-viewer>
+    <p class="hint">Drag to rotate &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Pinch on mobile</p>
+  </div>
+
+  <a class="back-link" href="https://www.windrose.ai/technology.html">
+    ← Back to Technology
+  </a>
+</body>
+</html>
