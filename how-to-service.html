@@ -28,7 +28,7 @@
 <link href="/images/f46b39a6a5cb.svg" rel="icon" type="image/svg+xml"/>
 <link href="/images/f46b39a6a5cb.svg" rel="shortcut icon"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>How to Service — Windrose Electric</title>
+<title data-page-title-i18n="page.title.service">How to Service — Windrose Electric</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -1555,6 +1555,7 @@ function setLang(lang) {
     var k = el.getAttribute('data-i18n-html');
     if (t[k] !== undefined) el.innerHTML = t[k];
   });
+  var tk = document.querySelector('title[data-page-title-i18n]'); if(tk){ var k = tk.getAttribute('data-page-title-i18n'); if(t[k]) document.title = t[k]; }
   document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
   var btn = document.getElementById('lang-' + lang);
   if (btn) btn.classList.add('active');
@@ -1651,7 +1652,7 @@ function setLang(lang) {
 
 <!-- TOPBAR -->
 <div id="topbar">
-  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;">Updated: 23 June 2026, 03:01 CST</span>
+  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;" data-i18n="label.updated">Updated: 23 June 2026, 03:01 CST</span>
   <div id="gs-wrap" style="position:relative;flex:1 1 auto;max-width:340px;min-width:120px;">
     <input id="gs-input" type="text" autocomplete="off" spellcheck="false"
       placeholder="Search or ask anything…"
@@ -1750,7 +1751,7 @@ function setLang(lang) {
 <div class="search-box">
 <div class="search-input-row">
 <input autocomplete="off" class="search-input" id="searchInput" placeholder="Search Windrose..." type="text"/>
-<button class="search-close" onclick="closeSearch()">ESC</button>
+<button class="search-close" onclick="closeSearch()" data-i18n="search.esc">ESC</button>
 </div>
 <ul class="search-results" id="searchResults"></ul>
 <div class="search-hint" id="searchHint" data-i18n="search.hint">Type to search across all pages, press releases, and content</div>

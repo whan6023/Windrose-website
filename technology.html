@@ -16,7 +16,7 @@
   <link rel="canonical" href="https://windrose.ai/technology">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Technology — Windrose Electric</title>
+<title data-page-title-i18n="page.title.technology">Technology — Windrose Electric</title>
 <meta name="description" content="MCS charging at 3 MW, 800 km range, dual motors, ABS/EBS braking. Windrose full technical specs, certifications, and regional compliance across EU, US, China, and Australia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://windrose.ai/specifications">
@@ -1102,6 +1102,7 @@ function setLang(lang) {
     var k = el.getAttribute('data-i18n-html');
     if (t[k] !== undefined) el.innerHTML = t[k];
   });
+  var tk = document.querySelector('title[data-page-title-i18n]'); if(tk){ var k = tk.getAttribute('data-page-title-i18n'); if(t[k]) document.title = t[k]; }
   document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
   var btn = document.getElementById('lang-' + lang);
   if (btn) btn.classList.add('active');
@@ -5325,7 +5326,7 @@ var HOMOLOG_NAMES = {
   <div class="search-box">
     <div class="search-input-row">
       <input type="text" class="search-input" id="searchInput" placeholder="Search Windrose..." autocomplete="off">
-      <button class="search-close" onclick="closeSearch()">ESC</button>
+      <button class="search-close" onclick="closeSearch()" data-i18n="search.esc">ESC</button>
     </div>
     <ul class="search-results" id="searchResults"></ul>
     <div id="patented" style="position:relative;top:-60px;"></div><div class="search-hint" id="searchHint" data-i18n="search.hint">Type to search across all pages, press releases, and content</div>

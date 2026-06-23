@@ -26,5 +26,11 @@
 <script>try{sessionStorage.setItem('wrScrollTo','price-usd');}catch(e){}location.replace('/how-to-buy');</script>
 <style>html,body{margin:0;height:100%;background:#060f1e;color:#f0f4ff;font-family:Barlow Condensed,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}</style>
 </head>
-<body>Opening…</body>
+<body><span id="loading-msg">Opening…</span>
+<script>
+(function(){
+  var msgs = {'fr':'Ouverture…','de':'Öffnen…','zh':'打开中…','zh_tw':'開啟中…','ja':'開いています…','ko':'열리는 중…','ar':'جارٍ الفتح…','he':'פותח…','es':'Abriendo…','pt':'Abrindo…','it':'Apertura…','nl':'Openen…','no':'Åpner…','sv':'Öppnar…','da':'Åbner…','fi':'Avataan…','pl':'Otwieranie…','is':'Opnar…','tr':'Açılıyor…'};
+  try{var l=localStorage.getItem('wr-lang');if(l&&msgs[l])document.getElementById('loading-msg').textContent=msgs[l];}catch(e){}
+})();
+</script></body>
 </html>
