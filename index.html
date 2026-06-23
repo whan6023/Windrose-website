@@ -1531,11 +1531,11 @@ function setLang(lang) {
     var tFrame = document.getElementById('mv-tab-frame');
     var tTruck = document.getElementById('mv-tab-truck');
     if (which === 'frame') {
-      mv.src = '/assets/Frame.glb';
+      mv.setAttribute('src', '/assets/Frame.glb');
       tFrame.style.background = 'var(--accent)'; tFrame.style.color = '#fff'; tFrame.style.borderColor = 'var(--accent)';
       tTruck.style.background = 'transparent'; tTruck.style.color = 'var(--muted)'; tTruck.style.borderColor = 'var(--border)';
     } else {
-      mv.src = '/assets/Windrose-truck-3D.glb';
+      mv.setAttribute('src', '/assets/Windrose-truck-3D.glb');
       tTruck.style.background = 'var(--accent)'; tTruck.style.color = '#fff'; tTruck.style.borderColor = 'var(--accent)';
       tFrame.style.background = 'transparent'; tFrame.style.color = 'var(--muted)'; tFrame.style.borderColor = 'var(--border)';
     }
