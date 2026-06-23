@@ -1348,6 +1348,57 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
 </section>
 
+<!-- MANUFACTURING PARTNERS ROW -->
+<section style="background:var(--dark); border-top:1px solid var(--border); padding: 2.5rem clamp(1.5rem, 5vw, 4rem) 2.5rem;" id="manufacturing-partners">
+  <p style="font-family:Barlow Condensed, sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Manufacturing Partners</p>
+  <h2 style="font-size: 1.25rem; line-height:1.15; margin-bottom:0.6rem;">5 Assembly &amp; Production Sites Across 3 Continents</h2>
+  <p style="font-size:0.875rem; color:var(--muted); max-width:52rem; line-height:1.65; margin-bottom:2rem;">Each region is served by a dedicated local manufacturing partner — enabling domestic delivery, regulatory compliance, and job creation in-market.</p>
+  <style>
+    .mfg-partner-row { display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; }
+    @media(max-width:900px){ .mfg-partner-row { grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:600px){ .mfg-partner-row { grid-template-columns:repeat(2,1fr); } }
+    .mfg-card { display:flex; flex-direction:column; height:208px; box-sizing:border-box; background:var(--card-bg); border:1px solid var(--border); border-radius:10px; text-decoration:none; overflow:hidden; transition:border-color .15s; }
+    .mfg-card:hover { border-color:var(--accent); }
+    .mfg-thumb { height:96px; flex:0 0 96px; overflow:hidden; background:#0a1628; }
+    .mfg-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .mfg-country { font-family:Barlow Condensed, sans-serif; font-weight:700; font-size:0.875rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); padding:0.55rem 0.7rem 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .mfg-title { font-family:DM Sans, sans-serif; font-size:0.875rem; line-height:1.25; color:var(--off-white); padding:0.25rem 0.7rem 0.7rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; flex:1; }
+  </style>
+  <div class="mfg-partner-row">
+
+    <a class="mfg-card" href="press/horiba-mira-uk.html">
+      <div class="mfg-thumb"><img src="/images/31cc724485.svg" loading="lazy" style="object-fit:contain;background:#0a1628;" onerror="this.style.display='none'"></div>
+      <div class="mfg-country">🇬🇧 United Kingdom</div>
+      <div class="mfg-title">HORIBA MIRA — Validation &amp; Homologation</div>
+    </a>
+
+    <a class="mfg-card" href="how-to-build.html#suppliers">
+      <div class="mfg-thumb"><img src="/images/drive-axle.jpg" loading="lazy" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
+      <div class="mfg-country">🇨🇳 China</div>
+      <div class="mfg-title">Hande · CALB · Zhenghe — Drive, Battery &amp; Cab</div>
+    </a>
+
+    <a class="mfg-card" href="press/antwerp-port-assembly.html">
+      <div class="mfg-thumb"><img src="/og/windrose-antwerp.jpg" loading="lazy" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
+      <div class="mfg-country">🇧🇪 Belgium</div>
+      <div class="mfg-title">Port of Antwerp-Bruges — European Assembly HQ</div>
+    </a>
+
+    <a class="mfg-card" href="https://www.engie-vianeo.com/en/news/engie-vianeo-and-windrose-join-forces-to-accelerate-the-electrification-of-heavy-duty-transport/" target="_blank" rel="noopener">
+      <div class="mfg-thumb"><img src="https://www.engie-vianeo.com/wp-content/uploads/2026/03/ENGIEVianeo_windrose2.webp" loading="lazy" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
+      <div class="mfg-country">🇫🇷 France</div>
+      <div class="mfg-title">Hauts-de-France — Assembly &amp; ENGIE Vianeo Partnership</div>
+    </a>
+
+    <a class="mfg-card" href="press/aertssen-assembly-usa.html">
+      <div class="mfg-thumb"><img src="/images/aertssen-assembly.jpg" loading="lazy" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
+      <div class="mfg-country">🇺🇸 United States</div>
+      <div class="mfg-title">Aertssen — Rincon, Georgia &amp; Tacoma, Washington</div>
+    </a>
+
+  </div>
+</section>
+
 <!-- SHIPMENT TRACKER -->
 <!-- KEY SUPPLIERS -->
 <section style="background:var(--dark); border-top:1px solid var(--border); padding: 2.5rem clamp(1.5rem, 5vw, 4rem) 2.5rem;" id="suppliers">
