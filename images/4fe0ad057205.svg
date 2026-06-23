@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" style="width:100%;background:#0a1628;display:block;">
+<rect width="400" height="225" fill="#0a1628"/>
+<polygon points="200,55 178,105 192,105 190,145 212,95 198,95" fill="#4a9eff" opacity="0.15"/>
+<polygon points="188,98 216,113 188,128" fill="#4a9eff" opacity="0.4"/>
+<text x="200" y="170" text-anchor="middle" fill="#4a9eff" font-family="sans-serif" font-size="9" letter-spacing="3" opacity="0.4">VIDEO</text>
+</svg>
