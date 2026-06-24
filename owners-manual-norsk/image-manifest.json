@@ -1,0 +1,1454 @@
+[
+  {
+    "filename": "image1.png",
+    "path": "images/image1.png",
+    "size_bytes": 82951,
+    "type": "toc-page"
+  },
+  {
+    "filename": "image10.jpeg",
+    "path": "images/image10.jpeg",
+    "size_bytes": 1518,
+    "type": "icon"
+  },
+  {
+    "filename": "image100.jpeg",
+    "path": "images/image100.jpeg",
+    "size_bytes": 198251,
+    "type": "diagram"
+  },
+  {
+    "filename": "image101.jpeg",
+    "path": "images/image101.jpeg",
+    "size_bytes": 22996,
+    "type": "illustration"
+  },
+  {
+    "filename": "image102.jpeg",
+    "path": "images/image102.jpeg",
+    "size_bytes": 115102,
+    "type": "diagram"
+  },
+  {
+    "filename": "image103.jpeg",
+    "path": "images/image103.jpeg",
+    "size_bytes": 159218,
+    "type": "diagram"
+  },
+  {
+    "filename": "image104.jpeg",
+    "path": "images/image104.jpeg",
+    "size_bytes": 106030,
+    "type": "diagram"
+  },
+  {
+    "filename": "image105.jpeg",
+    "path": "images/image105.jpeg",
+    "size_bytes": 149562,
+    "type": "diagram"
+  },
+  {
+    "filename": "image106.jpeg",
+    "path": "images/image106.jpeg",
+    "size_bytes": 421415,
+    "type": "diagram"
+  },
+  {
+    "filename": "image107.jpeg",
+    "path": "images/image107.jpeg",
+    "size_bytes": 175913,
+    "type": "diagram"
+  },
+  {
+    "filename": "image108.jpeg",
+    "path": "images/image108.jpeg",
+    "size_bytes": 445976,
+    "type": "diagram"
+  },
+  {
+    "filename": "image109.jpeg",
+    "path": "images/image109.jpeg",
+    "size_bytes": 1329,
+    "type": "icon"
+  },
+  {
+    "filename": "image11.jpeg",
+    "path": "images/image11.jpeg",
+    "size_bytes": 1668,
+    "type": "icon"
+  },
+  {
+    "filename": "image110.jpeg",
+    "path": "images/image110.jpeg",
+    "size_bytes": 1358,
+    "type": "icon"
+  },
+  {
+    "filename": "image111.jpeg",
+    "path": "images/image111.jpeg",
+    "size_bytes": 2422,
+    "type": "illustration"
+  },
+  {
+    "filename": "image112.jpeg",
+    "path": "images/image112.jpeg",
+    "size_bytes": 2458,
+    "type": "illustration"
+  },
+  {
+    "filename": "image113.jpeg",
+    "path": "images/image113.jpeg",
+    "size_bytes": 1736,
+    "type": "icon"
+  },
+  {
+    "filename": "image114.jpeg",
+    "path": "images/image114.jpeg",
+    "size_bytes": 1726,
+    "type": "icon"
+  },
+  {
+    "filename": "image115.jpeg",
+    "path": "images/image115.jpeg",
+    "size_bytes": 1762,
+    "type": "icon"
+  },
+  {
+    "filename": "image116.jpeg",
+    "path": "images/image116.jpeg",
+    "size_bytes": 1661,
+    "type": "icon"
+  },
+  {
+    "filename": "image117.jpeg",
+    "path": "images/image117.jpeg",
+    "size_bytes": 1702,
+    "type": "icon"
+  },
+  {
+    "filename": "image118.jpeg",
+    "path": "images/image118.jpeg",
+    "size_bytes": 1771,
+    "type": "icon"
+  },
+  {
+    "filename": "image119.jpeg",
+    "path": "images/image119.jpeg",
+    "size_bytes": 1851,
+    "type": "icon"
+  },
+  {
+    "filename": "image12.jpeg",
+    "path": "images/image12.jpeg",
+    "size_bytes": 1784,
+    "type": "icon"
+  },
+  {
+    "filename": "image120.jpeg",
+    "path": "images/image120.jpeg",
+    "size_bytes": 2003,
+    "type": "illustration"
+  },
+  {
+    "filename": "image121.jpeg",
+    "path": "images/image121.jpeg",
+    "size_bytes": 1618,
+    "type": "icon"
+  },
+  {
+    "filename": "image122.jpeg",
+    "path": "images/image122.jpeg",
+    "size_bytes": 1428,
+    "type": "icon"
+  },
+  {
+    "filename": "image123.jpeg",
+    "path": "images/image123.jpeg",
+    "size_bytes": 1667,
+    "type": "icon"
+  },
+  {
+    "filename": "image124.jpeg",
+    "path": "images/image124.jpeg",
+    "size_bytes": 2699,
+    "type": "illustration"
+  },
+  {
+    "filename": "image125.jpeg",
+    "path": "images/image125.jpeg",
+    "size_bytes": 2410,
+    "type": "illustration"
+  },
+  {
+    "filename": "image126.jpeg",
+    "path": "images/image126.jpeg",
+    "size_bytes": 1680,
+    "type": "icon"
+  },
+  {
+    "filename": "image127.jpeg",
+    "path": "images/image127.jpeg",
+    "size_bytes": 1414,
+    "type": "icon"
+  },
+  {
+    "filename": "image128.jpeg",
+    "path": "images/image128.jpeg",
+    "size_bytes": 1259,
+    "type": "icon"
+  },
+  {
+    "filename": "image129.jpeg",
+    "path": "images/image129.jpeg",
+    "size_bytes": 1770,
+    "type": "icon"
+  },
+  {
+    "filename": "image13.jpeg",
+    "path": "images/image13.jpeg",
+    "size_bytes": 191210,
+    "type": "diagram"
+  },
+  {
+    "filename": "image130.jpeg",
+    "path": "images/image130.jpeg",
+    "size_bytes": 1712,
+    "type": "icon"
+  },
+  {
+    "filename": "image131.jpeg",
+    "path": "images/image131.jpeg",
+    "size_bytes": 5421,
+    "type": "illustration"
+  },
+  {
+    "filename": "image132.jpeg",
+    "path": "images/image132.jpeg",
+    "size_bytes": 1924,
+    "type": "icon"
+  },
+  {
+    "filename": "image133.jpeg",
+    "path": "images/image133.jpeg",
+    "size_bytes": 1636,
+    "type": "icon"
+  },
+  {
+    "filename": "image134.jpeg",
+    "path": "images/image134.jpeg",
+    "size_bytes": 1836,
+    "type": "icon"
+  },
+  {
+    "filename": "image135.jpeg",
+    "path": "images/image135.jpeg",
+    "size_bytes": 2051,
+    "type": "illustration"
+  },
+  {
+    "filename": "image136.jpeg",
+    "path": "images/image136.jpeg",
+    "size_bytes": 2249,
+    "type": "illustration"
+  },
+  {
+    "filename": "image137.jpeg",
+    "path": "images/image137.jpeg",
+    "size_bytes": 1965,
+    "type": "icon"
+  },
+  {
+    "filename": "image138.jpeg",
+    "path": "images/image138.jpeg",
+    "size_bytes": 1962,
+    "type": "icon"
+  },
+  {
+    "filename": "image139.jpeg",
+    "path": "images/image139.jpeg",
+    "size_bytes": 1829,
+    "type": "icon"
+  },
+  {
+    "filename": "image14.jpeg",
+    "path": "images/image14.jpeg",
+    "size_bytes": 245365,
+    "type": "diagram"
+  },
+  {
+    "filename": "image140.jpeg",
+    "path": "images/image140.jpeg",
+    "size_bytes": 1857,
+    "type": "icon"
+  },
+  {
+    "filename": "image141.jpeg",
+    "path": "images/image141.jpeg",
+    "size_bytes": 1591,
+    "type": "icon"
+  },
+  {
+    "filename": "image142.jpeg",
+    "path": "images/image142.jpeg",
+    "size_bytes": 1523,
+    "type": "icon"
+  },
+  {
+    "filename": "image143.jpeg",
+    "path": "images/image143.jpeg",
+    "size_bytes": 1892,
+    "type": "icon"
+  },
+  {
+    "filename": "image144.jpeg",
+    "path": "images/image144.jpeg",
+    "size_bytes": 1669,
+    "type": "icon"
+  },
+  {
+    "filename": "image145.jpeg",
+    "path": "images/image145.jpeg",
+    "size_bytes": 1532,
+    "type": "icon"
+  },
+  {
+    "filename": "image146.jpeg",
+    "path": "images/image146.jpeg",
+    "size_bytes": 1951,
+    "type": "icon"
+  },
+  {
+    "filename": "image147.jpeg",
+    "path": "images/image147.jpeg",
+    "size_bytes": 1995,
+    "type": "icon"
+  },
+  {
+    "filename": "image148.jpeg",
+    "path": "images/image148.jpeg",
+    "size_bytes": 1751,
+    "type": "icon"
+  },
+  {
+    "filename": "image149.jpeg",
+    "path": "images/image149.jpeg",
+    "size_bytes": 1458,
+    "type": "icon"
+  },
+  {
+    "filename": "image15.jpeg",
+    "path": "images/image15.jpeg",
+    "size_bytes": 343177,
+    "type": "diagram"
+  },
+  {
+    "filename": "image150.jpeg",
+    "path": "images/image150.jpeg",
+    "size_bytes": 1572,
+    "type": "icon"
+  },
+  {
+    "filename": "image151.jpeg",
+    "path": "images/image151.jpeg",
+    "size_bytes": 1540,
+    "type": "icon"
+  },
+  {
+    "filename": "image152.jpeg",
+    "path": "images/image152.jpeg",
+    "size_bytes": 1964,
+    "type": "icon"
+  },
+  {
+    "filename": "image153.jpeg",
+    "path": "images/image153.jpeg",
+    "size_bytes": 1643,
+    "type": "icon"
+  },
+  {
+    "filename": "image154.jpeg",
+    "path": "images/image154.jpeg",
+    "size_bytes": 1776,
+    "type": "icon"
+  },
+  {
+    "filename": "image155.jpeg",
+    "path": "images/image155.jpeg",
+    "size_bytes": 2013,
+    "type": "illustration"
+  },
+  {
+    "filename": "image156.jpeg",
+    "path": "images/image156.jpeg",
+    "size_bytes": 1841,
+    "type": "icon"
+  },
+  {
+    "filename": "image157.jpeg",
+    "path": "images/image157.jpeg",
+    "size_bytes": 2172,
+    "type": "illustration"
+  },
+  {
+    "filename": "image158.jpeg",
+    "path": "images/image158.jpeg",
+    "size_bytes": 2269,
+    "type": "illustration"
+  },
+  {
+    "filename": "image159.jpeg",
+    "path": "images/image159.jpeg",
+    "size_bytes": 2094,
+    "type": "illustration"
+  },
+  {
+    "filename": "image16.jpeg",
+    "path": "images/image16.jpeg",
+    "size_bytes": 403883,
+    "type": "diagram"
+  },
+  {
+    "filename": "image160.jpeg",
+    "path": "images/image160.jpeg",
+    "size_bytes": 1729,
+    "type": "icon"
+  },
+  {
+    "filename": "image161.jpeg",
+    "path": "images/image161.jpeg",
+    "size_bytes": 1955,
+    "type": "icon"
+  },
+  {
+    "filename": "image162.jpeg",
+    "path": "images/image162.jpeg",
+    "size_bytes": 2033,
+    "type": "illustration"
+  },
+  {
+    "filename": "image163.jpeg",
+    "path": "images/image163.jpeg",
+    "size_bytes": 2781,
+    "type": "illustration"
+  },
+  {
+    "filename": "image164.jpeg",
+    "path": "images/image164.jpeg",
+    "size_bytes": 3374,
+    "type": "illustration"
+  },
+  {
+    "filename": "image165.jpeg",
+    "path": "images/image165.jpeg",
+    "size_bytes": 2050,
+    "type": "illustration"
+  },
+  {
+    "filename": "image166.jpeg",
+    "path": "images/image166.jpeg",
+    "size_bytes": 1782,
+    "type": "icon"
+  },
+  {
+    "filename": "image167.jpeg",
+    "path": "images/image167.jpeg",
+    "size_bytes": 2115,
+    "type": "illustration"
+  },
+  {
+    "filename": "image168.jpeg",
+    "path": "images/image168.jpeg",
+    "size_bytes": 1834,
+    "type": "icon"
+  },
+  {
+    "filename": "image169.jpeg",
+    "path": "images/image169.jpeg",
+    "size_bytes": 3580,
+    "type": "illustration"
+  },
+  {
+    "filename": "image17.jpeg",
+    "path": "images/image17.jpeg",
+    "size_bytes": 170915,
+    "type": "diagram"
+  },
+  {
+    "filename": "image170.jpeg",
+    "path": "images/image170.jpeg",
+    "size_bytes": 3487,
+    "type": "illustration"
+  },
+  {
+    "filename": "image171.jpeg",
+    "path": "images/image171.jpeg",
+    "size_bytes": 4163,
+    "type": "illustration"
+  },
+  {
+    "filename": "image172.jpeg",
+    "path": "images/image172.jpeg",
+    "size_bytes": 1878,
+    "type": "icon"
+  },
+  {
+    "filename": "image173.jpeg",
+    "path": "images/image173.jpeg",
+    "size_bytes": 2064,
+    "type": "illustration"
+  },
+  {
+    "filename": "image174.jpeg",
+    "path": "images/image174.jpeg",
+    "size_bytes": 1770,
+    "type": "icon"
+  },
+  {
+    "filename": "image175.jpeg",
+    "path": "images/image175.jpeg",
+    "size_bytes": 2127,
+    "type": "illustration"
+  },
+  {
+    "filename": "image176.jpeg",
+    "path": "images/image176.jpeg",
+    "size_bytes": 2303,
+    "type": "illustration"
+  },
+  {
+    "filename": "image177.jpeg",
+    "path": "images/image177.jpeg",
+    "size_bytes": 1801,
+    "type": "icon"
+  },
+  {
+    "filename": "image178.jpeg",
+    "path": "images/image178.jpeg",
+    "size_bytes": 1801,
+    "type": "icon"
+  },
+  {
+    "filename": "image179.jpeg",
+    "path": "images/image179.jpeg",
+    "size_bytes": 2083,
+    "type": "illustration"
+  },
+  {
+    "filename": "image18.jpeg",
+    "path": "images/image18.jpeg",
+    "size_bytes": 103993,
+    "type": "diagram"
+  },
+  {
+    "filename": "image180.jpeg",
+    "path": "images/image180.jpeg",
+    "size_bytes": 1761,
+    "type": "icon"
+  },
+  {
+    "filename": "image181.jpeg",
+    "path": "images/image181.jpeg",
+    "size_bytes": 3859,
+    "type": "illustration"
+  },
+  {
+    "filename": "image182.jpeg",
+    "path": "images/image182.jpeg",
+    "size_bytes": 1882,
+    "type": "icon"
+  },
+  {
+    "filename": "image183.jpeg",
+    "path": "images/image183.jpeg",
+    "size_bytes": 1868,
+    "type": "icon"
+  },
+  {
+    "filename": "image184.png",
+    "path": "images/image184.png",
+    "size_bytes": 4455,
+    "type": "illustration"
+  },
+  {
+    "filename": "image185.png",
+    "path": "images/image185.png",
+    "size_bytes": 1753,
+    "type": "icon"
+  },
+  {
+    "filename": "image186.png",
+    "path": "images/image186.png",
+    "size_bytes": 5075,
+    "type": "illustration"
+  },
+  {
+    "filename": "image187.png",
+    "path": "images/image187.png",
+    "size_bytes": 5995,
+    "type": "illustration"
+  },
+  {
+    "filename": "image188.png",
+    "path": "images/image188.png",
+    "size_bytes": 2804,
+    "type": "illustration"
+  },
+  {
+    "filename": "image189.png",
+    "path": "images/image189.png",
+    "size_bytes": 2406,
+    "type": "illustration"
+  },
+  {
+    "filename": "image19.jpeg",
+    "path": "images/image19.jpeg",
+    "size_bytes": 163530,
+    "type": "diagram"
+  },
+  {
+    "filename": "image193.jpeg",
+    "path": "images/image193.jpeg",
+    "size_bytes": 186581,
+    "type": "diagram"
+  },
+  {
+    "filename": "image194.jpeg",
+    "path": "images/image194.jpeg",
+    "size_bytes": 465403,
+    "type": "diagram"
+  },
+  {
+    "filename": "image195.jpeg",
+    "path": "images/image195.jpeg",
+    "size_bytes": 464767,
+    "type": "diagram"
+  },
+  {
+    "filename": "image196.jpeg",
+    "path": "images/image196.jpeg",
+    "size_bytes": 81359,
+    "type": "diagram"
+  },
+  {
+    "filename": "image197.jpeg",
+    "path": "images/image197.jpeg",
+    "size_bytes": 174154,
+    "type": "diagram"
+  },
+  {
+    "filename": "image198.jpeg",
+    "path": "images/image198.jpeg",
+    "size_bytes": 58315,
+    "type": "diagram"
+  },
+  {
+    "filename": "image199.jpeg",
+    "path": "images/image199.jpeg",
+    "size_bytes": 81861,
+    "type": "diagram"
+  },
+  {
+    "filename": "image2.png",
+    "path": "images/image2.png",
+    "size_bytes": 78892,
+    "type": "toc-page"
+  },
+  {
+    "filename": "image20.jpeg",
+    "path": "images/image20.jpeg",
+    "size_bytes": 50364,
+    "type": "diagram"
+  },
+  {
+    "filename": "image200.jpeg",
+    "path": "images/image200.jpeg",
+    "size_bytes": 95097,
+    "type": "diagram"
+  },
+  {
+    "filename": "image201.jpeg",
+    "path": "images/image201.jpeg",
+    "size_bytes": 179234,
+    "type": "diagram"
+  },
+  {
+    "filename": "image202.jpeg",
+    "path": "images/image202.jpeg",
+    "size_bytes": 152378,
+    "type": "diagram"
+  },
+  {
+    "filename": "image203.jpeg",
+    "path": "images/image203.jpeg",
+    "size_bytes": 167280,
+    "type": "diagram"
+  },
+  {
+    "filename": "image204.jpeg",
+    "path": "images/image204.jpeg",
+    "size_bytes": 157993,
+    "type": "diagram"
+  },
+  {
+    "filename": "image205.jpeg",
+    "path": "images/image205.jpeg",
+    "size_bytes": 47670,
+    "type": "illustration"
+  },
+  {
+    "filename": "image206.jpeg",
+    "path": "images/image206.jpeg",
+    "size_bytes": 157936,
+    "type": "diagram"
+  },
+  {
+    "filename": "image207.jpeg",
+    "path": "images/image207.jpeg",
+    "size_bytes": 81421,
+    "type": "diagram"
+  },
+  {
+    "filename": "image208.jpeg",
+    "path": "images/image208.jpeg",
+    "size_bytes": 221395,
+    "type": "diagram"
+  },
+  {
+    "filename": "image209.jpeg",
+    "path": "images/image209.jpeg",
+    "size_bytes": 228469,
+    "type": "diagram"
+  },
+  {
+    "filename": "image21.jpeg",
+    "path": "images/image21.jpeg",
+    "size_bytes": 215411,
+    "type": "diagram"
+  },
+  {
+    "filename": "image210.jpeg",
+    "path": "images/image210.jpeg",
+    "size_bytes": 178816,
+    "type": "diagram"
+  },
+  {
+    "filename": "image211.jpeg",
+    "path": "images/image211.jpeg",
+    "size_bytes": 77736,
+    "type": "diagram"
+  },
+  {
+    "filename": "image212.jpeg",
+    "path": "images/image212.jpeg",
+    "size_bytes": 191671,
+    "type": "diagram"
+  },
+  {
+    "filename": "image213.jpeg",
+    "path": "images/image213.jpeg",
+    "size_bytes": 219127,
+    "type": "diagram"
+  },
+  {
+    "filename": "image214.jpeg",
+    "path": "images/image214.jpeg",
+    "size_bytes": 69552,
+    "type": "diagram"
+  },
+  {
+    "filename": "image215.jpeg",
+    "path": "images/image215.jpeg",
+    "size_bytes": 111132,
+    "type": "diagram"
+  },
+  {
+    "filename": "image216.jpeg",
+    "path": "images/image216.jpeg",
+    "size_bytes": 66255,
+    "type": "diagram"
+  },
+  {
+    "filename": "image217.jpeg",
+    "path": "images/image217.jpeg",
+    "size_bytes": 474139,
+    "type": "diagram"
+  },
+  {
+    "filename": "image218.jpeg",
+    "path": "images/image218.jpeg",
+    "size_bytes": 78696,
+    "type": "diagram"
+  },
+  {
+    "filename": "image219.jpeg",
+    "path": "images/image219.jpeg",
+    "size_bytes": 65380,
+    "type": "diagram"
+  },
+  {
+    "filename": "image22.jpeg",
+    "path": "images/image22.jpeg",
+    "size_bytes": 73023,
+    "type": "diagram"
+  },
+  {
+    "filename": "image220.jpeg",
+    "path": "images/image220.jpeg",
+    "size_bytes": 260168,
+    "type": "diagram"
+  },
+  {
+    "filename": "image221.jpeg",
+    "path": "images/image221.jpeg",
+    "size_bytes": 65861,
+    "type": "diagram"
+  },
+  {
+    "filename": "image222.jpeg",
+    "path": "images/image222.jpeg",
+    "size_bytes": 78638,
+    "type": "diagram"
+  },
+  {
+    "filename": "image223.jpeg",
+    "path": "images/image223.jpeg",
+    "size_bytes": 261869,
+    "type": "diagram"
+  },
+  {
+    "filename": "image224.jpeg",
+    "path": "images/image224.jpeg",
+    "size_bytes": 78829,
+    "type": "diagram"
+  },
+  {
+    "filename": "image225.jpeg",
+    "path": "images/image225.jpeg",
+    "size_bytes": 539250,
+    "type": "diagram"
+  },
+  {
+    "filename": "image226.jpeg",
+    "path": "images/image226.jpeg",
+    "size_bytes": 448354,
+    "type": "diagram"
+  },
+  {
+    "filename": "image227.jpeg",
+    "path": "images/image227.jpeg",
+    "size_bytes": 179215,
+    "type": "diagram"
+  },
+  {
+    "filename": "image228.jpeg",
+    "path": "images/image228.jpeg",
+    "size_bytes": 383886,
+    "type": "diagram"
+  },
+  {
+    "filename": "image229.jpeg",
+    "path": "images/image229.jpeg",
+    "size_bytes": 90548,
+    "type": "diagram"
+  },
+  {
+    "filename": "image23.jpeg",
+    "path": "images/image23.jpeg",
+    "size_bytes": 231271,
+    "type": "diagram"
+  },
+  {
+    "filename": "image230.jpeg",
+    "path": "images/image230.jpeg",
+    "size_bytes": 67929,
+    "type": "diagram"
+  },
+  {
+    "filename": "image231.jpeg",
+    "path": "images/image231.jpeg",
+    "size_bytes": 287764,
+    "type": "diagram"
+  },
+  {
+    "filename": "image232.jpeg",
+    "path": "images/image232.jpeg",
+    "size_bytes": 120001,
+    "type": "diagram"
+  },
+  {
+    "filename": "image233.jpeg",
+    "path": "images/image233.jpeg",
+    "size_bytes": 252812,
+    "type": "diagram"
+  },
+  {
+    "filename": "image234.jpeg",
+    "path": "images/image234.jpeg",
+    "size_bytes": 180684,
+    "type": "diagram"
+  },
+  {
+    "filename": "image235.jpeg",
+    "path": "images/image235.jpeg",
+    "size_bytes": 50991,
+    "type": "diagram"
+  },
+  {
+    "filename": "image236.jpeg",
+    "path": "images/image236.jpeg",
+    "size_bytes": 103920,
+    "type": "diagram"
+  },
+  {
+    "filename": "image237.jpeg",
+    "path": "images/image237.jpeg",
+    "size_bytes": 425951,
+    "type": "diagram"
+  },
+  {
+    "filename": "image238.jpeg",
+    "path": "images/image238.jpeg",
+    "size_bytes": 360956,
+    "type": "diagram"
+  },
+  {
+    "filename": "image239.jpeg",
+    "path": "images/image239.jpeg",
+    "size_bytes": 540571,
+    "type": "diagram"
+  },
+  {
+    "filename": "image24.jpeg",
+    "path": "images/image24.jpeg",
+    "size_bytes": 95015,
+    "type": "diagram"
+  },
+  {
+    "filename": "image240.jpeg",
+    "path": "images/image240.jpeg",
+    "size_bytes": 174059,
+    "type": "diagram"
+  },
+  {
+    "filename": "image241.jpeg",
+    "path": "images/image241.jpeg",
+    "size_bytes": 59890,
+    "type": "diagram"
+  },
+  {
+    "filename": "image242.jpeg",
+    "path": "images/image242.jpeg",
+    "size_bytes": 58981,
+    "type": "diagram"
+  },
+  {
+    "filename": "image243.jpeg",
+    "path": "images/image243.jpeg",
+    "size_bytes": 186152,
+    "type": "diagram"
+  },
+  {
+    "filename": "image244.jpeg",
+    "path": "images/image244.jpeg",
+    "size_bytes": 55873,
+    "type": "diagram"
+  },
+  {
+    "filename": "image245.jpeg",
+    "path": "images/image245.jpeg",
+    "size_bytes": 572906,
+    "type": "diagram"
+  },
+  {
+    "filename": "image246.jpeg",
+    "path": "images/image246.jpeg",
+    "size_bytes": 310588,
+    "type": "diagram"
+  },
+  {
+    "filename": "image25.jpeg",
+    "path": "images/image25.jpeg",
+    "size_bytes": 90433,
+    "type": "diagram"
+  },
+  {
+    "filename": "image26.jpeg",
+    "path": "images/image26.jpeg",
+    "size_bytes": 228412,
+    "type": "diagram"
+  },
+  {
+    "filename": "image27.jpeg",
+    "path": "images/image27.jpeg",
+    "size_bytes": 526481,
+    "type": "diagram"
+  },
+  {
+    "filename": "image28.jpeg",
+    "path": "images/image28.jpeg",
+    "size_bytes": 84315,
+    "type": "diagram"
+  },
+  {
+    "filename": "image29.jpeg",
+    "path": "images/image29.jpeg",
+    "size_bytes": 441621,
+    "type": "diagram"
+  },
+  {
+    "filename": "image3.png",
+    "path": "images/image3.png",
+    "size_bytes": 95710,
+    "type": "toc-page"
+  },
+  {
+    "filename": "image30.jpeg",
+    "path": "images/image30.jpeg",
+    "size_bytes": 335232,
+    "type": "diagram"
+  },
+  {
+    "filename": "image31.jpeg",
+    "path": "images/image31.jpeg",
+    "size_bytes": 130266,
+    "type": "diagram"
+  },
+  {
+    "filename": "image32.jpeg",
+    "path": "images/image32.jpeg",
+    "size_bytes": 126676,
+    "type": "diagram"
+  },
+  {
+    "filename": "image33.jpeg",
+    "path": "images/image33.jpeg",
+    "size_bytes": 176803,
+    "type": "diagram"
+  },
+  {
+    "filename": "image34.jpeg",
+    "path": "images/image34.jpeg",
+    "size_bytes": 423618,
+    "type": "diagram"
+  },
+  {
+    "filename": "image35.jpeg",
+    "path": "images/image35.jpeg",
+    "size_bytes": 60007,
+    "type": "diagram"
+  },
+  {
+    "filename": "image36.jpeg",
+    "path": "images/image36.jpeg",
+    "size_bytes": 93309,
+    "type": "diagram"
+  },
+  {
+    "filename": "image37.jpeg",
+    "path": "images/image37.jpeg",
+    "size_bytes": 82003,
+    "type": "diagram"
+  },
+  {
+    "filename": "image38.jpeg",
+    "path": "images/image38.jpeg",
+    "size_bytes": 95048,
+    "type": "diagram"
+  },
+  {
+    "filename": "image39.jpeg",
+    "path": "images/image39.jpeg",
+    "size_bytes": 390116,
+    "type": "diagram"
+  },
+  {
+    "filename": "image4.png",
+    "path": "images/image4.png",
+    "size_bytes": 74530,
+    "type": "toc-page"
+  },
+  {
+    "filename": "image40.jpeg",
+    "path": "images/image40.jpeg",
+    "size_bytes": 183820,
+    "type": "diagram"
+  },
+  {
+    "filename": "image41.jpeg",
+    "path": "images/image41.jpeg",
+    "size_bytes": 154350,
+    "type": "diagram"
+  },
+  {
+    "filename": "image42.jpeg",
+    "path": "images/image42.jpeg",
+    "size_bytes": 203446,
+    "type": "diagram"
+  },
+  {
+    "filename": "image43.jpeg",
+    "path": "images/image43.jpeg",
+    "size_bytes": 212907,
+    "type": "diagram"
+  },
+  {
+    "filename": "image44.jpeg",
+    "path": "images/image44.jpeg",
+    "size_bytes": 257872,
+    "type": "diagram"
+  },
+  {
+    "filename": "image45.jpeg",
+    "path": "images/image45.jpeg",
+    "size_bytes": 465269,
+    "type": "diagram"
+  },
+  {
+    "filename": "image46.jpeg",
+    "path": "images/image46.jpeg",
+    "size_bytes": 229237,
+    "type": "diagram"
+  },
+  {
+    "filename": "image47.jpeg",
+    "path": "images/image47.jpeg",
+    "size_bytes": 85482,
+    "type": "diagram"
+  },
+  {
+    "filename": "image48.jpeg",
+    "path": "images/image48.jpeg",
+    "size_bytes": 103997,
+    "type": "diagram"
+  },
+  {
+    "filename": "image49.jpeg",
+    "path": "images/image49.jpeg",
+    "size_bytes": 113838,
+    "type": "diagram"
+  },
+  {
+    "filename": "image5.png",
+    "path": "images/image5.png",
+    "size_bytes": 838,
+    "type": "icon"
+  },
+  {
+    "filename": "image50.jpeg",
+    "path": "images/image50.jpeg",
+    "size_bytes": 252776,
+    "type": "diagram"
+  },
+  {
+    "filename": "image51.jpeg",
+    "path": "images/image51.jpeg",
+    "size_bytes": 206823,
+    "type": "diagram"
+  },
+  {
+    "filename": "image52.jpeg",
+    "path": "images/image52.jpeg",
+    "size_bytes": 205437,
+    "type": "diagram"
+  },
+  {
+    "filename": "image53.jpeg",
+    "path": "images/image53.jpeg",
+    "size_bytes": 210737,
+    "type": "diagram"
+  },
+  {
+    "filename": "image54.jpeg",
+    "path": "images/image54.jpeg",
+    "size_bytes": 51933,
+    "type": "diagram"
+  },
+  {
+    "filename": "image55.jpeg",
+    "path": "images/image55.jpeg",
+    "size_bytes": 754515,
+    "type": "diagram"
+  },
+  {
+    "filename": "image56.jpeg",
+    "path": "images/image56.jpeg",
+    "size_bytes": 222676,
+    "type": "diagram"
+  },
+  {
+    "filename": "image57.jpeg",
+    "path": "images/image57.jpeg",
+    "size_bytes": 146630,
+    "type": "diagram"
+  },
+  {
+    "filename": "image58.jpeg",
+    "path": "images/image58.jpeg",
+    "size_bytes": 41773,
+    "type": "illustration"
+  },
+  {
+    "filename": "image59.jpeg",
+    "path": "images/image59.jpeg",
+    "size_bytes": 562348,
+    "type": "diagram"
+  },
+  {
+    "filename": "image6.png",
+    "path": "images/image6.png",
+    "size_bytes": 675,
+    "type": "icon"
+  },
+  {
+    "filename": "image60.jpeg",
+    "path": "images/image60.jpeg",
+    "size_bytes": 184110,
+    "type": "diagram"
+  },
+  {
+    "filename": "image61.jpeg",
+    "path": "images/image61.jpeg",
+    "size_bytes": 354313,
+    "type": "diagram"
+  },
+  {
+    "filename": "image62.jpeg",
+    "path": "images/image62.jpeg",
+    "size_bytes": 81831,
+    "type": "diagram"
+  },
+  {
+    "filename": "image63.jpeg",
+    "path": "images/image63.jpeg",
+    "size_bytes": 81782,
+    "type": "diagram"
+  },
+  {
+    "filename": "image64.jpeg",
+    "path": "images/image64.jpeg",
+    "size_bytes": 196627,
+    "type": "diagram"
+  },
+  {
+    "filename": "image65.jpeg",
+    "path": "images/image65.jpeg",
+    "size_bytes": 196806,
+    "type": "diagram"
+  },
+  {
+    "filename": "image66.jpeg",
+    "path": "images/image66.jpeg",
+    "size_bytes": 92434,
+    "type": "diagram"
+  },
+  {
+    "filename": "image67.jpeg",
+    "path": "images/image67.jpeg",
+    "size_bytes": 196762,
+    "type": "diagram"
+  },
+  {
+    "filename": "image68.jpeg",
+    "path": "images/image68.jpeg",
+    "size_bytes": 256900,
+    "type": "diagram"
+  },
+  {
+    "filename": "image69.jpeg",
+    "path": "images/image69.jpeg",
+    "size_bytes": 196233,
+    "type": "diagram"
+  },
+  {
+    "filename": "image7.png",
+    "path": "images/image7.png",
+    "size_bytes": 473,
+    "type": "icon"
+  },
+  {
+    "filename": "image70.jpeg",
+    "path": "images/image70.jpeg",
+    "size_bytes": 295561,
+    "type": "diagram"
+  },
+  {
+    "filename": "image71.jpeg",
+    "path": "images/image71.jpeg",
+    "size_bytes": 272490,
+    "type": "diagram"
+  },
+  {
+    "filename": "image72.jpeg",
+    "path": "images/image72.jpeg",
+    "size_bytes": 201979,
+    "type": "diagram"
+  },
+  {
+    "filename": "image73.jpeg",
+    "path": "images/image73.jpeg",
+    "size_bytes": 2000,
+    "type": "illustration"
+  },
+  {
+    "filename": "image74.jpeg",
+    "path": "images/image74.jpeg",
+    "size_bytes": 2060,
+    "type": "illustration"
+  },
+  {
+    "filename": "image75.jpeg",
+    "path": "images/image75.jpeg",
+    "size_bytes": 2348,
+    "type": "illustration"
+  },
+  {
+    "filename": "image76.jpeg",
+    "path": "images/image76.jpeg",
+    "size_bytes": 2158,
+    "type": "illustration"
+  },
+  {
+    "filename": "image77.jpeg",
+    "path": "images/image77.jpeg",
+    "size_bytes": 2084,
+    "type": "illustration"
+  },
+  {
+    "filename": "image78.jpeg",
+    "path": "images/image78.jpeg",
+    "size_bytes": 2199,
+    "type": "illustration"
+  },
+  {
+    "filename": "image79.jpeg",
+    "path": "images/image79.jpeg",
+    "size_bytes": 1995,
+    "type": "icon"
+  },
+  {
+    "filename": "image80.jpeg",
+    "path": "images/image80.jpeg",
+    "size_bytes": 2436,
+    "type": "illustration"
+  },
+  {
+    "filename": "image81.jpeg",
+    "path": "images/image81.jpeg",
+    "size_bytes": 2766,
+    "type": "illustration"
+  },
+  {
+    "filename": "image82.jpeg",
+    "path": "images/image82.jpeg",
+    "size_bytes": 3070,
+    "type": "illustration"
+  },
+  {
+    "filename": "image83.jpeg",
+    "path": "images/image83.jpeg",
+    "size_bytes": 2640,
+    "type": "illustration"
+  },
+  {
+    "filename": "image84.jpeg",
+    "path": "images/image84.jpeg",
+    "size_bytes": 3394,
+    "type": "illustration"
+  },
+  {
+    "filename": "image85.jpeg",
+    "path": "images/image85.jpeg",
+    "size_bytes": 2712,
+    "type": "illustration"
+  },
+  {
+    "filename": "image86.jpeg",
+    "path": "images/image86.jpeg",
+    "size_bytes": 367982,
+    "type": "diagram"
+  },
+  {
+    "filename": "image87.jpeg",
+    "path": "images/image87.jpeg",
+    "size_bytes": 131460,
+    "type": "diagram"
+  },
+  {
+    "filename": "image88.jpeg",
+    "path": "images/image88.jpeg",
+    "size_bytes": 59567,
+    "type": "diagram"
+  },
+  {
+    "filename": "image89.jpeg",
+    "path": "images/image89.jpeg",
+    "size_bytes": 235443,
+    "type": "diagram"
+  },
+  {
+    "filename": "image9.jpeg",
+    "path": "images/image9.jpeg",
+    "size_bytes": 1466,
+    "type": "icon"
+  },
+  {
+    "filename": "image90.jpeg",
+    "path": "images/image90.jpeg",
+    "size_bytes": 107234,
+    "type": "diagram"
+  },
+  {
+    "filename": "image91.jpeg",
+    "path": "images/image91.jpeg",
+    "size_bytes": 289955,
+    "type": "diagram"
+  },
+  {
+    "filename": "image92.jpeg",
+    "path": "images/image92.jpeg",
+    "size_bytes": 464832,
+    "type": "diagram"
+  },
+  {
+    "filename": "image93.jpeg",
+    "path": "images/image93.jpeg",
+    "size_bytes": 68793,
+    "type": "diagram"
+  },
+  {
+    "filename": "image94.jpeg",
+    "path": "images/image94.jpeg",
+    "size_bytes": 211632,
+    "type": "diagram"
+  },
+  {
+    "filename": "image95.jpeg",
+    "path": "images/image95.jpeg",
+    "size_bytes": 176246,
+    "type": "diagram"
+  },
+  {
+    "filename": "image96.jpeg",
+    "path": "images/image96.jpeg",
+    "size_bytes": 186059,
+    "type": "diagram"
+  },
+  {
+    "filename": "image97.jpeg",
+    "path": "images/image97.jpeg",
+    "size_bytes": 75478,
+    "type": "diagram"
+  },
+  {
+    "filename": "image98.jpeg",
+    "path": "images/image98.jpeg",
+    "size_bytes": 272368,
+    "type": "diagram"
+  },
+  {
+    "filename": "image99.jpeg",
+    "path": "images/image99.jpeg",
+    "size_bytes": 329659,
+    "type": "diagram"
+  }
+]
