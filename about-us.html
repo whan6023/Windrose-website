@@ -2840,19 +2840,28 @@ document.addEventListener("DOMContentLoaded", function() {
     .org-loc   { font-size: 0.875rem; color:var(--muted); letter-spacing:0.04em; }
     .org-role  { font-size: 0.875rem; color:rgba(74,158,255,0.55); letter-spacing:0.08em; text-transform:uppercase; margin-top: auto; }
 
-    /* ── branching tree scaffold ── */
+    /* ── left-stacked tree scaffold ── */
     .orgx-wrap { width:100%; padding:0.25rem 0 0.5rem; }
     .orgx, .orgx ul { list-style:none; margin:0; padding:0; }
     .orgx { display:block; }
-    .orgx ul { display:block; padding-left:2.25rem; position:relative; margin-top:0.5rem; }
-    .orgx ul::before { content:""; position:absolute; left:0; top:0; bottom:0.9rem; width:0; border-left:2px solid var(--border); }
-    .orgx li { display:block; position:relative; padding:0.55rem 0 0; }
-    .orgx li::before { content:""; position:absolute; left:-2.25rem; top:1.75rem; width:2.25rem; height:0; border-top:2px solid var(--border); }
+    .orgx ul { display:block; padding-left:2.5rem; position:relative; margin-top:0.5rem; }
+    .orgx ul::before { content:""; position:absolute; left:0; top:0; bottom:1rem; width:0; border-left:2px solid var(--border); }
+    .orgx li { display:block; position:relative; padding:0.5rem 0 0; }
+    .orgx li::before { content:""; position:absolute; left:-2.5rem; top:1.5rem; width:2.5rem; height:0; border-top:2px solid var(--border); }
     .orgx li::after { display:none; }
     .orgx > li { padding:0; }
     .orgx > li::before { display:none; }
-    .orgx .org-card { width:300px; }
-    .orgx > li > a { text-decoration:none; display:block; width:300px; }
+    /* compact horizontal card overrides */
+    .orgx .org-card { width:min(540px,100%); flex-direction:row; align-items:center; height:auto; }
+    .orgx .org-card:hover { transform:none; box-shadow:0 4px 18px rgba(0,0,0,0.4); }
+    .orgx .org-media { width:52px; min-width:52px; height:54px; flex-shrink:0; border-right:1px solid var(--border); border-radius:0; }
+    .orgx .org-media img { object-fit:cover; }
+    .orgx .org-media-flag { font-size:1.5rem; }
+    .orgx .org-body { padding:0.45rem 0.85rem; text-align:left; }
+    .orgx .org-name { text-align:left; font-size:0.875rem; }
+    .orgx .org-role { margin-top:0.1rem; font-size:0.75rem; }
+    .orgx .org-loc { font-size:0.78rem; }
+    .orgx > li > a { text-decoration:none; display:block; }
   </style>
 
   <div class="orgx-wrap">
