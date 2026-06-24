@@ -59,44 +59,29 @@
       border-radius: 4px;
       padding: 0.3rem 0.75rem;
     }
+    html, body { height: 100%; overflow: hidden; }
+    body { height: 100vh; }
     .viewer-wrap {
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 2rem;
-      gap: 1rem;
-    }
-    h1 {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1.2;
-    }
-    h1 span {
-      color: #4b9fff;
-    }
-    .sub {
-      font-size: 0.9rem;
-      color: #7a8499;
-      letter-spacing: 0.04em;
-      max-width: 540px;
+      min-height: 0;
     }
     model-viewer {
       width: 100%;
       flex: 1;
-      min-height: 60vh;
+      min-height: 0;
       background: radial-gradient(ellipse at center, #0d1f3c 0%, #060f1e 100%);
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.06);
       display: block;
     }
     .hint {
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       color: #4a5568;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      padding: 0.45rem 0;
+      background: #060f1e;
     }
     .back-link {
       display: inline-flex;
@@ -107,8 +92,6 @@
       text-transform: uppercase;
       color: #7a8499;
       text-decoration: none;
-      padding: 1rem 2rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
     }
     .back-link:hover { color: #4b9fff; }
   </style>
@@ -120,13 +103,10 @@
       <span class="logo-text">Windrose</span>
     </a>
     <span class="model-label">Chassis Frame</span>
+    <a class="back-link" href="https://www.windrose.ai/technology.html">← Technology</a>
   </header>
 
   <div class="viewer-wrap">
-    <div>
-      <h1>E670 <span>Chassis Frame</span></h1>
-      <p class="sub">Patented modular aluminum chassis — purpose-built for electric powertrains and global road conditions.</p>
-    </div>
     <model-viewer
       src="/assets/Frame.glb"
       alt="Windrose E670 chassis frame 3D model"
@@ -141,9 +121,5 @@
     ></model-viewer>
     <p class="hint">Drag to rotate &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Pinch on mobile</p>
   </div>
-
-  <a class="back-link" href="https://www.windrose.ai/technology.html">
-    ← Back to Technology
-  </a>
 </body>
 </html>
