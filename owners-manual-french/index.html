@@ -7,9 +7,30 @@
 <title>Windrose – Manuel du Propriétaire</title>
 <link href="styles.css" rel="stylesheet"/>
 <script src="../owners-manual-lang.js"></script>
+<script>
+(function(){
+  var banner = document.getElementById('draft-banner');
+  if (!banner) return;
+  function applyOffset() {
+    var h = banner.offsetHeight;
+    var header = document.querySelector('.site-header');
+    var sidebar = document.querySelector('.sidebar');
+    var main = document.querySelector('.main-content');
+    if (header) header.style.top = h + 'px';
+    if (sidebar) sidebar.style.top = (h + (header ? header.offsetHeight : 56)) + 'px';
+    if (main) main.style.marginTop = (h + (header ? header.offsetHeight : 56)) + 'px';
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyOffset);
+  } else {
+    applyOffset();
+  }
+  window.addEventListener('resize', applyOffset);
+})();
+</script>
 </head>
 <body>
-<div style="background:#fff3cd;color:#3d2000;padding:16px 24px;font-size:1rem;line-height:1.6;border-top:5px solid #e6a817;border-bottom:5px solid #e6a817"><strong>⚠ BROUILLON DE TRADUCTION AUTOMATIQUE NON OFFICIEL – PAS POUR USAGE CLIENT.</strong> Cette version française a été générée par traduction automatique à partir du manuel du propriétaire européen. Tout le contenu — en particulier le contenu critique pour la sécurité (Avertissement, Danger, Attention, Remarques) et toutes les données techniques — doit être révisé et approuvé par un traducteur technique certifié et par Windrose avant toute publication ou utilisation par le client.</div>
+<div id="draft-banner" style="position:fixed;top:0;left:0;right:0;z-index:1100;background:#fff3cd;color:#3d2000;padding:10px 24px;font-size:0.9rem;line-height:1.5;border-bottom:4px solid #e6a817;box-shadow:0 2px 8px rgba(0,0,0,0.15)"><strong>⚠ BROUILLON DE TRADUCTION AUTOMATIQUE NON OFFICIEL – PAS POUR USAGE CLIENT.</strong> Cette version française a été générée par traduction automatique à partir du manuel du propriétaire européen. Tout le contenu — en particulier le contenu critique pour la sécurité (Avertissement, Danger, Attention, Remarques) et toutes les données techniques — doit être révisé et approuvé par un traducteur technique certifié et par Windrose avant toute publication ou utilisation par le client.</div>
 <header class="site-header">
 <div class="header-left">
 <button aria-label="Afficher/masquer la navigation" class="nav-toggle" id="navToggle">☰</button>
