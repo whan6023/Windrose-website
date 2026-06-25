@@ -6,9 +6,30 @@
 <title>Windrose – מדריך הבעלים</title>
 <link href="styles.css" rel="stylesheet"/>
 <script src="../owners-manual-lang.js"></script>
+<script>
+(function(){
+  var banner = document.getElementById('draft-banner');
+  if (!banner) return;
+  function applyOffset() {
+    var h = banner.offsetHeight;
+    var header = document.querySelector('.site-header');
+    var sidebar = document.querySelector('.sidebar');
+    var main = document.querySelector('.main-content');
+    if (header) header.style.top = h + 'px';
+    if (sidebar) sidebar.style.top = (h + (header ? header.offsetHeight : 56)) + 'px';
+    if (main) main.style.marginTop = (h + (header ? header.offsetHeight : 56)) + 'px';
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyOffset);
+  } else {
+    applyOffset();
+  }
+  window.addEventListener('resize', applyOffset);
+})();
+</script>
 </head>
 <body>
-<div style="background:#fff3cd;color:#3d2000;padding:16px 24px;font-size:1rem;line-height:1.6;border-top:5px solid #e6a817;border-bottom:5px solid #e6a817;direction:rtl;text-align:right"><strong>⚠ טיוטת תרגום אוטומטי לא רשמי – לא לשימוש לקוחות.</strong> גרסה זו בעברית הופקה בתרגום אוטומטי ממדריך הבעלים האירופאי. כל התוכן — ובפרט תוכן קריטי לבטיחות (אזהרה, סכנה, זהירות, הערות) וכל הנתונים הטכניים — חייב להיבדק ולאושר על ידי מתרגם טכני מוסמך ועל ידי Windrose לפני פרסום או שימוש לקוחות.</div>
+<div id="draft-banner" style="position:fixed;top:0;left:0;right:0;z-index:1100;background:#fff3cd;color:#3d2000;padding:10px 24px;font-size:0.9rem;line-height:1.5;border-bottom:4px solid #e6a817;box-shadow:0 2px 8px rgba(0,0,0,0.15);direction:rtl;text-align:right"><strong>⚠ טיוטת תרגום אוטומטי לא רשמי – לא לשימוש לקוחות.</strong> גרסה זו בעברית הופקה בתרגום אוטומטי ממדריך הבעלים האירופאי. כל התוכן — ובפרט תוכן קריטי לבטיחות (אזהרה, סכנה, זהירות, הערות) וכל הנתונים הטכניים — חייב להיבדק ולאושר על ידי מתרגם טכני מוסמך ועל ידי Windrose לפני פרסום או שימוש לקוחות.</div>
 <header class="site-header">
 <div class="header-left">
 <button aria-label="הצג/הסתר ניווט" class="nav-toggle" id="navToggle">☰</button>
