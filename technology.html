@@ -4239,6 +4239,8 @@ function setLang(lang) {
 
 </script>
 <script src="https://js.stripe.com/v3/" async></script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+<link rel="preload" href="/assets/Frame.glb" as="fetch" crossorigin>
 
 <style>/* WR consistent anchor offset */ section[id],#gen-range-bar,#specs-matrix,#scenario-grid-wrap,#manual-search-wrap,#locations,#range-calc,#rc-scenarios{scroll-margin-top:120px;}</style>
 </head>
@@ -5430,6 +5432,20 @@ var HOMOLOG_NAMES = {
   <h2 style="font-family:Barlow Condensed, sans-serif; font-size:clamp(1.5rem,3.5vw,2rem); font-weight:700; letter-spacing:0.03em; color:var(--off-white); margin:0; max-width:640px; line-height:1.15;" data-i18n="tech.proprietary.h2">
     Patented EV Technology<br>for the Global Market
   </h2>
+
+  <style>
+    .mv-pair-tech { display:flex; gap:1rem; margin-top:2rem; margin-bottom:2rem; }
+    .mv-item-tech { flex:1; min-width:0; display:flex; flex-direction:column; }
+    .mv-item-tech model-viewer { width:100%; flex:1; height:50vh; min-height:300px; background:radial-gradient(ellipse at center,#0d1f3c 0%,#060f1e 100%); border-radius:8px; display:block; }
+    .mv-label-tech { font-family:Barlow Condensed,sans-serif; font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-align:center; margin:0.4rem 0 0; }
+    @media(max-width:700px) { .mv-pair-tech { flex-direction:column; } .mv-item-tech model-viewer { height:60vw; min-height:260px; } }
+  </style>
+  <div class="mv-pair-tech">
+    <div class="mv-item-tech">
+      <model-viewer src="/assets/Frame.glb" alt="Windrose chassis frame 3D model" auto-rotate auto-rotate-delay="1000" rotation-per-second="20deg" camera-controls shadow-intensity="0.8" exposure="1.1" environment-image="neutral" ar></model-viewer>
+      <p class="mv-label-tech">Chassis Frame &nbsp;·&nbsp; Drag to rotate &nbsp;·&nbsp; Scroll to zoom</p>
+    </div>
+  </div>
 
   <div class="tech-grid">
 

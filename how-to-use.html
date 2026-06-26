@@ -300,8 +300,8 @@ html{scroll-behavior:smooth;}
     /* Patented tech section — ensure 1 col */
     .tech-grid { grid-template-columns: 1fr !important; }
 
-    /* Range calculator map — reduce height */
-    #rc-map { aspect-ratio:unset; height:min(320px,50vh) !important; }
+    /* Range calculator map — mobile */
+    #rc-map { aspect-ratio:unset; height:calc(100vh - 180px) !important; min-height:300px !important; }
     #rc-resizer { display:none; }
     .rc-panel { border-left:1px solid var(--border) !important; width:100% !important; }
 
@@ -630,7 +630,7 @@ html{scroll-behavior:smooth;}
   @media(max-width:640px){
     /* Range calculator: map above, controls below */
     .rc-wrap { flex-direction:column !important; }
-    #rc-map  { aspect-ratio:unset; height:300px !important; min-height:0; }
+    #rc-map  { aspect-ratio:unset; height:calc(100vh - 180px) !important; min-height:300px !important; }
     #rc-resizer { display:none !important; }
     .rc-panel { width:100% !important; border-left:1px solid var(--border) !important; }
 
@@ -1014,8 +1014,8 @@ function setLang(lang) {
   .rc-result-label { font-family:DM Sans, sans-serif; font-size:0.875rem; color:var(--muted); margin-top:0.25rem; }
   .rc-result-note { font-family:DM Sans, sans-serif; font-size:0.85rem; color:rgba(122,154,191,0.6); margin-top:0.5rem; font-style:italic; }
 
-  #rc-map { width:100%; height:clamp(380px,50vh,640px); border-radius:0 0 8px 8px; overflow:hidden; z-index:1; min-height:320px; max-height:820px; box-sizing:border-box; }
-  @media(max-width:600px){ #rc-map { aspect-ratio:unset; height:320px; } }
+  #rc-map { width:100%; height:calc(100vh - 160px); border-radius:0 0 8px 8px; overflow:hidden; z-index:1; min-height:500px; box-sizing:border-box; }
+  @media(max-width:600px){ #rc-map { height:calc(100vh - 180px); min-height:300px; } }
 
   /* Override Leaflet popup to match theme */
   .leaflet-popup-content-wrapper { background:#0d1f38; border:1px solid var(--border); border-radius:4px; color:var(--off-white); box-shadow:0 4px 20px rgba(0,0,0,0.6); }
@@ -1372,7 +1372,7 @@ function setLang(lang) {
       </div>
     </a>
 
-    <a class="news-card" id="card-terawatt" href="https://www.terawattinfrastructure.com/blog/windrose-and-terawatt-strengthen-strategic-partnership-through-high-power-charging-demonstrations-and-software-integration" target="_blank" rel="noopener" style="text-decoration:none;">
+    <a class="news-card" id="card-terawatt" href="https://www.terawattinfrastructure.com/" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card-country-badge" data-i18n="badge.us.terawatt">🇺🇸 United States · Terawatt</div>
       <div class="news-thumb"><img loading="lazy" src="https://cdn.prod.website-files.com/659e849830d60c075b939085/683f331f7ad6644fa1831afe_Terawatt_Infrastructure_and_Windrose_Technology.avif" alt="Windrose and Terawatt" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
       <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>

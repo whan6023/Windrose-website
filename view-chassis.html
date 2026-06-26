@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windrose E670 — Chassis Frame 3D</title>
+  <meta property="og:title" content="Windrose E670 Chassis Frame — Interactive 3D Model">
+  <meta property="og:description" content="Explore the patented modular chassis frame of the Windrose E670 electric truck in 3D.">
+  <meta property="og:image" content="https://www.windrose.ai/images/chassis-frame-fea.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="900">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.windrose.ai/images/chassis-frame-fea.jpg">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #060f1e;
+      color: #e8eaf2;
+      font-family: 'Barlow Condensed', 'Barlow', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(6,15,30,0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 32px;
+    }
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e8eaf2;
+    }
+    .model-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4b9fff;
+      background: rgba(75,159,255,0.1);
+      border: 1px solid rgba(75,159,255,0.25);
+      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+    }
+    html, body { height: 100%; overflow: hidden; }
+    body { height: 100vh; }
+    .viewer-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    model-viewer {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      background: radial-gradient(ellipse at center, #0d1f3c 0%, #060f1e 100%);
+      display: block;
+    }
+    .hint {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #4a5568;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0;
+      background: #060f1e;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a8499;
+      text-decoration: none;
+    }
+    .back-link:hover { color: #4b9fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="https://www.windrose.ai">
+      <img src="/assets/logos/windrose-logo-white.svg" alt="Windrose" onerror="this.style.display='none'">
+      <span class="logo-text">Windrose</span>
+    </a>
+    <span class="model-label">Chassis Frame</span>
+    <a class="back-link" href="https://www.windrose.ai/technology.html">← Technology</a>
+  </header>
+
+  <div class="viewer-wrap">
+    <model-viewer
+      src="/assets/Frame.glb"
+      alt="Windrose E670 chassis frame 3D model"
+      auto-rotate
+      auto-rotate-delay="800"
+      rotation-per-second="18deg"
+      camera-controls
+      shadow-intensity="0.8"
+      exposure="1.1"
+      environment-image="neutral"
+      ar
+    ></model-viewer>
+    <p class="hint">Drag to rotate &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Pinch on mobile</p>
+  </div>
+</body>
+</html>

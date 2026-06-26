@@ -1513,6 +1513,21 @@ function setLang(lang) {
     Patented EV Technology<br>for the Global Market
   </h2>
 
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <style>
+    .mv-pair { display:flex; gap:1rem; margin-top:2rem; }
+    .mv-item { flex:1; min-width:0; display:flex; flex-direction:column; }
+    .mv-item model-viewer { width:100%; flex:1; height:50vh; min-height:300px; background:radial-gradient(ellipse at center,#0d1f3c 0%,#060f1e 100%); border-radius:8px; display:block; }
+    .mv-label { font-family:Barlow Condensed,sans-serif; font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-align:center; margin:0.4rem 0 0; }
+    @media(max-width:700px) { .mv-pair { flex-direction:column; } .mv-item model-viewer { height:60vw; min-height:260px; } }
+  </style>
+  <div class="mv-pair">
+    <div class="mv-item">
+      <model-viewer src="/assets/Frame.glb" alt="Windrose chassis frame 3D model" auto-rotate auto-rotate-delay="1000" rotation-per-second="20deg" camera-controls shadow-intensity="0.8" exposure="1.1" environment-image="neutral" ar></model-viewer>
+      <p class="mv-label">Chassis Frame &nbsp;·&nbsp; Drag to rotate &nbsp;·&nbsp; Scroll to zoom</p>
+    </div>
+  </div>
+
   <div class="tech-grid">
 
     <div class="tech-card">
