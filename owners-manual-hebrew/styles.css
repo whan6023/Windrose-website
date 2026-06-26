@@ -602,19 +602,68 @@ summary.toc-chapter-title:hover { background: rgba(11,94,215,.04); }
   border-bottom: 1px solid rgba(0,0,0,0.04);
 }
 .toc-subsections li:last-child { border-bottom: none; }
-.toc-subsections a {
-  display: block;
+
+/* ── Subsection disclosure (toc-sub) ─── */
+details.toc-sub { width: 100%; }
+summary.toc-sub-title {
+  display: flex;
+  align-items: center;
   padding: 5px 14px 5px 28px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+summary.toc-sub-title::-webkit-details-marker { display: none; }
+summary.toc-sub-title > a {
+  flex: 1;
   font-size: 12.5px;
   color: var(--text-muted);
   text-decoration: none;
-  transition: background 0.12s, color 0.12s;
+  transition: color 0.12s;
 }
-.toc-subsections a:hover {
-  background: var(--accent-light);
-  color: var(--accent);
+summary.toc-sub-title > a:hover { color: var(--accent); }
+summary.toc-sub-title::after {
+  content: "▾";
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-left: 6px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
 }
-[dir="rtl"] .toc-subsections a { padding: 5px 28px 5px 14px; }
+details.toc-sub:not([open]) > summary.toc-sub-title::after { transform: rotate(-90deg); }
+[dir="rtl"] summary.toc-sub-title { padding: 5px 28px 5px 14px; }
+[dir="rtl"] summary.toc-sub-title::after { margin-left: 0; margin-right: 6px; }
+[dir="rtl"] details.toc-sub:not([open]) > summary.toc-sub-title::after { transform: rotate(90deg); }
+summary.toc-sub-title:hover { background: rgba(11,94,215,.04); }
+
+/* ── Inline content slot ─── */
+.toc-content-slot {
+  padding: 10px 14px 14px 28px;
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.65;
+  border-top: 1px solid var(--nav-border);
+  background: rgba(0,0,0,0.015);
+}
+.toc-content-slot:empty { display: none; }
+.toc-content-slot img { max-width: 100%; height: auto; border-radius: 4px; margin: 4px 0; }
+.toc-content-slot table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 6px 0; }
+.toc-content-slot td, .toc-content-slot th {
+  padding: 4px 8px;
+  border: 1px solid var(--nav-border);
+  text-align: left;
+}
+.toc-content-slot h2, .toc-content-slot h3 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 10px 0 4px;
+  color: var(--text);
+}
+.toc-content-slot p { margin: 4px 0; }
+.toc-content-slot ul, .toc-content-slot ol { margin: 4px 0; padding-left: 18px; }
+.toc-content-slot .sec-toggle::after { display: none; }
+[dir="rtl"] .toc-content-slot { padding: 10px 28px 14px 14px; }
+[dir="rtl"] .toc-content-slot td, [dir="rtl"] .toc-content-slot th { text-align: right; }
 
 /* ── Chapter label badge (e.g. 1A, 3Z) ─── */
 .toc-chapter-label {
@@ -636,6 +685,22 @@ summary.toc-chapter-title:hover { background: rgba(11,94,215,.04); }
   margin-right: 0;
   margin-left: 7px;
 }
+
+/* ── Section label badge in body headings ───────────────────── */
+.sec-label {
+  display: inline-block;
+  font-size: 0.52em;
+  font-weight: 700;
+  font-family: ui-monospace, monospace;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-right: 10px;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+[dir="rtl"] .sec-label { margin-right: 0; margin-left: 10px; }
 
 /* ── Collapsible body sections ─────────────────────────────── */
 .sec-toggle { cursor: pointer; user-select: none; }
