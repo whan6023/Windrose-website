@@ -372,12 +372,65 @@ u { text-decoration: none; font-weight: 600; color: var(--text-muted); font-size
 }
 
 /* ── RTL overrides for Hebrew ── */
-body { direction: rtl; }
-.sidebar { right: auto; left: 0; border-right: none; border-left: 1px solid var(--border, #ddd); }
-.main-content { margin-left: 0; margin-right: var(--sidebar-width, 280px); }
-.nav-chapters { padding-right: 0; padding-left: 1rem; }
-.chapter-body { direction: rtl; text-align: right; }
-@media (max-width: 768px) {
+html, body { direction: rtl; }
+
+/* Sidebar: move to right side */
+.sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--nav-border);
+}
+
+/* Main content: offset from right instead of left */
+.main-content {
+  margin-left: 0;
+  margin-right: var(--sidebar-w);
+}
+
+/* Nav toggle arrow: point left in RTL */
+.nav-chapter-title::before {
+  content: "◂";
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+/* Nav section indentation: right-side padding */
+.nav-sections li a {
+  padding: 5px 28px 5px 14px;
+  border-left: none;
+  border-right: 3px solid transparent;
+}
+.nav-sections li a:hover { border-right-color: transparent; }
+.nav-sections li a.active {
+  border-left-color: transparent;
+  border-right-color: var(--accent);
+}
+.nav-l3 a { padding-right: 40px !important; padding-left: 14px !important; }
+.nav-l4 a { padding-right: 52px !important; padding-left: 14px !important; }
+
+/* Lists: indent from right */
+ul, ol { padding-left: 0; padding-right: 28px; }
+
+/* Callout boxes: border on right side */
+.callout { border-left: none; border-right: 4px solid; }
+
+/* Preamble accent bar: right side */
+.preamble-section blockquote {
+  border-left: none;
+  border-right: 4px solid var(--accent);
+}
+
+/* Table headers: align right */
+thead th, thead td { text-align: right; }
+
+/* TOC section heading: align right */
+.toc-section h1 { text-align: right; }
+
+/* Responsive: sidebar slides out to the right */
+@media (max-width: 960px) {
+  .sidebar { transform: translateX(100%); }
+  .sidebar.open { transform: translateX(0); }
   .main-content { margin-right: 0; }
 }
 
