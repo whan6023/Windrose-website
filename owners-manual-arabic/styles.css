@@ -581,3 +581,20 @@ summary.toc-chapter-title:hover { background: rgba(11,94,215,.04); }
   margin-right: 0;
   margin-left: 7px;
 }
+
+/* ── Collapsible body sections ─────────────────────────────── */
+.sec-toggle { cursor: pointer; user-select: none; }
+.sec-toggle::after {
+  content: '▾';
+  font-size: 0.6em;
+  font-weight: 400;
+  opacity: 0.5;
+  margin-left: 10px;
+  display: inline-block;
+  transition: transform 0.18s;
+  vertical-align: middle;
+}
+.sec-toggle:not(.is-open)::after { transform: rotate(-90deg); }
+.sec-toggle:hover { opacity: 0.8; }
+[dir="rtl"] .sec-toggle::after { margin-left: 0; margin-right: 10px; }
+[dir="rtl"] .sec-toggle:not(.is-open)::after { transform: rotate(90deg); }

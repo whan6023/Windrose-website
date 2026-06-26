@@ -10880,5 +10880,50 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.05, rootMargin: '-80px 0px -60% 0px' });
 allSections.forEach(s => observer.observe(s));
 </script>
+<!-- ── Collapsible sections script ──────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+  function initSections() {
+    document.querySelectorAll(
+      '.manual-section.level-1:not(.toc-section), .manual-section.level-2'
+    ).forEach(function (sec) {
+      var hd = sec.querySelector('h1, h2');
+      if (!hd) return;
+      var others = Array.from(sec.children).filter(function (el) { return el !== hd; });
+      if (!others.length) return;
+      var body = document.createElement('div');
+      body.className = 'sec-body';
+      body.hidden = true;
+      others.forEach(function (el) { body.appendChild(el); });
+      sec.appendChild(body);
+      hd.classList.add('sec-toggle');
+      hd.addEventListener('click', function () {
+        body.hidden = !body.hidden;
+        hd.classList.toggle('is-open', !body.hidden);
+      });
+    });
+  }
+  function expandForHash(hash) {
+    if (!hash) return;
+    var el = document.getElementById(hash.slice(1));
+    if (!el) return;
+    var sec = el.closest('.manual-section') ||
+              (el.classList.contains('manual-section') ? el : null);
+    if (!sec) return;
+    var body = sec.querySelector('.sec-body');
+    if (body) {
+      body.hidden = false;
+      var hd = sec.querySelector('.sec-toggle');
+      if (hd) hd.classList.add('is-open');
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    initSections();
+    if (location.hash) expandForHash(location.hash);
+  });
+  window.addEventListener('hashchange', function () { expandForHash(location.hash); });
+})();
+</script>
 </body>
 </html>
