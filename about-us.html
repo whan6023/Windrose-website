@@ -2848,17 +2848,34 @@ document.addEventListener("DOMContentLoaded", function() {
     .org-card.root .org-name { color:var(--accent); }
     .org-loc { font-size:0.8rem; color:var(--muted); }
     .org-role { font-size:0.75rem; color:rgba(74,158,255,0.55); letter-spacing:0.07em; text-transform:uppercase; margin-top:0.3rem; }
-    /* ── vertical left-aligned tree ── */
+    /* ── horizontal left-anchored tree ── */
     .orgx-wrap { width:100%; overflow-x:auto; padding:0.5rem 0 1rem; }
     .orgx, .orgx ul { list-style:none; margin:0; padding:0; }
-    .orgx { display:block; }
-    .orgx li { display:block; position:relative; }
-    .orgx .oc { display:block; width:210px; text-decoration:none; }
-    .orgx ul { margin-left:24px; padding-left:28px; border-left:2px solid var(--border); margin-top:12px; }
-    .orgx ul > li { margin-bottom:12px; }
-    .orgx ul > li:last-child { margin-bottom:0; }
-    .orgx ul > li::before { content:""; position:absolute; top:48px; left:0; width:28px; border-top:2px solid var(--border); }
-    @media(max-width:700px){ .orgx .oc { width:175px; } }
+    .orgx li { position:relative; display:flex; flex-direction:column; align-items:flex-start; }
+    /* fixed-width card wrapper; subtrees overflow naturally to the right */
+    .orgx .oc { display:block; width:210px; padding:0 14px; box-sizing:border-box; text-decoration:none; position:relative; flex-shrink:0; }
+    .orgx .org-card { width:100%; }
+    /* children row */
+    .orgx ul { display:flex; flex-direction:row; align-items:flex-start; position:relative; padding-top:28px; }
+    /* vertical drop from parent card centre (105px = 210px/2) to the horizontal bar */
+    .orgx ul::before { content:""; position:absolute; top:0; left:105px; width:0; height:28px; border-left:2px solid var(--border); }
+    /* left-half bar (.oc::before) and right-half bar + vertical drop (.oc::after) */
+    .orgx ul > li > .oc::before,
+    .orgx ul > li > .oc::after { content:""; position:absolute; top:-28px; height:28px; }
+    .orgx ul > li > .oc::before { left:0; width:105px; border-top:2px solid var(--border); }
+    .orgx ul > li > .oc::after  { left:105px; width:105px; border-top:2px solid var(--border); border-left:2px solid var(--border); }
+    /* extension bar: fills gap from .oc right edge to li right edge when li is wider than .oc */
+    .orgx ul > li::after { content:""; position:absolute; top:-28px; left:210px; right:0; height:28px; border-top:2px solid var(--border); }
+    /* first child: no left bar */
+    .orgx ul > li:first-child > .oc::before { display:none; }
+    /* last child: no right bar or extension */
+    .orgx ul > li:last-child > .oc::after { border-top:none; width:0; }
+    .orgx ul > li:last-child::after { display:none; }
+    /* only child: no horizontal bars, just the vertical drop */
+    .orgx ul > li:only-child > .oc::before { display:none; }
+    .orgx ul > li:only-child > .oc::after { border-top:none; width:0; }
+    .orgx ul > li:only-child::after { display:none; }
+    @media(max-width:700px){ .orgx .oc { width:160px; padding:0 8px; } .orgx ul::before { left:80px; } .orgx ul > li > .oc::before { width:80px; } .orgx ul > li > .oc::after { left:80px; width:80px; } .orgx ul > li::after { left:160px; } }
   </style>
 
   <div class="orgx-wrap">
