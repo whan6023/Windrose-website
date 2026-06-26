@@ -41,6 +41,7 @@
     { path: '/owners-manual-finnish/',             flag: '🇫🇮', label: 'Suomi (FI)' },
     { path: '/owners-manual-polish/',              flag: '🇵🇱', label: 'Polska (PL)' },
     { path: '/owners-manual-icelandic/',           flag: '🇮🇸', label: 'Ísland (IS)' },
+    { path: '/owners-manual-chinese-simplified/',  flag: '🇨🇳', label: '简体中文' },
     { path: '/owners-manual-chinese-traditional/', flag: '🇭🇰', label: '繁體中文' },
     { path: '/owners-manual-japanese/',            flag: '🇯🇵', label: '日本 (JA)' },
     { path: '/owners-manual-korean/',              flag: '🇰🇷', label: '한국 (KO)' },
