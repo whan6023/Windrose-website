@@ -30,6 +30,7 @@
   .manual-ai-bar p { margin: 0; font-size: 0.85rem; color: var(--text, #d0e0f0); flex: 1; }
   .manual-ai-bar button { background: #0078ff; border: none; border-radius: 6px; color: #fff; font-size: 0.8rem; padding: 0.4rem 0.85rem; cursor: pointer; white-space: nowrap; }
   .manual-ai-bar button:hover { background: #0060cc; }
+  #wr-chat-btn { display: none !important; }
 </style>
 </head>
 <body>
@@ -11050,8 +11051,9 @@ searchInput.addEventListener('input', function() {
  .sort((a, b) => b.score - a.score)
  .slice(0, 15);
 
+ var aiFooter = '<div class="sr-ai-footer" onclick="(function(){var q=document.getElementById(\'searchInput\').value.trim();document.getElementById(\'searchResults\').style.display=\'none\';var inp=document.getElementById(\'wr-chat-input\');if(inp&&q)inp.value=q;if(typeof wrChatToggle===\'function\')wrChatToggle();})()">⚡ Ask AI about this</div>';
  if (matches.length === 0) {
- searchResults.innerHTML = '<div class="sr-empty">No results found</div>';
+ searchResults.innerHTML = '<div class="sr-empty">No results found</div>' + aiFooter;
  } else {
  searchResults.innerHTML = matches.map(m =>
  `<a class="sr-item" href="${m.html_anchor}">
@@ -11059,7 +11061,7 @@ searchInput.addEventListener('input', function() {
  <span class="sr-section">${m.section}</span>
  <span class="sr-cat badge-${m.category}">${m.category}</span>
  </a>`
- ).join('');
+ ).join('') + aiFooter;
  }
  searchResults.style.display = 'block';
 });
@@ -11169,6 +11171,156 @@ allSections.forEach(s => observer.observe(s));
 
 
 
+
+<!-- ── Nav labels, TOC icons, taxonomy expansion ────────────── -->
+<script>
+(function() {
+  'use strict';
+  var navLabels = {
+    '#notes-to-users':'1A','#warning-description':'1B','#environmental-protection-1':'1C',
+    '#operation-safety-and-permit':'1D','#original-parts':'1E','#data-security':'1F',
+    '#vehicle-modification':'1G','#vehicle-scrapping':'1H','#eco-driving':'1I',
+    '#winter-driving':'1J','#use-of-snow-chains':'1K',
+    '#driving-in-tropical-and-high-temperature-areas':'1L','#ramp-driving':'1M',
+    '#reporting-safety-defects':'1N','#overview-of-vehicle-exterior':'2A',
+    '#overview-of-vehicle-interior':'2B','#vehicle-nameplate-and-vin':'2C',
+    '#location-of-motor-nameplate-and-code':'2D','#electric-sliding-door':'3A',
+    '#seat-belt':'3B','#power-window':'3C','#sleeper-privacy-curtain':'3D',
+    '#panoramic-sunroof':'3E','#windshield-electric-sunshade':'3F',
+    '#interior-sleeper':'3G','#rearview-mirror':'3H','#cup-holder':'3I',
+    '#ash-tray':'3J','#side-toolbox':'3K','#interior-storage-device':'3L',
+    '#net-bag':'3M','#newspapers-and-periodicals-device':'3N','#coat-hook':'3O',
+    '#hanging-device':'3P','#usb-charging':'3Q','#phone-wireless-charging':'3R',
+    '#power-outlet':'3S','#ceiling-lamp':'3T','#courtesy-lamp':'3U',
+    '#reading-lamp':'3V','#ambient-lamp':'3W','#ac-control-system':'3X',
+    '#ac-vent-adjustment':'3Y','#in-vehicle-fragrance':'3Z','#charging-port':'4A',
+    '#charging-preparation':'4B','#driving-preparation':'4C','#driver-seat':'4D',
+    '#front-passenger-seat':'4E','#nfc-card':'4F','#mechanical-key':'4G',
+    '#adjustment-of-steering-wheel':'4H','#buttons-on-steering-wheel':'4I',
+    '#overview-of-instrument-cluster':'5A','#indicators-and-warning-lamps':'5B',
+    '#wiper-control':'6A','#light-switch':'6B','#hazard-warning-lamp-switch':'6C',
+    '#power-onoff':'6D','#service-brake':'6E','#electronic-parking-brake-epb':'6F',
+    '#emergency-braking---driving':'6G','#shift-operation':'6H','#energy-recovery':'6I',
+    '#ar-hud':'6J','#differential-lock':'6K','#driving-mode':'6L',
+    '#around-view-monitor-avm':'7A','#moving-off-information-system-mois':'7B',
+    '#low-speed-alarm-and-reverse':'7C','#electronic-braking-system-ebs':'7D',
+    '#electronic-brakeforce-distribution-ebd':'7E','#acceleration-slip-regulation-asr':'7F',
+    '#electronic-stability-control-esc':'7G','#hill-start-assist-hsa':'7H',
+    '#steering-wheel-tire-emergency-safety-device-tesd':'7I',
+    '#electro-hydraulic-power-steering-ehps':'7J',
+    '#electronic-controlled-air-suspension-ecas':'7K',
+    '#tire-pressure-monitoring-system-tpms':'7L','#multimedia-overview':'7M',
+    '#drivers-tools':'7N','#safety-hammer':'7O','#fire-extinguisher':'8A',
+    '#towing-trailer':'8B','#brake-failure':'8C',
+    '#out-of-control-steering-or-steering-failure':'8D','#tire-burst':'8E',
+    '#vehicle-sideslip':'8F','#accidental-removal-of-high-voltage':'8G',
+    '#emergency-evacuation':'8H',
+    '#protective-equipment-for-emergency-rescue-personnel':'8I',
+    '#high-voltage-system-information':'8J',
+    '#deactivation-method-of-high-voltage-system':'8K',
+    '#rescue-of-vehicle-on-fire':'8L','#rescue-of-wading-vehicle':'8M',
+    '#necessity-of-maintenance':'8N','#service-mode':'9A',
+    '#inspection-of-electric-drive-system':'9B','#tire-pressure-monitoring':'9C',
+    '#lighting-inspection':'9D','#inspection-of-horns-and-wipers':'9E',
+    '#high-voltage-battery':'9F','#coolant':'9G','#tire':'9H',
+    '#steering-system':'9I','#high-voltage-security-maintenance':'9J','#battery':'9K',
+    '#vehicle-outline-size':'10A','#parameters-of-power-system':'10B',
+    '#fastening-torque':'10C','#tire-pressure-gauge':'10D',
+    '#wheel-alignment-parameters':'10E','#gradability':'10F',
+    '#working-pressure-of-air-reservoir':'10G','#lamp-power-meter':'10H',
+    '#data-of-protection-device':'10I',
+    '#curb-mass-total-mass-axle-load-drive-mode':'10J',
+    '#barometric-pressure-characterization-data':'10K'
+  };
+  var chapterIcons = {
+    '#notes-to-users':'📋','#warning-description':'⚠️',
+    '#environmental-protection-1':'🌿','#operation-safety-and-permit':'🛡️',
+    '#original-parts':'🔩','#data-security':'🔐','#vehicle-modification':'🔧',
+    '#vehicle-scrapping':'♻️','#eco-driving':'🍃','#winter-driving':'❄️',
+    '#use-of-snow-chains':'⛓️','#driving-in-tropical-and-high-temperature-areas':'🌡️',
+    '#ramp-driving':'⛰️','#reporting-safety-defects':'📢',
+    '#overview-of-vehicle-exterior':'🚌','#overview-of-vehicle-interior':'🪑',
+    '#vehicle-nameplate-and-vin':'🏷️','#location-of-motor-nameplate-and-code':'⚙️',
+    '#electric-sliding-door':'🚪','#seat-belt':'🦺','#power-window':'🪟',
+    '#sleeper-privacy-curtain':'🛏️','#panoramic-sunroof':'☀️',
+    '#windshield-electric-sunshade':'🌤️','#interior-sleeper':'🛌',
+    '#rearview-mirror':'🔭','#cup-holder':'☕','#ash-tray':'🚬',
+    '#side-toolbox':'🧰','#interior-storage-device':'📦','#net-bag':'🎒',
+    '#newspapers-and-periodicals-device':'📰','#coat-hook':'🧥',
+    '#hanging-device':'🪝','#usb-charging':'🔌','#phone-wireless-charging':'📱',
+    '#power-outlet':'🔌','#ceiling-lamp':'💡','#courtesy-lamp':'🕯️',
+    '#reading-lamp':'📖','#ambient-lamp':'🌈','#ac-control-system':'❄️',
+    '#ac-vent-adjustment':'🌬️','#in-vehicle-fragrance':'🌸',
+    '#charging-port':'⚡','#charging-preparation':'🔋','#driving-preparation':'🚦',
+    '#driver-seat':'💺','#front-passenger-seat':'👤','#nfc-card':'💳',
+    '#mechanical-key':'🗝️','#adjustment-of-steering-wheel':'🎡',
+    '#buttons-on-steering-wheel':'🔘','#overview-of-instrument-cluster':'🖥️',
+    '#indicators-and-warning-lamps':'🚨','#wiper-control':'🌧️',
+    '#light-switch':'💡','#hazard-warning-lamp-switch':'⚠️','#power-onoff':'🔴',
+    '#service-brake':'🛑','#electronic-parking-brake-epb':'🅿️',
+    '#emergency-braking---driving':'🚨','#shift-operation':'⚙️',
+    '#energy-recovery':'🔄','#ar-hud':'🥽','#differential-lock':'🔒',
+    '#driving-mode':'🏎️','#around-view-monitor-avm':'📷',
+    '#moving-off-information-system-mois':'👁️','#low-speed-alarm-and-reverse':'🔔',
+    '#electronic-braking-system-ebs':'🛑','#electronic-brakeforce-distribution-ebd':'⚖️',
+    '#acceleration-slip-regulation-asr':'🔄','#electronic-stability-control-esc':'🌀',
+    '#hill-start-assist-hsa':'⛰️',
+    '#steering-wheel-tire-emergency-safety-device-tesd':'🛞',
+    '#electro-hydraulic-power-steering-ehps':'🎯',
+    '#electronic-controlled-air-suspension-ecas':'🌊',
+    '#tire-pressure-monitoring-system-tpms':'🔵','#multimedia-overview':'🎵',
+    '#drivers-tools':'🧰','#safety-hammer':'🔨','#fire-extinguisher':'🧯',
+    '#towing-trailer':'🚛','#brake-failure':'⚠️',
+    '#out-of-control-steering-or-steering-failure':'🔧','#tire-burst':'💥',
+    '#vehicle-sideslip':'↗️','#accidental-removal-of-high-voltage':'⚡',
+    '#emergency-evacuation':'🚪',
+    '#protective-equipment-for-emergency-rescue-personnel':'🦺',
+    '#high-voltage-system-information':'⚡',
+    '#deactivation-method-of-high-voltage-system':'🔓',
+    '#rescue-of-vehicle-on-fire':'🔥','#rescue-of-wading-vehicle':'🌊',
+    '#necessity-of-maintenance':'🔧','#service-mode':'🛠️',
+    '#inspection-of-electric-drive-system':'⚡','#tire-pressure-monitoring':'🔵',
+    '#lighting-inspection':'💡','#inspection-of-horns-and-wipers':'📣',
+    '#high-voltage-battery':'🔋','#coolant':'💧','#tire':'⚫',
+    '#steering-system':'🎯','#high-voltage-security-maintenance':'⚡','#battery':'🔋',
+    '#vehicle-outline-size':'📏','#parameters-of-power-system':'⚙️',
+    '#fastening-torque':'🔩','#tire-pressure-gauge':'💨',
+    '#wheel-alignment-parameters':'⚖️','#gradability':'⛰️',
+    '#working-pressure-of-air-reservoir':'💨','#lamp-power-meter':'💡',
+    '#data-of-protection-device':'🛡️','#curb-mass-total-mass-axle-load-drive-mode':'⚖️',
+    '#barometric-pressure-characterization-data':'🌡️'
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    // Inject labels into sidebar nav chapter links
+    document.querySelectorAll('.nav-chapter-title').forEach(function(a) {
+      var href = a.getAttribute('href');
+      var label = navLabels[href];
+      if (label && !a.querySelector('.nav-label')) {
+        var sp = document.createElement('span');
+        sp.className = 'nav-label';
+        sp.textContent = label;
+        a.insertBefore(sp, a.firstChild);
+      }
+    });
+    // Inject icons into TOC chapter summaries
+    document.querySelectorAll('summary.toc-chapter-title > a').forEach(function(a) {
+      var href = a.getAttribute('href');
+      var icon = chapterIcons[href];
+      if (icon && !a.querySelector('.toc-chapter-icon')) {
+        var sp = document.createElement('span');
+        sp.className = 'toc-chapter-icon';
+        sp.setAttribute('aria-hidden', 'true');
+        sp.textContent = icon;
+        a.insertBefore(sp, a.firstChild);
+      }
+    });
+    // Open all TOC groups to show full taxonomy
+    document.querySelectorAll('details.toc-group').forEach(function(d) {
+      d.open = true;
+    });
+  });
+})();
+</script>
 
 <!-- ── Collapsible sections script ──────────────────────────── -->
 <script>
