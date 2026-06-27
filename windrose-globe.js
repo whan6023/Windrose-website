@@ -356,6 +356,31 @@
     return bar;
   }
 
+  /* ─── Places panel helpers ────────────────────────────────────────────── */
+  var _placesCache = {};
+
+  function _timeAgo(isoStr) {
+    if (!isoStr) return null;
+    var ms = Date.now() - new Date(isoStr).getTime();
+    var days = Math.floor(ms / 86400000);
+    if (days < 1)  return 'today';
+    if (days < 7)  return days + ' day' + (days > 1 ? 's' : '') + ' ago';
+    var weeks = Math.floor(days / 7);
+    if (weeks < 5) return weeks + ' week' + (weeks > 1 ? 's' : '') + ' ago';
+    var months = Math.floor(days / 30);
+    if (months < 13) return months + ' month' + (months > 1 ? 's' : '') + ' ago';
+    var years = Math.floor(days / 365);
+    return years + ' year' + (years > 1 ? 's' : '') + ' ago';
+  }
+
+  function _stars(rating) {
+    if (!rating) return '';
+    var full = Math.round(rating);
+    var s = '';
+    for (var i = 1; i <= 5; i++) s += i <= full ? '★' : '☆';
+    return s;
+  }
+
   /* ─── Core globe ──────────────────────────────────────────────────────── */
   function buildGlobe(svgEl, container, world, availLayers, activeLayers, bar, tooltip, opts) {
     bar._setSvg(svgEl);
@@ -486,7 +511,7 @@
         .style('cursor','pointer')
         .on('mousemove', function(ev, d) { showTip(ev, buildChargingTip(d)); })
         .on('mouseleave', function() { hideTip(); })
-        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+        .on('click', function(ev, d) { hideTip(); showStationPanel(d); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
     });
     // CCS charging layer
     var ccsDots = ptLayer.append('g').attr('class','wg-layer-ccs');
@@ -499,7 +524,7 @@
         .style('cursor','pointer')
         .on('mousemove', function(ev, d) { showTip(ev, buildChargingTip(d)); })
         .on('mouseleave', function() { hideTip(); })
-        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+        .on('click', function(ev, d) { hideTip(); showStationPanel(d); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
     });
 
     // Service
@@ -815,12 +840,86 @@
     function hideTip() { tooltip.style.display = 'none'; }
     svgEl.addEventListener('mouseleave', hideTip);
 
+    /* ── Station info panel (Google Maps data on click) ─────────────────── */
+    var stationPanel = document.createElement('div');
+    stationPanel.style.cssText = 'position:absolute;bottom:48px;left:8px;width:230px;background:rgba(4,10,22,0.97);border:1px solid rgba(74,158,255,0.35);border-radius:8px;overflow:hidden;z-index:30;display:none;font-family:"DM Sans",sans-serif;box-shadow:0 4px 24px rgba(0,0,0,0.7);';
+    container.appendChild(stationPanel);
+
+    function hidePanel() { stationPanel.style.display = 'none'; }
+
+    function renderPanel(s, gmaps) {
+      var photoHtml = '';
+      if (gmaps && gmaps.found && gmaps.photoRef) {
+        var proxyUrl = '/.netlify/functions/places?photo=' + encodeURIComponent(gmaps.photoRef);
+        photoHtml = '<div style="height:120px;background:#050e1e;overflow:hidden;position:relative;">'
+          + '<img src="' + proxyUrl + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.parentNode.style.display=\'none\'">'
+          + '</div>';
+      }
+
+      var ratingHtml = '';
+      if (gmaps && gmaps.found && gmaps.rating) {
+        ratingHtml = '<div style="display:flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap;">'
+          + '<span style="color:#fbbf24;font-size:0.8rem;letter-spacing:-0.5px;">' + _stars(gmaps.rating) + '</span>'
+          + '<span style="color:rgba(200,220,255,0.7);font-size:0.78rem;">' + gmaps.rating.toFixed(1) + '</span>'
+          + '<span style="color:rgba(160,190,230,0.4);font-size:0.75rem;">· ' + (gmaps.reviewCount || 0).toLocaleString() + ' reviews</span>'
+          + '</div>';
+      }
+
+      var lastReviewHtml = '';
+      if (gmaps && gmaps.found && gmaps.lastReviewDate) {
+        var ago = _timeAgo(gmaps.lastReviewDate);
+        if (ago) lastReviewHtml = '<div style="color:rgba(150,180,220,0.45);font-size:0.72rem;margin-top:3px;">Last reviewed ' + ago + '</div>';
+      }
+
+      var showerHtml = '';
+      if (gmaps && gmaps.found && gmaps.hasShower === true) {
+        showerHtml = '<div style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;background:rgba(0,180,120,0.12);border:1px solid rgba(0,200,120,0.2);border-radius:4px;padding:2px 7px;font-size:0.72rem;color:#4ade80;">🚿 Showers</div>';
+      }
+
+      var loadingHtml = (!gmaps) ? '<div style="color:rgba(150,180,220,0.4);font-size:0.72rem;margin-top:6px;">Loading Google Maps data…</div>' : '';
+      var noDataHtml  = (gmaps && !gmaps.found) ? '<div style="color:rgba(150,180,220,0.3);font-size:0.72rem;margin-top:6px;">No Google Maps listing found</div>' : '';
+
+      stationPanel.innerHTML = photoHtml
+        + '<div style="padding:10px 12px 12px;">'
+        + '<div style="display:flex;align-items:flex-start;justify-content:space-between;">'
+        +   '<div><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1rem;font-weight:700;color:' + s.color + ';line-height:1.2;">' + s.name + '</div>'
+        +   '<div style="color:rgba(180,200,255,0.45);font-size:0.72rem;letter-spacing:0.07em;text-transform:uppercase;margin-top:2px;">' + s.op + '</div></div>'
+        +   '<button onclick="this.closest(\'[style*=z-index:30]\').style.display=\'none\'" style="background:none;border:none;color:rgba(140,170,210,0.5);font-size:1rem;cursor:pointer;padding:0 0 0 6px;line-height:1;margin-top:-2px;" title="Close">✕</button>'
+        + '</div>'
+        + '<div style="color:rgba(200,220,255,0.55);font-size:0.78rem;margin-top:5px;">' + s.kw + ' kW · ' + s.units + ' units · ' + s.con + '</div>'
+        + ratingHtml + lastReviewHtml + showerHtml + loadingHtml + noDataHtml
+        + '</div>';
+    }
+
+    function showStationPanel(s) {
+      renderPanel(s, null);
+      stationPanel.style.display = 'block';
+
+      var cacheKey = s.lat + ',' + s.lng;
+      if (_placesCache[cacheKey]) {
+        renderPanel(s, _placesCache[cacheKey]);
+        return;
+      }
+
+      var url = '/.netlify/functions/places?lat=' + s.lat + '&lng=' + s.lng + '&name=' + encodeURIComponent(s.name);
+      fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          _placesCache[cacheKey] = data;
+          if (stationPanel.style.display !== 'none') renderPanel(s, data);
+        })
+        .catch(function() {
+          _placesCache[cacheKey] = { found: false };
+          if (stationPanel.style.display !== 'none') renderPanel(s, { found: false });
+        });
+    }
+
     function buildChargingTip(s) {
       return '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;color:' + s.color + ';margin-bottom:3px;">' + s.name + '</div>'
         + '<div style="color:rgba(180,200,255,0.55);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:5px;">' + s.op + '</div>'
         + '<div style="color:rgba(200,220,255,0.8);font-size:0.85rem;">' + s.kw + ' kW · ' + s.units + ' units · ' + s.con + '</div>'
         + (s.note ? '<div style="color:rgba(200,220,255,0.5);font-size:0.8rem;margin-top:3px;">' + s.note + '</div>' : '')
-        + (opts.onDotClick ? '<div style="color:rgba(74,158,255,0.55);font-size:0.75rem;margin-top:4px;">Click to view ↓</div>' : '');
+        + '<div style="color:rgba(74,158,255,0.55);font-size:0.75rem;margin-top:4px;">Click for photos &amp; reviews ↓</div>';
     }
     function buildSiteTip(s, col) {
       return '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;color:' + col + ';margin-bottom:3px;">' + s.n + '</div>'
