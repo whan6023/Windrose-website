@@ -43,6 +43,25 @@ const CONTAINERS = [
     pol: { name: 'Auckland',  country: 'New Zealand',    lat: -36.8485, lng: 174.7633 },
     pod: { name: 'Ningbo',    country: 'China',          lat: 29.8683,  lng: 121.5440 },
     departure: null, arrival: null, days: null },
+  { id: 'COSU6447908310', label: 'ATA Return #1 (US→Shanghai)', bl: 'COSU6447908310', skipApi: true,
+    pol: { name: 'Long Beach', country: 'United States', lat: 33.7432,  lng: -118.2141 },
+    pod: { name: 'Shanghai',   country: 'China',         lat: 31.4057,  lng: 121.5447  },
+    departure: null, arrival: null, days: null, cost: 'RMB 106,830.31' },
+  { id: 'COSU6448828820', label: 'ATA Return #2 (US→Shanghai)', bl: 'COSU6448828820', skipApi: true,
+    pol: { name: 'Long Beach', country: 'United States', lat: 33.7432,  lng: -118.2141 },
+    pod: { name: 'Shanghai',   country: 'China',         lat: 31.4057,  lng: 121.5447  },
+    departure: null, arrival: null, days: null, cost: 'RMB 107,644.85' },
+  { id: 'COSU6447584950', label: 'Antwerp→Shanghai',            bl: 'COSU6447584950', skipApi: true,
+    pol: { name: 'Antwerp',  country: 'Belgium', lat: 51.2194,  lng: 4.4025  },
+    pod: { name: 'Shanghai', country: 'China',   lat: 31.4057,  lng: 121.5447 },
+    departure: null, arrival: null, days: null, cost: 'RMB 97,537.51' },
+  { id: 'ONEYSH6AC6816600', label: 'KD Export Shanghai→LA (4 CTN)', bl: 'ONEYSH6AC6816600', skipApi: true,
+    pol: { name: 'Shanghai',    country: 'China',         lat: 31.4057,  lng: 121.5447  },
+    pod: { name: 'Los Angeles', country: 'United States', lat: 33.7163,  lng: -118.2644 },
+    departure: null, arrival: null, days: null, cost: 'RMB 33,164.88' },
+  { id: 'VOLCANIC-ASH-DETENTION', label: 'Volcanic Ash Detention Fee', skipApi: true,
+    pol: null, pod: null,
+    departure: null, arrival: null, days: null, cost: 'RMB 24,436.44' },
 ];
 
 const PORT_COORDS = {
@@ -89,6 +108,7 @@ exports.handler = async function() {
         pol: c.pol || null, pod: c.pod || null,
         departure: c.departure || null, arrival: c.arrival || null, days: c.days || null,
         carrier: null, vessel: null, latestStatus: c.latestStatus || null, events: [],
+        cost: c.cost || null,
       });
       continue;
     }
@@ -133,13 +153,14 @@ exports.handler = async function() {
         pod: pod?.lat ? pod : null,
         departure: c.departure || null, arrival: c.arrival || null, days: c.days || null,
         latestStatus, events,
+        cost: c.cost || null,
       });
     } catch (e) {
       results.push({
         id: c.id, label: c.label, bl: c.bl || null,
         pol: c.pol || null, pod: c.pod || null,
         departure: c.departure || null, arrival: c.arrival || null, days: c.days || null,
-        error: e.message,
+        error: e.message, cost: c.cost || null,
       });
     }
   }
