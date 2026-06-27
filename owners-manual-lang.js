@@ -132,7 +132,6 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initSections();
-    if (location.hash) expandForHash(location.hash);
 
     // Inject language selector into header
     var header = document.querySelector('.site-header');
@@ -164,33 +163,6 @@
           sib = sib.nextElementSibling;
         }
       });
-
-      // If page loaded with a hash, expand the group and chapter containing that anchor
-      if (location.hash) {
-        var target = document.querySelector('.sidebar a[href="' + location.hash + '"]');
-        if (target) {
-          // Expand nav-sections if this is a subsection link
-          var ns = target.closest('ul.nav-sections');
-          if (ns) ns.classList.add('expanded');
-          // Expand the parent group
-          var li = target.closest('li.nav-chapter');
-          if (li) {
-            li.classList.remove('grp-hidden');
-            var grp = li.previousElementSibling;
-            while (grp && !grp.classList.contains('nav-group-header')) {
-              grp = grp.previousElementSibling;
-            }
-            if (grp) {
-              grp.classList.remove('collapsed');
-              var sib2 = grp.nextElementSibling;
-              while (sib2 && !sib2.classList.contains('nav-group-header')) {
-                sib2.classList.remove('grp-hidden');
-                sib2 = sib2.nextElementSibling;
-              }
-            }
-          }
-        }
-      }
     }
   });
 })();
