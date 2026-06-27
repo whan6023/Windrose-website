@@ -5279,7 +5279,7 @@ document.getElementById('navFilter').addEventListener('input', function() {
 document.querySelectorAll('.nav-chapter-title').forEach(a => {
  a.addEventListener('click', function(e) {
  const ul = this.nextElementSibling;
- if (ul && ul.classList.contains('nav-sections')) {
+ if (ul && ul.classList.contains('nav-sections') && ul.children.length > 0) {
  ul.classList.toggle('expanded');
  e.preventDefault();
  }
@@ -5310,9 +5310,6 @@ const observer = new IntersectionObserver(entries => {
  const active = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
  if (active) {
  active.classList.add('active');
- const parent = active.closest('.nav-sections');
- if (parent) parent.classList.add('expanded');
- active.scrollIntoView({ block: 'nearest', behavior: 'auto' });
  }
  }
  });
