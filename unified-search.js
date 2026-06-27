@@ -367,6 +367,9 @@
   };
 
   document.addEventListener('click', function (e) {
+    // If the clicked element was removed from the DOM before this handler fires
+    // (e.g. innerHTML was replaced inside the box), don't dismiss the box.
+    if (!e.target.isConnected) return;
     var inp = document.getElementById('gs-input');
     var box = GS_BOX;
     if (inp && box && !inp.contains(e.target) && !box.contains(e.target)) {
