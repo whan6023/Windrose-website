@@ -14,12 +14,11 @@
     'li.nav-group-header span::before{content:"▾ ";font-size:9px;opacity:.7;}',
     'li.nav-group-header.collapsed span::before{content:"▸ ";}',
     'li.nav-chapter.grp-hidden{display:none!important;}',
-    /* Chapter numbering via CSS counters */
+    /* Chapter numbering via CSS counters — number prefix only, no extra arrow */
     '.nav-chapters{counter-reset:grp-ctr;}',
     'li.nav-group-header{counter-increment:grp-ctr;counter-reset:chap-ctr;}',
     'li.nav-chapter{counter-increment:chap-ctr;}',
-    '.nav-chapter-title::before{content:counter(grp-ctr) "." counter(chap-ctr) " ▸"!important;font-size:11px;}',
-    '.nav-chapter-title:has(+.nav-sections.expanded)::before{content:counter(grp-ctr) "." counter(chap-ctr) " ▾"!important;transform:none!important;}',
+    '.nav-chapter-title::before{content:counter(grp-ctr) "." counter(chap-ctr) " " !important;font-size:11px;display:inline!important;}',
     /* ── Content group accordion ───────────────────────────── */
     '.acc-grp{margin:20px 0 0;}',
     '.acc-grp:first-of-type{margin-top:8px;}',
@@ -240,11 +239,27 @@
         }
       }
 
-      // Sidebar nav link clicks — expand before scrolling
+      // Sidebar nav link clicks — expand before scrolling.
+      // For nav-chapter-title links the inline script calls e.preventDefault()
+      // which blocks navigation; we intercept first with stopImmediatePropagation,
+      // handle the sub-list toggle ourselves, and scroll explicitly.
       document.querySelectorAll('.sidebar a[href^="#"]').forEach(function (a) {
-        a.addEventListener('click', function () {
+        a.addEventListener('click', function (e) {
           var id = (a.getAttribute('href') || '').slice(1);
-          expandToEl(document.getElementById(id));
+          var el = document.getElementById(id);
+          expandToEl(el);
+          if (a.classList.contains('nav-chapter-title')) {
+            e.stopImmediatePropagation(); // prevent inline handler's e.preventDefault()
+            var ul = a.nextElementSibling;
+            if (ul && ul.classList.contains('nav-sections') && ul.children.length > 0) {
+              ul.classList.add('expanded');
+            }
+            if (el) {
+              requestAnimationFrame(function () {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              });
+            }
+          }
         });
       });
 
