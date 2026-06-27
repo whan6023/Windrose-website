@@ -1099,7 +1099,7 @@
 
     var serviceDots = ptLayer.append('g').attr('class', 'wg-layer-service');
     SERVICE.forEach(function(s) {
-      var xy = proj([s.lon, s.lat]);
+      var xy = proj([s.lng != null ? s.lng : s.lon, s.lat]);
       if (!xy) return;
       serviceDots.append('circle')
         .datum(s)
@@ -1113,7 +1113,7 @@
 
     var partsDots = ptLayer.append('g').attr('class', 'wg-layer-parts');
     PARTS.forEach(function(s) {
-      var xy = proj([s.lon, s.lat]);
+      var xy = proj([s.lng != null ? s.lng : s.lon, s.lat]);
       if (!xy) return;
       partsDots.append('circle')
         .datum(s)
