@@ -1224,6 +1224,7 @@ function setLang(lang) {
       <li><a href="/how-to-buy-pricing" data-i18n="pricing.label">Pricing</a></li>
       <li><a href="/how-to-buy-tco" data-i18n="tco.label">Lease &amp; TCO Calculator</a></li>
       <li><a href="/how-to-buy-dealers" data-i18n="buy.dealers.label">Dealers</a></li>
+      <li><a href="#registration">Registration</a></li>
     </ul>
   </li>
       <li><a href="how-to-use.html" data-i18n="nav.howtouse">How to Use</a>
@@ -2335,6 +2336,220 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 
+<!-- VEHICLE REGISTRATION -->
+<section id="registration" style="background:var(--dark); border-top:1px solid var(--border); padding: 4rem clamp(1.5rem, 5vw, 4rem);">
+  <p style="font-family:Barlow Condensed, sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Vehicle Registration</p>
+  <h2 style="font-size: clamp(1.25rem, 3vw, 1.75rem); line-height:1.15; margin-bottom:0.75rem;">How to register your Windrose truck</h2>
+  <p style="font-size:0.875rem; color:var(--muted); max-width:640px; margin-bottom:2.5rem; line-height:1.6;">Registration requirements vary by country and, in the US, by state. Select your market to see the exact steps.</p>
+
+  <!-- Country selector -->
+  <div style="display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;width:fit-content;margin-bottom:1.5rem;" role="tablist" id="reg-country-tabs">
+    <button class="reg-ctry" onclick="regCountry('us')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:1px solid var(--border);cursor:pointer;white-space:nowrap;background:#4a9eff;color:#fff;transition:background .15s,color .15s;">🇺🇸 United States</button>
+    <button class="reg-ctry" onclick="regCountry('uk')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:1px solid var(--border);cursor:pointer;white-space:nowrap;background:rgba(255,255,255,0.04);color:var(--muted);transition:background .15s,color .15s;">🇬🇧 United Kingdom</button>
+    <button class="reg-ctry" onclick="regCountry('eu')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:1px solid var(--border);cursor:pointer;white-space:nowrap;background:rgba(255,255,255,0.04);color:var(--muted);transition:background .15s,color .15s;">🇪🇺 European Union</button>
+    <button class="reg-ctry" onclick="regCountry('au')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:1px solid var(--border);cursor:pointer;white-space:nowrap;background:rgba(255,255,255,0.04);color:var(--muted);transition:background .15s,color .15s;">🇦🇺 Australia</button>
+    <button class="reg-ctry" onclick="regCountry('ca')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:1px solid var(--border);cursor:pointer;white-space:nowrap;background:rgba(255,255,255,0.04);color:var(--muted);transition:background .15s,color .15s;">🇨🇦 Canada</button>
+    <button class="reg-ctry" onclick="regCountry('cn')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:1px solid var(--border);cursor:pointer;white-space:nowrap;background:rgba(255,255,255,0.04);color:var(--muted);transition:background .15s,color .15s;">🇨🇳 China</button>
+    <button class="reg-ctry" onclick="regCountry('cl')" style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 1rem;border:none;border-right:none;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,0.04);color:var(--muted);transition:background .15s,color .15s;">🇨🇱 Chile</button>
+  </div>
+
+  <!-- US state/region selector -->
+  <div id="reg-state-row" style="display:flex;flex-wrap:wrap;gap:0;border:1px solid rgba(74,158,255,0.2);border-radius:4px;overflow:hidden;width:fit-content;margin-bottom:2.5rem;">
+    <button class="reg-state" onclick="regState('tx')" style="font-family:Barlow Condensed,sans-serif;font-size:0.8rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.3rem 0.9rem;border:none;border-right:1px solid rgba(74,158,255,0.2);cursor:pointer;white-space:nowrap;background:#4a9eff;color:#fff;transition:background .15s,color .15s;">Texas</button>
+    <button class="reg-state" onclick="regState('ca_carb')" style="font-family:Barlow Condensed,sans-serif;font-size:0.8rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.3rem 0.9rem;border:none;border-right:1px solid rgba(74,158,255,0.2);cursor:pointer;white-space:nowrap;background:rgba(74,158,255,0.07);color:var(--muted);transition:background .15s,color .15s;">California &amp; CARB States</button>
+    <button class="reg-state" onclick="regState('us_other')" style="font-family:Barlow Condensed,sans-serif;font-size:0.8rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.3rem 0.9rem;border:none;border-right:none;cursor:pointer;white-space:nowrap;background:rgba(74,158,255,0.07);color:var(--muted);transition:background .15s,color .15s;">All Other States</button>
+  </div>
+
+  <!-- Steps panel -->
+  <div id="reg-steps"></div>
+</section>
+
+<script>
+(function(){
+  var REG_DATA = {
+    us: {
+      tx: {
+        note: null,
+        incentive: 'IRA Section 45W Commercial Clean Vehicle Credit — up to $40,000 per vehicle. Apply when filing federal taxes.',
+        steps: [
+          {title:'FMCSA — USDOT Number', body:'Register with the Federal Motor Carrier Safety Administration at safer.fmcsa.dot.gov to obtain a USDOT number. Required for all commercial vehicles in interstate commerce.'},
+          {title:'Motor Carrier (MC) Number', body:'For-hire carriers transporting freight for compensation must also obtain an MC number via FMCSA. Private carriers (own freight) are exempt.'},
+          {title:'TxDMV — Title & Registration', body:'Submit to Texas DMV: Manufacturer\'s Certificate of Origin (MCO), Bill of Sale, completed Form 130-U, and proof of liability insurance. A TxDPS VIN inspection is required before first registration.'},
+          {title:'IRP — Apportioned Registration', body:'For interstate operations, apply for International Registration Plan (IRP) apportioned registration through TxDMV. You receive a Cab Card — carry it in the vehicle at all times.'},
+          {title:'Commercial Liability Insurance', body:'Minimum $750,000 liability coverage required for interstate commerce. Texas-only intrastate carriers may use lower state minimums. Obtain a MCS-90 endorsement for FMCSA compliance.'},
+          {title:'Texas Commercial Vehicle Inspection', body:'All commercial vehicles must pass an annual TxDPS safety inspection. Schedule at an authorized Commercial Vehicle Inspection Station. No emissions test required — electric vehicles are exempt.'},
+          {title:'Heavy Vehicle Use Tax (HVUT)', body:'Vehicles with GVWR over 55,000 lbs must file IRS Form 2290 and pay HVUT annually. Proof of payment (Schedule 1 stamp) is required for registration renewal.'}
+        ]
+      },
+      ca_carb: {
+        note: 'California and 16 CARB-aligned states (WA, OR, NY, MA, NJ, CT, MD, CO, VT, ME, RI, NM, NV, HI, DE, VA) follow ACT regulations. Windrose R700 qualifies as a zero-emission vehicle and meets ACT requirements automatically.',
+        incentive: 'California HVIP (Hybrid and Zero-Emission Truck and Bus Voucher Incentive Project) — up to $200,000 per vehicle. Apply before purchase at californiahvip.org. Also eligible for LCFS credits and IRA Section 45W federal credit.',
+        steps: [
+          {title:'FMCSA — USDOT & MC Number', body:'Register with FMCSA at safer.fmcsa.dot.gov for a USDOT number, and an MC number if transporting freight for hire.'},
+          {title:'CARB ACT Compliance', body:'California\'s Advanced Clean Trucks (ACT) rule requires fleet operators to report annually via CARB\'s online system. The Windrose R700 counts toward your ZEV fleet quota. No additional vehicle-level certification is needed.'},
+          {title:'HVIP Incentive Application', body:'Apply for a HVIP voucher at californiahvip.org before placing your order. Vouchers are first-come, first-served and can reach $200,000 per truck. The voucher reduces the purchase price directly.'},
+          {title:'State DMV — Title & Registration', body:'Submit the Manufacturer\'s Certificate of Origin (MCO), Bill of Sale, and completed registration form to your state DMV (e.g., CA DMV, NY DMV). Electric vehicles are typically exempt from state emissions inspections.'},
+          {title:'IRP — Apportioned Registration', body:'For interstate operations, apply for IRP apportioned registration through your state DMV. Keep the Cab Card in the vehicle.'},
+          {title:'Commercial Liability Insurance', body:'Minimum $750,000 liability for interstate commerce. Obtain an MCS-90 endorsement. California additionally requires CPUC authority for intrastate for-hire operations.'},
+          {title:'Annual Safety Inspection', body:'California requires a BIT (Biennial Inspection of Terminals) for fleets and periodic roadside inspections. Schedule CHP safety inspections for the terminal annually.'},
+          {title:'Heavy Vehicle Use Tax (HVUT)', body:'File IRS Form 2290 for vehicles over 55,000 lbs GVWR. Stamped Schedule 1 is required for registration renewal.'}
+        ]
+      },
+      us_other: {
+        note: 'Most US states follow standard federal FMVSS requirements. Windrose holds full FMVSS compliance, enabling registration in all 50 states.',
+        incentive: 'IRA Section 45W Commercial Clean Vehicle Credit — up to $40,000 per vehicle. Some states offer additional incentives; check your state\'s energy office.',
+        steps: [
+          {title:'FMCSA — USDOT & MC Number', body:'Register at safer.fmcsa.dot.gov for a USDOT number. For-hire carriers also need an MC number.'},
+          {title:'State DMV — Title & Registration', body:'Submit the Manufacturer\'s Certificate of Origin (MCO), Bill of Sale, and completed title/registration application to your state DMV. Requirements and fees vary by state.'},
+          {title:'IRP — Apportioned Registration', body:'For interstate operations, apply for International Registration Plan (IRP) apportioned registration through your state\'s motor carrier office. The resulting Cab Card must be carried in the vehicle.'},
+          {title:'Commercial Liability Insurance', body:'Minimum $750,000 liability coverage for interstate commerce. Obtain an MCS-90 endorsement for FMCSA compliance.'},
+          {title:'State Commercial Vehicle Inspection', body:'Most states require annual safety inspections for commercial vehicles. Contact your state patrol or DMV for inspection station locations.'},
+          {title:'Heavy Vehicle Use Tax (HVUT)', body:'Vehicles over 55,000 lbs GVWR must file IRS Form 2290 annually. The stamped Schedule 1 is needed for registration renewal.'}
+        ]
+      }
+    },
+    uk: {
+      note: 'Windrose holds EU Whole Vehicle Type Approval. UK WVTA (Great Britain) is granted via DVSA for EU-approved vehicles.',
+      incentive: 'Zero-emission HGVs are exempt from Vehicle Excise Duty (VED). The Plug-In Truck Grant and ZEVTP schemes may provide additional funding — check gov.uk/guidance/ev-infrastructure.',
+      steps: [
+        {title:'GB Type Approval (WVTA)', body:'Windrose holds EU WVTA (Regulation (EU) 2018/858). Contact your Windrose dealer to confirm GB recognition via DVSA — or submit an IVA (Individual Vehicle Approval) if importing directly.'},
+        {title:'DVLA — Vehicle Registration', body:'Submit a V55/4 (new vehicle) form to DVLA with the Certificate of Conformity (CoC), proof of purchase, and identity documents. The V5C logbook (log book) is issued on approval.'},
+        {title:'Operator\'s Licence (O-Licence)', body:'Apply to the Traffic Commissioner via the Vehicle Operator Licensing (VOL) system at vehicle-operator-licensing.service.gov.uk. A Standard National licence covers UK-only operations; Standard International covers Europe.'},
+        {title:'Annual HGV (MOT) Test', body:'Commercial vehicles require an annual DVSA HGV test (equivalent to MOT for HGVs). Book at a DVSA Authorised Testing Facility (ATF).'},
+        {title:'Road Tax (VED)', body:'Register for Vehicle Excise Duty via the DVLA. Zero-emission HGVs are currently exempt from VED. Tax class: "Heavy Goods Vehicle".'},
+        {title:'Commercial Insurance', body:'UK law requires minimum third-party liability cover. Most operators carry Goods in Transit and Employer\'s Liability in addition.'}
+      ]
+    },
+    eu: {
+      note: 'Windrose holds EU Whole Vehicle Type Approval under Regulation (EU) 2018/858, valid in all EU member states.',
+      incentive: 'Many EU member states offer registration tax exemptions or reductions for zero-emission HGVs, plus CO2 fleet credit under the EU Heavy-Duty Vehicle CO2 Regulation.',
+      steps: [
+        {title:'EU Whole Vehicle Type Approval', body:'Windrose holds EU WVTA (2018/858). No additional vehicle-level approval is needed. Obtain the Certificate of Conformity (CoC) from your dealer.'},
+        {title:'National Registration Authority', body:'Submit the CoC and purchase documentation to your national authority: KBA (Germany), ANTS (France), RDW (Netherlands), DGT (Spain), MOTORISIERUNG (Austria), or the equivalent in your country.'},
+        {title:'National Roadworthiness Inspection', body:'First periodic inspection is typically required within 1–3 years of registration, then annually: TÜV (Germany), CT (France), APK (Netherlands), ITV (Spain). Windrose has zero-emission drivetrain documentation available.'},
+        {title:'Registration Tax & Road Tax', body:'Submit VRT / road tax application per national rules. Many EU states (Netherlands, Germany, Sweden, France) apply reduced or zero rates for zero-emission HGVs.'},
+        {title:'Operator Authorisation (if for-hire)', body:'International road transport requires a Community Licence (Regulation (EC) 1072/2009). Apply via your national transport ministry.'},
+        {title:'Commercial Insurance', body:'Third-party motor insurance is mandatory across the EU (Directive 2009/103/EC). Most fleets additionally carry CMR cargo liability.'}
+      ]
+    },
+    au: {
+      note: 'Australia\'s Road Vehicle Standards Act 2018 (RVSA) governs vehicle imports. Windrose works with importers holding a RAW (Road Vehicle Standard Rules) approval.',
+      incentive: 'The federal Electric Vehicle Discount Act provides FBT exemption for eligible EVs. Some state governments offer registration fee concessions for zero-emission heavy vehicles.',
+      steps: [
+        {title:'Road Vehicle Standards (RVSA) Approval', body:'Windrose\'s Australian importer/distributor holds a Registered Automotive Workshop (RAW) approval under RVSA 2018. Confirm compliance documentation is in order with your dealer before purchase.'},
+        {title:'NHVR — Heavy Vehicle Registration', body:'Vehicles over 4.5 tonne GVM are regulated by the National Heavy Vehicle Regulator (NHVR) under the Heavy Vehicle National Law (HVNL). Register at nhvr.gov.au. Registration is administered by your state/territory authority (Service NSW, VicRoads, TMR, DPTI, etc.).'},
+        {title:'State/Territory Registration', body:'Apply to the relevant state authority: Service NSW (NSW), VicRoads (VIC), TMR (QLD), DoT (WA), DPTI (SA), DIER (TAS). Submit vehicle identification, approval documents, and weight certificates.'},
+        {title:'Compulsory Third Party (CTP) Insurance', body:'CTP ("green slip") insurance is mandatory. Purchase from a licensed CTP insurer in your state before registration.'},
+        {title:'Annual Roadworthiness Inspection', body:'Annual heavy vehicle inspections are required. In most states this is conducted by the state transport authority or an accredited inspection station.'},
+        {title:'NHVR Accreditation (if applicable)', body:'Operators of vehicles over 12 tonne GVM may need NHVR accreditation (e.g., Mass Management, Maintenance Management). This applies if you operate under Performance-Based Standards (PBS) or access higher mass limits.'}
+      ]
+    },
+    ca: {
+      note: 'Canada\'s Canadian Motor Vehicle Safety Standards (CMVSS) mirror US FMVSS. The Windrose R700 meets CMVSS requirements.',
+      incentive: 'The federal iMHZEV program provides up to C$200,000 per eligible medium-and-heavy zero-emission vehicle. Apply via Transport Canada before delivery. Some provinces offer additional incentives.',
+      steps: [
+        {title:'Transport Canada CMVSS Compliance', body:'Windrose R700 meets Canadian Motor Vehicle Safety Standards (CMVSS), which align with US FMVSS. Your dealer will provide the National Safety Mark and compliance documentation.'},
+        {title:'Provincial Vehicle Registration', body:'Register with your provincial authority: ServiceOntario (ON), SAAQ (QC), ICBC (BC), AMA/Registry Agent (AB), SGI (SK), MPI (MB), or Service NB, NS, PEI, NFLD as applicable. Submit the bill of sale, MCO, and completed registration form.'},
+        {title:'IRP — Interprovincial Registration', body:'For operations across multiple provinces, apply for International Registration Plan (IRP) apportioned registration. Administered by your home province carrier office. The Cab Card must be in the vehicle.'},
+        {title:'Commercial Insurance', body:'Minimum $2,000,000 liability for interprovincial carriers (per federal Motor Vehicle Transport Act). Provincial requirements vary; confirm with your insurer.'},
+        {title:'Annual Safety Inspection (PMVI)', body:'A Periodic Motor Vehicle Inspection (PMVI) is required annually in most provinces. Schedule at a certified commercial vehicle inspection facility.'},
+        {title:'Federal iMHZEV Incentive', body:'Apply for the Incentives for Medium- and Heavy-Duty Zero-Emission Vehicles (iMHZEV) program at tc.canada.ca/en/road-transportation/innovative-technologies/zero-emission-vehicles. Up to C$200,000 per truck.'}
+      ]
+    },
+    cn: {
+      note: 'Windrose holds MIIT type approval and GB/T national standard certification for the Chinese market.',
+      incentive: '新能源货车免征车辆购置税（购置税）政策持续执行。符合条件的新能源货车可享受绿色牌照优先上牌及补贴政策，具体以各省市最新政策为准。',
+      steps: [
+        {title:'MIIT 工信部公告', body:'Windrose 已取得工业和信息化部道路机动车辆生产企业及产品公告，符合 GB/T 国家标准。向经销商确认车型已列入最新公告目录。'},
+        {title:'车辆购置税（免征）', body:'新能源货车依法免征车辆购置税。购车后向主管税务机关申请免税证明，凭免税证明办理登记手续。'},
+        {title:'公安交管部门注册登记', body:'携带以下材料至当地公安交通管理部门车辆管理所办理注册登记：整车合格证（含电池信息）、购车发票、购置税免税证明、身份证明（企业营业执照）、机动车交强险保单。'},
+        {title:'绿色新能源牌照', body:'新能源商用车在全国主要城市享有绿色号牌优先申领权，部分限行区域对绿牌车辆豁免通行限制，具体以当地政策为准。'},
+        {title:'机动车交强险', body:'依法投保交强险（CTPI）。商用货车建议同时投保第三者责任险及货物运输险。'},
+        {title:'年度检验（年检）', body:'商用货车须按规定周期参加机动车安全技术检验，首次检验在注册登记后两年内进行，之后每年一检。'}
+      ]
+    },
+    cl: {
+      note: 'Windrose cuenta con aprobación del Ministerio de Transportes y Telecomunicaciones (MTT) de Chile.',
+      incentive: 'Chile no aplica impuesto verde a los camiones eléctricos (exentos del impuesto al CO₂). Consulte la CORFO y el MMA para eventuales subsidios sectoriales.',
+      steps: [
+        {title:'Homologación MTT', body:'Windrose cuenta con homologación del Ministerio de Transportes y Telecomunicaciones. Solicite a su distribuidor el certificado de homologación vigente.'},
+        {title:'Revisión Técnica (RTE)', body:'El vehículo debe someterse a una Revisión Técnica en un centro CITEC autorizado por el MTT. Para vehículos de carga, la primera revisión se realiza al año de la primera inscripción y luego anualmente.'},
+        {title:'Inscripción en el Registro Civil', body:'Presente en el Servicio de Registro Civil e Identificación: factura de compraventa, certificado de homologación, certificado de la Aduana (si aplica) y SOAP vigente. Se emite el Padrón de Vehículo (certificado de inscripción).'},
+        {title:'Permiso de Circulación', body:'Pague el Permiso de Circulación anual en la Municipalidad correspondiente al domicilio del propietario. Los camiones eléctricos pueden estar exentos del impuesto verde.'},
+        {title:'SOAP — Seguro Obligatorio', body:'Contrate el Seguro Obligatorio de Accidentes Personales (SOAP) antes de circular. Disponible en compañías aseguradoras autorizadas o en la Municipalidad.'},
+        {title:'Licencia de Conducir Clase D', body:'El conductor debe poseer una licencia Clase D profesional para vehículos de carga. Asegúrese de que el operador cuente con la habilitación correspondiente antes de la puesta en marcha.'}
+      ]
+    }
+  };
+
+  var currentCountry = 'us';
+  var currentState = 'tx';
+
+  function renderSteps(data) {
+    var html = '';
+    if (data.note) {
+      html += '<div style="background:rgba(74,158,255,0.07);border:1px solid rgba(74,158,255,0.2);border-radius:4px;padding:0.9rem 1.2rem;margin-bottom:1.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">'
+            + '<span style="font-family:Barlow Condensed,sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.3rem;">Note</span>'
+            + data.note + '</div>';
+    }
+    html += '<div style="display:flex;flex-direction:column;gap:0;">';
+    data.steps.forEach(function(s, i) {
+      html += '<div style="display:grid;grid-template-columns:2.5rem 1fr;gap:0;border-top:1px solid var(--border);padding:1.1rem 0;">'
+            + '<div style="font-family:Barlow Condensed,sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent);padding-top:0.1rem;">' + (i+1) + '</div>'
+            + '<div>'
+            + '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.25rem;">' + s.title + '</div>'
+            + '<div style="font-size:0.875rem;color:var(--muted);line-height:1.65;">' + s.body + '</div>'
+            + '</div></div>';
+    });
+    html += '</div>';
+    if (data.incentive) {
+      html += '<div style="margin-top:1.75rem;background:rgba(74,158,255,0.05);border:1px solid rgba(74,158,255,0.18);border-left:3px solid #4a9eff;border-radius:0 4px 4px 0;padding:0.9rem 1.2rem;">'
+            + '<span style="font-family:Barlow Condensed,sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;display:block;margin-bottom:0.3rem;">Available Incentive</span>'
+            + '<span style="font-size:0.875rem;color:var(--muted);line-height:1.6;">' + data.incentive + '</span>'
+            + '</div>';
+    }
+    document.getElementById('reg-steps').innerHTML = html;
+  }
+
+  function regCountry(c) {
+    currentCountry = c;
+    document.querySelectorAll('.reg-ctry').forEach(function(b){
+      b.style.background = 'rgba(255,255,255,0.04)';
+      b.style.color = 'var(--muted)';
+    });
+    var clicked = Array.from(document.querySelectorAll('.reg-ctry')).find(function(b){ return b.getAttribute('onclick').indexOf("'"+c+"'") > -1; });
+    if (clicked) { clicked.style.background = '#4a9eff'; clicked.style.color = '#fff'; }
+
+    var stateRow = document.getElementById('reg-state-row');
+    if (c === 'us') {
+      stateRow.style.display = 'flex';
+      renderSteps(REG_DATA.us[currentState]);
+    } else {
+      stateRow.style.display = 'none';
+      renderSteps(REG_DATA[c]);
+    }
+  }
+
+  function regState(s) {
+    currentState = s;
+    document.querySelectorAll('.reg-state').forEach(function(b){
+      b.style.background = 'rgba(74,158,255,0.07)';
+      b.style.color = 'var(--muted)';
+    });
+    var clicked = Array.from(document.querySelectorAll('.reg-state')).find(function(b){ return b.getAttribute('onclick').indexOf("'"+s+"'") > -1; });
+    if (clicked) { clicked.style.background = '#4a9eff'; clicked.style.color = '#fff'; }
+    renderSteps(REG_DATA.us[s]);
+  }
+
+  window.regCountry = regCountry;
+  window.regState = regState;
+
+  // Render default (US Texas) on load
+  document.addEventListener('DOMContentLoaded', function(){ regCountry('us'); });
+})();
+</script>
+
+
 <!-- CUSTOMERS -->
 <section class="news-section" id="news">
   <h2 style="font-size: 1.25rem; line-height: 1.15; margin-bottom: 3rem;" data-i18n="comm.h2">Customers Around the World</h2>
@@ -2515,7 +2730,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="index.html" class="footer-toc-head" data-i18n="nav.home">Home</a>
         <ul class="footer-toc-list"><li><a href="home-generations.html" class="toc-link" data-i18n="gen.label">Platform Roadmap</a></li><li><a href="home-pricing.html" class="toc-link" data-i18n="pricing.label">Pricing</a></li><li><a href="home-news.html" class="toc-link" data-i18n="news.label">News</a></li></ul>
         <a href="how-to-buy.html" class="footer-toc-head" data-i18n="nav.pricing">How to Buy</a>
-        <ul class="footer-toc-list" style="margin-bottom:0;"><li><a href="how-to-buy-pricing.html" class="toc-link" data-i18n="pricing.label">Pricing</a></li><li><a href="how-to-buy-tco.html" class="toc-link" data-i18n="tco.label">TCO Calculator</a></li><li><a href="how-to-buy-dealers.html" class="toc-link" data-i18n="buy.dealers.label">Dealers</a></li></ul>
+        <ul class="footer-toc-list" style="margin-bottom:0;"><li><a href="how-to-buy-pricing.html" class="toc-link" data-i18n="pricing.label">Pricing</a></li><li><a href="how-to-buy-tco.html" class="toc-link" data-i18n="tco.label">TCO Calculator</a></li><li><a href="how-to-buy-dealers.html" class="toc-link" data-i18n="buy.dealers.label">Dealers</a></li><li><a href="how-to-buy.html#registration" class="toc-link">Registration</a></li></ul>
       </div>
       <div>
         <a href="how-to-use.html" class="footer-toc-head" data-i18n="nav.howtouse">How to Use</a>
