@@ -159,6 +159,29 @@
   var SERVICE = SITES_ALL.filter(function(s){ return !s.c || s.dealer; });
   var PARTS   = SITES_ALL.filter(function(s){ return !!s.c || s.dealer; });
 
+  var DEALERS = [
+    {n:'Xos — Los Angeles, CA',      r:'Official Windrose Dealer · United States', co:'United States',  lat:34.1193721, lng:-118.2524796},
+    {n:'Team Verksted — Oslo',        r:'Official Windrose Dealer · Norway',        co:'Norway',         lat:59.9508814, lng:10.8832674},
+    {n:'Trailerlogistics — Santiago', r:'Official Windrose Dealer · Chile',         co:'Chile',          lat:-33.29,     lng:-70.9}
+  ];
+
+  var CUSTOMERS = [
+    {n:'CEVA Logistics',       r:'Spain · Europe',            co:'Spain',        lat:36.14,   lng:-5.45},
+    {n:'ATC Transport',        r:'Netherlands · Europe',      co:'Netherlands',  lat:51.39,   lng:6.17},
+    {n:'TJA Transportes',      r:'Portugal · Europe',         co:'Portugal',     lat:41.55,   lng:-8.42},
+    {n:'Customer · Norway',    r:'Norway · Europe',           co:'Norway',       lat:59.91,   lng:10.75},
+    {n:'Danske Fragtmænd',     r:'Denmark · Europe',          co:'Denmark',      lat:56.45,   lng:9.40},
+    {n:'Kuehne+Nagel',         r:'China · Asia Pacific',      co:'China',        lat:31.23,   lng:121.47},
+    {n:'KLN Kerry Logistics',  r:'China · Asia Pacific',      co:'China',        lat:23.13,   lng:113.26},
+    {n:'Decathlon',            r:'China · Asia Pacific',      co:'China',        lat:39.08,   lng:117.20},
+    {n:'DSV',                  r:'UAE · Middle East',         co:'UAE',          lat:25.20,   lng:55.27},
+    {n:'CEVA \xd7 Lenovo',     r:'Kazakhstan · Central Asia', co:'Kazakhstan',   lat:43.22,   lng:76.85},
+    {n:'Bluescope',            r:'Australia · Oceania',       co:'Australia',    lat:-34.47,  lng:150.89},
+    {n:'New Energy Transport', r:'Australia · Oceania',       co:'Australia',    lat:-33.90,  lng:150.93},
+    {n:'Customer · New Zealand',r:'New Zealand · Oceania',   co:'New Zealand',  lat:-36.85,  lng:174.76},
+    {n:'Customer · Chile',     r:'Chile · South America',     co:'Chile',        lat:-33.45,  lng:-70.65}
+  ];
+
   var MFG_CITIES = {
     shiyan:   {lon:110.8,  lat:32.6,  role:'cn',  label:'Shiyan',          lx:-55, ly:0,   partner:'Hande',   partnerRole:'Electric Drive Axle'},
     hefei:    {lon:117.3,  lat:31.9,  role:'cn',  label:'Hefei',           lx:-55, ly:14,  partner:'CALB',    partnerRole:'Battery System'},
@@ -330,7 +353,9 @@
     ccs:      {label:'⚡ CCS',                 color:'#60a5fa'},
     service:  {label:'🔧 After-Sales Service', color:'#4affb0'},
     parts:    {label:'📦 Spare Parts',         color:'#b07aff'},
-    shipping: {label:'🚢 Supply Chain',        color:'#f59e0b'}
+    shipping: {label:'🚢 Supply Chain',        color:'#f59e0b'},
+    dealers:  {label:'🏢 Dealers',             color:'#f59e0b'},
+    customers:{label:'🚛 Customers',           color:'#4affb0'}
   };
 
   function buildLayerBar(availLayers, activeLayers) {
@@ -1142,6 +1167,34 @@
         .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
     });
 
+    var dealerDots = ptLayer.append('g').attr('class', 'wg-layer-dealers');
+    DEALERS.forEach(function(s) {
+      var xy = proj([s.lng, s.lat]);
+      if (!xy) return;
+      dealerDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 7)
+        .attr('fill', '#f59e0b').attr('stroke', 'rgba(255,255,255,0.9)').attr('stroke-width', 1.8)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildSiteTip(d, '#f59e0b')); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    var customerDots = ptLayer.append('g').attr('class', 'wg-layer-customers');
+    CUSTOMERS.forEach(function(s) {
+      var xy = proj([s.lng, s.lat]);
+      if (!xy) return;
+      customerDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 5)
+        .attr('fill', '#4affb0').attr('stroke', 'rgba(255,255,255,0.7)').attr('stroke-width', 1)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildSiteTip(d, '#4affb0')); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
     // ── Location count badge ──────────────────────────────────────────────────
     var countEl;
     if (opts.showLayerBar !== false) {
@@ -1164,6 +1217,8 @@
       if (hasSvc || hasPrt) n += SITES_ALL.filter(function(s){
         return (hasSvc && (!s.c || s.dealer)) || (hasPrt && (!!s.c || s.dealer));
       }).length;
+      if (activeLayers.has('dealers'))   n += DEALERS.length;
+      if (activeLayers.has('customers')) n += CUSTOMERS.length;
       countEl.textContent = n ? n + ' locations' : '';
     }
     updateLocationCount();
@@ -1216,10 +1271,12 @@
       if (k >= CLUSTER_K) {
         // Reveal individual dots with per-layer visibility
         ptLayer.style('display', null);
-        mcsDots.style('display',     activeLayers.has('mcs')     ? null : 'none');
-        ccsDots.style('display',     activeLayers.has('ccs')     ? null : 'none');
-        serviceDots.style('display', activeLayers.has('service') ? null : 'none');
-        partsDots.style('display',   activeLayers.has('parts')   ? null : 'none');
+        mcsDots.style('display',      activeLayers.has('mcs')       ? null : 'none');
+        ccsDots.style('display',      activeLayers.has('ccs')       ? null : 'none');
+        serviceDots.style('display',  activeLayers.has('service')   ? null : 'none');
+        partsDots.style('display',    activeLayers.has('parts')     ? null : 'none');
+        dealerDots.style('display',   activeLayers.has('dealers')   ? null : 'none');
+        customerDots.style('display', activeLayers.has('customers') ? null : 'none');
         clusterG.selectAll('*').remove();
         return;
       }
@@ -1397,10 +1454,12 @@
         updateClusters(currentT);
       } else {
         ptLayer.style('display', null);
-        mcsDots.style('display',     activeLayers.has('mcs')     ? null : 'none');
-        ccsDots.style('display',     activeLayers.has('ccs')     ? null : 'none');
-        serviceDots.style('display', activeLayers.has('service') ? null : 'none');
-        partsDots.style('display',   activeLayers.has('parts')   ? null : 'none');
+        mcsDots.style('display',      activeLayers.has('mcs')       ? null : 'none');
+        ccsDots.style('display',      activeLayers.has('ccs')       ? null : 'none');
+        serviceDots.style('display',  activeLayers.has('service')   ? null : 'none');
+        partsDots.style('display',    activeLayers.has('parts')     ? null : 'none');
+        dealerDots.style('display',   activeLayers.has('dealers')   ? null : 'none');
+        customerDots.style('display', activeLayers.has('customers') ? null : 'none');
       }
     }
     applyLayerVisibility();

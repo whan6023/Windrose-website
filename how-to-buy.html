@@ -2316,6 +2316,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- /LEASE CALCULATOR -->
 
 
+<!-- BUY MAP: Dealers & Customers -->
+<section style="background:var(--dark); border-top:1px solid var(--border); padding: 4rem clamp(1.5rem, 5vw, 4rem) 2.5rem;">
+  <p style="font-family:Barlow Condensed, sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Where Windrose Runs</p>
+  <h2 style="font-size: clamp(1.5rem, 4vw, 1.75rem); line-height:1.15; margin-bottom:2rem;">Dealers &amp; Customers Around the World</h2>
+  <div id="buy-map" style="width:100%;height:480px;position:relative;border-radius:8px;overflow:hidden;background:#050e1e;border:1px solid rgba(74,158,255,0.12);"></div>
+</section>
+
 <!-- DEALERS & SERVICE PARTNERS -->
 <section style="background:var(--dark); border-top:1px solid var(--border); padding: 4rem clamp(1.5rem, 5vw, 4rem) 1.5rem;" id="dealers">
   <p style="font-family:Barlow Condensed, sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;" data-i18n="buy.dealers.label">Dealers</p>
@@ -3582,6 +3589,20 @@ document.getElementById('searchOverlay').addEventListener('click', function(e) {
     });
   });
 })();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="./windrose-globe.js?v=7"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof WindroseGlobe === 'undefined' || !document.getElementById('buy-map')) return;
+  WindroseGlobe.init('buy-map', {
+    flat: true,
+    layers: ['dealers', 'customers'],
+    defaultLayers: ['dealers', 'customers']
+  });
+});
 </script>
 
 </html>
