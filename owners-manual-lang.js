@@ -239,27 +239,34 @@
         }
       }
 
-      // Sidebar nav link clicks — expand before scrolling.
-      // For nav-chapter-title links the inline script calls e.preventDefault()
-      // which blocks navigation; we intercept first with stopImmediatePropagation,
-      // handle the sub-list toggle ourselves, and scroll explicitly.
-      document.querySelectorAll('.sidebar a[href^="#"]').forEach(function (a) {
+      // Handle ALL internal links (sidebar nav, TOC, content cross-refs).
+      // We register before the inline script so our handler fires first.
+      // stopImmediatePropagation prevents: (a) the inline nav-chapter toggle
+      // that calls e.preventDefault() without scrolling, and (b) the smooth-scroll
+      // handler that would call scrollIntoView before the accordion has painted.
+      // We replicate everything the inline smooth-scroll handler did:
+      // expand group, push history, close mobile sidebar, then scroll after rAF.
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
           var id = (a.getAttribute('href') || '').slice(1);
+          if (!id) return;
           var el = document.getElementById(id);
+          if (!el) return;
+          e.preventDefault();
+          e.stopImmediatePropagation();
           expandToEl(el);
           if (a.classList.contains('nav-chapter-title')) {
-            e.stopImmediatePropagation(); // prevent inline handler's e.preventDefault()
             var ul = a.nextElementSibling;
             if (ul && ul.classList.contains('nav-sections') && ul.children.length > 0) {
               ul.classList.add('expanded');
             }
-            if (el) {
-              requestAnimationFrame(function () {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              });
-            }
           }
+          history.pushState(null, '', '#' + id);
+          var sidebar = document.getElementById('sidebar');
+          if (sidebar) sidebar.classList.remove('open');
+          requestAnimationFrame(function () {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
         });
       });
 
