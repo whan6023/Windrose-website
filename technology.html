@@ -5779,6 +5779,8 @@ document.addEventListener("DOMContentLoaded", function() {
 <style>
 .charging-section .news-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
 @media(max-width:600px){ .charging-section .news-grid { grid-template-columns: 1fr !important; } }
+/* Prevent fallback SVG from floating in empty space when image fails to load */
+.charging-section .news-thumb img { object-fit: cover !important; opacity: 1 !important; }
 .chg-country { margin-bottom: 0.75rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .chg-country summary {
   display: flex; align-items: center; gap: 0.75rem;
