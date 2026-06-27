@@ -306,7 +306,7 @@ img:not(.toc-page-img) { max-height: 600px; }
 .callout {
   margin: 12px 0; padding: 12px 16px;
   border-left: 4px solid; border-radius: var(--radius);
-  font-size: 14px;
+  font-size: 15px;
 }
 .callout-title {
   font-weight: 700; font-size: 13px; text-transform: uppercase;
@@ -429,7 +429,7 @@ details.toc-group {
 summary.toc-group-title {
   background: var(--hdr-bg);
   color: var(--hdr-fg);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -475,7 +475,7 @@ details.toc-group:not([open]) > summary.toc-group-title::after {
 .toc-chapters > li > a {
   display: block;
   padding: 7px 14px;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text);
   text-decoration: none;
   transition: background 0.12s, color 0.12s;
@@ -501,7 +501,7 @@ summary.toc-chapter-title {
 summary.toc-chapter-title::-webkit-details-marker { display: none; }
 summary.toc-chapter-title > a {
   flex: 1;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text);
   text-decoration: none;
   transition: color 0.12s;
@@ -553,7 +553,7 @@ summary.toc-sub-title {
 summary.toc-sub-title::-webkit-details-marker { display: none; }
 summary.toc-sub-title > a {
   flex: 1;
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.12s;
@@ -576,7 +576,7 @@ summary.toc-sub-title:hover { background: rgba(11,94,215,.04); }
 /* ── Inline content slot ─── */
 .toc-content-slot {
   padding: 10px 14px 14px 28px;
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--text);
   line-height: 1.65;
   border-top: 1px solid var(--nav-border);
@@ -584,14 +584,14 @@ summary.toc-sub-title:hover { background: rgba(11,94,215,.04); }
 }
 .toc-content-slot:empty { display: none; }
 .toc-content-slot img { max-width: 100%; height: auto; border-radius: 4px; margin: 4px 0; }
-.toc-content-slot table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 6px 0; }
+.toc-content-slot table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 6px 0; }
 .toc-content-slot td, .toc-content-slot th {
   padding: 4px 8px;
   border: 1px solid var(--nav-border);
   text-align: left;
 }
 .toc-content-slot h2, .toc-content-slot h3 {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   margin: 10px 0 4px;
   color: var(--text);
