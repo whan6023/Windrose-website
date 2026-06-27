@@ -10,9 +10,9 @@
 <script src="../owners-manual-lang.js"></script>
 
 <style>
-  #wr-chat-btn { position: fixed !important; bottom: 1.5rem !important; right: 1.5rem !important; width: 48px !important; height: 48px !important; z-index: 9999 !important; background: #0a1f44 !important; border: 2px solid rgba(0,180,255,0.5) !important; border-radius: 50% !important; cursor: pointer !important; box-shadow: 0 4px 16px rgba(0,120,255,0.5) !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 !important; }
-  #wr-chat-btn:hover { background: #0d2a5e !important; }
-  #wr-chat-panel { position: fixed !important; bottom: 5rem !important; right: 1.5rem !important; z-index: 9998 !important; width: 360px !important; max-width: calc(100vw - 3rem) !important; max-height: 70vh !important; background: #0a1a30 !important; border: 1px solid rgba(0,180,255,0.3) !important; border-radius: 12px !important; box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important; flex-direction: column !important; overflow: hidden !important; font-family: 'DM Sans', sans-serif !important; }
+  #wr-chat-btn { position: fixed !important; bottom: 1.5rem !important; right: 1.5rem !important; width: auto !important; height: 48px !important; z-index: 9999 !important; background: #0a1f44 !important; border: 2px solid rgba(0,180,255,0.5) !important; border-radius: 24px !important; cursor: pointer !important; box-shadow: 0 4px 16px rgba(0,120,255,0.5) !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; padding: 0 20px 0 16px !important; color: #fff !important; font-size: 15px !important; font-weight: 600 !important; letter-spacing: 0.01em !important; white-space: nowrap !important; }
+  #wr-chat-btn:hover { background: #0d2a5e !important; border-color: rgba(0,180,255,0.8) !important; }
+  #wr-chat-panel { position: fixed !important; bottom: 5.5rem !important; right: 1.5rem !important; z-index: 9998 !important; width: 360px !important; max-width: calc(100vw - 3rem) !important; max-height: 70vh !important; background: #0a1a30 !important; border: 1px solid rgba(0,180,255,0.3) !important; border-radius: 12px !important; box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important; flex-direction: column !important; overflow: hidden !important; font-family: 'DM Sans', sans-serif !important; }
   #wr-chat-header { display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 0.75rem 1rem !important; background: #061525 !important; border-bottom: 1px solid rgba(0,180,255,0.2) !important; font-size: 0.875rem !important; font-weight: 600 !important; color: #a0c8ff !important; }
   #wr-chat-close { background: none !important; border: none !important; color: #7a9abf !important; cursor: pointer !important; font-size: 1rem !important; padding: 0 !important; }
   #wr-chat-msgs { flex: 1 !important; overflow-y: auto !important; padding: 1rem !important; background: #0a1a30 !important; display: flex !important; flex-direction: column !important; gap: 0.65rem !important; min-height: 200px !important; max-height: 50vh !important; }
@@ -11132,9 +11132,10 @@ allSections.forEach(s => observer.observe(s));
 </script>
 
 <button id="wr-chat-btn" title="Ask the Windrose AI assistant" onclick="wrChatToggle()">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
   </svg>
+  Ask AI
 </button>
 
 <div id="wr-chat-panel" style="display:none;">
