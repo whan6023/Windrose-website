@@ -274,6 +274,7 @@
   ═══════════════════════════════════════════════════════════════════════════ */
 
   window.WindroseGlobe = {
+    CHARGING: CHARGING,
     init: function (containerId, opts) {
       opts = opts || {};
       var el = document.getElementById(containerId);
