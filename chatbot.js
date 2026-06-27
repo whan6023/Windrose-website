@@ -867,8 +867,6 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
 
     function run() {
       injectPanelHTML();
-      injectFloatingBtn();
-      injectTopbarBtn();
       injectHeaderBtn();
     }
 
