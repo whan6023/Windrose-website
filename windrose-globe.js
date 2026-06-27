@@ -678,6 +678,7 @@
     /* ── Drag ────────────────────────────────────────────────────────────── */
     svg.call(d3.drag()
       .clickDistance(4)
+      .filter(function(ev) { return !ev.touches || ev.touches.length === 1; })
       .on('start', function(){ svg.style('cursor','grabbing'); hideTip(); })
       .on('drag', function(ev) {
         rot[0] += ev.dx * 0.4;
@@ -795,13 +796,15 @@
     var _pinchDist = null;
     svgEl.addEventListener('touchstart', function(ev) {
       if (ev.touches.length === 2) {
+        ev.preventDefault();
         var dx = ev.touches[0].clientX - ev.touches[1].clientX;
         var dy = ev.touches[0].clientY - ev.touches[1].clientY;
         _pinchDist = Math.sqrt(dx*dx + dy*dy);
       }
-    }, {passive: true});
+    }, {passive: false});
     svgEl.addEventListener('touchmove', function(ev) {
       if (ev.touches.length !== 2 || !_pinchDist) return;
+      ev.preventDefault();
       var dx = ev.touches[0].clientX - ev.touches[1].clientX;
       var dy = ev.touches[0].clientY - ev.touches[1].clientY;
       var d = Math.sqrt(dx*dx + dy*dy);
@@ -809,7 +812,7 @@
       _pinchDist = d;
       proj.scale(scaleBase * scaleK);
       redraw();
-    }, {passive: true});
+    }, {passive: false});
     svgEl.addEventListener('touchend', function(){ _pinchDist = null; }, {passive: true});
 
     /* ── Resize ──────────────────────────────────────────────────────────── */
