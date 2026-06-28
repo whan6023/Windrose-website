@@ -950,21 +950,13 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
         '#wr-chat-input{flex:1!important;background:#06122a!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:6px!important;color:#fff!important;font-size:.875rem!important;padding:.55rem .75rem!important;outline:none!important;}' +
         '#wr-chat-input:focus{border-color:rgba(0,180,255,.6)!important;}' +
         '#wr-chat-form button[type=submit]{background:#0078ff!important;border:none!important;border-radius:6px!important;color:#fff!important;padding:0 .85rem!important;cursor:pointer!important;font-size:.875rem!important;}' +
-        /* Topbar "Ask AI" — main site pages */
-        '#wr-topbar-chat{background:#fff!important;color:#060f1e!important;border:none!important;font-family:Barlow Condensed,sans-serif!important;font-size:.875rem!important;letter-spacing:.12em!important;text-transform:uppercase!important;padding:.3rem 1.1rem!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;line-height:1!important;}' +
-        '#wr-topbar-chat:hover{opacity:.85!important;}' +
-        /* Header "Ask AI" — owner's manual pages */
-        '#wr-header-chat{background:rgba(0,180,255,.15)!important;border:1px solid rgba(0,180,255,.4)!important;border-radius:4px!important;color:#a0c8ff!important;font-size:13px!important;font-weight:600!important;padding:5px 12px!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;}' +
-        '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}' +
-        /* ── Mobile topbar: hide search bar, keep AI + Reserve only ── */
-        '@media(max-width:600px){' +
-          '#topbar #gs-wrap{display:none!important;}' +
-          '#wr-topbar-chat span{display:none!important;}' +
-        '}' +
+        /* Topbar / header "Ask AI" buttons — hidden; floating pill is the single entry point */
+        '#wr-topbar-chat{display:none!important;}' +
+        '#wr-header-chat{display:none!important;}' +
+        /* Hide the search-bar "AI" button (same chat action, creates duplicate entry point) */
+        '#topbar #gs-wrap button{display:none!important;}' +
         /* ── Mobile: full-screen chat experience ── */
         '@media(max-width:960px){' +
-          /* Floating pill hidden on mobile — top header button is the entry point */
-          '#wr-chat-btn{display:none!important;}' +
           /* Lock scroll behind the full-screen panel */
           'body.wr-chat-open{overflow:hidden!important;}' +
           /* Full-screen chat panel */
