@@ -760,7 +760,12 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
   window.wrChatToggle = function() {
     open = !open;
     document.getElementById('wr-chat-panel').style.display = open ? 'flex' : 'none';
-    if (open) document.getElementById('wr-chat-input').focus();
+    if (open) {
+      document.getElementById('wr-chat-input').focus();
+      document.body.classList.add('wr-chat-open');
+    } else {
+      document.body.classList.remove('wr-chat-open');
+    }
   };
 
   window.wrAsk = function(q) {
@@ -929,7 +934,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       var css = document.createElement('style');
       css.id = 'wr-chat-css';
       css.textContent =
-        '#wr-chat-btn{position:fixed!important;bottom:1.5rem!important;right:1.5rem!important;width:auto!important;height:48px!important;z-index:9999!important;background:#0a1f44!important;border:2px solid rgba(0,180,255,.5)!important;border-radius:24px!important;cursor:pointer!important;box-shadow:0 4px 16px rgba(0,120,255,.5)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:0 20px 0 16px!important;color:#fff!important;font-size:15px!important;font-weight:600!important;letter-spacing:.01em!important;white-space:nowrap!important;}' +
+        '#wr-chat-btn{position:fixed!important;bottom:1.5rem!important;right:1.5rem!important;width:auto!important;height:48px!important;z-index:9999!important;background:#0a1f44!important;border:2px solid rgba(0,180,255,.5)!important;border-radius:24px!important;cursor:pointer!important;box-shadow:0 4px 16px rgba(0,120,255,.5)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:0 20px 0 16px!important;color:#fff!important;font-size:15px!important;font-weight:600!important;letter-spacing:.01em!important;white-space:nowrap!important;transition:background .2s!important;}' +
         '#wr-chat-btn:hover{background:#0d2a5e!important;border-color:rgba(0,180,255,.8)!important;}' +
         '#wr-chat-panel{position:fixed!important;bottom:5.5rem!important;right:1.5rem!important;z-index:9998!important;width:520px!important;max-width:calc(100vw - 2rem)!important;max-height:82vh!important;background:#0a1a30!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:12px!important;box-shadow:0 8px 32px rgba(0,0,0,.5)!important;flex-direction:column!important;overflow:hidden!important;font-family:DM Sans,sans-serif!important;}' +
         '#wr-chat-header{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:.75rem 1rem!important;background:#061525!important;border-bottom:1px solid rgba(0,180,255,.2)!important;font-size:.875rem!important;font-weight:600!important;color:#a0c8ff!important;}' +
@@ -951,7 +956,30 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
         /* Header "Ask AI" — owner's manual pages */
         '#wr-header-chat{background:rgba(0,180,255,.15)!important;border:1px solid rgba(0,180,255,.4)!important;border-radius:4px!important;color:#a0c8ff!important;font-size:13px!important;font-weight:600!important;padding:5px 12px!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;}' +
         '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}' +
-        '@media(max-width:600px){#wr-chat-panel{width:calc(100vw - 1rem)!important;right:.5rem!important;bottom:4.5rem!important;max-height:88vh!important;}}';
+        /* ── Mobile: full-screen chat experience ── */
+        '@media(max-width:960px){' +
+          /* Bottom bar entry point — full width, prominent */
+          '#wr-chat-btn{left:0!important;right:0!important;bottom:0!important;width:100%!important;border-radius:0!important;height:auto!important;min-height:64px!important;padding:0 28px!important;padding-bottom:env(safe-area-inset-bottom)!important;font-size:18px!important;font-weight:700!important;letter-spacing:.04em!important;text-transform:uppercase!important;border:none!important;border-top:2px solid rgba(0,180,255,.55)!important;justify-content:center!important;gap:12px!important;box-shadow:0 -4px 24px rgba(0,120,255,.35)!important;}' +
+          /* Hide the floating bar when panel is open (panel covers it) */
+          'body.wr-chat-open #wr-chat-btn{display:none!important;}' +
+          /* Lock scroll behind the full-screen panel */
+          'body.wr-chat-open{overflow:hidden!important;}' +
+          /* Reserve room above the bar so page content stays visible */
+          'body:not(.wr-chat-open){padding-bottom:calc(72px + env(safe-area-inset-bottom))!important;}' +
+          /* Full-screen chat panel */
+          '#wr-chat-panel{top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;max-width:100%!important;height:100%!important;max-height:100%!important;border-radius:0!important;border:none!important;z-index:10000!important;}' +
+          /* Message area fills all available vertical space */
+          '#wr-chat-msgs{flex:1!important;max-height:none!important;padding:1.25rem!important;font-size:1rem!important;}' +
+          '#wr-chat-msgs .wr-msg{font-size:1rem!important;padding:.8rem 1rem!important;}' +
+          /* Bigger header bar */
+          '#wr-chat-header{padding:1.1rem 1.25rem!important;font-size:1.05rem!important;}' +
+          '#wr-chat-close{font-size:1.4rem!important;line-height:1!important;}' +
+          /* Bigger input area */
+          '#wr-chat-input{font-size:1rem!important;padding:.7rem .9rem!important;}' +
+          '#wr-chat-form{padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom))!important;}' +
+          /* Hide manual-page header button — bottom bar is the entry point */
+          '#wr-header-chat{display:none!important;}' +
+        '}';
       document.head.appendChild(css);
     }
 
@@ -979,7 +1007,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       btn.id = 'wr-chat-btn';
       btn.title = 'Ask the Windrose AI assistant';
       btn.setAttribute('onclick', 'wrChatToggle()');
-      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI';
+      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI — Chat with Windrose';
       document.body.appendChild(btn);
     }
 
