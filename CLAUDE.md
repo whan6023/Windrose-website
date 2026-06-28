@@ -1,5 +1,14 @@
 # Windrose Website — Claude Code Context
 
+## Formatting & Communication Conventions
+These apply to all responses, tables, and documents produced in every Claude Code session.
+
+- **Numbers in tables:** Always right-justify numeric columns (`---:` alignment)
+- **Number format:** Use full round numbers (e.g. 190,000 not 190K)
+- **Currency:** Show EUR amounts with comma thousands separator, no decimal unless cents matter
+- **Tables:** Use markdown tables for any structured data with more than 2 rows
+- **Responses:** Concise by default; use headers only when the response has multiple distinct sections
+
 ## Stack
 - Static HTML site hosted on **Netlify**; auto-deploys on push to `main`
 - `netlify.toml`: `publish = "."`, `functions = "netlify/functions"`
