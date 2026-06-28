@@ -2842,188 +2842,142 @@ document.addEventListener("DOMContentLoaded", function() {
   </style>
   <h2 style="font-size:clamp(1.0rem, 3vw, 1.25rem); line-height:1.15; margin-bottom:3rem;"><a href="/about-us" class="org-anchor" data-i18n="about.corp.h" onclick="event.preventDefault();window.wrScrollTo&&window.wrScrollTo('organisation');return false;">Group Organisation</a><a href="/about-us" class="org-anchor-hash" aria-label="Jump to the Group Organisation section" title="Link to this section" onclick="event.preventDefault();window.wrScrollTo&&window.wrScrollTo('organisation');return false;">#</a></h2>
 
-    <style>
-    /* ── node cards (visuals unchanged) ── */
-    .org-card { overflow: hidden; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--card-radius); display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; position: relative; z-index: 1; height: 100%; }
-    .org-card:hover { border-color:var(--accent); transform:scale(1.09); box-shadow:0 12px 32px rgba(0,0,0,0.5); z-index:6; }
-    .org-card.root  { border-color:var(--accent); border-width:2px; }
-    .org-media { width:100%; height:120px; background:#060f1e; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0; }
-    .org-media img   { width:100%; height:100%; object-fit:contain; display:block; }
-    .org-media-flag  { font-size: 1.75rem; line-height:1; }
-    .org-body  { padding:0.85rem 1.1rem; text-align:center; flex: 1; }
-    .org-name  { font-family:Barlow Condensed, sans-serif; font-size: 0.875rem; letter-spacing: 0.06em; color:var(--off-white); line-height:1.3; margin-bottom:0.2rem; text-align:center; }
-    .org-card.root .org-name { color:var(--accent); }
-    .org-loc   { font-size: 0.875rem; color:var(--muted); letter-spacing:0.04em; }
-    .org-role  { font-size: 0.875rem; color:rgba(74,158,255,0.55); letter-spacing:0.08em; text-transform:uppercase; margin-top: auto; }
-
-    /* ── branching tree scaffold ── */
-    .orgx-wrap { width:100%; overflow-x:auto; padding:0.25rem 0 0.5rem; }
-    .orgx, .orgx ul { list-style:none; margin:0; padding:0; }
-    .orgx { width:max-content; margin:0 auto; min-width:100%; box-sizing:border-box; display:flex; justify-content:center; }
-    .orgx ul { position:relative; display:flex; justify-content:center; padding-top:28px; }
-    .orgx li { position:relative; display:flex; flex-direction:column; align-items:center; padding:28px 14px 0; }
-    .orgx .org-card, .orgx > li > a { width:210px; }
-    .orgx > li > a { text-decoration:none; display:block; }
-    /* horizontal connector across siblings + vertical drop into each */
-    .orgx li::before, .orgx li::after { content:""; position:absolute; top:0; width:50%; height:28px; border-top:2px solid var(--border); }
-    .orgx li::before { right:50%; }
-    .orgx li::after  { left:50%; border-left:2px solid var(--border); }
-    .orgx li:only-child { padding-top:0; }
-    .orgx li:only-child::before, .orgx li:only-child::after { display:none; }
-    .orgx li:first-child::before, .orgx li:last-child::after { border-top:0; }
-    .orgx li:last-child::before { border-right:2px solid var(--border); }
-    /* vertical drop from a parent node down to its children's row */
-    .orgx ul::before { content:""; position:absolute; top:0; left:50%; width:0; height:28px; border-left:2px solid var(--border); }
-    /* root has no parent above it */
-    .orgx > li { padding-top:0; }
-    .orgx > li::before, .orgx > li::after { display:none; }
-    @media(max-width:700px){ .orgx li { padding-left:8px; padding-right:8px; } .orgx .org-card, .orgx > li > a { width:180px; } }
+  <style>
+    .orgt { width:100%; border-collapse:collapse; font-family:'DM Sans',sans-serif; }
+    .orgt tr { border-bottom:1px solid rgba(74,158,255,0.08); }
+    .orgt tr:last-child { border-bottom:none; }
+    .orgt tr:hover td { background:rgba(74,158,255,0.04); }
+    .orgt td { padding:0.65rem 0.75rem; vertical-align:middle; }
+    .orgt td:first-child { padding-left:0; }
+    .org-indent { display:flex; align-items:center; gap:0.5rem; }
+    .org-pipe   { display:inline-flex; flex-direction:column; align-items:center; width:18px; flex-shrink:0; }
+    .org-pipe-line { width:1px; background:rgba(74,158,255,0.2); flex:1; min-height:100%; }
+    .org-branch { display:inline-block; width:18px; height:1em; border-left:1px solid rgba(74,158,255,0.25); border-bottom:1px solid rgba(74,158,255,0.25); border-radius:0 0 0 3px; flex-shrink:0; margin-bottom:2px; }
+    .org-ename  { font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:0.04em; color:var(--off-white); white-space:nowrap; }
+    .org-ename.is-root { color:var(--accent); }
+    .org-ename a { color:inherit; text-decoration:none; }
+    .org-ename a:hover { text-decoration:underline; text-underline-offset:3px; }
+    .org-flag  { font-size:1.1rem; flex-shrink:0; }
+    .org-loc   { font-size:0.8rem; color:var(--muted); white-space:nowrap; }
+    .org-role  { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(74,158,255,0.55); white-space:nowrap; }
+    @media(max-width:600px){ .org-role { display:none; } .org-loc { display:none; } }
   </style>
 
-  <div class="orgx-wrap">
-    <ul class="orgx">
-      <li>
-        <a href="https://www.companyweb.be/en/1017756464/windrose-holdings-limited" target="_blank" rel="noopener">
-          <div class="org-card root">
-            <div class="org-media">
-              <img loading="lazy" src="og/windrose-holdings-hq.jpg" alt="Windrose Holdings HQ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-              <span class="org-media-flag" style="display:none;">🇧🇪</span>
-            </div>
-            <div class="org-body">
-              <div class="org-name">Windrose Holdings Limited NV</div>
-              <div class="org-loc" data-i18n="about.corp.holdings.location">Incorporated in Belgium</div>
-              <div class="org-role" data-i18n="about.corp.holdings.role">Parent Company · Company Profile ↗</div>
-            </div>
-          </div>
-        </a>
-        <ul>
+  <table class="orgt" aria-label="Group organisation chart">
+    <tbody>
 
-          <!-- US branch: Inc → Antwerp NV + Dutch + Australian trading + HK trading -->
-          <li>
-            <div class="org-card">
-              <div class="org-media">
-                <img loading="lazy" src="og/windrose-nyse.jpg" alt="Windrose Technology Inc — New York Stock Exchange" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <span class="org-media-flag" style="display:none;">🇺🇸</span>
-              </div>
-              <div class="org-body">
-                <div class="org-name">Windrose Technology Inc</div>
-                <div class="org-loc" data-i18n="about.corp.us.location">United States</div>
-                <div class="org-role" data-i18n="about.corp.us.role">US Operations</div>
-              </div>
-            </div>
-            <ul>
-              <li>
-                <div class="org-card">
-                    <div class="org-media">
-                      <img loading="lazy" src="og/windrose-antwerp.jpg" alt="Windrose Technology Antwerp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                      <span class="org-media-flag" style="display:none;">🇧🇪</span>
-                    </div>
-                    <div class="org-body">
-                      <div class="org-name">Windrose Technology Antwerp NV</div>
-                      <div class="org-loc" data-i18n="about.corp.antwerp.location">Belgium</div>
-                      <div class="org-role" data-i18n="about.corp.antwerp.role">European Operations</div>
-                    </div>
-                  </div>
-              </li>
-              <li>
-              <div class="org-card">
-                <div class="org-media"><span class="org-media-flag">🇳🇱</span></div>
-                <div class="org-body">
-                  <div class="org-name" data-i18n="about.corp.nl.name">Dutch Entity</div>
-                  <div class="org-loc" data-i18n="about.corp.nl.location">Netherlands</div>
-                  <div class="org-role">&nbsp;</div>
-                </div>
-              </div>
-              </li>
-              <li>
-              <div class="org-card">
-                <div class="org-media"><span class="org-media-flag">🇦🇺</span></div>
-                <div class="org-body">
-                  <div class="org-name" data-i18n="about.corp.autr.name">Australian Trading Entity</div>
-                  <div class="org-loc" data-i18n="about.corp.autr.location">Australia</div>
-                  <div class="org-role">&nbsp;</div>
-                </div>
-              </div>
-              </li>
-              <li>
-              <div class="org-card">
-                <div class="org-media"><span class="org-media-flag">🇭🇰</span></div>
-                <div class="org-body">
-                  <div class="org-name" data-i18n="about.corp.hktr.name">Hong Kong Trading Entity</div>
-                  <div class="org-loc" data-i18n="about.corp.hktr.location">Hong Kong, China</div>
-                  <div class="org-role">&nbsp;</div>
-                </div>
-              </div>
-              </li>
-              <li>
-              <div class="org-card">
-                <div class="org-media"><span class="org-media-flag">🇭🇰</span></div>
-                <div class="org-body">
-                  <div class="org-name">Windrose Electric HK Limited</div>
-                  <div class="org-loc">Hong Kong, China</div>
-                  <div class="org-role">Chile Market Commerce</div>
-                </div>
-              </div>
-              </li>
-            </ul>
-          </li>
+      <!-- ── Root ── -->
+      <tr>
+        <td><div class="org-indent">
+          <span class="org-flag">🇧🇪</span>
+          <span class="org-ename is-root"><a href="https://www.companyweb.be/en/1017756464/windrose-holdings-limited" target="_blank" rel="noopener" data-i18n="about.corp.holdings.name">Windrose Holdings Limited NV ↗</a></span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.holdings.location">Incorporated in Belgium</span></td>
+        <td><span class="org-role" data-i18n="about.corp.holdings.role">Parent Company</span></td>
+      </tr>
 
-          <!-- HK branch: HK → Shanghai → Anhui + Siwei -->
-          <li>
-            <div class="org-card">
-              <div class="org-media"><span class="org-media-flag">🇭🇰</span></div>
-              <div class="org-body">
-                <div class="org-name">Windrose HK Holdings Limited</div>
-                <div class="org-loc" data-i18n="about.corp.hk.location">Hong Kong, China</div>
-                <div class="org-role" data-i18n="about.corp.hk.role">Greater China Holdings</div>
-              </div>
-            </div>
-            <ul>
-              <li>
-                <div class="org-card">
-                  <div class="org-media"><span class="org-media-flag">🇨🇳</span></div>
-                  <div class="org-body">
-                    <div class="org-name">Shanghai Windrose Automotive Technology</div>
-                    <div class="org-loc" data-i18n="about.corp.shanghai.location">Shanghai, China</div>
-                    <div class="org-role">&nbsp;</div>
-                  </div>
-                </div>
-                <ul>
-                  <li>
-                    <div class="org-card">
-                      <div class="org-media">
-                        <img loading="lazy" src="og/windrose-anhui.jpg" alt="Anhui Windrose Holdings" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <span class="org-media-flag" style="display:none;">🇨🇳</span>
-                      </div>
-                      <div class="org-body">
-                        <div class="org-name">Anhui Windrose Holdings</div>
-                        <div class="org-loc" data-i18n="about.corp.anhui.location">Hefei, China</div>
-                        <div class="org-role">&nbsp;</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="org-card">
-                      <div class="org-media">
-                        <img loading="lazy" src="og/windrose-suzhou.jpg" alt="Jiangsu Siwei Industries" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                        <span class="org-media-flag" style="display:none;">🇨🇳</span>
-                      </div>
-                      <div class="org-body">
-                        <div class="org-name">Jiangsu Siwei Industries</div>
-                        <div class="org-loc" data-i18n="about.corp.siwei.location">Suzhou, China</div>
-                        <div class="org-role">&nbsp;</div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+      <!-- ── L1: US Inc ── -->
+      <tr>
+        <td><div class="org-indent" style="padding-left:1.25rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇺🇸</span>
+          <span class="org-ename">Windrose Technology Inc</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.us.location">United States</span></td>
+        <td><span class="org-role" data-i18n="about.corp.us.role">US Operations</span></td>
+      </tr>
 
-        </ul>
-      </li>
-    </ul>
-  </div>
+      <!-- ── L2: children of US Inc ── -->
+      <tr>
+        <td><div class="org-indent" style="padding-left:2.75rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇧🇪</span>
+          <span class="org-ename">Windrose Technology Antwerp NV</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.antwerp.location">Belgium</span></td>
+        <td><span class="org-role" data-i18n="about.corp.antwerp.role">European Operations</span></td>
+      </tr>
+      <tr>
+        <td><div class="org-indent" style="padding-left:2.75rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇳🇱</span>
+          <span class="org-ename" data-i18n="about.corp.nl.name">Dutch Entity</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.nl.location">Netherlands</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><div class="org-indent" style="padding-left:2.75rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇦🇺</span>
+          <span class="org-ename" data-i18n="about.corp.autr.name">Australian Trading Entity</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.autr.location">Australia</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><div class="org-indent" style="padding-left:2.75rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇭🇰</span>
+          <span class="org-ename" data-i18n="about.corp.hktr.name">Hong Kong Trading Entity</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.hktr.location">Hong Kong, China</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><div class="org-indent" style="padding-left:2.75rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇭🇰</span>
+          <span class="org-ename">Windrose Electric HK Limited</span>
+        </div></td>
+        <td><span class="org-loc">Hong Kong, China</span></td>
+        <td><span class="org-role">Chile Market Commerce</span></td>
+      </tr>
+
+      <!-- ── L1: HK Holdings ── -->
+      <tr>
+        <td><div class="org-indent" style="padding-left:1.25rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇭🇰</span>
+          <span class="org-ename">Windrose HK Holdings Limited</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.hk.location">Hong Kong, China</span></td>
+        <td><span class="org-role" data-i18n="about.corp.hk.role">Greater China Holdings</span></td>
+      </tr>
+
+      <!-- ── L2: Shanghai ── -->
+      <tr>
+        <td><div class="org-indent" style="padding-left:2.75rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇨🇳</span>
+          <span class="org-ename">Shanghai Windrose Automotive Technology</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.shanghai.location">Shanghai, China</span></td>
+        <td></td>
+      </tr>
+
+      <!-- ── L3: children of Shanghai ── -->
+      <tr>
+        <td><div class="org-indent" style="padding-left:4.25rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇨🇳</span>
+          <span class="org-ename">Anhui Windrose Holdings</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.anhui.location">Hefei, China</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><div class="org-indent" style="padding-left:4.25rem;">
+          <span class="org-branch"></span>
+          <span class="org-flag">🇨🇳</span>
+          <span class="org-ename">Jiangsu Siwei Industries</span>
+        </div></td>
+        <td><span class="org-loc" data-i18n="about.corp.siwei.location">Suzhou, China</span></td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
 </section>
 
 <!-- IN THE NEWS -->
