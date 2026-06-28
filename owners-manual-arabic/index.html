@@ -511,10 +511,6 @@
 </nav>
 <main class="main-content" id="mainContent">
 <div class="manual-updated" style="font-size:11px;color:var(--text-muted,#888);text-align:right;padding:0 0 10px;">آخر تحديث: <time datetime="2026-06-27">27 يونيو 2026</time></div>
-<div class="manual-ai-bar">
-  <p>⚡ Have a question? The Windrose AI assistant knows this manual.</p>
-  <button onclick="if(typeof wrChatToggle==='function'){wrChatToggle();}else{var iv=setInterval(function(){if(typeof wrChatToggle==='function'){wrChatToggle();clearInterval(iv);}},100);}">Ask AI</button>
-</div>
 
 <section class="manual-section preamble-section" id="preamble">
 <blockquote>
@@ -12077,11 +12073,6 @@ const observer = new IntersectionObserver(entries => {
 allSections.forEach(s => observer.observe(s));
 </script>
 
-<button id="wr-chat-btn" title="Ask the Windrose AI assistant" onclick="wrChatToggle()">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-  </svg>
-</button>
 
 
 <script src="/chatbot.js" defer></script>
