@@ -1330,6 +1330,22 @@ p { font-size: 0.875rem; line-height: 1.75; color: var(--muted); }
 .badge-us   { background: rgba(20,40,100,0.3); color: #7ab2ff; border: 1px solid rgba(20,40,100,0.45); }
 .badge-au   { background: rgba(0,80,50,0.3);   color: #6ec99a; border: 1px solid rgba(0,100,60,0.45); }
 .badge-lang { background: rgba(74,158,255,0.08); color: var(--muted); border: 1px solid var(--border); }
+.badge-ca   { background: rgba(220,30,30,0.18); color: #ff8a8a; border: 1px solid rgba(220,30,30,0.35); }
+.badge-cn   { background: rgba(220,30,30,0.18); color: #ff8a8a; border: 1px solid rgba(220,30,30,0.35); }
+.badge-me   { background: rgba(0,130,80,0.22);  color: #6ecf9e; border: 1px solid rgba(0,130,80,0.4); }
+
+/* Coming-soon service manual cards */
+.om-card-soon {
+  opacity: 0.52; cursor: default; pointer-events: none;
+  position: relative;
+}
+.om-card-soon:hover { transform: none; border-color: var(--border); background: var(--card-bg); }
+.om-soon-pill {
+  display: inline-block; margin-top: auto; padding-top: 0.6rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); border-top: 1px solid var(--border); width: 100%;
+}
 
 /* Language-matched card highlight */
 .om-card.om-match {
@@ -2585,20 +2601,94 @@ document.addEventListener("DOMContentLoaded", function() {
 <section class="om-nav-section" id="service-manual-nav">
 <div class="om-nav-header">
   <div class="eyebrow">Service Manual</div>
-  <h2>US Edition</h2>
-  <p>Full service and maintenance procedures for the US market. EPA &amp; CARB compliant. Opens in a new tab.</p>
+  <h2>Choose Your Market</h2>
+  <p>Each edition is specific to the homologated vehicle model for that market — regulations, units, and component specifications vary by region. Default language is English. Opens in a new tab.</p>
 </div>
 <div class="om-nav-grid" id="sm-nav-grid">
 
-  <div class="om-group-label">United States</div>
+  <!-- ── North America ─────────────────────────────────── -->
+  <div class="om-group-label">North America</div>
 
   <a class="om-card" data-edition="en-us" href="/service-manual-us/" target="_blank" rel="noopener">
     <div class="om-card-flag">🇺🇸</div>
-    <div class="om-card-badge badge-us">US Edition</div>
-    <div class="om-card-title">English</div>
-    <div class="om-card-sub">Imperial units (mph, miles, PSI, °F). EPA &amp; CARB certified. NHTSA/FMVSS compliant.</div>
+    <div class="om-card-badge badge-us">US Homologated</div>
+    <div class="om-card-title">United States</div>
+    <div class="om-card-sub">English · Imperial units (mph, PSI, °F, lb-ft) · EPA &amp; CARB · NHTSA / FMVSS</div>
     <div class="om-card-arrow">Open <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
   </a>
+
+  <div class="om-card om-card-soon" data-edition="en-ca">
+    <div class="om-card-flag">🇨🇦</div>
+    <div class="om-card-badge badge-ca">CA Homologated</div>
+    <div class="om-card-title">Canada</div>
+    <div class="om-card-sub">English · French · Metric · Transport Canada / CMVSS</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <div class="om-card om-card-soon" data-edition="es-mx">
+    <div class="om-card-flag">🇲🇽</div>
+    <div class="om-card-badge badge-lang">MX Homologated</div>
+    <div class="om-card-title">Mexico</div>
+    <div class="om-card-sub">Spanish · Metric · NOM / SCT regulations</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <!-- ── Europe ────────────────────────────────────────── -->
+  <div class="om-group-label">Europe</div>
+
+  <div class="om-card om-card-soon" data-edition="en-eu">
+    <div class="om-card-flag">🌍</div>
+    <div class="om-card-badge badge-eu">EU Homologated</div>
+    <div class="om-card-title">European Union</div>
+    <div class="om-card-sub">English · German · French · Dutch + more · Metric · ECE/UNECE · EU type-approval</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <div class="om-card om-card-soon" data-edition="en-gb">
+    <div class="om-card-flag">🇬🇧</div>
+    <div class="om-card-badge badge-uk">UK Homologated</div>
+    <div class="om-card-title">United Kingdom</div>
+    <div class="om-card-sub">English · Metric · DVSA / GBWVTA · Construction &amp; Use Regs 1986</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <!-- ── Asia Pacific ───────────────────────────────────── -->
+  <div class="om-group-label">Asia Pacific</div>
+
+  <div class="om-card om-card-soon" data-edition="en-au">
+    <div class="om-card-flag">🇦🇺</div>
+    <div class="om-card-badge badge-au">AU Homologated</div>
+    <div class="om-card-title">Australia</div>
+    <div class="om-card-sub">English · Metric · NHVR / ADR / RVSA 2018</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <div class="om-card om-card-soon" data-edition="en-nz">
+    <div class="om-card-flag">🇳🇿</div>
+    <div class="om-card-badge badge-au">NZ Homologated</div>
+    <div class="om-card-title">New Zealand</div>
+    <div class="om-card-sub">English · Metric · NZTA / Land Transport Act</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <div class="om-card om-card-soon" data-edition="zh-cn">
+    <div class="om-card-flag">🇨🇳</div>
+    <div class="om-card-badge badge-cn">CN Homologated</div>
+    <div class="om-card-title">China</div>
+    <div class="om-card-sub">Chinese (Simplified) · Metric · GB standards · MIIT type-approval</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
+
+  <!-- ── Middle East ────────────────────────────────────── -->
+  <div class="om-group-label">Middle East &amp; Africa</div>
+
+  <div class="om-card om-card-soon" data-edition="ar-ae">
+    <div class="om-card-flag">🇦🇪</div>
+    <div class="om-card-badge badge-me">GCC Homologated</div>
+    <div class="om-card-title">GCC / UAE</div>
+    <div class="om-card-sub">Arabic · English · Metric · GSO / ESMA standards</div>
+    <div class="om-soon-pill">Coming Soon</div>
+  </div>
 
 </div>
 </section>
