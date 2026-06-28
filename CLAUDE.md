@@ -70,6 +70,43 @@ Runs on push to `main` (manual files) or via `workflow_dispatch`. Uses Claude Ha
 ### `deploy-notify.yml`
 Runs on every push to `main`. Waits 90s for Netlify, then smoke-checks HTTP status of windrose.ai and 4 spot-check manual pages. Posts summary to GitHub Actions job summary.
 
+## E700 Truck BOM & Supplier Map
+
+The E700 truck Bill of Materials is tracked in Google Sheets (requires Windrose Google login):
+**https://docs.google.com/spreadsheets/d/1VWscb-AHY1bAsdrS4uFOULbo0HWtVRLroe5JR_kQoKE/edit?usp=sharing**
+
+The sheet contains: part numbers, supplier names, quantities per vehicle, and unit prices.
+
+An interactive supplier map artifact (HTML, self-contained) lives in the scratchpad of session `ef157706-c30c-5f0c-bead-548858096446` at:
+`/tmp/claude-0/-home-user-Windrose-website/ef157706-c30c-5f0c-bead-548858096446/scratchpad/supplier-map.html`
+
+Published artifact URL: `https://claude.ai/code/artifact/98a10ab4-012f-4cec-80a1-b1977bcd91b3`
+
+### Artifact features (as of June 2026)
+- **By Taxonomy** tab: 3-level QC/T 25 accordion (系 → 总成 → parts), collapsible, with system filter tally cards
+- **By Supplier** tab: pivot view — one collapsible card per supplier sorted by part count descending, "No Supplier Assigned" group at bottom; all cards collapsed by default; search works across both views
+
+### BOM data notes (as of June 2026)
+- Source JS: `tparts_slim.js` — 644 part entries (QC/T 25-2014 taxonomy)
+- NMC/NCM battery entries removed: 2101001, 2101500, 2101600 — Windrose uses LFP only
+- 154 of 644 entries have no supplier (`ss` field absent)
+- No-supplier breakdown by 系: 系1:1, 系2:24, 系3:69, 系4:9, 系5:15, 系6:3, 系7:15, 系8:18
+- Notable unsourced parts: 3506800 (relay valve), 3512020 (safety valve), 3600200 (lighting controller), 3703500 (DC converter), 7900500 (AR-HUD), 2107110 (CCS1 charging cable — US market), 8210101/8210201 (physical exterior mirrors — US market)
+- Quantities and full pricing require the Google Sheet above — TPARTS data has prices for ~30% of entries only
+
+### BOM sheet export
+Full Google Sheets content saved to **`bom-data/bom-sheet-export.md`** (221 KB markdown table, fetched via Google Drive MCP in session `ef157706-c30c-5f0c-bead-548858096446`). Re-fetch with the Google Drive MCP tool `read_file_content` using fileId `1VWscb-AHY1bAsdrS4uFOULbo0HWtVRLroe5JR_kQoKE` if data goes stale.
+
+**Column schema** (main BOM tab):
+装置号 | 装置号+车型号 | 零部件号 | 零部件名称 | 供应商名称 | Quantity | 26年价格（含税单价） | 26年价格（未税单价） | 采购数量（按20台整车） | 采购金额合计（含税总价） | 单位 | 零件类型 | 供货状态 | 收货地址 | 责任工程师 | 责任部门 | 付款条件 | 订单状态 | 预计交货时间 | 付款计划1（月份） | 付款金额 | 付款计划2（月份） | 付款金额 | 其他备注说明 | Total cost per truck | 4月预付款 | 5月预付款 | 8月付款 | Parent ID
+
+**Pending work**: Parse `bom-data/bom-sheet-export.md` to extract per-supplier:
+- 单价 (unit price, 含税/未税) per part
+- 付款条件 (payment terms) and 订单状态 per part
+- 4月/5月/8月 预付款 columns — amounts already scheduled/paid
+- Notes on 未付 (unpaid) balances (appear in 其他备注说明 column)
+- 开发费 + 模具费 — search file for these terms; may be on a separate tab
+
 ## Past structural issues (fixed June 2026)
 These were repaired — do not reintroduce:
 - Missing `<main>` wrapper: EU, UK, AU had `</section>` instead
