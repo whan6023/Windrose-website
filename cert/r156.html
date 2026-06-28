@@ -125,6 +125,25 @@
   .forms-title .zh{font-size:0.85em;font-weight:400;letter-spacing:0;}
   .form-name .zh{font-size:0.85em;}
 
+  /* ── BELGIAN ENTITY ADDENDUM ── */
+  .addendum{grid-column:1/-1;margin-top:0.5rem;border:1px solid rgba(74,158,255,0.22);border-left:3px solid var(--accent);border-radius:6px;background:rgba(74,158,255,0.04);padding:1rem 1.25rem;}
+  .addendum-head{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem;}
+  .addendum-head::before{content:'BE';font-family:'DM Mono',monospace;font-size:0.65rem;background:rgba(74,158,255,0.15);border:1px solid rgba(74,158,255,0.3);border-radius:2px;padding:0.1rem 0.4rem;color:var(--accent);flex-shrink:0;}
+  .addendum-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  @media(max-width:640px){.addendum-grid{grid-template-columns:1fr;}}
+  .addendum-col-head{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(174,191,220,0.6);margin-bottom:0.5rem;padding-bottom:0.3rem;border-bottom:1px solid rgba(74,158,255,0.1);}
+  .tier-chain{list-style:none;display:flex;flex-direction:column;gap:0;}
+  .tier-chain li{font-family:'DM Sans',sans-serif;font-size:0.825rem;color:var(--muted);line-height:1.4;padding:0.3rem 0.5rem 0.3rem 0.75rem;position:relative;}
+  .tier-chain li::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(74,158,255,0.25);}
+  .tier-chain li:last-child::before{background:linear-gradient(to bottom,rgba(74,158,255,0.25),transparent);}
+  .tier-chain li strong{color:var(--off-white);font-weight:600;display:block;font-size:0.8rem;}
+  .tier-chain li .tier-label{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);background:rgba(74,158,255,0.1);border-radius:2px;padding:0.05rem 0.35rem;margin-right:0.4rem;}
+  .addendum-note{font-size:0.8rem;color:rgba(174,191,220,0.55);margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid rgba(74,158,255,0.1);font-style:italic;}
+  .addendum-note code{font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(74,158,255,0.7);background:rgba(74,158,255,0.08);padding:0.05rem 0.3rem;border-radius:2px;}
+  .rxswin-be{margin-top:0.75rem;padding:0.75rem 1rem;background:rgba(74,158,255,0.06);border:1px solid rgba(74,158,255,0.18);border-radius:5px;}
+  .rxswin-be-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(74,158,255,0.6);margin-bottom:0.3rem;}
+  .rxswin-be-code{font-family:'DM Mono',monospace;font-size:0.95rem;color:var(--off-white);letter-spacing:0.06em;}
+
   @media(max-width:600px){
     body{padding-top:116px;}
     #topbar{height:36px;padding:0 0.75rem;gap:0;justify-content:space-between;}
@@ -272,6 +291,36 @@ function setLang(lang){
             <span class="zh">信息共享——与CSMS（R155）共用程序</span></li>
         </ul>
       </div>
+
+      <!-- ── BELGIAN ENTITY ADDENDUM — Ch.1 ── -->
+      <div class="addendum">
+        <div class="addendum-head">Belgian Entity Scope Extension — Ch. 1 <span class="zh" style="font-size:0.85em;font-weight:400;letter-spacing:0;text-transform:none;">比利时实体：体系范围扩展</span></div>
+        <div class="addendum-grid">
+          <div>
+            <div class="addendum-col-head">New EU Governing Documents <span class="zh">新增欧盟管理文件</span></div>
+            <ul class="doc-list">
+              <li>SUMS Policy — Belgian Entity Scope Declaration <em>Add Antwerp NV; reference SE approval number from Transportstyrelsen</em>
+                <span class="zh">SUMS方针——比利时实体范围声明 <em style="color:#94A3B8;font-size:10px;">加入安特卫普有限公司；引用Transportstyrelsen颁发的SE批准编号</em></span></li>
+              <li>Tier 1 Vehicle Owner Manual — EU Addendum <em>OTA update consent, notification rights, multilingual (EN/FR/NL) per Regulation 2018/858</em>
+                <span class="zh">第1层整车车主手册——欧盟附录 <em style="color:#94A3B8;font-size:10px;">OTA升级同意、通知权利，按2018/858法规提供EN/FR/NL三语版本</em></span></li>
+              <li>EU User Notification Addendum <em>EU fleet OTA + dealer notification procedure; language requirements for BE market</em>
+                <span class="zh">欧盟用户通知附录 <em style="color:#94A3B8;font-size:10px;">欧盟车队OTA及经销商通知程序；比利时市场语言要求</em></span></li>
+              <li>EU Monitoring &amp; Emergency Response Addendum <em>EU fleet uptime thresholds; Transportstyrelsen incident notification within 72 h</em>
+                <span class="zh">欧盟监控与应急响应附录 <em style="color:#94A3B8;font-size:10px;">欧盟车队可用性阈值；72小时内向Transportstyrelsen通报事件</em></span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="addendum-col-head">No Change Required <span class="zh">无需更改</span></div>
+            <ul class="doc-list">
+              <li>Project / Process / Information / System Management Control Procedures <em>Engineering domain — Anhui scope only</em></li>
+              <li>Document &amp; Records / Audit / Corrective Improvement / HR / Procurement Procedures <em>Entity-agnostic; updated references sufficient</em></li>
+              <li>Impact Assessment / Development &amp; Testing / Release &amp; Rollout Measures <em>Engineering activities remain at Anhui entity</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ── END BELGIAN ADDENDUM Ch.1 ── -->
+
     </div>
   </details>
 
@@ -316,6 +365,34 @@ function setLang(lang){
             <span class="zh">离线升级流程（诊断仪/U盘/EOL）</span></li>
         </ul>
       </div>
+
+      <!-- ── BELGIAN ENTITY ADDENDUM — Ch.2 ── -->
+      <div class="addendum">
+        <div class="addendum-head">Belgian Entity Scope Extension — Ch. 2 <span class="zh" style="font-size:0.85em;font-weight:400;letter-spacing:0;text-transform:none;">比利时实体：项目管理扩展</span></div>
+        <div class="addendum-grid">
+          <div>
+            <div class="addendum-col-head">EU Release Authorization <span class="zh">欧盟发布授权</span></div>
+            <ul class="doc-list">
+              <li>After-Sales Monitoring Procedure — EU Fleet <em>Antwerp NV holds EU fleet release authorization role; confirms readiness before full EU rollout</em>
+                <span class="zh">售后监控程序——欧盟车队 <em style="color:#94A3B8;font-size:10px;">安特卫普有限公司负责欧盟车队发布授权；全量推送前确认就绪状态</em></span></li>
+              <li>Form F-01 — Vehicle Software Update Campaign <em>Add Belgian entity approver field; EU fleet scope column</em>
+                <span class="zh">F-01表——整车软件升级活动 <em style="color:#94A3B8;font-size:10px;">增加比利时实体审批人字段；欧盟车队范围列</em></span></li>
+              <li>Form F-02 — Rollback Procedure <em>Add EU fleet scope and Belgian entity sign-off</em>
+                <span class="zh">F-02表——回退程序 <em style="color:#94A3B8;font-size:10px;">增加欧盟车队范围及比利时实体签署</em></span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="addendum-col-head">No Change Required <span class="zh">无需更改</span></div>
+            <ul class="doc-list">
+              <li>Impact Assessment / Development &amp; Testing Measures <em>Engineering activities at Anhui entity — no Belgian role</em></li>
+              <li>OTA push / Offline update processes <em>Technical implementation unchanged; only authorization scope extends</em></li>
+              <li>Small-scale pilot rollout <em>Pilot remains China-market based; EU pilot procedure TBD post-WVTA</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ── END BELGIAN ADDENDUM Ch.2 ── -->
+
     </div>
   </details>
 
@@ -352,6 +429,32 @@ function setLang(lang){
             <span class="zh">OTA平台基础设施安全（用户名+密码+短信验证+HTTPS）</span></li>
         </ul>
       </div>
+
+      <!-- ── BELGIAN ENTITY ADDENDUM — Ch.3 ── -->
+      <div class="addendum">
+        <div class="addendum-head">Belgian Entity Scope Extension — Ch. 3 · EU User Notification <span class="zh" style="font-size:0.85em;font-weight:400;letter-spacing:0;text-transform:none;">比利时实体：欧盟用户通知</span></div>
+        <div class="addendum-grid">
+          <div>
+            <div class="addendum-col-head">EU Notification Requirements <span class="zh">欧盟通知要求</span></div>
+            <ul class="doc-list">
+              <li>User notification must be available in EN, FR, and NL for Belgium market per Reg. 2018/858 <em>OTA in-app + dealer pre-notification + written summary upon request</em>
+                <span class="zh">比利时市场用户通知须提供英/法/荷兰三语 <em style="color:#94A3B8;font-size:10px;">OTA应用内通知 + 经销商预通知 + 书面摘要（应要求提供）</em></span></li>
+              <li>Consent re-confirmation required for safety-related software updates under GDPR Art. 22 profile-based decisions
+                <span class="zh">安全相关软件更新须依GDPR第22条重新确认同意</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="addendum-col-head">No Change Required <span class="zh">无需更改</span></div>
+            <ul class="doc-list">
+              <li>Four delivery modes (OTA/Diagnostic/USB/EOL) <em>Unchanged — same technical mechanism</em></li>
+              <li>A/B partition rollback mechanism <em>Engineering implementation unchanged</em></li>
+              <li>OTA platform security (auth, HTTPS) <em>No Belgian-specific change required</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ── END BELGIAN ADDENDUM Ch.3 ── -->
+
     </div>
   </details>
 
@@ -389,6 +492,43 @@ function setLang(lang){
           <div class="rxswin-note" data-i18n="cert.r156.rxswin.note">Regulatory extension of software identification number — uniquely identifies each certified software version per type approval record.<span class="zh">软件标识码的法规扩展编码——唯一标识每个经型式认证的软件版本。</span></div>
         </div>
       </div>
+
+      <!-- ── BELGIAN ENTITY ADDENDUM — Ch.4 ── -->
+      <div class="addendum">
+        <div class="addendum-head">Belgian Entity Scope Extension — Ch. 4 · RXSWIN &amp; Type Approval Ledger <span class="zh" style="font-size:0.85em;font-weight:400;letter-spacing:0;text-transform:none;">比利时实体：RXSWIN及型式认证台账扩展</span></div>
+        <div class="addendum-grid">
+
+          <div>
+            <div class="addendum-col-head">Belgian RXSWIN Format <span class="zh">比利时RXSWIN格式</span></div>
+            <div class="rxswin-be">
+              <div class="rxswin-be-label">SE Type Approval Reference</div>
+              <div class="rxswin-be-code">WH13-SE-[TA#]-RN000-EXT000</div>
+            </div>
+            <ul class="doc-list" style="margin-top:0.75rem;">
+              <li>F-03 RXSWIN / Software Identification Code Ledger (Belgian) <em>Issued by Windrose Technology Antwerp NV; references SE TA number assigned by Transportstyrelsen</em>
+                <span class="zh">F-03 RXSWIN/软件标识码台账（比利时）<em style="color:#94A3B8;font-size:10px;">由安特卫普有限公司签发；引用瑞典交通运输局颁发的SE型式认证编号</em></span></li>
+              <li>F-04 Type Approval Ledger (Belgian) <em>Tracks all SE-approved variant codes; maintained by Antwerp NV; updated at each software variant certification</em>
+                <span class="zh">F-04 型式认证台账（比利时）<em style="color:#94A3B8;font-size:10px;">记录所有SE批准的变型代码；由安特卫普有限公司维护；每次软件变型认证后更新</em></span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="addendum-col-head">Ledger Procedure <span class="zh">台账程序</span></div>
+            <ul class="flow-list">
+              <li>Antwerp NV requests SE type approval extension from Transportstyrelsen for each new software variant
+                <span class="zh">安特卫普有限公司就每个新软件变型向Transportstyrelsen申请SE型式认证扩展</span></li>
+              <li>Transportstyrelsen issues SE TA number; Antwerp NV encodes as RXSWIN in the <code>WH13-SE-[TA#]-RN000-EXT000</code> format
+                <span class="zh">Transportstyrelsen颁发SE型式认证编号；安特卫普有限公司按格式生成RXSWIN</span></li>
+              <li>F-03 and F-04 updated; copies filed with Transportstyrelsen and retained by Antwerp NV for minimum 10 years per UN R156
+                <span class="zh">更新F-03和F-04台账；副本提交Transportstyrelsen并由安特卫普有限公司保存至少10年</span></li>
+            </ul>
+            <p class="addendum-note">SE TA number format to be confirmed with Transportstyrelsen at pre-engagement brief. Placeholder shown above. CYPUS cert number (<code>CYPRUS*CERT*1021*00</code>) remains as the CSMS basis cert; SE TA references the R156 approval extension.</p>
+          </div>
+
+        </div>
+      </div>
+      <!-- ── END BELGIAN ADDENDUM Ch.4 ── -->
+
     </div>
   </details>
 
