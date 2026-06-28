@@ -958,27 +958,20 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
         '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}' +
         /* ── Mobile: full-screen chat experience ── */
         '@media(max-width:960px){' +
-          /* Bottom bar entry point — full width, prominent */
-          '#wr-chat-btn{left:0!important;right:0!important;bottom:0!important;width:100%!important;border-radius:0!important;height:auto!important;min-height:64px!important;padding:0 28px!important;padding-bottom:env(safe-area-inset-bottom)!important;font-size:18px!important;font-weight:700!important;letter-spacing:.04em!important;text-transform:uppercase!important;border:none!important;border-top:2px solid rgba(0,180,255,.55)!important;justify-content:center!important;gap:12px!important;box-shadow:0 -4px 24px rgba(0,120,255,.35)!important;}' +
-          /* Hide the floating bar when panel is open (panel covers it) */
-          'body.wr-chat-open #wr-chat-btn{display:none!important;}' +
+          /* Floating pill hidden on mobile — top header button is the entry point */
+          '#wr-chat-btn{display:none!important;}' +
           /* Lock scroll behind the full-screen panel */
           'body.wr-chat-open{overflow:hidden!important;}' +
-          /* Reserve room above the bar so page content stays visible */
-          'body:not(.wr-chat-open){padding-bottom:calc(72px + env(safe-area-inset-bottom))!important;}' +
           /* Full-screen chat panel */
           '#wr-chat-panel{top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;max-width:100%!important;height:100%!important;max-height:100%!important;border-radius:0!important;border:none!important;z-index:10000!important;}' +
           /* Message area fills all available vertical space */
-          '#wr-chat-msgs{flex:1!important;max-height:none!important;padding:1.25rem!important;font-size:1rem!important;}' +
+          '#wr-chat-msgs{flex:1!important;max-height:none!important;padding:1.25rem!important;}' +
           '#wr-chat-msgs .wr-msg{font-size:1rem!important;padding:.8rem 1rem!important;}' +
-          /* Bigger header bar */
+          /* Bigger header and input */
           '#wr-chat-header{padding:1.1rem 1.25rem!important;font-size:1.05rem!important;}' +
           '#wr-chat-close{font-size:1.4rem!important;line-height:1!important;}' +
-          /* Bigger input area */
           '#wr-chat-input{font-size:1rem!important;padding:.7rem .9rem!important;}' +
           '#wr-chat-form{padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom))!important;}' +
-          /* Hide manual-page header button — bottom bar is the entry point */
-          '#wr-header-chat{display:none!important;}' +
         '}';
       document.head.appendChild(css);
     }
@@ -1007,7 +1000,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       btn.id = 'wr-chat-btn';
       btn.title = 'Ask the Windrose AI assistant';
       btn.setAttribute('onclick', 'wrChatToggle()');
-      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI — Chat with Windrose';
+      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI';
       document.body.appendChild(btn);
     }
 
