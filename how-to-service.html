@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 
-<html dir="ltr" lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YDTHF9XR6R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YDTHF9XR6R');
-</script>
-<script>
+<html dir="ltr" lang="en" lang="en">
+<head><script>
 (function(){
   try {
     // Only honour saved language if it's a recognised value
@@ -180,7 +170,7 @@
   /* Nav click-to-expand: overrides mobile hide, all sizes */
   .nav-links li.nav-open > .nav-dropdown { display: block !important; }
   /* ▾ indicator on items that have a dropdown */
-  
+  .nav-links li:has(.nav-dropdown) > a::after { content: " ▾"; font-size: 0.65em; opacity: 0.55; vertical-align: middle; pointer-events: none; }
 
 
   /* ── Responsive ────────────────────────────────────────────────────── */
@@ -886,7 +876,6 @@ p { font-size: 0.875rem; line-height: 1.75; color: var(--muted); }
 }
 @media (max-width: 600px) {
   .stat-grid { grid-template-columns: 1fr; }
-  .manual-lang-block { padding: 1.25rem 1rem 1.5rem !important; }
 }
 
   .row-highlight:hover td{background:rgba(74,158,255,0.04)!important;}
@@ -1662,16 +1651,16 @@ function setLang(lang) {
 <!-- /WR SPLASH PHOTO ROTATION -->
 
 <!-- TOPBAR -->
-<div id="topbar"> 27 June 2026</span>
-  <div id="gs-wrap" style="position:relative;flex:1 1 auto;max-width:460px;min-width:160px;display:flex;align-items:center;">
+<div id="topbar">
+  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;" data-i18n="label.updated"><span data-i18n="label.updated">Updated:</span> 23 June 2026, 03:01 CST</span>
+  <div id="gs-wrap" style="position:relative;flex:1 1 auto;max-width:340px;min-width:120px;">
     <input id="gs-input" type="text" autocomplete="off" spellcheck="false"
-      placeholder="Search or ask AI anything…"
-      style="width:100%;background:rgba(255,255,255,0.09);border:1px solid rgba(74,158,255,0.42);border-radius:4px;color:#e8f0ff;font-family:DM Mono, monospace;font-size:0.875rem;letter-spacing:0.05em;padding:0.28rem 2.7rem 0.28rem 0.65rem;outline:none;box-sizing:border-box;transition:border-color .15s,background .15s,box-shadow .15s;"
+      placeholder="Search or ask anything…"
+      style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(74,158,255,0.25);border-radius:4px;color:#e8f0ff;font-family:DM Mono, monospace;font-size: 0.875rem;letter-spacing:0.05em;padding:0.28rem 0.65rem;outline:none;box-sizing:border-box;transition:border-color .15s,background .15s;"
       oninput="gsSearch(this.value)"
       onkeydown="gsKey(event)"
-      onfocus="this.style.borderColor='rgba(74,158,255,0.85)';this.style.background='rgba(255,255,255,0.13)';this.style.boxShadow='0 0 0 2px rgba(74,158,255,0.14)'"
-      onblur="this.style.borderColor='rgba(74,158,255,0.42)';this.style.background='rgba(255,255,255,0.09)';this.style.boxShadow='none'">
-    <button onclick="var i=document.getElementById('gs-input');if(i.value.trim()){window.gsAskAI();}else{i.focus();}" title="Ask AI" aria-label="Ask AI" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);background:rgba(74,158,255,0.16);border:1px solid rgba(74,158,255,0.38);border-radius:3px;color:#5aaeff;font-family:Barlow Condensed,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.14rem 0.44rem;cursor:pointer;line-height:1.5;transition:background .15s,color .15s,border-color .15s;" onmouseover="this.style.background='rgba(74,158,255,0.28)';this.style.color='#8ec8ff';this.style.borderColor='rgba(74,158,255,0.6)'" onmouseout="this.style.background='rgba(74,158,255,0.16)';this.style.color='#5aaeff';this.style.borderColor='rgba(74,158,255,0.38)'">AI</button>
+      onfocus="this.style.borderColor='rgba(74,158,255,0.7)';this.style.background='rgba(255,255,255,0.11)'"
+      onblur="this.style.borderColor='rgba(74,158,255,0.25)';this.style.background='rgba(255,255,255,0.07)'">
   </div>
   <a href="#" onclick="openStripeModal(); return false;" data-i18n="topbar.btn">Reserve Your Windrose →</a>
 </div>
@@ -1719,6 +1708,7 @@ function setLang(lang) {
     <ul class="nav-dropdown">
       <li><a href="/how-to-use-range-calc" data-i18n="rc.label">Range Calculator</a></li>
       <li><a href="/how-to-use-scenarios" data-i18n="rc.scenarios.label">Range by Scenario</a></li>
+      <li><a href="/how-to-use-charging" data-i18n="chg.label">Charging Partners</a></li>
     </ul>
   </li>
     <li><a href="how-to-service.html" class="nav-link active" data-i18n="nav.network">How to Service</a>
@@ -1726,6 +1716,7 @@ function setLang(lang) {
       <li><a href="how-to-service.html#locations" data-i18n="hc.24.countries.across.5">24 Countries</a></li>
       <li><a href="how-to-service.html#warranty" data-i18n="hc.warranty.manual">Warranty Manual</a></li>
       <li><a href="/how-to-service-locations" data-i18n="how-to-service-locations">Service Locations</a></li>
+      <li><a href="how-to-service.html#service-manual-nav">Service Manual</a></li>
     </ul>
   </li>
     <li><a href="technology.html" data-i18n="nav.technology">Technology</a>
@@ -1733,7 +1724,6 @@ function setLang(lang) {
       <li><a href="technology.html#specs-matrix" data-i18n="technology.label">Tech Specs</a></li>
       <li><a href="technology.html#platform" data-i18n="tech.platform.label">Platform Architecture</a></li>
       <li><a href="technology.html#patented" data-i18n="tech.proprietary.label">Proprietary Technology</a></li>
-      <li><a href="technology.html#charging-partners" data-i18n="chg.label">Charging Partners</a></li>
     </ul>
   </li>
     <li><a href="how-to-build.html" data-i18n="nav.manufacturing">How to Build</a>
@@ -1742,14 +1732,7 @@ function setLang(lang) {
       <li><a href="how-to-build.html#assembly" data-i18n="assembly.label">Local Assembly</a></li>
     </ul>
   </li>
-    <li><a href="certification.html">Certification</a>
-    <ul class="nav-dropdown">
-      <li><a href="certification.html#homologation">Market Access</a></li>
-      <li><a href="certification.html#homologation">EU WVTA</a></li>
-      <li><a href="certification.html#homologation">US FMVSS</a></li>
-    </ul>
-  </li>
-  <li><a href="about-us.html" data-i18n="nav.about">About Us</a>
+    <li><a href="about-us.html" data-i18n="nav.about">About Us</a>
     <ul class="nav-dropdown">
       <li><a href="/home-news" data-i18n="news.label">Press & News</a></li>
       <li><a href="about-us.html" data-i18n="about.award.badge">Recognition</a></li>
@@ -2021,7 +2004,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="locations" style="padding:1rem 0 1.5rem; scroll-margin-top:120px;"><div id="wr-cat-toggles" style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.5rem;"><button class="wr-cat-tgl" id="wr-tgl-svc" aria-pressed="true" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--card-bg);border:1px solid var(--border);border-radius:999px;color:var(--off-white);font-family:Barlow Condensed, sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.05em;cursor:pointer;transition:opacity .15s;"><span style="width:11px;height:11px;border-radius:50%;background:#4affb0;flex-shrink:0;"></span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4 2.6-2.6Z"/></svg><span data-i18n="svc.toggle.service">Service Locations</span></button><button class="wr-cat-tgl" id="wr-tgl-parts" aria-pressed="true" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--card-bg);border:1px solid var(--border);border-radius:999px;color:var(--off-white);font-family:Barlow Condensed, sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.05em;cursor:pointer;transition:opacity .15s;"><span style="width:11px;height:11px;border-radius:50%;background:#b07aff;flex-shrink:0;"></span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg><span data-i18n="svc.toggle.parts">Spare Parts Distribution</span></button><button class="wr-cat-tgl" id="wr-tgl-chg" aria-pressed="true" style="display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--card-bg);border:1px solid var(--border);border-radius:999px;color:var(--off-white);font-family:Barlow Condensed, sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.05em;cursor:pointer;transition:opacity .15s;"><span style="width:11px;height:11px;border-radius:50%;background:#60a5fa;flex-shrink:0;"></span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg><span data-i18n="svc.toggle.charging">Charging Stations</span></button></div></div><div style="position:relative; width:100%;">
 <div id="wr-tip" style="position:absolute; background:var(--card-bg); border:1px solid var(--border); border-radius:6px; padding: 6px clamp(1.5rem, 5vw, 4rem); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.1em; text-transform:uppercase; color:#4a9eff; pointer-events:none; opacity:0; transition:opacity 0.15s; white-space:nowrap; z-index:30; line-height:1.6;"></div>
 <style>.service-pin circle { transition: r 0.15s; } .service-pin:hover circle { opacity: 1; }</style>
-<div id="svc-map" style="width:100%; height:clamp(480px,58vw,820px); position:relative; z-index:1;"></div>
+<div id="svc-map" style="width:100%; height:calc(100vh - 160px); min-height:500px; position:relative; z-index:1;"></div>
 <!-- Floating side panel — sits over map on desktop, below map on mobile -->
 <div id="wr-panel" style="display:none; position:absolute; width:420px; background:var(--card-bg); border:1px solid var(--border); z-index:20; overflow-y:auto; max-height:100%;">
 <div style="display:flex; align-items:center; justify-content:space-between; padding: 0.9rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--card-bg); z-index:1;">
@@ -2309,7 +2292,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     <a class="news-card" href="https://www.instagram.com/p/DOGIeLQikQ7/" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card-country-badge">🇫🇮 Finland · Nordic</div>
-      <div class="news-thumb"><img loading="lazy" src="/images/31cc724485.svg" alt="Windrose electric truck Nordic service Raskone" style="object-fit:contain;background:#0a1628;"></div>
+      <div class="news-thumb"><img loading="lazy" src="https://img.youtube.com/vi/1fhczNbcv0s/maxresdefault.jpg" alt="Windrose electric truck Nordic service Raskone" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
       <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
       
       <div class="news-body">
@@ -2328,9 +2311,9 @@ document.addEventListener("DOMContentLoaded", function() {
     </a>
 
   
-<div class="news-card" style="cursor:pointer;" onclick="window.open('https://www.linkedin.com/posts/big-wheels-truck-alignment-australia-is-proud-share-7430417470383009795-iAXa/','_blank')">
+    <div class="news-card" style="cursor:default;">
       <div class="card-country-badge">🇦🇺 Australia · Oceania</div>
-      <div class="news-thumb"><img loading="lazy" src="1771549574652.jpeg" alt="Windrose electric truck Australia Big Wheels" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
+      <div class="news-thumb"><img loading="lazy" src="og/australia-dealer.png" alt="Windrose electric truck Australia Big Wheels" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
       <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
       <div class="news-body">
         <h3 class="news-title" data-i18n="hc.bigwheels.windrose.official.australian">Big Wheels — Windrose's Official Australian Service Partner</h3>
@@ -2414,14 +2397,6 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="om-card-badge badge-au">AU Edition</div>
     <div class="om-card-title">English</div>
     <div class="om-card-sub">Metric. NHVR, ADR, RVSA 2018, GVM. 000 emergency.</div>
-    <div class="om-card-arrow">Open <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-  </a>
-
-  <a class="om-card" data-edition="en-au-alt" href="/owners-manual-australia/" target="_blank" rel="noopener">
-    <div class="om-card-flag">🇦🇺</div>
-    <div class="om-card-badge badge-au">AU Edition (alt)</div>
-    <div class="om-card-title">English</div>
-    <div class="om-card-sub">Alternate Australian edition. Metric. ADR. 000 emergency.</div>
     <div class="om-card-arrow">Open <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
   </a>
 
@@ -2606,6 +2581,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </div>
 </section>
+
+<!-- SERVICE MANUAL NAV MAP -->
+<section class="om-nav-section" id="service-manual-nav">
+<div class="om-nav-header">
+  <div class="eyebrow">Service Manual</div>
+  <h2>US Edition</h2>
+  <p>Full service and maintenance procedures for the US market. EPA &amp; CARB compliant. Opens in a new tab.</p>
+</div>
+<div class="om-nav-grid" id="sm-nav-grid">
+
+  <div class="om-group-label">United States</div>
+
+  <a class="om-card" data-edition="en-us" href="/service-manual-us/" target="_blank" rel="noopener">
+    <div class="om-card-flag">🇺🇸</div>
+    <div class="om-card-badge badge-us">US Edition</div>
+    <div class="om-card-title">English</div>
+    <div class="om-card-sub">Imperial units (mph, miles, PSI, °F). EPA &amp; CARB certified. NHTSA/FMVSS compliant.</div>
+    <div class="om-card-arrow">Open <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+  </a>
+
+</div>
+</section>
+
 <script>
 (function(){
   var map = {
@@ -2682,7 +2680,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="sub-h top-tile" onclick="openTile(this,'ttg-f338bc','ttp-f338bc-1')">
 <span class="tile-icon">🔧</span>
-<span class="tile-title">Maintenance Schedule</span>
+<span class="tile-title">Maintenance Manual</span>
 <span class="tile-hint">827 words</span>
 </div>
 </div>
@@ -2788,7 +2786,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-a04f1c-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -2875,7 +2873,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <h1 data-i18n="hc.warranty.manual">Warranty Manual</h1>
 <p class="subtitle">For pure electric tractor trucks (V2.0). Valid for mainland China. Please keep this manual with the vehicle at all times.</p>
 <div class="stat-grid">
-<div class="stat-cell"><div class="stat-lbl">Max Coverage Distance</div><div class="stat-val">621,400<em> miles</em></div></div>
+<div class="stat-cell"><div class="stat-lbl">Max Coverage Distance</div><div class="stat-val">621,371<em> miles</em></div></div>
 <div class="stat-cell"><div class="stat-lbl">Battery Warranty</div><div class="stat-val">8<em> years</em></div></div>
 <div class="stat-cell"><div class="stat-lbl">Drivetrain Warranty</div><div class="stat-val">5<em> years</em></div></div>
 </div>
@@ -2887,7 +2885,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="sub-h top-tile" onclick="openTile(this,'ttg-1fdcbd','ttp-1fdcbd-1')">
 <span class="tile-icon">🔧</span>
-<span class="tile-title">Maintenance Schedule</span>
+<span class="tile-title">Maintenance Manual</span>
 <span class="tile-hint">827 words</span>
 </div>
 </div>
@@ -2915,16 +2913,16 @@ document.addEventListener("DOMContentLoaded", function() {
 <ol class="princ-list"><li>Where the owner has operated and maintained the vehicle correctly and a fault occurs within the warranty period or mileage due to design or manufacturing defects, Windrose will inspect and confirm responsibility before providing warranty service free of charge.</li><li>Warranty service follows the principle of "repair first, replace the minimum number of components."</li><li>Warranty service covers only direct costs arising from quality defects — labour, parts, consumables, and call-out fees. Indirect or consequential losses are not covered.</li><li>During the warranty period, vehicles must not be self-repaired or disassembled. The fault condition must be preserved; otherwise the service station will refuse warranty service.</li><li>Replacement parts provided under warranty coverage carry only the remaining warranty period of the original component.</li><li>If the odometer fails and no mileage evidence is available, mileage is calculated at 28 days/month, 8 hours/day, at an average speed of 80 mph.</li></ol>
 </div>
 <div class="tile-content" id="tc-5b82c0-1">
-<p style="font-size: 1.0rem;color:var(--muted);margin-bottom:1rem;">From the date of purchase. Maximum component coverage: 8 years or 621,400 miles, whichever comes first.</p>
+<p style="font-size: 1.0rem;color:var(--muted);margin-bottom:1rem;">From the date of purchase. Maximum component coverage: 8 years or 621,000 miles, whichever comes first.</p>
 <div class="tw"><table>
 <thead><tr><th>System</th><th>Time</th><th>Distance</th><th>Components</th></tr></thead>
 <tbody>
 <tr class="rg"><td colspan="3">⚡ Battery</td></tr>
-<tr class="row-highlight"><td>Battery</td><td class="tw-time tw-hl">8 years</td><td class="tw-dist tw-hl">621,400 miles</td><td>Battery pack assembly</td></tr>
+<tr class="row-highlight"><td>Battery</td><td class="tw-time tw-hl">8 years</td><td class="tw-dist tw-hl">621,371 miles</td><td>Battery pack assembly</td></tr>
 <tr class="rg"><td colspan="3">🔌 Power Electronics</td></tr>
-<tr class="row-highlight"><td>Power Electronics</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,900 miles</td><td>All-in-one power distribution unit (excluding fuses)</td></tr>
+<tr class="row-highlight"><td>Power Electronics</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,823 miles</td><td>All-in-one power distribution unit (excluding fuses)</td></tr>
 <tr class="rg"><td colspan="3">🔧 E-Drive Axle</td></tr>
-<tr class="row-highlight"><td rowspan="4">E-Drive Axle</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,900 miles</td><td>Motor assembly, E-control assembly, axle housing assembly</td></tr>
+<tr class="row-highlight"><td rowspan="4">E-Drive Axle</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,823 miles</td><td>Motor assembly, E-control assembly, axle housing assembly</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">Unlimited</td><td>Shift controller assembly, main reducer housing, differential housing, brake backing plate, high-voltage harness</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">Unlimited</td><td>Shift actuator, all shaft assemblies, bearings, bushings, planetary gears, cross-shaft, engaging sleeves, all gear types, wheel hubs, axle shafts, oil seals, brake discs, slack adjusters, ABS, harness, water pipes, etc.</td></tr>
 <tr><td class="tw-time">3 months</td><td class="tw-dist">Unlimited</td><td>Wheel bolts, wheel nuts, wear indicator wire, friction pads (excluding burn damage or wear-through)</td></tr>
@@ -2936,28 +2934,28 @@ document.addEventListener("DOMContentLoaded", function() {
 <tr><td class="tw-time">2 years</td><td class="tw-dist">Unlimited</td><td>Steering column</td></tr>
 <tr><td class="tw-time">1½ years</td><td class="tw-dist">Unlimited</td><td>Steering pump; electric power steering unit</td></tr>
 <tr><td class="tw-time">2½ years</td><td class="tw-dist">—</td><td>Air valves and air compressor</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>Brake lines</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>Brake lines</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">—</td><td>Brake pedal, electric control valves, air reservoir</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">Unlimited</td><td>Air suspension castings and forgings (front and rear)</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">Unlimited</td><td>Air bags, dampers, rubber parts</td></tr>
 <tr class="rg"><td colspan="3">📡 Electronics</td></tr>
 <tr><td rowspan="3">Electronics</td><td class="tw-time">2½ years</td><td class="tw-dist">—</td><td>Tyre pressure monitoring, electronic mirrors</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>Lighting, IVI / IPC / CAR screens</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>Lighting, IVI / IPC / CAR screens</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">—</td><td>Low-voltage harness, dashcam, DVR cameras</td></tr>
 <tr class="rg"><td colspan="3">🤖 ADAS / Driver Assistance</td></tr>
-<tr class="row-highlight"><td rowspan="3">ADAS / Driver Assistance</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,900 miles</td><td>Vehicle control unit (VCU)</td></tr>
-<tr><td class="tw-time">3 years</td><td class="tw-dist">124,300 miles</td><td>Forward-facing smart camera; millimetre-wave radar (side and front)</td></tr>
+<tr class="row-highlight"><td rowspan="3">ADAS / Driver Assistance</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,823 miles</td><td>Vehicle control unit (VCU)</td></tr>
+<tr><td class="tw-time">3 years</td><td class="tw-dist">124,274 miles</td><td>Forward-facing smart camera; millimetre-wave radar (side and front)</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">—</td><td>Ultrasonic radar</td></tr>
 <tr class="rg"><td colspan="3">🌡️ Thermal Management</td></tr>
-<tr><td rowspan="3">Thermal Management</td><td class="tw-time">3 years</td><td class="tw-dist">124,300 miles</td><td>Electric water pumps x2 (battery and drive cooling)</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>Nylon coolant lines</td></tr>
+<tr><td rowspan="3">Thermal Management</td><td class="tw-time">3 years</td><td class="tw-dist">124,274 miles</td><td>Electric water pumps x2 (battery and drive cooling)</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>Nylon coolant lines</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">—</td><td>A/C compressor</td></tr>
 <tr class="rg"><td colspan="3">🚘 Cab</td></tr>
 <tr><td rowspan="3">Cab</td><td class="tw-time">3 years</td><td class="tw-dist">—</td><td>Body-in-white; sliding door and rail; seatbelts; hinges; door lock system</td></tr>
 <tr><td class="tw-time">2½ years</td><td class="tw-dist">—</td><td>Sliding door drive assembly</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>All glass; seats</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>All glass; seats</td></tr>
 <tr class="rg"><td colspan="3">Other</td></tr>
-<tr><td>Other</td><td class="tw-time">6 months</td><td class="tw-dist">18,700 miles</td><td>All unspecified components</td></tr>
+<tr><td>Other</td><td class="tw-time">6 months</td><td class="tw-dist">18,641 miles</td><td>All unspecified components</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -2993,8 +2991,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-e793df-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">3,800 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
-<div class="sc"><div class="l">Regular Service</div><div class="v">37,300 miles</div><div class="s">at every subsequent interval</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">Regular Service</div><div class="v">37,000 miles</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
 </div>
@@ -3033,7 +3031,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <tr><td>Check steering linkage ball-joint play and split pins; steering pump operation and wiring; steering wheel/column lock bolts; hose clamps and oil seep condition; lubricate steering linkage ball joints; check steering free play</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr>
 <tr><td>Check steering fluid level / replace steering oil and clean filter</td><td class="chk">✓</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
 <tr class="rg"><td colspan="3">Electric Air Compressor</td></tr>
-<tr><td>Clean air filter element (blow out at first service; blow out every 6,300 miles thereafter)</td><td class="blw">Blow out</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
+<tr><td>Clean air filter element (blow out at first service; blow out every 6,200 miles thereafter)</td><td class="blw">Blow out</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
 <tr><td>Inspect HV harness for damage or loose connections; tighten bracket screws; check insulation resistance</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr>
 <tr><td>Check air dryer, condenser, four-circuit protection valve, and serpentine pipe for air leaks</td><td class="chk">✓</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
 <tr class="rg"><td colspan="3">Battery Cooling System</td></tr>
@@ -3059,13 +3057,13 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="tw"><table>
 <thead><tr><th>#</th><th>System</th><th>Component</th><th>Interval</th><th>Specification</th><th>Quantity</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>1</td><td>E-drive axle</td><td>Gear oil</td><td>Every 186,500 miles or 1 year</td><td>GL-5 (75W/90)</td><td>16.5 L middle axle + 11.5 L rear axle (3-motor) or 16.5 L + 16.5 L (4-motor)</td><td>Fill until oil flows from fill hole</td></tr>
-<tr><td>2</td><td>Air conditioning</td><td>Cabin air filter</td><td>Every 37,300 miles or 6 months</td><td>Activated carbon OEM filter</td><td>3 units</td><td>—</td></tr>
-<tr><td>3</td><td>Motor / E-control</td><td>Coolant</td><td>Every 149,200 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>30 L (3-motor) or 35 L (4-motor)</td><td>Fill to between MAX and MIN marks on expansion tank</td></tr>
-<tr><td>4</td><td>Battery</td><td>Coolant</td><td>Every 149,200 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>37 L (NMC lithium) or 27 L (LFP)</td><td>—</td></tr>
-<tr><td>5</td><td>Steering unit</td><td>Filter and hydraulic oil</td><td>Every 37,300 miles or 6–1 year</td><td>OEM filter; ATF3</td><td>1 unit; 4 L</td><td>—</td></tr>
-<tr><td>6</td><td>Air compressor</td><td>Air filter element</td><td>Every 37,300 miles or 6 months</td><td>OEM filter element</td><td>1 unit</td><td>Blow out every 6,300 miles</td></tr>
-<tr><td>7</td><td>Air dryer</td><td>Desiccant canister</td><td>Every 37,300 miles or 6 months</td><td>OEM desiccant canister</td><td>1 unit</td><td>—</td></tr>
+<tr><td>1</td><td>E-drive axle</td><td>Gear oil</td><td>Every 186,000 miles or 1 year</td><td>GL-5 (75W/90)</td><td>16.5 L middle axle + 11.5 L rear axle (3-motor) or 16.5 L + 16.5 L (4-motor)</td><td>Fill until oil flows from fill hole</td></tr>
+<tr><td>2</td><td>Air conditioning</td><td>Cabin air filter</td><td>Every 37,000 miles or 6 months</td><td>Activated carbon OEM filter</td><td>3 units</td><td>—</td></tr>
+<tr><td>3</td><td>Motor / E-control</td><td>Coolant</td><td>Every 149,000 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>30 L (3-motor) or 35 L (4-motor)</td><td>Fill to between MAX and MIN marks on expansion tank</td></tr>
+<tr><td>4</td><td>Battery</td><td>Coolant</td><td>Every 149,000 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>37 L (NMC lithium) or 27 L (LFP)</td><td>—</td></tr>
+<tr><td>5</td><td>Steering unit</td><td>Filter and hydraulic oil</td><td>Every 37,000 miles or 6–1 year</td><td>OEM filter; ATF3</td><td>1 unit; 4 L</td><td>—</td></tr>
+<tr><td>6</td><td>Air compressor</td><td>Air filter element</td><td>Every 37,000 miles or 6 months</td><td>OEM filter element</td><td>1 unit</td><td>Blow out every 6,200 miles</td></tr>
+<tr><td>7</td><td>Air dryer</td><td>Desiccant canister</td><td>Every 37,000 miles or 6 months</td><td>OEM desiccant canister</td><td>1 unit</td><td>—</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -3079,7 +3077,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="manual-lang-block" data-lang="en_uk">
 <span id="manual-en_uk" style="display:block;position:relative;top:-100px;visibility:hidden;"></span>
 <div class="stat-grid">
-<div class="stat-cell"><div class="stat-lbl">Max Coverage Distance</div><div class="stat-val">621,400<em> miles</em></div></div>
+<div class="stat-cell"><div class="stat-lbl">Max Coverage Distance</div><div class="stat-val">621,371<em> miles</em></div></div>
 <div class="stat-cell"><div class="stat-lbl">Battery Warranty</div><div class="stat-val">8<em> years</em></div></div>
 <div class="stat-cell"><div class="stat-lbl">Drivetrain Warranty</div><div class="stat-val">5<em> years</em></div></div>
 </div>
@@ -3091,7 +3089,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="sub-h top-tile" onclick="openTile(this,'ttg-0070df','ttp-0070df-1')">
 <span class="tile-icon">🔧</span>
-<span class="tile-title">Maintenance Schedule</span>
+<span class="tile-title">Maintenance Manual</span>
 <span class="tile-hint">827 words</span>
 </div>
 </div>
@@ -3119,16 +3117,16 @@ document.addEventListener("DOMContentLoaded", function() {
 <ol class="princ-list"><li>Where the owner has operated and maintained the vehicle correctly and a fault occurs within the warranty period or mileage due to design or manufacturing defects, Windrose will inspect and confirm responsibility before providing warranty service free of charge.</li><li>Warranty service follows the principle of "repair first, replace the minimum number of components."</li><li>Warranty service covers only direct costs arising from quality defects — labour, parts, consumables, and call-out fees. Indirect or consequential losses are not covered.</li><li>During the warranty period, vehicles must not be self-repaired or disassembled. The fault condition must be preserved; otherwise the service station will refuse warranty service.</li><li>Replacement parts provided under warranty coverage carry only the remaining warranty period of the original component.</li><li>If the odometer fails and no mileage evidence is available, mileage is calculated at 28 days/month, 8 hours/day, at an average speed of 80 mph.</li></ol>
 </div>
 <div class="tile-content" id="tc-f69c2a-1">
-<p style="font-size: 1.0rem;color:var(--muted);margin-bottom:1rem;">From the date of purchase. Maximum component coverage: 8 years or 621,400 miles, whichever comes first.</p>
+<p style="font-size: 1.0rem;color:var(--muted);margin-bottom:1rem;">From the date of purchase. Maximum component coverage: 8 years or 621,000 miles, whichever comes first.</p>
 <div class="tw"><table>
 <thead><tr><th>System</th><th>Time</th><th>Distance</th><th>Components</th></tr></thead>
 <tbody>
 <tr class="rg"><td colspan="3">⚡ Battery</td></tr>
-<tr class="row-highlight"><td>Battery</td><td class="tw-time tw-hl">8 years</td><td class="tw-dist tw-hl">621,400 miles</td><td>Battery pack assembly</td></tr>
+<tr class="row-highlight"><td>Battery</td><td class="tw-time tw-hl">8 years</td><td class="tw-dist tw-hl">621,371 miles</td><td>Battery pack assembly</td></tr>
 <tr class="rg"><td colspan="3">🔌 Power Electronics</td></tr>
-<tr class="row-highlight"><td>Power Electronics</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,900 miles</td><td>All-in-one power distribution unit (excluding fuses)</td></tr>
+<tr class="row-highlight"><td>Power Electronics</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,823 miles</td><td>All-in-one power distribution unit (excluding fuses)</td></tr>
 <tr class="rg"><td colspan="3">🔧 E-Drive Axle</td></tr>
-<tr class="row-highlight"><td rowspan="4">E-Drive Axle</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,900 miles</td><td>Motor assembly, E-control assembly, axle housing assembly</td></tr>
+<tr class="row-highlight"><td rowspan="4">E-Drive Axle</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,823 miles</td><td>Motor assembly, E-control assembly, axle housing assembly</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">Unlimited</td><td>Shift controller assembly, main reducer housing, differential housing, brake backing plate, high-voltage harness</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">Unlimited</td><td>Shift actuator, all shaft assemblies, bearings, bushings, planetary gears, cross-shaft, engaging sleeves, all gear types, wheel hubs, axle shafts, oil seals, brake discs, slack adjusters, ABS, harness, water pipes, etc.</td></tr>
 <tr><td class="tw-time">3 months</td><td class="tw-dist">Unlimited</td><td>Wheel bolts, wheel nuts, wear indicator wire, friction pads (excluding burn damage or wear-through)</td></tr>
@@ -3140,28 +3138,28 @@ document.addEventListener("DOMContentLoaded", function() {
 <tr><td class="tw-time">2 years</td><td class="tw-dist">Unlimited</td><td>Steering column</td></tr>
 <tr><td class="tw-time">1½ years</td><td class="tw-dist">Unlimited</td><td>Steering pump; electric power steering unit</td></tr>
 <tr><td class="tw-time">2½ years</td><td class="tw-dist">—</td><td>Air valves and air compressor</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>Brake lines</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>Brake lines</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">—</td><td>Brake pedal, electric control valves, air reservoir</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">Unlimited</td><td>Air suspension castings and forgings (front and rear)</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">Unlimited</td><td>Air bags, dampers, rubber parts</td></tr>
 <tr class="rg"><td colspan="3">📡 Electronics</td></tr>
 <tr><td rowspan="3">Electronics</td><td class="tw-time">2½ years</td><td class="tw-dist">—</td><td>Tyre pressure monitoring, electronic mirrors</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>Lighting, IVI / IPC / CAR screens</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>Lighting, IVI / IPC / CAR screens</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">—</td><td>Low-voltage harness, dashcam, DVR cameras</td></tr>
 <tr class="rg"><td colspan="3">🤖 ADAS / Driver Assistance</td></tr>
-<tr class="row-highlight"><td rowspan="3">ADAS / Driver Assistance</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,900 miles</td><td>Vehicle control unit (VCU)</td></tr>
-<tr><td class="tw-time">3 years</td><td class="tw-dist">124,300 miles</td><td>Forward-facing smart camera; millimetre-wave radar (side and front)</td></tr>
+<tr class="row-highlight"><td rowspan="3">ADAS / Driver Assistance</td><td class="tw-time tw-hl">5 years</td><td class="tw-dist tw-hl">372,823 miles</td><td>Vehicle control unit (VCU)</td></tr>
+<tr><td class="tw-time">3 years</td><td class="tw-dist">124,274 miles</td><td>Forward-facing smart camera; millimetre-wave radar (side and front)</td></tr>
 <tr><td class="tw-time">2 years</td><td class="tw-dist">—</td><td>Ultrasonic radar</td></tr>
 <tr class="rg"><td colspan="3">🌡️ Thermal Management</td></tr>
-<tr><td rowspan="3">Thermal Management</td><td class="tw-time">3 years</td><td class="tw-dist">124,300 miles</td><td>Electric water pumps x2 (battery and drive cooling)</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>Nylon coolant lines</td></tr>
+<tr><td rowspan="3">Thermal Management</td><td class="tw-time">3 years</td><td class="tw-dist">124,274 miles</td><td>Electric water pumps x2 (battery and drive cooling)</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>Nylon coolant lines</td></tr>
 <tr><td class="tw-time">1 year</td><td class="tw-dist">—</td><td>A/C compressor</td></tr>
 <tr class="rg"><td colspan="3">🚘 Cab</td></tr>
 <tr><td rowspan="3">Cab</td><td class="tw-time">3 years</td><td class="tw-dist">—</td><td>Body-in-white; sliding door and rail; seatbelts; hinges; door lock system</td></tr>
 <tr><td class="tw-time">2½ years</td><td class="tw-dist">—</td><td>Sliding door drive assembly</td></tr>
-<tr><td class="tw-time">2 years</td><td class="tw-dist">124,300 miles</td><td>All glass; seats</td></tr>
+<tr><td class="tw-time">2 years</td><td class="tw-dist">124,274 miles</td><td>All glass; seats</td></tr>
 <tr class="rg"><td colspan="3">Other</td></tr>
-<tr><td>Other</td><td class="tw-time">6 months</td><td class="tw-dist">18,700 miles</td><td>All unspecified components</td></tr>
+<tr><td>Other</td><td class="tw-time">6 months</td><td class="tw-dist">18,641 miles</td><td>All unspecified components</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -3197,8 +3195,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-855388-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">3,800 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
-<div class="sc"><div class="l">Regular Service</div><div class="v">37,300 miles</div><div class="s">at every subsequent interval</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">Regular Service</div><div class="v">37,000 miles</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
 </div>
@@ -3237,7 +3235,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <tr><td>Check steering linkage ball-joint play and split pins; steering pump operation and wiring; steering wheel/column lock bolts; hose clamps and oil seep condition; lubricate steering linkage ball joints; check steering free play</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr>
 <tr><td>Check steering fluid level / replace steering oil and clean filter</td><td class="chk">✓</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
 <tr class="rg"><td colspan="3">Electric Air Compressor</td></tr>
-<tr><td>Clean air filter element (blow out at first service; blow out every 6,300 miles thereafter)</td><td class="blw">Blow out</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
+<tr><td>Clean air filter element (blow out at first service; blow out every 6,200 miles thereafter)</td><td class="blw">Blow out</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
 <tr><td>Inspect HV harness for damage or loose connections; tighten bracket screws; check insulation resistance</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr>
 <tr><td>Check air dryer, condenser, four-circuit protection valve, and serpentine pipe for air leaks</td><td class="chk">✓</td><td class="rep">Replace</td><td class="usr">User-paid</td></tr>
 <tr class="rg"><td colspan="3">Battery Cooling System</td></tr>
@@ -3263,13 +3261,13 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="tw"><table>
 <thead><tr><th>#</th><th>System</th><th>Component</th><th>Interval</th><th>Specification</th><th>Quantity</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>1</td><td>E-drive axle</td><td>Gear oil</td><td>Every 186,500 miles or 1 year</td><td>GL-5 (75W/90)</td><td>16.5 L middle axle + 11.5 L rear axle (3-motor) or 16.5 L + 16.5 L (4-motor)</td><td>Fill until oil flows from fill hole</td></tr>
-<tr><td>2</td><td>Air conditioning</td><td>Cabin air filter</td><td>Every 37,300 miles or 6 months</td><td>Activated carbon OEM filter</td><td>3 units</td><td>—</td></tr>
-<tr><td>3</td><td>Motor / E-control</td><td>Coolant</td><td>Every 149,200 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>30 L (3-motor) or 35 L (4-motor)</td><td>Fill to between MAX and MIN marks on expansion tank</td></tr>
-<tr><td>4</td><td>Battery</td><td>Coolant</td><td>Every 149,200 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>37 L (NMC lithium) or 27 L (LFP)</td><td>—</td></tr>
-<tr><td>5</td><td>Steering unit</td><td>Filter and hydraulic oil</td><td>Every 37,300 miles or 6–1 year</td><td>OEM filter; ATF3</td><td>1 unit; 4 L</td><td>—</td></tr>
-<tr><td>6</td><td>Air compressor</td><td>Air filter element</td><td>Every 37,300 miles or 6 months</td><td>OEM filter element</td><td>1 unit</td><td>Blow out every 6,300 miles</td></tr>
-<tr><td>7</td><td>Air dryer</td><td>Desiccant canister</td><td>Every 37,300 miles or 6 months</td><td>OEM desiccant canister</td><td>1 unit</td><td>—</td></tr>
+<tr><td>1</td><td>E-drive axle</td><td>Gear oil</td><td>Every 186,000 miles or 1 year</td><td>GL-5 (75W/90)</td><td>16.5 L middle axle + 11.5 L rear axle (3-motor) or 16.5 L + 16.5 L (4-motor)</td><td>Fill until oil flows from fill hole</td></tr>
+<tr><td>2</td><td>Air conditioning</td><td>Cabin air filter</td><td>Every 37,000 miles or 6 months</td><td>Activated carbon OEM filter</td><td>3 units</td><td>—</td></tr>
+<tr><td>3</td><td>Motor / E-control</td><td>Coolant</td><td>Every 149,000 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>30 L (3-motor) or 35 L (4-motor)</td><td>Fill to between MAX and MIN marks on expansion tank</td></tr>
+<tr><td>4</td><td>Battery</td><td>Coolant</td><td>Every 149,000 miles or 2 years</td><td>Ethylene glycol −45 °C</td><td>37 L (NMC lithium) or 27 L (LFP)</td><td>—</td></tr>
+<tr><td>5</td><td>Steering unit</td><td>Filter and hydraulic oil</td><td>Every 37,000 miles or 6–1 year</td><td>OEM filter; ATF3</td><td>1 unit; 4 L</td><td>—</td></tr>
+<tr><td>6</td><td>Air compressor</td><td>Air filter element</td><td>Every 37,000 miles or 6 months</td><td>OEM filter element</td><td>1 unit</td><td>Blow out every 6,200 miles</td></tr>
+<tr><td>7</td><td>Air dryer</td><td>Desiccant canister</td><td>Every 37,000 miles or 6 months</td><td>OEM desiccant canister</td><td>1 unit</td><td>—</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -4583,7 +4581,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-82eea0-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -4787,7 +4785,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-a40683-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -4991,7 +4989,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-7a612d-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -5195,7 +5193,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-ac7b1c-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -5399,7 +5397,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-1c0705-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -5603,7 +5601,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-381b05-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -5807,7 +5805,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-963247-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -6011,7 +6009,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="tile-content" id="tc-d65f45-0">
 <div class="stat2">
-<div class="sc"><div class="l">First Service</div><div class="v">6,000 km</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
+<div class="sc"><div class="l">First Service</div><div class="v">3,700 miles</div><div class="s">or within 3 months from purchase date, whichever comes first</div></div>
 <div class="sc"><div class="l">Regular Service</div><div class="v">60,000 km</div><div class="s">at every subsequent interval</div></div>
 <div class="sc"><div class="l">First Service Cost</div><div class="v" style="color:#4aff9e;">Free of charge</div><div class="s">All labour and materials fully covered</div></div>
 <div class="sc"><div class="l">Regular Service Cost</div><div class="v" style="color:#fcd34d;">User-paid</div><div class="s">Labour, gear oil, coolant, filters, etc.</div></div>
@@ -6091,6 +6089,10 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </div>
 <footer style="background:#040b14; border-top:1px solid var(--border); padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4rem) 0;">
+<div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-bottom:3rem;">
+<a class="logo" href="#" style="font-size: 1.25rem;">Home</a>
+<p data-i18n="footer.tagline" style="font-size: 0.875rem; color:var(--muted); max-width:340px; line-height:1.65;">Building the electric trucks that move the world — cleaner, smarter, and further.</p>
+</div>
 
   <!-- TABLE OF CONTENTS -->
   <div aria-label="Site map" role="navigation" style="border-top:1px solid var(--border); padding-top:3rem; margin-bottom:3rem;">
@@ -6104,19 +6106,15 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
       <div>
         <a href="how-to-use.html" class="footer-toc-head" data-i18n="nav.howtouse">How to Use</a>
-        <ul class="footer-toc-list"><li><a href="how-to-use-range-calc.html" class="toc-link" data-i18n="rc.label">Range Calculator</a></li><li><a href="how-to-use-scenarios.html" class="toc-link" data-i18n="rc.scenarios.label">Range by Scenario</a></li></ul>
+        <ul class="footer-toc-list"><li><a href="how-to-use-range-calc.html" class="toc-link" data-i18n="rc.label">Range Calculator</a></li><li><a href="how-to-use-scenarios.html" class="toc-link" data-i18n="rc.scenarios.label">Range by Scenario</a></li><li><a href="how-to-use-charging.html" class="toc-link" data-i18n="chg.label">Charging Partners</a></li></ul>
         <a href="how-to-service.html" class="footer-toc-head" data-i18n="nav.network">How to Service</a>
         <ul class="footer-toc-list" style="margin-bottom:0;"><li><a href="how-to-service-locations.html" class="toc-link" data-i18n="how-to-service-locations">Service Locations</a></li><li><a href="how-to-service-warranty.html" class="toc-link" data-i18n="svc.warranty">Warranty</a></li><li><a href="how-to-service-maintenance.html" class="toc-link" data-i18n="svc.maintenance">Maintenance</a></li><li><a href="how-to-service-repairs.html" class="toc-link" data-i18n="svc.repairs">Repairs</a></li><li><a href="how-to-service-manuals.html" class="toc-link" data-i18n="svc.manuals">Owner Manuals</a></li></ul>
       </div>
       <div>
         <a href="technology.html" class="footer-toc-head" data-i18n="nav.technology">Technology</a>
-        <ul class="footer-toc-list"><li><a href="technology-specs.html" class="toc-link" data-i18n="technology.label">Tech Specs</a></li><li><a href="technology-roadmap.html" class="toc-link" data-i18n="gen.label">Platform Roadmap</a></li><li><a href="technology.html#charging-partners" class="toc-link" data-i18n="chg.label">Charging Partners</a></li></ul>
+        <ul class="footer-toc-list"><li><a href="technology-specs.html" class="toc-link" data-i18n="technology.label">Tech Specs</a></li><li><a href="technology-roadmap.html" class="toc-link" data-i18n="gen.label">Platform Roadmap</a></li></ul>
         <a href="how-to-build.html" class="footer-toc-head" data-i18n="nav.manufacturing">How to Build</a>
         <ul class="footer-toc-list" style="margin-bottom:0;"><li><a href="how-to-build-manufacturing.html" class="toc-link" data-i18n="mfg.label">Manufacturing</a></li></ul>
-      </div>
-      <div>
-        <a href="certification.html" class="footer-toc-head">Certification</a>
-        <ul class="footer-toc-list"><li><a href="certification.html#homologation" class="toc-link">Market Access</a></li><li><a href="certification.html" class="toc-link">EU WVTA</a></li><li><a href="certification.html" class="toc-link">US FMVSS</a></li></ul>
       </div>
       <div>
         <a href="about-us.html" class="footer-toc-head" data-i18n="nav.about">About Us</a>
@@ -7126,23 +7124,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Click or Escape to skip
-  splash.addEventListener('click', function(e){
+  splash.addEventListener('click', function(){
     document.body.style.overflow = '';
     dismiss();
-    // Pass through to a link underneath if the user clicked on one
-    splash.style.pointerEvents = 'none';
-    var el = document.elementFromPoint(e.clientX, e.clientY);
-    splash.style.pointerEvents = '';
-    if (el) {
-      var a = el.closest ? el.closest('a[href]') : null;
-      if (!a && el.tagName === 'A' && el.href) a = el;
-      if (a && a.href) {
-        var dest = a.getAttribute('href');
-        if (dest && dest !== '#' && !dest.startsWith('#')) {
-          window.location.href = a.href;
-        }
-      }
-    }
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){ document.body.style.overflow = ''; dismiss(); }
@@ -7162,7 +7146,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Windrose Globe: service & parts layers -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-<script src="./windrose-globe.js?v=7"></script>
+<script src="./windrose-globe.js"></script>
 <script>
 (function(){
   function ready(fn){ if(document.readyState!=='loading')fn(); else document.addEventListener('DOMContentLoaded',fn); }
@@ -7292,9 +7276,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!li.querySelector('.nav-dropdown')) return;
     var a = li.querySelector(':scope > a');
     if(!a) return;
-    a.addEventListener('click', function(){
-      document.querySelectorAll('.nav-links > li.nav-open').forEach(function(el){ el.classList.remove('nav-open'); });
-      li.classList.add('nav-open');
+    a.addEventListener('click', function(e){
+      if(li.classList.contains('nav-open')){
+        li.classList.remove('nav-open');
+        // second click navigates — don't prevent default
+      } else {
+        e.preventDefault();
+        document.querySelectorAll('.nav-links > li.nav-open').forEach(function(el){ el.classList.remove('nav-open'); });
+        li.classList.add('nav-open');
+      }
     });
   });
   document.addEventListener('click', function(e){

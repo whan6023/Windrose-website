@@ -1,0 +1,117 @@
+/* ═══════════════════════════════════════════════════════════════
+   Windrose US Service Manual — Stylesheet
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --hdr-bg: #1a2332;
+  --hdr-fg: #f0f4f8;
+  --main-bg: #ffffff;
+  --text: #222831;
+  --text-muted: #5a6577;
+  --accent: #0b5ed7;
+  --accent-light: #e8f0fe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.12);
+  --radius: 6px;
+  --header-h: 56px;
+  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: #eef1f5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--header-h);
+  background: var(--hdr-bg);
+  color: var(--hdr-fg);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+.header-left { display: flex; align-items: center; gap: 12px; }
+.header-left h1 { font-size: 17px; font-weight: 600; white-space: nowrap; }
+.header-right { display: flex; align-items: center; gap: 12px; }
+
+.btn-download {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent); color: #fff;
+  padding: 7px 16px; border-radius: var(--radius);
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  letter-spacing: .3px; white-space: nowrap;
+  transition: opacity .2s;
+}
+.btn-download:hover { opacity: .85; text-decoration: none; }
+
+.btn-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: rgba(255,255,255,.7); font-size: 13px;
+  text-decoration: none;
+  transition: color .2s;
+}
+.btn-back:hover { color: #fff; text-decoration: none; }
+
+/* ── Edition banner ────────────────────────────────────────── */
+.edition-banner {
+  background: #1a3a5c; color: #fff;
+  padding: 8px 20px; text-align: center; font-size: 13px;
+  margin-top: var(--header-h);
+  flex-shrink: 0;
+}
+.edition-banner strong { font-weight: 700; }
+
+/* ── PDF viewer ────────────────────────────────────────────── */
+.pdf-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-embed {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: block;
+  min-height: calc(100vh - var(--header-h) - 36px);
+}
+
+/* ── Fallback (if browser can't render PDF inline) ─────────── */
+.pdf-fallback {
+  display: none;
+  flex: 1;
+  align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  background: #f5f7fa;
+}
+.pdf-fallback p { color: var(--text-muted); max-width: 480px; line-height: 1.7; }
+.pdf-fallback .btn-download {
+  padding: 12px 28px; font-size: 15px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .header-left h1 { font-size: 13px; }
+  .btn-download { font-size: 12px; padding: 6px 12px; }
+  .edition-banner { font-size: 12px; }
+}
+
+/* ── Print ─────────────────────────────────────────────────── */
+@media print {
+  .site-header, .edition-banner { display: none !important; }
+  .pdf-embed { margin: 0; height: 100vh; }
+}

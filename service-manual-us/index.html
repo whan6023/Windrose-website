@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html id="top" lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Windrose Service Manual – US Edition. EPA/CARB compliant maintenance procedures in US customary units."/>
+<title>Windrose – Service Manual (US Edition)</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <h1>Windrose – Service Manual (US Edition)</h1>
+  </div>
+  <div class="header-right">
+    <a class="btn-back" href="/how-to-service">← How to Service</a>
+    <a class="btn-download" href="windrose-us-maintenance-manual.pdf" download="Windrose US Service Manual.pdf">
+      ⬇ Download PDF
+    </a>
+  </div>
+</header>
+
+<div class="edition-banner">
+  <strong>US Edition</strong> — EPA &amp; CARB compliant · All measurements in US customary units (miles, °F, PSI, lb-ft)
+</div>
+
+<div class="pdf-wrap">
+  <embed
+    class="pdf-embed"
+    src="windrose-us-maintenance-manual.pdf"
+    type="application/pdf"
+    title="Windrose US Service Manual"
+  />
+
+  <div class="pdf-fallback" id="pdf-fallback">
+    <p>Your browser does not support inline PDF viewing. Please download the manual to read it.</p>
+    <a class="btn-download" href="windrose-us-maintenance-manual.pdf" download="Windrose US Service Manual.pdf">
+      ⬇ Download Service Manual (PDF)
+    </a>
+    <a class="btn-back" href="/how-to-service" style="margin-top:8px;color:#0b5ed7;">← Back to How to Service</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var embed = document.querySelector('.pdf-embed');
+  var fallback = document.getElementById('pdf-fallback');
+  if (!embed) return;
+  embed.addEventListener('error', function() {
+    embed.style.display = 'none';
+    fallback.style.display = 'flex';
+  });
+  setTimeout(function() {
+    if (embed.offsetHeight < 10) {
+      embed.style.display = 'none';
+      fallback.style.display = 'flex';
+    }
+  }, 3000);
+})();
+</script>
+</body>
+</html>
