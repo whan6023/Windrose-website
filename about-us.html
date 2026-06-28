@@ -342,6 +342,7 @@ html{scroll-behavior:smooth;}
   /* ── SECTION SPACING ── */
   section, .hero { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
   section { padding-top: 2rem !important; padding-bottom: 1.5rem !important; }
+  .press-page-wrap, .presentation-page-wrap { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
 
   /* ── TYPOGRAPHY ── */
   h2 { font-size: clamp(1.5rem, 5vw, 3.5rem); line-height: 1.1 !important; }
@@ -700,7 +701,8 @@ html{scroll-behavior:smooth;}
     }
     @media (max-width: 640px) {
       .exec-bio-photo { height: 260px; }
-      .exec-bio-text  { padding: 1.5rem !important; }
+      .exec-bio-row   { max-height: none !important; }
+      .exec-bio-text  { padding: 1.5rem !important; justify-content: flex-start !important; align-items: flex-start !important; }
     }
   
   /* ── Mobile stacking: all multi-column layouts collapse to single column ── */
