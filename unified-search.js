@@ -269,6 +269,14 @@
     showAIAnswer(q);
   };
 
+  window.gsShowResults = function () {
+    var q = GS_LAST_Q;
+    var inp = document.getElementById('gs-input');
+    if (inp && inp.value.trim()) q = inp.value.trim();
+    if (!q) return;
+    renderDropdown(q);
+  };
+
   function mdToHtml(text) {
     // Convert **bold** to <strong> and *italic* to <em>, escape HTML first
     return esc(text)
@@ -286,7 +294,7 @@
       + '<div id="gs-ai-text" style="font-size:0.875rem;color:#c8d8f0;line-height:1.65;">'
       + '<span style="opacity:0.45;">Thinking…</span></div>'
       + '<div style="margin-top:0.5rem;">'
-      + '<button onclick="window.gsSearch(document.getElementById(\'gs-input\').value)" style="font-family:Barlow Condensed,sans-serif;font-size:0.78rem;letter-spacing:0.06em;padding:0.2rem 0.55rem;background:none;border:1px solid rgba(74,158,255,0.2);border-radius:3px;color:#4a6a8a;cursor:pointer;">← Show page results</button>'
+      + '<button onclick="window.gsShowResults()" style="font-family:Barlow Condensed,sans-serif;font-size:0.78rem;letter-spacing:0.06em;padding:0.2rem 0.55rem;background:none;border:1px solid rgba(74,158,255,0.2);border-radius:3px;color:#4a6a8a;cursor:pointer;">← Show page results</button>'
       + '</div>'
       + '</div>';
 
