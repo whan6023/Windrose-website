@@ -3306,15 +3306,9 @@ function openStripeModal() { openReserveModal(); }
     if(!li.querySelector('.nav-dropdown')) return;
     var a = li.querySelector(':scope > a');
     if(!a) return;
-    a.addEventListener('click', function(e){
-      if(li.classList.contains('nav-open')){
-        li.classList.remove('nav-open');
-        // second click navigates — don't prevent default
-      } else {
-        e.preventDefault();
-        document.querySelectorAll('.nav-links > li.nav-open').forEach(function(el){ el.classList.remove('nav-open'); });
-        li.classList.add('nav-open');
-      }
+    a.addEventListener('click', function(){
+      document.querySelectorAll('.nav-links > li.nav-open').forEach(function(el){ el.classList.remove('nav-open'); });
+      li.classList.add('nav-open');
     });
   });
   document.addEventListener('click', function(e){
