@@ -8,20 +8,38 @@
 <link href="styles.css" rel="stylesheet"/>
 <script src="../owners-manual-lang.js"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="site-header">
-<div class="header-left">
-<button aria-label="내비게이션 전환" class="nav-toggle" id="navToggle">☰</button>
-<h1>Windrose – 차량 소유자 매뉴얼</h1>
+
+<!-- ── MANUAL HEADER: topbar + lang-row + topnav ── -->
+<div id="manual-topbar">
+  <span class="manual-edition-name">Windrose – 차량 소유자 매뉴얼</span>
+  <a href="https://windrose.ai" target="_blank" rel="noopener">windrose.ai ↗</a>
 </div>
-<div class="header-search">
+<div id="manual-lang-row">
+  <div id="manual-edition-select-wrap"></div>
+</div>
+<nav id="manual-topnav">
+  <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+  <a href="../" class="logo">Windrose</a>
+  <ul class="nav-links">
+    <li><a href="../how-to-buy.html">How to Buy</a></li>
+    <li><a href="../how-to-use.html">How to Use</a></li>
+    <li><a href="../how-to-service.html">How to Service</a></li>
+    <li><a href="../technology.html">Technology</a></li>
+    <li><a href="../how-to-build.html">How to Build</a></li>
+    <li><a href="../about-us.html">About Us</a></li>
+  </ul>
+</nav>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-inner">
+<div class="sidebar-search">
 <input autocomplete="off" id="searchInput" placeholder="매뉴얼 검색… (예: 충전, EPB, 등판 능력, 타이어 압력)" type="search"/>
 <div class="search-results" id="searchResults"></div>
 </div>
-</header>
-<nav class="sidebar" id="sidebar">
-<div class="sidebar-inner">
+
 <div class="nav-filter">
 <input id="navFilter" placeholder="섹션 필터…" type="text"/>
 </div><ul class="nav-chapters">

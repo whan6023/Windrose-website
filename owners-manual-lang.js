@@ -169,13 +169,14 @@
   document.addEventListener('DOMContentLoaded', function () {
     initSections();
 
-    // Inject language selector into header
-    var header = document.querySelector('.site-header');
-    var searchDiv = document.querySelector('.header-search');
-    if (header && searchDiv) {
-      header.insertBefore(wrapper, searchDiv);
-    } else if (header) {
-      header.appendChild(wrapper);
+    // Inject edition selector into #manual-lang-row
+    var wrap = document.getElementById('manual-edition-select-wrap');
+    if (wrap) {
+      wrap.appendChild(wrapper);
+    } else {
+      // Fallback for old site-header layout
+      var header = document.querySelector('.site-header');
+      if (header) header.appendChild(wrapper);
     }
 
     // Make nav-group-headers collapsible and collapse all by default
