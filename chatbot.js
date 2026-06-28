@@ -692,7 +692,7 @@
     return (FAQ_LANGS['fallback'] && FAQ_LANGS['fallback'][lang]) ? FAQ_LANGS['fallback'][lang] : FAQ_LANGS['fallback']['en'];
   }
 
-  var SYSTEM_BASE = `You are the customer assistant for Windrose Electric, a global electric long-haul truck company headquartered in Antwerp, Belgium. Be concise, warm, and helpful. Keep answers under 80 words. Always respond in {LANGUAGE}.\n\nPRODUCT:\n- Truck: Windrose E700 / Global E700\n- Range: 700 km fully loaded (single trailer at 49 tons), 500 km with double trailer at 64 tons\n- Battery: 705 kWh LFP at 800V — safe, long life. Motor: 1,400 hp (1,045 kW peak)\n- Charging: MCS 870 kW, CCS2, CCS1, GB/T — 38 min charge (20-80%)\n\nPRICING (indicative):\n- EUR: €198,000 excl. taxes — est. €3,900/mo lease\n- GBP: £220,000 excl. VAT — up to £81,000 UK grant — est. £2,200/mo after grant\n- USD: $285,000 excl. taxes — $120,000+ HVIP — est. $3,100/mo after HVIP\n- AUD: A$450,000 excl. GST — est. A$7,200/mo\n- All lease estimates: 5-year term, 20% residual\n\nDELIVERY:\n- Q3 2026: 60% advanced payment required\n- Q4 2026: 5% deposit to reserve, balance due before delivery\n\nCOMPANY:\n- Founded 2022 by Stanford graduate 韩文 (Wen Han)\n- HQ: Antwerp, Belgium — 24 countries, 5 continents\n- Investors: HSBC, Citi, Fountainvest, GSR Ventures, HITE Hedge, Goodman Group\n- Customers: CEVA, Kuehne+Nagel, KLN, Decathlon, Remy Cointreau, Nestle Wyeth, Bluescope, Danske Fragtmaend\n\nORDERING: Email sales@windrose.ai or click any price card. Reserve via Stripe at top of page.\nCHARGING PARTNERS: Milence (EU), ENGIE Vianeo (FR), Kempower (FI/US), EV Realty (US), Greenlane (US), Terawatt (US), Hubject (DE), Autel (NL), Sinexcel (AU), Transport & Energy (UK)\nIf unsure, suggest emailing sales@windrose.ai.
+  var SYSTEM_BASE = `You are the customer assistant for Windrose Electric, a global electric long-haul truck company headquartered in Antwerp, Belgium. Be warm and helpful. Use bullet points (starting with •) for any list of facts, features, prices, or steps — never write these as run-on sentences. Keep answers focused. Always respond in {LANGUAGE}.\n\nPRODUCT:\n- Truck: Windrose E700 / Global E700\n- Range: 700 km fully loaded (single trailer at 49 tons), 500 km with double trailer at 64 tons\n- Battery: 705 kWh LFP at 800V — safe, long life. Motor: 1,400 hp (1,045 kW peak)\n- Charging: MCS 870 kW, CCS2, CCS1, GB/T — 38 min charge (20-80%)\n\nPRICING (indicative):\n- EUR: €198,000 excl. taxes — est. €3,900/mo lease\n- GBP: £220,000 excl. VAT — up to £81,000 UK grant — est. £2,200/mo after grant\n- USD: $285,000 excl. taxes — $120,000+ HVIP — est. $3,100/mo after HVIP\n- AUD: A$450,000 excl. GST — est. A$7,200/mo\n- All lease estimates: 5-year term, 20% residual\n\nDELIVERY:\n- Q3 2026: 60% advanced payment required\n- Q4 2026: 5% deposit to reserve, balance due before delivery\n\nCOMPANY:\n- Founded 2022 by Stanford graduate 韩文 (Wen Han)\n- HQ: Antwerp, Belgium — 24 countries, 5 continents\n- Investors: HSBC, Citi, Fountainvest, GSR Ventures, HITE Hedge, Goodman Group\n- Customers: CEVA, Kuehne+Nagel, KLN, Decathlon, Remy Cointreau, Nestle Wyeth, Bluescope, Danske Fragtmaend\n\nORDERING: Email sales@windrose.ai or click any price card. Reserve via Stripe at top of page.\nCHARGING PARTNERS: Milence (EU), ENGIE Vianeo (FR), Kempower (FI/US), EV Realty (US), Greenlane (US), Terawatt (US), Hubject (DE), Autel (NL), Sinexcel (AU), Transport & Energy (UK)\nIf unsure, suggest emailing sales@windrose.ai.
 
 REAL-WORLD MISSIONS (documented, not lab projections):
 - 2,600 km across 5 European countries
@@ -851,7 +851,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5-20251001',
-          max_tokens: 300,
+          max_tokens: 600,
           system: system,
           messages: convHistory
         })
@@ -885,11 +885,36 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
     }
   };
 
+  function renderMarkdown(text) {
+    function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function fmt(s) { return esc(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>'); }
+    var lines = text.split('\n');
+    var out = '', inList = false;
+    lines.forEach(function(line) {
+      var t = line.trim();
+      if (t.match(/^[•\-]\s+\S/)) {
+        if (!inList) { out += '<ul style="margin:6px 0 6px 16px;padding:0;line-height:1.65;">'; inList = true; }
+        out += '<li style="margin-bottom:4px;">' + fmt(t.replace(/^[•\-]\s+/,'')) + '</li>';
+      } else {
+        if (inList) { out += '</ul>'; inList = false; }
+        if (t) out += '<p style="margin:0 0 6px;">' + fmt(t) + '</p>';
+      }
+    });
+    if (inList) out += '</ul>';
+    return out;
+  }
+
   function addMsg(text, cls, isHTML) {
     var msgs = document.getElementById('wr-chat-msgs');
     var div = document.createElement('div');
     div.className = 'wr-msg ' + cls;
-    if (isHTML) { div.innerHTML = text; } else { div.textContent = text; }
+    if (isHTML) {
+      div.innerHTML = text;
+    } else if (cls.indexOf('bot') !== -1 && cls.indexOf('typing') === -1) {
+      div.innerHTML = renderMarkdown(text);
+    } else {
+      div.textContent = text;
+    }
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
     return div;
@@ -906,10 +931,10 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       css.textContent =
         '#wr-chat-btn{position:fixed!important;bottom:1.5rem!important;right:1.5rem!important;width:auto!important;height:48px!important;z-index:9999!important;background:#0a1f44!important;border:2px solid rgba(0,180,255,.5)!important;border-radius:24px!important;cursor:pointer!important;box-shadow:0 4px 16px rgba(0,120,255,.5)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:0 20px 0 16px!important;color:#fff!important;font-size:15px!important;font-weight:600!important;letter-spacing:.01em!important;white-space:nowrap!important;}' +
         '#wr-chat-btn:hover{background:#0d2a5e!important;border-color:rgba(0,180,255,.8)!important;}' +
-        '#wr-chat-panel{position:fixed!important;bottom:5.5rem!important;right:1.5rem!important;z-index:9998!important;width:360px!important;max-width:calc(100vw - 3rem)!important;max-height:70vh!important;background:#0a1a30!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:12px!important;box-shadow:0 8px 32px rgba(0,0,0,.5)!important;flex-direction:column!important;overflow:hidden!important;font-family:DM Sans,sans-serif!important;}' +
+        '#wr-chat-panel{position:fixed!important;bottom:5.5rem!important;right:1.5rem!important;z-index:9998!important;width:520px!important;max-width:calc(100vw - 2rem)!important;max-height:82vh!important;background:#0a1a30!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:12px!important;box-shadow:0 8px 32px rgba(0,0,0,.5)!important;flex-direction:column!important;overflow:hidden!important;font-family:DM Sans,sans-serif!important;}' +
         '#wr-chat-header{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:.75rem 1rem!important;background:#061525!important;border-bottom:1px solid rgba(0,180,255,.2)!important;font-size:.875rem!important;font-weight:600!important;color:#a0c8ff!important;}' +
         '#wr-chat-close{background:none!important;border:none!important;color:#7a9abf!important;cursor:pointer!important;font-size:1rem!important;padding:0!important;}' +
-        '#wr-chat-msgs{flex:1!important;overflow-y:auto!important;padding:1rem!important;background:#0a1a30!important;display:flex!important;flex-direction:column!important;gap:.65rem!important;min-height:200px!important;max-height:50vh!important;}' +
+        '#wr-chat-msgs{flex:1!important;overflow-y:auto!important;padding:1rem!important;background:#0a1a30!important;display:flex!important;flex-direction:column!important;gap:.65rem!important;min-height:200px!important;max-height:65vh!important;}' +
         '#wr-chat-msgs .wr-msg{padding:.65rem .9rem!important;border-radius:10px!important;font-size:.875rem!important;line-height:1.5!important;max-width:85%!important;word-wrap:break-word!important;}' +
         '#wr-chat-msgs .wr-msg.bot{background:rgba(0,120,255,.12)!important;color:#d8e8ff!important;border:1px solid rgba(0,180,255,.15)!important;align-self:flex-start!important;}' +
         '#wr-chat-msgs .wr-msg.user{background:rgba(0,180,255,.25)!important;color:#fff!important;align-self:flex-end!important;}' +
@@ -925,7 +950,8 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
         '#wr-topbar-chat:hover{opacity:.85!important;}' +
         /* Header "Ask AI" — owner's manual pages */
         '#wr-header-chat{background:rgba(0,180,255,.15)!important;border:1px solid rgba(0,180,255,.4)!important;border-radius:4px!important;color:#a0c8ff!important;font-size:13px!important;font-weight:600!important;padding:5px 12px!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;}' +
-        '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}';
+        '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}' +
+        '@media(max-width:600px){#wr-chat-panel{width:calc(100vw - 1rem)!important;right:.5rem!important;bottom:4.5rem!important;max-height:88vh!important;}}';
       document.head.appendChild(css);
     }
 
@@ -984,6 +1010,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
 
     function run() {
       injectPanelHTML();
+      injectTopbarBtn();
       injectHeaderBtn();
       injectFloatingBtn();
     }
