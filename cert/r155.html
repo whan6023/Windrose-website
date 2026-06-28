@@ -101,11 +101,12 @@
   .footer-copy{font-family:'DM Sans',sans-serif;font-size:0.875rem;color:var(--muted);}
 
   /* ── BILINGUAL ── */
-  .zh{display:block;font-size:11px;color:#94A3B8;margin-top:2px;line-height:1.4;font-style:normal;font-family:'DM Sans',system-ui,sans-serif;font-weight:400;letter-spacing:0;text-transform:none;}
-  .cert-field-label .zh{font-size:10px;}
-  .chapter-col-head .zh{font-size:10px;font-weight:400;}
-  .doc-list li .zh{font-size:11px;margin-top:1px;}
-  .flow-list li .zh{font-size:11px;margin-top:1px;}
+  .zh{display:inline;font-size:0.85em;color:#94A3B8;font-style:normal;font-family:'DM Sans',system-ui,sans-serif;font-weight:400;letter-spacing:0;text-transform:none;}
+  .zh::before{content:' / ';color:rgba(148,163,184,0.45);}
+  .cert-field-label .zh{font-size:0.85em;}
+  .chapter-col-head .zh{font-size:0.85em;font-weight:400;}
+  .doc-list li .zh{font-size:0.85em;}
+  .flow-list li .zh{font-size:0.85em;}
 
   @media(max-width:600px){
     body{padding-top:116px;}
@@ -188,12 +189,9 @@ function setLang(lang){
 <div class="cert-wrap">
   <a href="../about-us.html" class="cert-back" data-i18n="cert.back">← Back to About Us</a>
 
-  <div class="cert-badge" data-i18n="cert.r155.badge">Type Approval · UN R155</div>
-  <span class="zh" style="font-size:10px;color:#94A3B8;display:block;margin-bottom:0.5rem;letter-spacing:0;">型式认证 · UN R155</span>
-  <h1 class="cert-headline" data-i18n="cert.r155.title">Cybersecurity Management System</h1>
-  <span class="zh" style="font-size:clamp(1rem,2.5vw,1.3rem);color:#94A3B8;display:block;margin-bottom:0.5rem;font-family:'DM Sans',sans-serif;">网络安全管理体系</span>
-  <p class="cert-subline" data-i18n="cert.r155.sub">Windrose holds UN Regulation No. 155 type approval, confirming that its Cybersecurity Management System (CSMS) meets the requirements of WP.29 for the full vehicle cybersecurity lifecycle — from concept and design through production, operation, and decommissioning.</p>
-  <p class="cert-subline zh" style="margin-top:-1.5rem;margin-bottom:2rem;">温德罗斯持有联合国第155号法规型式认证，确认其网络安全管理体系（CSMS）满足WP.29对整车网络安全全生命周期的要求——从概念设计到量产、运营直至报废。</p>
+  <div class="cert-badge" data-i18n="cert.r155.badge">Type Approval · UN R155 <span class="zh">型式认证 · UN R155</span></div>
+  <h1 class="cert-headline" data-i18n="cert.r155.title">Cybersecurity Management System <span class="zh">网络安全管理体系</span></h1>
+  <p class="cert-subline" data-i18n="cert.r155.sub">Windrose holds UN Regulation No. 155 type approval, confirming that its Cybersecurity Management System (CSMS) meets the requirements of WP.29 for the full vehicle cybersecurity lifecycle — from concept and design through production, operation, and decommissioning. <span class="zh">温德罗斯持有联合国第155号法规型式认证，确认其网络安全管理体系（CSMS）满足WP.29对整车网络安全全生命周期的要求——从概念设计到量产、运营直至报废。</span></p>
 
   <div class="cert-card">
     <div class="cert-field">
@@ -384,9 +382,8 @@ function setLang(lang){
 
   <div class="related-cert">
     <div>
-      <div class="related-cert-label" data-i18n="cert.seealso">See also<span class="zh" style="font-size:10px;color:#94A3B8;display:block;margin-top:1px;text-transform:none;letter-spacing:0;">另见</span></div>
-      <div class="related-cert-title" data-i18n="cert.r155.related.title">UN R156 — Software Update Management System</div>
-      <div class="zh" style="font-size:12px;color:#94A3B8;margin-top:2px;">UN R156 — 软件升级管理体系</div>
+      <div class="related-cert-label" data-i18n="cert.seealso">See also <span class="zh">另见</span></div>
+      <div class="related-cert-title" data-i18n="cert.r155.related.title">UN R156 — Software Update Management System <span class="zh">软件升级管理体系</span></div>
     </div>
     <a href="r156.html" data-i18n="cert.r155.related.link">View R156 Certificate →</a>
   </div>
@@ -394,8 +391,7 @@ function setLang(lang){
 
 <footer>
   <a href="../index.html" class="footer-logo">Windrose</a>
-  <p class="footer-copy" data-i18n="footer.copy">© 2026 Windrose Electric. All rights reserved.</p>
-  <p class="footer-copy zh" style="margin-top:2px;">© 2026 温德罗斯电动。保留所有权利。</p>
+  <p class="footer-copy" data-i18n="footer.copy">© 2026 Windrose Electric. All rights reserved. <span class="zh">© 2026 温德罗斯电动。保留所有权利。</span></p>
 </footer>
 
 <script src="../unified-search.js" defer></script>
