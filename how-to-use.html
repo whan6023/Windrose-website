@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en" lang="en">
+<html dir="ltr" lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDTHF9XR6R"></script>
@@ -824,15 +824,16 @@ function setLang(lang) {
 
 <!-- TOPBAR -->
 <div id="topbar">
-  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;" data-i18n="label.updated"><span data-i18n="label.updated">Updated:</span> 23 June 2026, 03:01 CST</span>
-  <div id="gs-wrap" style="position:relative;flex:1 1 auto;max-width:340px;min-width:120px;">
+  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;" data-i18n="label.updated"><span data-i18n="label.updated">Updated:</span> 27 June 2026</span>
+  <div id="gs-wrap" style="position:relative;flex:1 1 auto;max-width:460px;min-width:160px;display:flex;align-items:center;">
     <input id="gs-input" type="text" autocomplete="off" spellcheck="false"
-      placeholder="Search or ask anything…"
-      style="width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(74,158,255,0.25);border-radius:4px;color:#e8f0ff;font-family:DM Mono, monospace;font-size: 0.875rem;letter-spacing:0.05em;padding:0.28rem 0.65rem;outline:none;box-sizing:border-box;transition:border-color .15s,background .15s;"
+      placeholder="Search or ask AI anything…"
+      style="width:100%;background:rgba(255,255,255,0.09);border:1px solid rgba(74,158,255,0.42);border-radius:4px;color:#e8f0ff;font-family:DM Mono, monospace;font-size:0.875rem;letter-spacing:0.05em;padding:0.28rem 2.7rem 0.28rem 0.65rem;outline:none;box-sizing:border-box;transition:border-color .15s,background .15s,box-shadow .15s;"
       oninput="gsSearch(this.value)"
       onkeydown="gsKey(event)"
-      onfocus="this.style.borderColor='rgba(74,158,255,0.7)';this.style.background='rgba(255,255,255,0.11)'"
-      onblur="this.style.borderColor='rgba(74,158,255,0.25)';this.style.background='rgba(255,255,255,0.07)'">
+      onfocus="this.style.borderColor='rgba(74,158,255,0.85)';this.style.background='rgba(255,255,255,0.13)';this.style.boxShadow='0 0 0 2px rgba(74,158,255,0.14)'"
+      onblur="this.style.borderColor='rgba(74,158,255,0.42)';this.style.background='rgba(255,255,255,0.09)';this.style.boxShadow='none'">
+    <button onclick="var i=document.getElementById('gs-input');if(i.value.trim()){window.gsAskAI();}else{i.focus();}" title="Ask AI" aria-label="Ask AI" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);background:rgba(74,158,255,0.16);border:1px solid rgba(74,158,255,0.38);border-radius:3px;color:#5aaeff;font-family:Barlow Condensed,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.14rem 0.44rem;cursor:pointer;line-height:1.5;transition:background .15s,color .15s,border-color .15s;" onmouseover="this.style.background='rgba(74,158,255,0.28)';this.style.color='#8ec8ff';this.style.borderColor='rgba(74,158,255,0.6)'" onmouseout="this.style.background='rgba(74,158,255,0.16)';this.style.color='#5aaeff';this.style.borderColor='rgba(74,158,255,0.38)'">AI</button>
   </div>
   <a href="#" onclick="openStripeModal(); return false;" data-i18n="topbar.btn">Reserve Your Windrose →</a>
 </div>
@@ -881,7 +882,6 @@ function setLang(lang) {
     <ul class="nav-dropdown">
       <li><a href="/how-to-use-range-calc" data-i18n="rc.label">Range Calculator</a></li>
       <li><a href="/how-to-use-scenarios" data-i18n="rc.scenarios.label">Range by Scenario</a></li>
-      <li><a href="/how-to-use-charging" data-i18n="chg.label">Charging Partners</a></li>
     </ul>
   </li>
       <li><a data-i18n='nav.network' href='/how-to-service'>How to Service</a>
@@ -896,12 +896,20 @@ function setLang(lang) {
       <li><a data-i18n='technology.label' href='/technology#specs-matrix'>Tech Specs</a></li>
       <li><a data-i18n='tech.platform.label' href='/technology#platform'>Platform Architecture</a></li>
       <li><a data-i18n='tech.proprietary.label' href='/technology#patented'>Proprietary Technology</a></li>
+      <li><a href='/technology#charging-partners' data-i18n='chg.label'>Charging Partners</a></li>
     </ul>
   </li>
       <li><a data-i18n='nav.manufacturing' href='/how-to-build'>How to Build</a>
     <ul class="nav-dropdown">
       <li><a data-i18n='mfg.label' href='/how-to-build#manufacturing'>Manufacturing</a></li>
       <li><a data-i18n='assembly.label' href='/how-to-build#assembly'>Local Assembly</a></li>
+    </ul>
+  </li>
+      <li><a href="certification.html">Certification</a>
+    <ul class="nav-dropdown">
+      <li><a href="certification.html#homologation">Market Access</a></li>
+      <li><a href="certification.html#homologation">EU WVTA</a></li>
+      <li><a href="certification.html#homologation">US FMVSS</a></li>
     </ul>
   </li>
       <li><a data-i18n='nav.about' href='/about-us'>About Us</a>
@@ -912,7 +920,7 @@ function setLang(lang) {
     </ul>
   </li>
     </ul>
-    
+
   </nav>
 <!-- PAGE HEADER -->
 <div style="background:var(--dark); border-bottom:1px solid var(--border); padding:3rem clamp(1.5rem,5vw,4rem) 0.5rem;">
@@ -1014,8 +1022,7 @@ function setLang(lang) {
   .rc-result-label { font-family:DM Sans, sans-serif; font-size:0.875rem; color:var(--muted); margin-top:0.25rem; }
   .rc-result-note { font-family:DM Sans, sans-serif; font-size:0.85rem; color:rgba(122,154,191,0.6); margin-top:0.5rem; font-style:italic; }
 
-  #rc-map { width:100%; height:calc(100vh - 160px); border-radius:0 0 8px 8px; overflow:hidden; z-index:1; min-height:500px; box-sizing:border-box; }
-  @media(max-width:600px){ #rc-map { height:calc(100vh - 180px); min-height:300px; } }
+  #rc-map { width:100%; border-radius:0 0 8px 8px; overflow:hidden; z-index:1; box-sizing:border-box; }
 
   /* Override Leaflet popup to match theme */
   .leaflet-popup-content-wrapper { background:#0d1f38; border:1px solid var(--border); border-radius:4px; color:var(--off-white); box-shadow:0 4px 20px rgba(0,0,0,0.6); }
@@ -1135,6 +1142,37 @@ function setLang(lang) {
 
 </div><!-- /rc-wrap -->
 </section><!-- /RANGE CALCULATOR -->
+
+<!-- CHARGING LOCATIONS -->
+<section style="background:#060f1e; border-top:1px solid var(--border); padding:3rem clamp(1.5rem,5vw,4rem);">
+  <style>
+    .chg-dir-country { margin-bottom: 0.5rem; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .chg-dir-country summary { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem; cursor: pointer; list-style: none; background: #0a1628; user-select: none; transition: background 0.15s; }
+    .chg-dir-country summary::-webkit-details-marker { display: none; }
+    .chg-dir-country summary:hover { background: rgba(74,158,255,0.07); }
+    .chg-dir-country[open] summary { border-bottom: 1px solid var(--border); }
+    .chg-dir-country-flag { font-size: 1.1rem; line-height: 1; }
+    .chg-dir-country-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; color: var(--off-white); flex: 1; }
+    .chg-dir-country-count { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; }
+    .chg-dir-country-chevron { color: var(--muted); font-size: 0.8rem; transition: transform 0.2s; }
+    .chg-dir-country[open] .chg-dir-country-chevron { transform: rotate(180deg); }
+  </style>
+  <p style="font-family:Barlow Condensed, sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Charging Locations</p>
+  <h2 style="font-family:Barlow Condensed, sans-serif;font-size:clamp(1.25rem,3vw,1.6rem);font-weight:700;letter-spacing:0.03em;color:var(--off-white);margin:0 0 1.5rem;">Find a charging site near you</h2>
+
+  <div id="htu-chg-map" style="margin:0 calc(-1 * clamp(1.5rem,5vw,4rem)) 2.5rem;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);"></div>
+
+  <div>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.875rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);">All Charging Sites</span>
+      <span style="flex:1;height:1px;background:var(--border);"></span>
+      <span id="chg-site-count" style="font-family:'Barlow Condensed',sans-serif;font-size:0.875rem;letter-spacing:0.1em;color:var(--muted);"></span>
+    </div>
+    <div id="chg-site-directory"></div>
+  </div>
+</section>
+<!-- /CHARGING LOCATIONS -->
+
 <!-- /CHARGING HIGHLIGHTS -->
 
 
@@ -1317,131 +1355,6 @@ function setLang(lang) {
 <!-- CHARGING -->
 </section>
 
-<style>
-.charging-section .news-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
-@media(max-width:600px){ .charging-section .news-grid { grid-template-columns: 1fr !important; } }
-</style>
-<section class="news-section charging-section" id="charging" style="background: var(--dark); border-top: 1px solid var(--border);">
-  <p style="font-family:Barlow Condensed, sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;" data-i18n="chg.label">Charging Partners</p>
-  <h2 style="font-size: 1.25rem; line-height: 1.15; margin-bottom: 1.5rem;" data-i18n="chg.h2">We charge with the world's best infrastructure providers</h2>
-
-  <!-- ── MCS — MEGAWATT CHARGING (6 cards) ──────────────────────── -->
-  <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
-    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.22em; text-transform:uppercase; color:var(--accent);">MCS — Megawatt Charging</span>
-    <span style="flex:1; height:1px; background:var(--border);"></span>
-    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.12em; color:var(--muted);">870 kW</span>
-  </div>
-  <div class="news-grid" style="margin-bottom:3rem;">
-
-    <a class="news-card" id="card-milence" href="https://www.youtube.com/watch?v=8Qz1ONNHJno" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.nl.milence">🇳🇱 Netherlands · Milence · MCS</div>
-      <div class="news-thumb"><img loading="lazy" src="/images/milence-charging.jpg" alt="Windrose and Milence MCS" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.milence.title">Windrose and Milence Partner for MCS Megawatt Charging Across Europe</h3>
-      </div>
-    </a>
-
-    <a class="news-card" href="https://www.linkedin.com/posts/windrosetrucks_mcs-heavydutyev-charginginfrastructure-activity-7419638038714265600--tpG/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.fi.mcs">🇫🇮 Finland · MCS · Kempower</div>
-      <div class="news-thumb"><img loading="lazy" src="https://media.licdn.com/dms/image/v2/D4D22AQErp479AUsBiQ/feedshare-shrink_800/B4DZvfZeiAKEAg-/0/1768979557659?e=1783555200&v=beta&t=Eok8nluaIhHF9Wyh3-eNS5fCHsXtrriX0hJARtQJR0w" alt="Windrose MCS Finland Kempower" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="hc.windrose.completes.mcs.charging">Windrose Completes MCS Charging Test at Kempower HQ in Finland</h3>
-      </div>
-    </a>
-
-    <a class="news-card" id="card-autel" href="https://www.businesswire.com/news/home/20260313298350/en/Windrose-and-Autel-Validate-Real-World-Megawatt-Charging-Under-MCS-Standard-in-the-Netherlands" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge">🇳🇱 Netherlands · Autel · MCS</div>
-      <div class="news-thumb"><img loading="lazy" src="https://mms.businesswire.com/media/20260313298350/en/2746647/4/Image_20260313144722_4558_12.jpg" alt="Windrose and Autel MCS Roosendaal Netherlands" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.windrose.and.autel.validate.real.wo">Windrose and Autel Validate Real-World Megawatt Charging Under MCS Standard in the Netherlands</h3>
-      </div>
-    </a>
-
-    <a class="news-card" href="https://www.hubject.com/blog-posts/hubject-and-windrose-partner-to-enable-plug-charge-for-next-generation-electric-trucks" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.de.hubject">🇩🇪 Germany · Hubject · Plug&amp;Charge</div>
-      <div class="news-thumb"><img loading="lazy" src="https://cdn.prod.website-files.com/6047809d3e2d000064d0aba9/69a8094843957338fb377af1_PR-Hubject-x-windrose.png" alt="Hubject and Windrose Plug&Charge" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="hc.hubject.and.windrose.partner">Hubject and Windrose Partner to Enable Plug&amp;Charge and MCS for Electric Trucks</h3>
-      </div>
-    </a>
-
-    <a class="news-card" id="card-terawatt" href="https://www.terawattinfrastructure.com/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.us.terawatt">🇺🇸 United States · Terawatt</div>
-      <div class="news-thumb"><img loading="lazy" src="https://cdn.prod.website-files.com/659e849830d60c075b939085/683f331f7ad6644fa1831afe_Terawatt_Infrastructure_and_Windrose_Technology.avif" alt="Windrose and Terawatt" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.terawatt.title">Windrose and Terawatt Strengthen Strategic Partnership Through High-Power Charging and Software Integration</h3>
-      </div>
-    </a>
-
-    <a class="news-card" id="card-evrealty" href="https://kempower.com/news/first-kempower-mega-satellite-mcs-in-north-america-charged-successfully-under-real-world-conditions-at-ev-realtys-san-bernardino-hub-in-california/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.us.evrealty">🇺🇸 United States · EV Realty · Kempower</div>
-      <div class="news-thumb"><img loading="lazy" src="https://earj6jxwkhd.exactdn.com/wp-content/uploads/2026/03/windrose-mcs-charge-evrealty_1.jpg?strip=all" alt="EV Realty MCS validation" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.evrealty.title">Kempower, Windrose, and EV Realty Validate MCS Interoperability Under Real-World Conditions</h3>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- ── CCS / DC FAST (5 cards) ─────────────────────────────────── -->
-  <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
-    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.22em; text-transform:uppercase; color:var(--accent);">CCS / DC Fast</span>
-    <span style="flex:1; height:1px; background:var(--border);"></span>
-    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.12em; color:var(--muted);">up to 350 kW</span>
-  </div>
-  <div class="news-grid">
-
-    <a class="news-card" id="card-engie" href="https://www.engie-vianeo.com/en/news/engie-vianeo-and-windrose-join-forces-to-accelerate-the-electrification-of-heavy-duty-transport/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.fr.engie">🇫🇷 France · ENGIE Vianeo</div>
-      <div class="news-thumb"><img src="https://www.engie-vianeo.com/wp-content/uploads/2026/03/ENGIEVianeo_windrose2.webp" alt="ENGIE Vianeo and Windrose" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.engie.title">ENGIE Vianeo and Windrose Join Forces to Accelerate Electrification of Heavy-Duty Transport</h3>
-      </div>
-    </a>
-
-    <a class="news-card" id="card-uk-charge" href="https://transportandenergy.com/2026/03/24/windrose-records-its-fastest-charging-session-in-uk/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.uk.charge">🇬🇧 United Kingdom · Fastest Charge</div>
-      <div class="news-thumb"><img loading="lazy" src="https://transportandenergy.com/wp-content/uploads/2026/03/img-b48a1d24-7aa5-4853-ad4f-43166ff9aa78.jpg" alt="Windrose fastest charging session UK" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.uk.charge.title">Windrose Records Its Fastest Charging Session in the UK</h3>
-      </div>
-    </a>
-
-    <a class="news-card" id="card-greenlane" href="https://www.drivegreenlane.com/news/windrose-to-offer-3-months-of-complementary-charging-on-the-greenlane-network-with-every-electric-truck-purchase/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.us.greenlane">🇺🇸 United States · Greenlane</div>
-      <div class="news-thumb"><img loading="lazy" src="https://www.drivegreenlane.com/wp-content/uploads/2026/01/image-63-680x510.jpeg" alt="Windrose and Greenlane" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.greenlane.title">3 Months of Complementary Charging on the Greenlane Network with Every Windrose Purchase</h3>
-      </div>
-    </a>
-
-    <a class="news-card" href="https://www.enelxway.com/cl/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge">🇨🇱 Chile · Enel X Way</div>
-      <div class="news-thumb"><img loading="lazy" src="/images/enel-chile-carretera.jpg" alt="Enel — Primera Carretera Eléctrica de Alta Potencia de Chile" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-body">
-        <h3 class="news-title">Enel — Primera Carretera Eléctrica de Alta Potencia de Chile</h3>
-      </div>
-    </a>
-
-    <a class="news-card" href="https://en.sinexcel.com/about/detail.php?id=5&amp;bid=5250&amp;cid=315" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card-country-badge" data-i18n="badge.au.sinexcel">🇦🇺 Australia · Sinexcel</div>
-      <div class="news-thumb"><img loading="lazy" src="https://en.sinexcel.com/uploads/image/20241031/1730366988.jpg" alt="Sinexcel and Windrose charging Australia" onerror="this.onerror=null;this.src='/images/31cc724485.svg';this.style.objectFit='contain';this.style.background='#0a1628';"></div>
-      <div class="news-thumb-placeholder" style="display:none;"><svg viewBox="0 0 24 24" stroke-width="1.2" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <div class="news-body">
-        <h3 class="news-title" data-i18n="card.au.sinexcel.title">Sinexcel and Windrose Partner to Advance High-Power Charging in Australia</h3>
-      </div>
-    </a>
-
-  </div>
-</section>
-
 <!-- OWNERS MANUAL -->
 <style>
 .om-edition-wrap { display:flex; align-items:center; gap:1.25rem; background:rgba(74,158,255,0.06); border:1px solid rgba(74,158,255,0.25); border-radius:10px; padding:1.1rem 1.4rem; text-decoration:none; transition:border-color .2s,background .2s; max-width:480px; margin-bottom:2.5rem; }
@@ -1617,7 +1530,7 @@ function setLang(lang) {
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-<script src="./windrose-globe.js"></script>
+<script src="./windrose-globe.js?v=7"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   /* ── Range model ─────────────────────────────────────────── */
@@ -1651,6 +1564,7 @@ document.addEventListener('DOMContentLoaded', function(){
   /* ── Globe init ─────────────────────────────────────────── */
   var globeApi = null;
   WindroseGlobe.init('rc-map', {
+    flat: true,
     layers: ['mcs','ccs'],
     defaultLayers: ['mcs','ccs'],
     onReady: function(api) {
@@ -1661,8 +1575,64 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 
+  /* ── Charging locations map ─────────────────────────────── */
+  function buildSiteDirectory() {
+    if (!window.WindroseGlobe || !window.WindroseGlobe.CHARGING) return;
+    var sites = window.WindroseGlobe.CHARGING;
+    document.getElementById('chg-site-count').textContent = sites.length + ' locations';
+    var groups = {}, order = [];
+    sites.forEach(function(s) {
+      var key = s.co || 'Other';
+      if (!groups[key]) { groups[key] = { flag: s.flag || '', sites: [] }; order.push(key); }
+      groups[key].sites.push(s);
+    });
+    var tableHead = '<table style="width:100%;border-collapse:collapse;font-family:\'DM Sans\',sans-serif;font-size:0.85rem;">'
+      + '<thead><tr style="background:#0a1628;border-bottom:1px solid var(--border);">'
+      + '<th style="text-align:left;padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;">Site</th>'
+      + '<th style="text-align:left;padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;">Operator</th>'
+      + '<th style="text-align:right;padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;">Power</th>'
+      + '<th style="text-align:right;padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;">Bays</th>'
+      + '<th style="text-align:left;padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;">Connector</th>'
+      + '<th style="text-align:left;padding:10px 14px;font-family:\'Barlow Condensed\',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;">Details</th>'
+      + '</tr></thead>';
+    var html = order.map(function(country) {
+      var g = groups[country];
+      var rows = g.sites.map(function(s, i) {
+        var isMCS = s.con && s.con.indexOf('MCS') !== -1;
+        var rowBg = i % 2 === 0 ? 'background:var(--card-bg);' : 'background:rgba(74,158,255,0.02);';
+        var conTag = isMCS
+          ? '<span style="font-family:\'Barlow Condensed\',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);border-radius:3px;padding:1px 6px;">' + s.con + '</span>'
+          : '<span style="font-family:\'Barlow Condensed\',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;background:rgba(96,165,250,0.12);color:#60a5fa;border:1px solid rgba(96,165,250,0.25);border-radius:3px;padding:1px 6px;">' + s.con + '</span>';
+        return '<tr style="' + rowBg + 'border-bottom:1px solid rgba(74,158,255,0.07);">'
+          + '<td style="padding:9px 14px;color:var(--off-white);font-weight:500;white-space:nowrap;">' + s.name + '</td>'
+          + '<td style="padding:9px 14px;color:' + s.color + ';white-space:nowrap;">' + s.op + '</td>'
+          + '<td style="padding:9px 14px;text-align:right;color:var(--off-white);font-variant-numeric:tabular-nums;white-space:nowrap;">' + s.kw.toLocaleString() + ' kW</td>'
+          + '<td style="padding:9px 14px;text-align:right;color:rgba(200,220,255,0.6);font-variant-numeric:tabular-nums;">' + s.units + '</td>'
+          + '<td style="padding:9px 14px;">' + conTag + '</td>'
+          + '<td style="padding:9px 14px;color:rgba(180,200,240,0.55);font-size:0.8rem;max-width:320px;">' + (s.note || '') + '</td>'
+          + '</tr>';
+      }).join('');
+      return '<details class="chg-dir-country">'
+        + '<summary>'
+        + '<span class="chg-dir-country-flag">' + g.flag + '</span>'
+        + '<span class="chg-dir-country-name">' + country + '</span>'
+        + '<span class="chg-dir-country-count">' + g.sites.length + ' site' + (g.sites.length !== 1 ? 's' : '') + '</span>'
+        + '<span class="chg-dir-country-chevron">▼</span>'
+        + '</summary>'
+        + '<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">'
+        + tableHead + '<tbody>' + rows + '</tbody></table>'
+        + '</div>'
+        + '</details>';
+    }).join('');
+    document.getElementById('chg-site-directory').innerHTML = html;
+  }
+  WindroseGlobe.init('htu-chg-map', {
+    flat: true, cluster: true, searchable: true, regions: true,
+    layers: ['mcs','ccs'], defaultLayers: ['mcs','ccs'],
+    onReady: function() { buildSiteDirectory(); }
+  });
 
-  /* ── Update display ─────────────────────────────────────── */
+    /* ── Update display ─────────────────────────────────────── */
   function update(fitToLocation){
     var km = calcRange(state.trailers, state.speedIdx, state.temp);
     document.getElementById('rc-km').textContent = km.toLocaleString();
@@ -2741,11 +2711,6 @@ function openStripeModal() { openReserveModal(); }
 <!-- FOOTER -->
 <footer style="background:#040b14; border-top:1px solid var(--border); padding:clamp(1.5rem,5vw,4rem) clamp(1.5rem,5vw,4rem) 0;">
 
-  <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-bottom:3rem;">
-    <a href='/' style='font-size:1.25rem; text-decoration:none; color:var(--accent); font-family:Barlow Condensed, sans-serif; letter-spacing:0.05em;'>Windrose</a>
-    <p style="font-size:0.875rem; color:var(--muted); max-width:360px; line-height:1.65; margin:0;" data-i18n="footer.tagline">Building the electric trucks that move the world — cleaner, smarter, and further.</p>
-  </div>
-
   <!-- TABLE OF CONTENTS -->
   <div aria-label="Site map" role="navigation" style="border-top:1px solid var(--border); padding-top:2.5rem; margin-bottom:3rem;">
     <div style="font-family:Barlow Condensed, sans-serif; font-size:0.85rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1.25rem;" data-i18n="footer.toc.label">Site Map</div>
@@ -2758,15 +2723,19 @@ function openStripeModal() { openReserveModal(); }
       </div>
       <div>
         <a href="how-to-use.html" class="footer-toc-head" data-i18n="nav.howtouse">How to Use</a>
-        <ul class="footer-toc-list"><li><a href="how-to-use-range-calc.html" class="toc-link" data-i18n="rc.label">Range Calculator</a></li><li><a href="how-to-use-scenarios.html" class="toc-link" data-i18n="rc.scenarios.label">Range by Scenario</a></li><li><a href="how-to-use-charging.html" class="toc-link" data-i18n="chg.label">Charging Partners</a></li></ul>
+        <ul class="footer-toc-list"><li><a href="how-to-use-range-calc.html" class="toc-link" data-i18n="rc.label">Range Calculator</a></li><li><a href="how-to-use-scenarios.html" class="toc-link" data-i18n="rc.scenarios.label">Range by Scenario</a></li></ul>
         <a href="how-to-service.html" class="footer-toc-head" data-i18n="nav.network">How to Service</a>
         <ul class="footer-toc-list" style="margin-bottom:0;"><li><a href="how-to-service-locations.html" class="toc-link" data-i18n="how-to-service-locations">Service Locations</a></li><li><a href="how-to-service-warranty.html" class="toc-link" data-i18n="svc.warranty">Warranty</a></li><li><a href="how-to-service-maintenance.html" class="toc-link" data-i18n="svc.maintenance">Maintenance</a></li><li><a href="how-to-service-repairs.html" class="toc-link" data-i18n="svc.repairs">Repairs</a></li><li><a href="how-to-service-manuals.html" class="toc-link" data-i18n="svc.manuals">Owner Manuals</a></li></ul>
       </div>
       <div>
         <a href="technology.html" class="footer-toc-head" data-i18n="nav.technology">Technology</a>
-        <ul class="footer-toc-list"><li><a href="technology-specs.html" class="toc-link" data-i18n="technology.label">Tech Specs</a></li><li><a href="technology-roadmap.html" class="toc-link" data-i18n="gen.label">Platform Roadmap</a></li></ul>
+        <ul class="footer-toc-list"><li><a href="technology-specs.html" class="toc-link" data-i18n="technology.label">Tech Specs</a></li><li><a href="technology-roadmap.html" class="toc-link" data-i18n="gen.label">Platform Roadmap</a></li><li><a href="technology.html#charging-partners" class="toc-link" data-i18n="chg.label">Charging Partners</a></li></ul>
         <a href="how-to-build.html" class="footer-toc-head" data-i18n="nav.manufacturing">How to Build</a>
         <ul class="footer-toc-list" style="margin-bottom:0;"><li><a href="how-to-build-manufacturing.html" class="toc-link" data-i18n="mfg.label">Manufacturing</a></li></ul>
+      </div>
+      <div>
+        <a href="certification.html" class="footer-toc-head">Certification</a>
+        <ul class="footer-toc-list"><li><a href="certification.html#homologation" class="toc-link">Market Access</a></li><li><a href="certification.html" class="toc-link">EU WVTA</a></li><li><a href="certification.html" class="toc-link">US FMVSS</a></li></ul>
       </div>
       <div>
         <a href="about-us.html" class="footer-toc-head" data-i18n="nav.about">About Us</a>
@@ -2871,9 +2840,23 @@ function openStripeModal() { openReserveModal(); }
   }
 
   // Click or Escape to skip
-  splash.addEventListener('click', function(){
+  splash.addEventListener('click', function(e){
     document.body.style.overflow = '';
     dismiss();
+    // Pass through to a link underneath if the user clicked on one
+    splash.style.pointerEvents = 'none';
+    var el = document.elementFromPoint(e.clientX, e.clientY);
+    splash.style.pointerEvents = '';
+    if (el) {
+      var a = el.closest ? el.closest('a[href]') : null;
+      if (!a && el.tagName === 'A' && el.href) a = el;
+      if (a && a.href) {
+        var dest = a.getAttribute('href');
+        if (dest && dest !== '#' && !dest.startsWith('#')) {
+          window.location.href = a.href;
+        }
+      }
+    }
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){ document.body.style.overflow = ''; dismiss(); }
@@ -2933,15 +2916,9 @@ function openStripeModal() { openReserveModal(); }
     if(!li.querySelector('.nav-dropdown')) return;
     var a = li.querySelector(':scope > a');
     if(!a) return;
-    a.addEventListener('click', function(e){
-      if(li.classList.contains('nav-open')){
-        li.classList.remove('nav-open');
-        // second click navigates — don't prevent default
-      } else {
-        e.preventDefault();
-        document.querySelectorAll('.nav-links > li.nav-open').forEach(function(el){ el.classList.remove('nav-open'); });
-        li.classList.add('nav-open');
-      }
+    a.addEventListener('click', function(){
+      document.querySelectorAll('.nav-links > li.nav-open').forEach(function(el){ el.classList.remove('nav-open'); });
+      li.classList.add('nav-open');
     });
   });
   document.addEventListener('click', function(e){

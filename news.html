@@ -779,7 +779,7 @@ function setLang(lang) {
     <li><a href="news.html" class="active" data-i18n="nav.news">News</a></li>
     <li><a href="manufacturing.html" data-i18n="nav.manufacturing">Manufacturing</a></li>
     <li><a href="charging.html" data-i18n="nav.charging">Charging</a></li>
-    <li><a href="manual.html" data-i18n="nav.manual">Manual</a></li>
+    <li><a href="/owners-manual-us/" data-i18n="nav.manual">Manual</a></li>
   </ul>
 </nav>
 
@@ -1470,10 +1470,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!-- FOOTER -->
 <footer style="background:#040b14; border-top:1px solid var(--border); padding: 3rem 3rem 0;">
-  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-bottom:3rem;">
-    <a href="#" class="logo" style="font-size:1.6rem;">Windrose Electric</a>
-    <p style="font-size:0.8rem; color:var(--muted); max-width:340px; line-height:1.65;" data-i18n="footer.tagline">Building the electric trucks that move the world — cleaner, smarter, and further.</p>
-  </div>
 
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:3rem;">
 
@@ -5270,6 +5266,7 @@ window.TRANSLATIONS = {
   };
 })();
 </script>
+<script src="./chatbot.js" defer></script>
 </body>
 
 <script>

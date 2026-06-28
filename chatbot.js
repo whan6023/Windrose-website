@@ -3,11 +3,199 @@
   var convHistory = [];
   var open = false;
 
+  // Inject related-link styles once
+  (function() {
+    var s = document.createElement('style');
+    s.textContent = '.wr-related{font-size:0.78rem!important;padding:0.5rem 0.8rem!important;background:rgba(0,80,180,0.08)!important;border:1px solid rgba(0,150,255,0.15)!important;border-radius:8px!important;color:#8ab0d8!important;line-height:1.7!important;}.wr-related a{color:#60aaff!important;text-decoration:none!important;display:block!important;}.wr-related a:hover{color:#90ccff!important;text-decoration:underline!important;}.wr-related strong{color:#7ab!important;font-size:0.72rem!important;letter-spacing:0.05em!important;}';
+    document.head.appendChild(s);
+  })();
+
+  // Curated keyword search index for related-link feature
+  var SEARCH_INDEX = [
+    // Buying & pricing
+    { t: 'How to Buy — Pricing & Ordering', u: '/how-to-buy.html', k: ['price', 'cost', 'buy', 'order', 'purchase', 'reserv', 'deposit', 'payment', 'lease', 'finance', 'fund', 'grant', 'hvip', 'subsid', 'incentiv'] },
+    { t: 'European Pricing & Grant Info', u: '/how-to-buy.html#eu-price', k: ['eur', 'europe', '€', 'euro', 'eu grant', 'eu subsid'] },
+    { t: 'US Pricing & HVIP', u: '/how-to-buy.html#us-price', k: ['usd', 'usa', 'us price', 'america', 'hvip', '$285', '$285,000', 'carb', 'california'] },
+    { t: 'UK Pricing & ZEV Grant', u: '/how-to-buy.html#uk-price', k: ['uk', 'britain', 'gbp', '£', 'zev grant', 'united kingdom', 'british'] },
+    { t: 'Australia Pricing', u: '/how-to-buy.html#au-price', k: ['australia', 'aud', 'a$', 'adr'] },
+    // Charging
+    { t: 'How to Charge Your E700', u: '/how-to-use.html#charging', k: ['charg', 'plug', 'mcs', 'ccs', 'ccs1', 'ccs2', 'connector', 'charge time', 'charg speed', 'megawatt', '870', 'kw', 'outlet', 'station'] },
+    { t: 'Charging Partners & Networks', u: '/technology.html#charging-partners', k: ['milence', 'kempower', 'ev realty', 'greenlane', 'terawatt', 'hubject', 'sinexcel', 'partner', 'network', 'charg point', 'charg station'] },
+    { t: 'Plug & Charge (ISO 15118)', u: '/technology.html#charging-partners', k: ['plug and charge', 'plug&charge', 'iso 15118', 'autocharge', 'no card', 'no app'] },
+    { t: 'Owner\'s Manual — Charging Port & Procedure', u: '/owners-manual-us/#charging-port', k: ['charg port', 'charg procedure', 'how to charge', 'charg step'] },
+    // Range & performance
+    { t: 'Range & Performance — Technology', u: '/technology.html#range', k: ['range', 'km', 'mile', '700', '500', 'distance', 'endurance', 'how far', 'range drop', 'range cold', 'payload'] },
+    { t: 'Battery & Motor Specs', u: '/technology.html#specs', k: ['battery', 'kwh', '705', 'lfp', 'motor', 'hp', 'horsepower', '1400', 'torque', 'kw', '1045', '800v', 'voltage'] },
+    { t: 'Owner\'s Manual — Technical Specs', u: '/owners-manual-us/#curb-weight-gvw-axle-load-drive-mode', k: ['weight', 'dimension', 'gcw', 'gvw', 'axle', 'curb weight', 'length', 'width', 'height', 'technical data', 'spec'] },
+    // Driving & operation
+    { t: 'How to Use Your E700 — Driving Guide', u: '/how-to-use.html', k: ['how to driv', 'driv guide', 'how to start', 'how to stop', 'how to use', 'operat'] },
+    { t: 'Owner\'s Manual — Power ON/OFF & Starting', u: '/owners-manual-us/#power-on-off', k: ['start', 'power on', 'power off', 'turn on', 'turn off', 'nfc', 'key card', 'ignition', 'boot'] },
+    { t: 'Owner\'s Manual — Driving Controls & Gear', u: '/owners-manual-us/#gear-selector', k: ['gear', 'drive mode', 'park', 'reverse', 'neutral', 'forward', 'd mode', 'r mode', 'p mode'] },
+    { t: 'Owner\'s Manual — Regenerative Braking', u: '/owners-manual-us/#regenerative-braking', k: ['regen', 'regenerat', 'kers', 'kinetic', 'paddle', 'recuperat', 'energy recovery'] },
+    { t: 'Owner\'s Manual — Eco Driving Tips', u: '/owners-manual-us/#eco-driving', k: ['eco', 'efficien', 'save energy', 'maximize range', 'tip', 'fuel sav'] },
+    // ADAS & safety
+    { t: 'ADAS & Driver Assistance — Technology', u: '/technology.html#adas', k: ['adas', 'driver assist', 'safety feature', 'autonomous', 'level 2', 'semi-auto'] },
+    { t: 'Owner\'s Manual — Adaptive Cruise Control', u: '/owners-manual-us/#adaptive-cruise-control-acc', k: ['acc', 'adaptive cruise', 'cruise control', 'auto speed'] },
+    { t: 'Owner\'s Manual — Lane Departure Warning', u: '/owners-manual-us/#lane-departure-warning-ldw', k: ['lane', 'ldw', 'lane keep', 'lane depart', 'lane warning'] },
+    { t: 'Owner\'s Manual — Auto Emergency Braking (AEB)', u: '/owners-manual-us/#auto-emergency-braking', k: ['aeb', 'auto brake', 'emergency brake', 'collision', 'fcw', 'forward collision'] },
+    { t: 'Owner\'s Manual — Around View Monitor', u: '/owners-manual-us/#around-view-monitor-avm', k: ['avm', 'around view', 'surround', 'camera', '360', 'bird eye', 'parking camera'] },
+    { t: 'Owner\'s Manual — Blind Spot Monitoring', u: '/owners-manual-us/#blind-spot', k: ['blind spot', 'bsd', 'side assist', 'lane change assist'] },
+    // Maintenance & service
+    { t: 'How to Service Your E700', u: '/how-to-service.html', k: ['service', 'mainten', 'repair', 'workshop', 'service center', 'scheduled mainten', 'annual', 'inspect'] },
+    { t: 'Owner\'s Manual — Maintenance Schedule', u: '/owners-manual-us/#maintenance-schedule', k: ['mainten schedule', 'service interval', 'when to service', '10,000', '20,000', 'km interval'] },
+    { t: 'Owner\'s Manual — Coolant', u: '/owners-manual-us/#coolant', k: ['coolant', 'antifreeze', 'fluid', 'radiator', 'overheat', 'temp'] },
+    { t: 'Owner\'s Manual — Tire Pressure (TPMS)', u: '/owners-manual-us/#tire-pressure-monitoring', k: ['tire', 'tyre', 'tpms', 'pressure', 'flat', 'puncture', 'psi', 'inflation'] },
+    // Emergency
+    { t: 'Owner\'s Manual — Emergency Procedures', u: '/owners-manual-us/#vehicle-recovery-and-towing', k: ['emergency', 'breakdown', 'tow', 'stuck', 'recover', 'call', 'help'] },
+    { t: 'Owner\'s Manual — Vehicle Fire', u: '/owners-manual-us/#rescue-of-vehicle-on-fire', k: ['fire', 'smoke', 'burn', 'extinguish', 'evacuate', 'hazard'] },
+    // Company & ordering
+    { t: 'About Windrose Electric', u: '/about-us.html', k: ['about', 'company', 'founded', 'headquarter', 'team', 'investor', 'mission', 'history', 'founder', 'wen han', 'antwerp', 'belgium'] },
+    { t: 'Technology Overview', u: '/technology.html', k: ['technolog', 'innovation', 'design', 'engineer', 'how it work', 'platform', 'architecture'] },
+    { t: 'Certifications & Markets', u: '/technology.html#certifications', k: ['certif', 'approv', 'regulation', 'fmvss', 'wvta', 'adr', 'nzta', 'homolog', 'compliance', 'market'] },
+    { t: 'IPO / Investor Relations', u: '/about-us.html#ipo', k: ['ipo', 'stock', 'share', 'invest', 'nyse', 'wdrs', 's-1', 'sec', 'public', 'equity'] },
+    // Warranties & delivery
+    { t: 'Delivery Timeline', u: '/how-to-buy.html#delivery', k: ['deliver', 'when', 'q3 2026', 'q4 2026', 'lead time', 'wait', 'ship', 'arrival'] },
+    { t: 'Winter & Special Conditions Driving', u: '/owners-manual-us/#winter-driving', k: ['winter', 'cold', 'snow', 'ice', 'freeze', 'chain', 'low temp', 'artic'] },
+    // Owner's Manual — Section 1: Safety & Compliance
+    { t: 'Owner\'s Manual — Notes to Users', u: '/owners-manual-us/#notes-to-users', k: ['note', 'symbol', 'icon', 'warning symbol', 'manual guide', 'how to read'] },
+    { t: 'Owner\'s Manual — Warning Descriptions', u: '/owners-manual-us/#warning-description', k: ['danger', 'warning', 'caution', 'notice', 'asterisk', 'illustration'] },
+    { t: 'Owner\'s Manual — Environmental Protection', u: '/owners-manual-us/#environmental-protection-1', k: ['environment', 'recycl', 'disposal', 'green', 'sustainab', 'ecology'] },
+    { t: 'Owner\'s Manual — Operating Safety', u: '/owners-manual-us/#operation-safety-and-permit', k: ['operat safety', 'permit', 'safe operat', 'license', 'authoriz', 'approval'] },
+    { t: 'Owner\'s Manual — Genuine Parts', u: '/owners-manual-us/#original-parts', k: ['genuine', 'original part', 'spare part', 'oem', 'replacement part', 'aftermarket'] },
+    { t: 'Owner\'s Manual — Data Security', u: '/owners-manual-us/#data-security', k: ['data', 'privacy', 'security', 'personal data', 'gdpr', 'data protect'] },
+    { t: 'Owner\'s Manual — Vehicle Modification', u: '/owners-manual-us/#vehicle-modification', k: ['modif', 'custom', 'upfit', 'alter', 'retrofit', 'convert', 'accessory'] },
+    { t: 'Owner\'s Manual — Vehicle Scrapping', u: '/owners-manual-us/#vehicle-scrapping', k: ['scrap', 'end of life', 'dismantl', 'decommission', 'retire', 'battery recycl'] },
+    { t: 'Owner\'s Manual — Use of Snow Chains', u: '/owners-manual-us/#use-of-snow-chains', k: ['snow chain', 'chain', 'winter traction', 'anti-skid', 'traction aid'] },
+    { t: 'Owner\'s Manual — Driving in Hot/Tropical Conditions', u: '/owners-manual-us/#driving-in-tropical-and-high-temperature-areas', k: ['hot', 'tropical', 'heat', 'high temp', 'summer driving', 'overh'] },
+    { t: 'Owner\'s Manual — Ramp Driving', u: '/owners-manual-us/#ramp-driving', k: ['ramp', 'hill', 'slope', 'incline', 'uphill', 'downhill', 'gradient', 'grade'] },
+    { t: 'Owner\'s Manual — Reporting Safety Defects', u: '/owners-manual-us/#reporting-safety-defects', k: ['defect', 'recall', 'report fault', 'safety report', 'nhtsa', 'vosa', 'complaint'] },
+    // Owner's Manual — Section 2: Vehicle Overview
+    { t: 'Owner\'s Manual — Vehicle Exterior Overview', u: '/owners-manual-us/#overview-of-vehicle-exterior', k: ['exterior', 'outside', 'body', 'cab', 'hood', 'front', 'rear', 'side panel', 'mirror'] },
+    { t: 'Owner\'s Manual — Vehicle Interior Overview', u: '/owners-manual-us/#overview-of-vehicle-interior', k: ['interior', 'inside', 'cockpit', 'dashboard', 'console', 'cabin layout'] },
+    { t: 'Owner\'s Manual — Vehicle Nameplate & VIN', u: '/owners-manual-us/#vehicle-nameplate-and-vin', k: ['vin', 'chassis number', 'serial number', 'nameplate', 'vehicle id', 'plate'] },
+    { t: 'Owner\'s Manual — Motor Nameplate Location', u: '/owners-manual-us/#location-of-motor-nameplate-and-code', k: ['motor code', 'motor nameplate', 'motor serial', 'motor id', 'drive unit'] },
+    // Owner's Manual — Section 3: Interior & Comfort
+    { t: 'Owner\'s Manual — Electric Sliding Door', u: '/owners-manual-us/#electric-sliding-door', k: ['sliding door', 'side door', 'passenger door', 'door open', 'door close', 'electric door'] },
+    { t: 'Owner\'s Manual — Seat Belt', u: '/owners-manual-us/#seat-belt', k: ['seat belt', 'seatbelt', 'belt', 'buckle', 'harness', 'restraint'] },
+    { t: 'Owner\'s Manual — Power Window', u: '/owners-manual-us/#power-window', k: ['window', 'power window', 'window open', 'window close', 'window switch'] },
+    { t: 'Owner\'s Manual — Sleeper Privacy Curtain', u: '/owners-manual-us/#sleeper-privacy-curtain', k: ['curtain', 'privacy', 'sleeper curtain', 'bunk curtain', 'blackout'] },
+    { t: 'Owner\'s Manual — Panoramic Sunroof', u: '/owners-manual-us/#panoramic-sunroof', k: ['sunroof', 'panoramic', 'glass roof', 'roof window', 'skylight'] },
+    { t: 'Owner\'s Manual — Windshield Electric Sunshade', u: '/owners-manual-us/#windshield-electric-sunshade', k: ['sunshade', 'windshield shade', 'sun visor', 'electric shade', 'glare'] },
+    { t: 'Owner\'s Manual — Interior Sleeper', u: '/owners-manual-us/#interior-sleeper', k: ['sleeper', 'bunk', 'bed', 'rest area', 'sleep', 'overnight'] },
+    { t: 'Owner\'s Manual — Rearview Mirror', u: '/owners-manual-us/#rearview-mirror', k: ['rearview', 'mirror', 'rear mirror', 'side mirror', 'wing mirror', 'adjust mirror'] },
+    { t: 'Owner\'s Manual — Cup Holder', u: '/owners-manual-us/#cup-holder', k: ['cup', 'drink holder', 'bottle holder', 'beverage', 'cup holder'] },
+    { t: 'Owner\'s Manual — Ash Tray', u: '/owners-manual-us/#ash-tray', k: ['ash tray', 'ashtray', 'smoking', 'cigarette', 'ash'] },
+    { t: 'Owner\'s Manual — Side Toolbox', u: '/owners-manual-us/#side-toolbox', k: ['toolbox', 'tool box', 'tool storage', 'compartment', 'storage box'] },
+    { t: 'Owner\'s Manual — Interior Storage', u: '/owners-manual-us/#interior-storage-device', k: ['storage', 'glove box', 'cubby', 'drawer', 'organizer', 'cargo space'] },
+    { t: 'Owner\'s Manual — Net Bag', u: '/owners-manual-us/#net-bag', k: ['net bag', 'mesh bag', 'cargo net', 'net storage'] },
+    { t: 'Owner\'s Manual — Newspapers & Periodicals Rack', u: '/owners-manual-us/#newspapers-and-periodicals-device', k: ['newspaper', 'magazine', 'document rack', 'periodical', 'reading rack'] },
+    { t: 'Owner\'s Manual — Coat Hook', u: '/owners-manual-us/#coat-hook', k: ['coat hook', 'hanger', 'hook', 'jacket', 'hang coat'] },
+    { t: 'Owner\'s Manual — Hanging Device', u: '/owners-manual-us/#hanging-device', k: ['hanging', 'hang device', 'hook device', 'overhead hook'] },
+    { t: 'Owner\'s Manual — USB Charging', u: '/owners-manual-us/#usb-charging', k: ['usb', 'usb charge', 'phone charge', 'device charge', 'usb port', 'usb-a', 'usb-c'] },
+    { t: 'Owner\'s Manual — Wireless Phone Charging', u: '/owners-manual-us/#phone-wireless-charging', k: ['wireless charg', 'qi charg', 'inductive charg', 'wireless phone', 'pad charg'] },
+    { t: 'Owner\'s Manual — Power Outlet', u: '/owners-manual-us/#power-outlet', k: ['power outlet', '230v', '110v', 'socket', 'inverter', 'ac outlet', 'plug in'] },
+    { t: 'Owner\'s Manual — Ceiling Lamp', u: '/owners-manual-us/#ceiling-lamp', k: ['ceiling lamp', 'dome light', 'overhead light', 'interior light', 'roof lamp'] },
+    { t: 'Owner\'s Manual — Courtesy Lamp', u: '/owners-manual-us/#courtesy-lamp', k: ['courtesy lamp', 'step light', 'entry light', 'door lamp', 'welcome light'] },
+    { t: 'Owner\'s Manual — Reading Lamp', u: '/owners-manual-us/#reading-lamp', k: ['reading lamp', 'reading light', 'task light', 'desk lamp', 'bunk light'] },
+    { t: 'Owner\'s Manual — Ambient Lamp', u: '/owners-manual-us/#ambient-lamp', k: ['ambient', 'mood light', 'accent light', 'led strip', 'interior ambiance'] },
+    { t: 'Owner\'s Manual — A/C Control System', u: '/owners-manual-us/#ac-control-system', k: ['air condition', 'a/c', 'hvac', 'climate control', 'heat', 'cool', 'fan', 'ventilat'] },
+    { t: 'Owner\'s Manual — A/C Vent Adjustment', u: '/owners-manual-us/#ac-vent-adjustment', k: ['vent', 'airflow', 'louver', 'air direction', 'duct', 'grille'] },
+    { t: 'Owner\'s Manual — In-Vehicle Fragrance', u: '/owners-manual-us/#in-vehicle-fragrance', k: ['fragrance', 'scent', 'air freshener', 'odor', 'perfume', 'aroma'] },
+    // Owner's Manual — Section 4: Charging & Pre-drive
+    { t: 'Owner\'s Manual — Charging Preparation', u: '/owners-manual-us/#charging-preparation', k: ['charg prep', 'before charg', 'charg setup', 'charg check', 'pre-charg'] },
+    { t: 'Owner\'s Manual — Driving Preparation', u: '/owners-manual-us/#driving-preparation', k: ['pre-drive', 'before driv', 'driv check', 'pre-trip', 'departure check', 'walkaround'] },
+    { t: 'Owner\'s Manual — Driver Seat Adjustment', u: '/owners-manual-us/#driver-seat', k: ['driver seat', 'seat adjust', 'seat position', 'lumbar', 'seat height', 'seat forward'] },
+    { t: 'Owner\'s Manual — Front Passenger Seat', u: '/owners-manual-us/#front-passenger-seat', k: ['passenger seat', 'co-driver seat', 'front seat', 'instructor seat'] },
+    { t: 'Owner\'s Manual — NFC Card', u: '/owners-manual-us/#nfc-card', k: ['nfc', 'key card', 'rfid', 'smart card', 'access card', 'tap card'] },
+    { t: 'Owner\'s Manual — Mechanical Key', u: '/owners-manual-us/#mechanical-key', k: ['mechanical key', 'physical key', 'backup key', 'manual key', 'key fob'] },
+    { t: 'Owner\'s Manual — Steering Wheel Adjustment', u: '/owners-manual-us/#adjustment-of-steering-wheel', k: ['steering wheel adjust', 'tilt', 'telescope', 'wheel position', 'column adjust'] },
+    { t: 'Owner\'s Manual — Steering Wheel Buttons', u: '/owners-manual-us/#buttons-on-steering-wheel', k: ['steering wheel button', 'horn', 'cruise button', 'multifunction', 'wheel control'] },
+    // Owner's Manual — Section 5: Instrument Cluster
+    { t: 'Owner\'s Manual — Instrument Cluster Overview', u: '/owners-manual-us/#overview-of-instrument-cluster', k: ['instrument cluster', 'dashboard display', 'gauge', 'speedometer', 'odometer', 'cluster'] },
+    { t: 'Owner\'s Manual — Indicators & Warning Lamps', u: '/owners-manual-us/#indicators-and-warning-lamps', k: ['warning lamp', 'indicator', 'check light', 'fault light', 'malfunction', 'warning light', 'symbol mean'] },
+    // Owner's Manual — Section 6: Driving Controls
+    { t: 'Owner\'s Manual — Wiper Control', u: '/owners-manual-us/#wiper-control', k: ['wiper', 'windshield wiper', 'rain wiper', 'washer', 'wiper speed', 'intermittent'] },
+    { t: 'Owner\'s Manual — Light Switch', u: '/owners-manual-us/#light-switch', k: ['headlight', 'light switch', 'daytime running', 'drl', 'low beam', 'high beam', 'fog light'] },
+    { t: 'Owner\'s Manual — Hazard Warning Lamp', u: '/owners-manual-us/#hazard-warning-lamp-switch', k: ['hazard', 'flasher', 'emergency light', 'four-way', '4-way flash', 'triangle button'] },
+    { t: 'Owner\'s Manual — Gear & Shift Operation', u: '/owners-manual-us/#shift-operation', k: ['gear', 'shift', 'drive', 'reverse', 'neutral', 'park', 'selector', 'd r n p'] },
+    { t: 'Owner\'s Manual — Service Brake', u: '/owners-manual-us/#service-brake', k: ['brake', 'foot brake', 'brake pedal', 'brake force', 'abs', 'brake system'] },
+    { t: 'Owner\'s Manual — Electronic Parking Brake (EPB)', u: '/owners-manual-us/#electronic-parking-brake-epb', k: ['parking brake', 'epb', 'handbrake', 'e-brake', 'auto hold', 'park brake'] },
+    { t: 'Owner\'s Manual — Emergency Braking Procedure', u: '/owners-manual-us/#emergency-braking---driving', k: ['emergency brake', 'panic stop', 'full brake', 'stop fast', 'hard brake'] },
+    { t: 'Owner\'s Manual — AR-HUD', u: '/owners-manual-us/#ar-hud', k: ['ar hud', 'head up display', 'hud', 'augmented reality', 'windshield display', 'projection'] },
+    { t: 'Owner\'s Manual — Differential Lock', u: '/owners-manual-us/#differential-lock', k: ['diff lock', 'differential', 'traction', 'axle lock', 'awd', '4wd', 'off-road'] },
+    { t: 'Owner\'s Manual — Driving Mode Selection', u: '/owners-manual-us/#driving-mode', k: ['drive mode', 'eco mode', 'sport mode', 'normal mode', 'boost', 'mode select'] },
+    // Owner's Manual — Section 7: Driver Assistance
+    { t: 'Owner\'s Manual — Moving Off Information System (MOIS)', u: '/owners-manual-us/#moving-off-information-system-mois', k: ['moving off', 'mois', 'pull away', 'start assist', 'departure warn'] },
+    { t: 'Owner\'s Manual — Low Speed Alarm & Reverse', u: '/owners-manual-us/#low-speed-alarm-and-reverse', k: ['low speed', 'reverse alarm', 'backup alarm', 'reversing beep', 'reverse warn', 'pedestrian warn'] },
+    { t: 'Owner\'s Manual — Electronic Braking System (EBS)', u: '/owners-manual-us/#electronic-braking-system-ebs', k: ['ebs', 'electronic braking', 'trailer brake', 'air brake', 'brake control'] },
+    { t: 'Owner\'s Manual — Electronic Brakeforce Distribution (EBD)', u: '/owners-manual-us/#electronic-brakeforce-distribution-ebd', k: ['ebd', 'brake distribution', 'brakeforce', 'brake balance', 'front rear brake'] },
+    { t: 'Owner\'s Manual — Acceleration Slip Regulation (ASR)', u: '/owners-manual-us/#acceleration-slip-regulation-asr', k: ['asr', 'traction control', 'slip control', 'wheel spin', 'acceleration slip'] },
+    { t: 'Owner\'s Manual — Electronic Stability Control (ESC)', u: '/owners-manual-us/#electronic-stability-control-esc', k: ['esc', 'stability control', 'vsc', 'yaw control', 'skid control', 'electronic stability'] },
+    { t: 'Owner\'s Manual — ADDW', u: '/owners-manual-us/#addw', k: ['addw', 'driver drowsy', 'driver attention', 'fatigue', 'drowsiness', 'alert'] },
+    { t: 'Owner\'s Manual — Intelligent Speed Assistance (ISA)', u: '/owners-manual-us/#intelligent-speed-assistance-isa', k: ['isa', 'speed assist', 'speed limit', 'speed warning', 'intelligent speed', 'speed camera'] },
+    { t: 'Owner\'s Manual — Hill Start Assist (HSA)', u: '/owners-manual-us/#hill-start-assist-hsa', k: ['hsa', 'hill start', 'hill hold', 'hill assist', 'rollback prevent', 'slope start'] },
+    { t: 'Owner\'s Manual — Tire Emergency Safety Device (TESD)', u: '/owners-manual-us/#steering-wheel-tire-emergency-safety-device-tesd', k: ['tesd', 'tire emergency', 'blowout control', 'tire safety device', 'run-flat'] },
+    { t: 'Owner\'s Manual — Electro-Hydraulic Power Steering (EHPS)', u: '/owners-manual-us/#electro-hydraulic-power-steering-ehps', k: ['ehps', 'power steering', 'steering assist', 'hydraulic steering', 'eps', 'steering effort'] },
+    { t: 'Owner\'s Manual — Electronic Air Suspension (ECAS)', u: '/owners-manual-us/#electronic-controlled-air-suspension-ecas', k: ['ecas', 'air suspension', 'air bag', 'ride height', 'suspension adjust', 'leveling'] },
+    { t: 'Owner\'s Manual — TPMS System', u: '/owners-manual-us/#tire-pressure-monitoring-system-tpms', k: ['tpms', 'tire pressure system', 'pressure sensor', 'low pressure warn', 'tire monitor'] },
+    { t: 'Owner\'s Manual — Multimedia System', u: '/owners-manual-us/#multimedia-overview', k: ['multimedia', 'infotainment', 'touchscreen', 'display', 'radio', 'navigation', 'bluetooth', 'connect'] },
+    { t: 'Owner\'s Manual — Driver\'s Tools', u: '/owners-manual-us/#drivers-tools', k: ['driver tool', 'on-board tool', 'wheel wrench', 'jack', 'toolkit', 'emergency kit'] },
+    // Owner's Manual — Section 8: Emergency Procedures
+    { t: 'Owner\'s Manual — Safety Hammer', u: '/owners-manual-us/#safety-hammer', k: ['safety hammer', 'glass breaker', 'escape hammer', 'window break', 'emergency exit'] },
+    { t: 'Owner\'s Manual — Fire Extinguisher', u: '/owners-manual-us/#fire-extinguisher', k: ['fire extinguisher', 'extinguish', 'fire suppression', 'foam', 'co2', 'fire fight'] },
+    { t: 'Owner\'s Manual — Towing a Trailer', u: '/owners-manual-us/#towing-trailer', k: ['trailer', 'tow', 'coupling', 'fifth wheel', 'pin', 'semi-trailer', 'hitch', 'kingpin'] },
+    { t: 'Owner\'s Manual — Brake Failure', u: '/owners-manual-us/#brake-failure', k: ['brake fail', 'brake loss', 'no brake', 'brake fade', 'brake warning', 'runaway'] },
+    { t: 'Owner\'s Manual — Steering Failure', u: '/owners-manual-us/#out-of-control-steering-or-steering-failure', k: ['steering fail', 'lose control', 'out of control', 'steering loss', 'jackknife'] },
+    { t: 'Owner\'s Manual — Tire Burst', u: '/owners-manual-us/#tire-burst', k: ['tire burst', 'blowout', 'flat tire', 'puncture', 'tyre burst', 'blow out'] },
+    { t: 'Owner\'s Manual — Vehicle Sideslip', u: '/owners-manual-us/#vehicle-sideslip', k: ['sideslip', 'skid', 'slide', 'loss of traction', 'aquaplan', 'fishtail'] },
+    { t: 'Owner\'s Manual — High Voltage Accidental Removal', u: '/owners-manual-us/#accidental-removal-of-high-voltage', k: ['high voltage accident', 'hv disconnect', 'cable pull', 'voltage exposure', 'electric shock'] },
+    { t: 'Owner\'s Manual — Emergency Evacuation', u: '/owners-manual-us/#emergency-evacuation', k: ['evacuat', 'escape', 'exit vehicle', 'emergency exit', 'abandon', 'get out'] },
+    { t: 'Owner\'s Manual — Emergency Rescue Equipment', u: '/owners-manual-us/#protective-equipment-for-emergency-rescue-personnel', k: ['rescue equipment', 'protective gear', 'ppe', 'glove', 'first responder', 'rescuer'] },
+    { t: 'Owner\'s Manual — High-Voltage System Information', u: '/owners-manual-us/#high-voltage-system-information', k: ['high voltage', 'hv system', 'hv info', 'orange cable', 'electric hazard', 'hv warning'] },
+    { t: 'Owner\'s Manual — HV System Deactivation', u: '/owners-manual-us/#deactivation-method-of-high-voltage-system', k: ['deactivat', 'hv off', 'disable hv', 'isolat', 'cut power', 'service disconnect'] },
+    { t: 'Owner\'s Manual — Rescue of Wading Vehicle', u: '/owners-manual-us/#rescue-of-wading-vehicle', k: ['wading', 'flood', 'water', 'submerge', 'stuck in water', 'deep water'] },
+    // Owner's Manual — Section 9: Maintenance
+    { t: 'Owner\'s Manual — Maintenance Overview', u: '/owners-manual-us/#necessity-of-maintenance', k: ['mainten overview', 'why service', 'preventive mainten', 'service necessity', 'upkeep'] },
+    { t: 'Owner\'s Manual — Service Mode', u: '/owners-manual-us/#service-mode', k: ['service mode', 'mainten mode', 'workshop mode', 'tech mode', 'diagnostic mode'] },
+    { t: 'Owner\'s Manual — Electric Drive System Inspection', u: '/owners-manual-us/#inspection-of-electric-drive-system', k: ['electric drive inspect', 'motor inspect', 'powertrain check', 'drive unit inspect', 'axle inspect'] },
+    { t: 'Owner\'s Manual — Lighting Inspection', u: '/owners-manual-us/#lighting-inspection', k: ['light inspect', 'bulb check', 'led check', 'headlight check', 'lamp inspect'] },
+    { t: 'Owner\'s Manual — Horn & Wiper Inspection', u: '/owners-manual-us/#inspection-of-horns-and-wipers', k: ['horn', 'wiper inspect', 'horn check', 'wiper blade', 'washer fluid'] },
+    { t: 'Owner\'s Manual — High-Voltage Battery Maintenance', u: '/owners-manual-us/#high-voltage-battery', k: ['hv battery', 'battery mainten', 'battery health', 'battery inspect', 'battery care'] },
+    { t: 'Owner\'s Manual — Tire Maintenance', u: '/owners-manual-us/#tire', k: ['tire mainten', 'tire wear', 'tread depth', 'tire rotat', 'tire replac', 'retread'] },
+    { t: 'Owner\'s Manual — Steering System Maintenance', u: '/owners-manual-us/#steering-system', k: ['steering mainten', 'steering fluid', 'steering inspect', 'power steering mainten'] },
+    { t: 'Owner\'s Manual — High-Voltage Safety Maintenance', u: '/owners-manual-us/#high-voltage-security-maintenance', k: ['hv safety', 'high voltage mainten', 'hv cable inspect', 'insulation check', 'hv service'] },
+    // Owner's Manual — Section 10: Technical Specifications
+    { t: 'Owner\'s Manual — Battery Specifications', u: '/owners-manual-us/#battery', k: ['battery spec', 'battery capacit', 'kwh', 'lfp', 'cell', 'pack', 'soc', 'energy storage'] },
+    { t: 'Owner\'s Manual — Vehicle Dimensions', u: '/owners-manual-us/#vehicle-outline-size', k: ['dimension', 'length', 'width', 'height', 'wheelbase', 'overhang', 'size', 'footprint'] },
+    { t: 'Owner\'s Manual — Power System Parameters', u: '/owners-manual-us/#parameters-of-power-system', k: ['power param', 'motor power', 'peak power', 'continuous power', 'system voltage', 'power spec'] },
+    { t: 'Owner\'s Manual — Fastening Torque', u: '/owners-manual-us/#fastening-torque', k: ['torque spec', 'bolt torque', 'tightening', 'nm', 'fastener', 'wrench torque'] },
+    { t: 'Owner\'s Manual — Tire Pressure Specifications', u: '/owners-manual-us/#tire-pressure-gauge', k: ['tire pressure spec', 'recommended pressure', 'psi', 'bar', 'kpa', 'inflation spec'] },
+    { t: 'Owner\'s Manual — Wheel Alignment Parameters', u: '/owners-manual-us/#wheel-alignment-parameters', k: ['wheel alignment', 'camber', 'caster', 'toe', 'alignment spec', 'steering geometry'] },
+    { t: 'Owner\'s Manual — Gradability', u: '/owners-manual-us/#gradability', k: ['gradab', 'grade', 'climb', 'hill climb', 'slope capab', 'max grade', 'incline capab'] },
+    { t: 'Owner\'s Manual — Air Reservoir Pressure', u: '/owners-manual-us/#working-pressure-of-air-reservoir', k: ['air reserv', 'air tank', 'air pressure', 'compressor', 'pneumatic', 'air brake pressure'] },
+  ];
+
+  function findRelated(q) {
+    var ql = q.toLowerCase();
+    var scored = SEARCH_INDEX.map(function(e) {
+      var score = e.k.reduce(function(s, kw) { return s + (ql.indexOf(kw) >= 0 ? 1 : 0); }, 0);
+      return { e: e, s: score };
+    }).filter(function(x) { return x.s > 0; }).sort(function(a, b) { return b.s - a.s; });
+    return scored.slice(0, 3).map(function(x) { return x.e; });
+  }
+
+  function addRelated(q) {
+    var results = findRelated(q);
+    if (!results.length) return;
+    var links = results.map(function(r) { return '<a href="' + r.u + '">📖 ' + r.t + '</a>'; }).join('');
+    addMsg('<strong>Related pages</strong>' + links, 'bot related', true);
+  }
+
   var LANG_NAMES = {
-    'en':'English\',\'es\':\'Spanish\',\'fr\':\'French\',\'de\':\'German\',\'zh\':\'Chinese (Simplified)',
-    'nl':'Dutch\',\'no\':\'Norwegian\',\'sv\':\'Swedish\',\'fi\':\'Finnish',
-    'da':'Danish\',\'pl\':\'Polish\',\'it\':\'Italian\',\'pt\':\'Portuguese',
-    'ja':'Japanese\',\'ko\':\'Korean'
+    'en':'English', 'es':'Spanish', 'fr':'French', 'de':'German',
+    'zh':'Chinese (Simplified)', 'nl':'Dutch', 'no':'Norwegian',
+    'sv':'Swedish', 'fi':'Finnish', 'da':'Danish', 'pl':'Polish',
+    'it':'Italian', 'pt':'Portuguese', 'ja':'Japanese', 'ko':'Korean'
   };
 
   window.FAQ_LANGS = window.FAQ_LANGS || {}; var FAQ_LANGS = {
@@ -385,7 +573,7 @@
       'en': 'Every E700 includes Level 2+ driver assistance as standard: Autonomous Emergency Braking (AEB), Adaptive Cruise Control with regenerative braking (ACC), 270° Around-View Monitor (AVM), lane-keeping assist, and lane departure warning. Over-the-air (OTA) software updates supported. The platform is designed for Level 4 autonomy by Generation 4 (2030).',
       'zh': '每辆E700标配Level 2+驾驶辅助:自动紧急制动(AEB)、集成再生制动的自适应巡航(ACC)、270°全景监控(AVM)、车道保持辅助和车道偏离预警。支持OTA在线升级。平台设计支持至第四代(2030年)实现L4级自动驾驶。',
       'de': 'Jeder E700 hat serienmäßig Level 2+ Fahrerassistenz: AEB (Notbremsassistent), ACC mit Rekuperation, 270° Rundumsicht (AVM), Spurhalteassistent und Spurverlassenswarnung. OTA-Updates unterstützt. Plattform für Level-4-Autonomie ab Generation 4 (2030) ausgelegt.',
-      'fr': 'Chaque E700 inclut en standard l'assistance conducteur Niveau 2+ : Freinage d'urgence autonome (AEB), régulateur de vitesse adaptatif avec freinage régénératif (ACC), moniteur 270° (AVM), maintien de voie et avertissement de franchissement. Mises à jour OTA supportées. Plateforme conçue pour l'autonomie niveau 4 dès la Génération 4 (2030).',
+      'fr': 'Chaque E700 inclut en standard l\'assistance conducteur Niveau 2+ : Freinage d\'urgence autonome (AEB), régulateur de vitesse adaptatif avec freinage régénératif (ACC), moniteur 270° (AVM), maintien de voie et avertissement de franchissement. Mises à jour OTA supportées. Plateforme conçue pour l\'autonomie niveau 4 dès la Génération 4 (2030).',
       'ja': '全E700にLevel 2+運転支援を標準装備: 自律緊急制動 (AEB)、回生制動統合型ACC、270°全周モニター (AVM)、車線維持・逸脱警告。OTAソフトウェア更新対応。第4世代 (2030年) までにL4自動運転対応を目指す設計。',
       'ko': '모든 E700에 Level 2+ 운전 보조 기본 탑재: 자율 비상 제동 (AEB), 회생 제동 통합 적응형 크루즈 컨트롤 (ACC), 270° 전방위 모니터 (AVM), 차선 유지 및 이탈 경고. OTA 소프트웨어 업데이트 지원. 4세대 (2030) L4 자율주행 설계 기반.',
     },
@@ -399,12 +587,12 @@
       'en': 'Windrose Electric has filed an S-1 registration statement with the U.S. Securities and Exchange Commission for a proposed listing on the New York Stock Exchange under the ticker symbol "WDRS". For investor inquiries, please email investors@windrose.ai.',
       'zh': 'Windrose Electric已向美国证券交易委员会提交S-1注册说明书,拟在纽约证券交易所以"WDRS"为股票代码上市。投资者咨询请发送邮件至investors@windrose.ai。',
       'de': 'Windrose Electric hat beim U.S. Securities and Exchange Commission eine S-1-Registrierungserklärung für eine geplante Notierung an der New York Stock Exchange unter dem Ticker "WDRS" eingereicht. Investorenanfragen bitte an investors@windrose.ai.',
-      'fr': 'Windrose Electric a déposé une déclaration d'enregistrement S-1 auprès de la Securities and Exchange Commission des États-Unis pour une cotation prévue au New York Stock Exchange sous le symbole "WDRS". Demandes investisseurs : investors@windrose.ai.',
+      'fr': 'Windrose Electric a déposé une déclaration d\'enregistrement S-1 auprès de la Securities and Exchange Commission des États-Unis pour une cotation prévue au New York Stock Exchange sous le symbole "WDRS". Demandes investisseurs : investors@windrose.ai.',
       'ja': 'Windrose Electricは、NYSE上場(ティッカー"WDRS")を目的としたS-1登録届出書を米国証券取引委員会に提出しました。投資家向けお問い合わせ: investors@windrose.ai。',
       'ko': 'Windrose Electric은 뉴욕증권거래소 상장 (티커 "WDRS")을 위한 S-1 등록 신고서를 미국 증권거래위원회에 제출했습니다. 투자자 문의: investors@windrose.ai.',
     },
     'advisory': {
-      'en': 'Windrose advisory board: Kevin Fong (co-founder GSR Ventures, ex-Managing Partner Mayfield Fund — $4B AUM); Mikael Karlsson (ex-VP Autonomous Solutions, Volvo Trucks — led Volvo Vera autonomous program); Fredrik Allard (ex-SVP E-Mobility, Scania Group — led Scania's electrification, 9,000 employees); Curt Ferguson (Managing Partner Ventech China, ex-President Coca-Cola Greater China & Korea).',
+      'en': 'Windrose advisory board: Kevin Fong (co-founder GSR Ventures, ex-Managing Partner Mayfield Fund — $4B AUM); Mikael Karlsson (ex-VP Autonomous Solutions, Volvo Trucks — led Volvo Vera autonomous program); Fredrik Allard (ex-SVP E-Mobility, Scania Group — led Scania\'s electrification, 9,000 employees); Curt Ferguson (Managing Partner Ventech China, ex-President Coca-Cola Greater China & Korea).',
       'zh': 'Windrose顾问委员会:Kevin Fong(GSR Ventures联合创始人,前Mayfield Fund管理合伙人——管理资产40亿美元);Mikael Karlsson(前沃尔沃卡车自动驾驶解决方案副总裁——主导Volvo Vera项目);Fredrik Allard(前斯堪尼亚集团E-Mobility高级副总裁——负责斯堪尼亚电气化,9000名员工);Curt Ferguson(Ventech China管理合伙人,前可口可乐大中华及韩国区总裁)。',
     },
     'fallback': {
@@ -504,7 +692,7 @@
     return (FAQ_LANGS['fallback'] && FAQ_LANGS['fallback'][lang]) ? FAQ_LANGS['fallback'][lang] : FAQ_LANGS['fallback']['en'];
   }
 
-  var SYSTEM_BASE = "You are the customer assistant for Windrose Electric, a global electric long-haul truck company headquartered in Antwerp, Belgium. Be concise, warm, and helpful. Keep answers under 80 words. Always respond in {LANGUAGE}.\n\nPRODUCT:\n- Truck: Windrose E700 / Global E700\n- Range: 700 km fully loaded (single trailer at 49 tons), 500 km with double trailer at 64 tons\n- Battery: 705 kWh LFP at 800V — safe, long life. Motor: 1,400 hp (1,045 kW peak)\n- Charging: MCS 870 kW, CCS2, CCS1, GB/T — 38 min charge (20-80%)\n\nPRICING (indicative):\n- EUR: €198,000 excl. taxes — est. €3,900/mo lease\n- GBP: £220,000 excl. VAT — up to £81,000 UK grant — est. £2,200/mo after grant\n- USD: $285,000 excl. taxes — $120,000+ HVIP — est. $3,100/mo after HVIP\n- AUD: A$450,000 excl. GST — est. A$7,200/mo\n- All lease estimates: 5-year term, 20% residual\n\nDELIVERY:\n- Q3 2026: 60% advanced payment required\n- Q4 2026: 5% deposit to reserve, balance due before delivery\n\nCOMPANY:\n- Founded 2022 by Stanford graduate 韩文 (Wen Han)\n- HQ: Antwerp, Belgium — 24 countries, 5 continents\n- Investors: HSBC, Citi, Fountainvest, GSR Ventures, HITE Hedge, Goodman Group\n- Customers: CEVA, Kuehne+Nagel, KLN, Decathlon, Remy Cointreau, Nestle Wyeth, Bluescope, Danske Fragtmaend\n\nORDERING: Email sales@windrose.ai or click any price card. Reserve via Stripe at top of page.\nCHARGING PARTNERS: Milence (EU), ENGIE Vianeo (FR), Kempower (FI/US), EV Realty (US), Greenlane (US), Terawatt (US), Hubject (DE), Autel (NL), Sinexcel (AU), Transport & Energy (UK)\nIf unsure, suggest emailing sales@windrose.ai.
+  var SYSTEM_BASE = `You are the customer assistant for Windrose Electric, a global electric long-haul truck company headquartered in Antwerp, Belgium. Be warm and helpful. Use bullet points (starting with •) for any list of facts, features, prices, or steps — never write these as run-on sentences. Keep answers focused. Always respond in {LANGUAGE}.\n\nPRODUCT:\n- Truck: Windrose E700 / Global E700\n- Range: 700 km fully loaded (single trailer at 49 tons), 500 km with double trailer at 64 tons\n- Battery: 705 kWh LFP at 800V — safe, long life. Motor: 1,400 hp (1,045 kW peak)\n- Charging: MCS 870 kW, CCS2, CCS1, GB/T — 38 min charge (20-80%)\n- Configuration: LFP battery; 4-motor drivetrain\n- Dimensions: 8.1m × 2.5m × 3.9m. Tractor curb weight: 11,835 kg. GCW: 49,000 kg (single trailer), 64,000 kg (B-double)\n- Top speed: 120 km/h. Grade ability: 7.5% fully loaded. Tested: -32°C to +48°C, up to 4,700m altitude\n\nPRICING (indicative):\n- EUR: €198,000 excl. taxes — est. €3,900/mo lease\n- GBP: £220,000 excl. VAT — up to £81,000 UK grant — est. £2,200/mo after grant\n- USD: $285,000 excl. taxes — $120,000+ HVIP — est. $3,100/mo after HVIP\n- AUD: A$450,000 excl. GST — est. A$7,200/mo\n- All lease estimates: 5-year term, 20% residual\n\nDELIVERY:\n- Q3 2026: 60% advanced payment required\n- Q4 2026: 5% deposit to reserve, balance due before delivery\n\nCOMPANY:\n- Founded 2022 by Stanford graduate 韩文 (Wen Han)\n- HQ: Antwerp, Belgium — 24 countries, 5 continents\n- Investors: HSBC, Citi, Fountainvest, GSR Ventures, HITE Hedge, Goodman Group\n- Customers: CEVA, Kuehne+Nagel, KLN, Decathlon, Remy Cointreau, Nestle Wyeth, Bluescope, Danske Fragtmaend\n\nORDERING: Email sales@windrose.ai or click any price card. Reserve via Stripe at top of page.\nCHARGING PARTNERS: Milence (EU), ENGIE Vianeo (FR), Kempower (FI/US), EV Realty (US), Greenlane (US), Terawatt (US), Hubject (DE), Autel (NL), Sinexcel (AU), Transport & Energy (UK)\nIf unsure, suggest emailing sales@windrose.ai.
 
 REAL-WORLD MISSIONS (documented, not lab projections):
 - 2,600 km across 5 European countries
@@ -533,12 +721,51 @@ COMPETITION:
 
 IPO: S-1 filed with SEC for NYSE listing ticker \"WDRS\". Investor inquiries: investors@windrose.ai
 
-ADVISORY BOARD: Kevin Fong (GSR Ventures, ex-Mayfield), Mikael Karlsson (ex-Volvo Trucks VP Autonomy), Fredrik Allard (ex-Scania SVP E-Mobility), Curt Ferguson (Ventech China, ex-Coca-Cola Greater China President)";
+ADVISORY BOARD: Kevin Fong (GSR Ventures, ex-Mayfield), Mikael Karlsson (ex-Volvo Trucks VP Autonomy), Fredrik Allard (ex-Scania SVP E-Mobility), Curt Ferguson (Ventech China, ex-Coca-Cola Greater China President)
+
+OWNER'S MANUAL (Windrose E700 — operational reference):
+Eco Driving: Maintain steady speed, avoid harsh acceleration/braking. Never coast in neutral (damages E-axle lubrication). Use eco mode for max range.
+Winter Driving: Use high-quality coolant; freezing point below local minimum. Keep battery fully charged to prevent freezing. Use snow chains/tires on ice/snow.
+Use of Snow Chains: Install on drive axle tires only. Remove when road is clear. Max speed 50 km/h with chains.
+Ramp Driving: If vehicle rolls back on incline, press brake immediately, engage EPB, then restart. Use low steady speed on climbs. Downshift before descending.
+Driving in Tropical/High-Temperature Areas: Check coolant level before driving. Do not leave flammable items (lighters, aerosols) on dashboard. Monitor temperature warnings.
+Overview of Vehicle Interior: Brake pedal, cup holders, instrument panel buttons, steering wheel, infotainment screen, regenerative braking paddles (left/right), instrument cluster, car control screen, phone wireless charging.
+Electric Sliding Door: Right-side electric sliding door, operable by multiple methods (button, remote, auto).
+Seat Belt: Driver and front passenger equipped with seat belts. Replace any belt subjected to collision impact.
+Power Window: Controlled via switches on left instrument panel or sleeper panel. Auto-closes when vehicle locks.
+Interior Sleeper: Sleeper area for driver and passengers. Privacy curtains available on select models.
+Rearview Mirror: Adjust via instrument panel Control Center > Outside interface. Left/right and up/down adjustment available.
+USB Charging: USB-A and USB-C ports on left instrument panel and front passenger armrest. 15W charging.
+Phone Wireless Charging: 15W wireless charger on right instrument panel.
+Charging Port: Charging ports on both sides of vehicle. Supports MCS (870 kW), CCS1, CCS2, GB/T.
+Driving Preparation: Before driving: check all connections/fasteners, verify motor/E-axle silent, check coolant level, check tire pressure, inspect lights.
+Instrument Cluster: Shows trip info, driving mode, gear, power consumption per 100 mi, estimated range, battery capacity, energy recovery level, speed.
+Wiper Control: Windshield washer stops immediately on button release; auto wipe after washing.
+Power ON/OFF: Unlock vehicle, open door, swipe NFC card at right instrument panel to power on. Press brake pedal, release EPB, select drive mode to drive.
+Electronic Parking Brake (EPB): EPB switch on instrument panel. Apply when parked. Auto-applies in certain conditions.
+Regenerative Braking: Left paddle reduces regen intensity (coasting). Right paddle increases. 4 levels available. Regen recovers energy into battery.
+Around View Monitor (AVM): 360° cameras stitch surround view on screen. Activates automatically at low speed/when reversing.
+Adaptive Cruise Control (ACC): Maintains set speed; automatically decelerates for vehicle ahead using radar. Set speed with steering wheel controls.
+Lane Departure Warning (LDW): Alerts driver visually/audibly when vehicle unintentionally crosses lane markings.
+Tire Pressure Monitoring (TPMS): Displays all tire pressures on instrument cluster. Alerts on low pressure or puncture.
+Vehicle Recovery and Towing: If vehicle cannot drive due to breakdown/accident, contact Windrose authorized service center. Do not attempt self-towing without authorization.
+Rescue of Vehicle on Fire: Assess fire severity immediately. Small fire: use extinguisher. Large fire: evacuate occupants, move away from vehicle, call emergency services. High-voltage battery fires require specialized firefighting.
+Fire Extinguisher: Located in cab. Inspect monthly.
+Coolant: Use recommended coolant with appropriate freezing point. Check level in reservoir (MIN-MAX marks) after temperature drops. Drain and replace via auxiliary water tank drain.
+Tire Pressure Gauge: 295/80R22.5 tires. Check inflation pressure per specifications. Rotate tires per maintenance schedule.
+Lighting Inspection: Vehicle has self-test function for all driving lamps. Check daily.
+Horns/Wipers: Press steering wheel horn button to test. Check wiper blade condition regularly.
+Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single trailer) / 64,000 kg (double trailer). Max speed 120 km/h. Climbing 7.5% fully loaded.`;
 
   window.wrChatToggle = function() {
     open = !open;
     document.getElementById('wr-chat-panel').style.display = open ? 'flex' : 'none';
-    if (open) document.getElementById('wr-chat-input').focus();
+    if (open) {
+      document.getElementById('wr-chat-input').focus();
+      document.body.classList.add('wr-chat-open');
+    } else {
+      document.body.classList.remove('wr-chat-open');
+    }
   };
 
   window.wrAsk = function(q) {
@@ -616,6 +843,7 @@ ADVISORY BOARD: Kevin Fong (GSR Ventures, ex-Mayfield), Mikael Karlsson (ex-Volv
       typing.remove();
       addMsg(instantReply, 'bot', false);
       convHistory.push({ role: 'assistant', content: instantReply });
+      addRelated(q);
       return;
     }
 
@@ -628,7 +856,7 @@ ADVISORY BOARD: Kevin Fong (GSR Ventures, ex-Mayfield), Mikael Karlsson (ex-Volv
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-haiku-4-5-20251001',
-          max_tokens: 300,
+          max_tokens: 600,
           system: system,
           messages: convHistory
         })
@@ -642,6 +870,7 @@ ADVISORY BOARD: Kevin Fong (GSR Ventures, ex-Mayfield), Mikael Karlsson (ex-Volv
       typing.remove();
       addMsg(reply, 'bot', false);
       convHistory.push({ role: 'assistant', content: reply });
+      addRelated(q);
 
     } catch(err) {
       typing.remove();
@@ -657,16 +886,167 @@ ADVISORY BOARD: Kevin Fong (GSR Ventures, ex-Mayfield), Mikael Karlsson (ex-Volv
         addMsg(fallback, 'bot', false);
         convHistory.push({ role: 'assistant', content: fallback });
       }
+      addRelated(q);
     }
   };
+
+  function renderMarkdown(text) {
+    function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function fmt(s) { return esc(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>'); }
+    var lines = text.split('\n');
+    var out = '', inList = false;
+    lines.forEach(function(line) {
+      var t = line.trim();
+      if (t.match(/^[•\-]\s+\S/)) {
+        if (!inList) { out += '<ul style="margin:6px 0 6px 16px;padding:0;line-height:1.65;">'; inList = true; }
+        out += '<li style="margin-bottom:4px;">' + fmt(t.replace(/^[•\-]\s+/,'')) + '</li>';
+      } else {
+        if (inList) { out += '</ul>'; inList = false; }
+        if (t) out += '<p style="margin:0 0 6px;">' + fmt(t) + '</p>';
+      }
+    });
+    if (inList) out += '</ul>';
+    return out;
+  }
 
   function addMsg(text, cls, isHTML) {
     var msgs = document.getElementById('wr-chat-msgs');
     var div = document.createElement('div');
     div.className = 'wr-msg ' + cls;
-    if (isHTML) { div.innerHTML = text; } else { div.textContent = text; }
+    if (isHTML) {
+      div.innerHTML = text;
+    } else if (cls.indexOf('bot') !== -1 && cls.indexOf('typing') === -1) {
+      div.innerHTML = renderMarkdown(text);
+    } else {
+      div.textContent = text;
+    }
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
     return div;
   }
+
+  // ── Global UI injection ──────────────────────────────────────────────
+  // Injects chat panel + floating button (if not already in page HTML),
+  // and adds an "Ask AI" button into whichever fixed header the page has.
+  (function injectChatUI() {
+    // Shared CSS — only inject once
+    if (!document.getElementById('wr-chat-css')) {
+      var css = document.createElement('style');
+      css.id = 'wr-chat-css';
+      css.textContent =
+        '#wr-chat-btn{position:fixed!important;bottom:1.5rem!important;right:1.5rem!important;width:auto!important;height:48px!important;z-index:9999!important;background:#0a1f44!important;border:2px solid rgba(0,180,255,.5)!important;border-radius:24px!important;cursor:pointer!important;box-shadow:0 4px 16px rgba(0,120,255,.5)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:0 20px 0 16px!important;color:#fff!important;font-size:15px!important;font-weight:600!important;letter-spacing:.01em!important;white-space:nowrap!important;transition:background .2s!important;}' +
+        '#wr-chat-btn:hover{background:#0d2a5e!important;border-color:rgba(0,180,255,.8)!important;}' +
+        '#wr-chat-panel{position:fixed!important;bottom:5.5rem!important;right:1.5rem!important;z-index:9998!important;width:520px!important;max-width:calc(100vw - 2rem)!important;max-height:82vh!important;background:#0a1a30!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:12px!important;box-shadow:0 8px 32px rgba(0,0,0,.5)!important;flex-direction:column!important;overflow:hidden!important;font-family:DM Sans,sans-serif!important;}' +
+        '#wr-chat-header{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:.75rem 1rem!important;background:#061525!important;border-bottom:1px solid rgba(0,180,255,.2)!important;font-size:.875rem!important;font-weight:600!important;color:#a0c8ff!important;}' +
+        '#wr-chat-close{background:none!important;border:none!important;color:#7a9abf!important;cursor:pointer!important;font-size:1rem!important;padding:0!important;}' +
+        '#wr-chat-msgs{flex:1!important;overflow-y:auto!important;padding:1rem!important;background:#0a1a30!important;display:flex!important;flex-direction:column!important;gap:.65rem!important;min-height:200px!important;max-height:65vh!important;}' +
+        '#wr-chat-msgs .wr-msg{padding:.65rem .9rem!important;border-radius:10px!important;font-size:.875rem!important;line-height:1.5!important;max-width:85%!important;word-wrap:break-word!important;}' +
+        '#wr-chat-msgs .wr-msg.bot{background:rgba(0,120,255,.12)!important;color:#d8e8ff!important;border:1px solid rgba(0,180,255,.15)!important;align-self:flex-start!important;}' +
+        '#wr-chat-msgs .wr-msg.user{background:rgba(0,180,255,.25)!important;color:#fff!important;align-self:flex-end!important;}' +
+        '#wr-chat-suggestions{display:flex!important;flex-wrap:wrap!important;gap:.4rem!important;padding:.5rem 1rem .75rem!important;background:#0a1a30!important;}' +
+        '#wr-chat-suggestions .wr-chip{font-size:.875rem!important;padding:.35rem .7rem!important;background:rgba(0,180,255,.1)!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:4px!important;color:#a0c8ff!important;cursor:pointer!important;transition:all .15s!important;}' +
+        '#wr-chat-suggestions .wr-chip:hover{background:rgba(0,180,255,.2)!important;color:#fff!important;}' +
+        '#wr-chat-form{display:flex!important;gap:.5rem!important;padding:.75rem 1rem 1rem!important;background:#0a1a30!important;border-top:1px solid rgba(0,180,255,.15)!important;}' +
+        '#wr-chat-input{flex:1!important;background:#06122a!important;border:1px solid rgba(0,180,255,.3)!important;border-radius:6px!important;color:#fff!important;font-size:.875rem!important;padding:.55rem .75rem!important;outline:none!important;}' +
+        '#wr-chat-input:focus{border-color:rgba(0,180,255,.6)!important;}' +
+        '#wr-chat-form button[type=submit]{background:#0078ff!important;border:none!important;border-radius:6px!important;color:#fff!important;padding:0 .85rem!important;cursor:pointer!important;font-size:.875rem!important;}' +
+        /* Topbar "Ask AI" — main site pages */
+        '#wr-topbar-chat{background:#fff!important;color:#060f1e!important;border:none!important;font-family:Barlow Condensed,sans-serif!important;font-size:.875rem!important;letter-spacing:.12em!important;text-transform:uppercase!important;padding:.3rem 1.1rem!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;line-height:1!important;}' +
+        '#wr-topbar-chat:hover{opacity:.85!important;}' +
+        /* Header "Ask AI" — owner's manual pages */
+        '#wr-header-chat{background:rgba(0,180,255,.15)!important;border:1px solid rgba(0,180,255,.4)!important;border-radius:4px!important;color:#a0c8ff!important;font-size:13px!important;font-weight:600!important;padding:5px 12px!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;}' +
+        '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}' +
+        /* ── Mobile: full-screen chat experience ── */
+        '@media(max-width:960px){' +
+          /* Bottom bar entry point — full width, prominent */
+          '#wr-chat-btn{left:0!important;right:0!important;bottom:0!important;width:100%!important;border-radius:0!important;height:auto!important;min-height:64px!important;padding:0 28px!important;padding-bottom:env(safe-area-inset-bottom)!important;font-size:18px!important;font-weight:700!important;letter-spacing:.04em!important;text-transform:uppercase!important;border:none!important;border-top:2px solid rgba(0,180,255,.55)!important;justify-content:center!important;gap:12px!important;box-shadow:0 -4px 24px rgba(0,120,255,.35)!important;}' +
+          /* Hide the floating bar when panel is open (panel covers it) */
+          'body.wr-chat-open #wr-chat-btn{display:none!important;}' +
+          /* Lock scroll behind the full-screen panel */
+          'body.wr-chat-open{overflow:hidden!important;}' +
+          /* Reserve room above the bar so page content stays visible */
+          'body:not(.wr-chat-open){padding-bottom:calc(72px + env(safe-area-inset-bottom))!important;}' +
+          /* Full-screen chat panel */
+          '#wr-chat-panel{top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;max-width:100%!important;height:100%!important;max-height:100%!important;border-radius:0!important;border:none!important;z-index:10000!important;}' +
+          /* Message area fills all available vertical space */
+          '#wr-chat-msgs{flex:1!important;max-height:none!important;padding:1.25rem!important;font-size:1rem!important;}' +
+          '#wr-chat-msgs .wr-msg{font-size:1rem!important;padding:.8rem 1rem!important;}' +
+          /* Bigger header bar */
+          '#wr-chat-header{padding:1.1rem 1.25rem!important;font-size:1.05rem!important;}' +
+          '#wr-chat-close{font-size:1.4rem!important;line-height:1!important;}' +
+          /* Bigger input area */
+          '#wr-chat-input{font-size:1rem!important;padding:.7rem .9rem!important;}' +
+          '#wr-chat-form{padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom))!important;}' +
+          /* Hide manual-page header button — bottom bar is the entry point */
+          '#wr-header-chat{display:none!important;}' +
+        '}';
+      document.head.appendChild(css);
+    }
+
+    function injectPanelHTML() {
+      if (document.getElementById('wr-chat-panel')) return;
+      var panel = document.createElement('div');
+      panel.id = 'wr-chat-panel';
+      panel.style.display = 'none';
+      panel.innerHTML =
+        '<div id="wr-chat-header"><span>⚡ Windrose Assistant</span><button id="wr-chat-close" onclick="wrChatToggle()">✕</button></div>' +
+        '<div id="wr-chat-msgs"><div class="wr-msg bot">Hi! I\'m the Windrose AI assistant. Ask me anything about your E700 — charging, driving, specs, maintenance, or troubleshooting.</div></div>' +
+        '<div id="wr-chat-suggestions">' +
+          '<span class="wr-chip" onclick="wrAskChip(\'charge\')">Charging?</span>' +
+          '<span class="wr-chip" onclick="wrAsk(\'How do I start the vehicle?\')">Start up?</span>' +
+          '<span class="wr-chip" onclick="wrAsk(\'How does regenerative braking work?\')">Regen braking?</span>' +
+          '<span class="wr-chip" onclick="wrAsk(\'What maintenance is required?\')">Maintenance?</span>' +
+        '</div>' +
+        '<form id="wr-chat-form" onsubmit="wrSend(event)"><input id="wr-chat-input" type="text" placeholder="Ask a question about your truck…" autocomplete="off"><button type="submit">➤</button></form>';
+      document.body.appendChild(panel);
+    }
+
+    function injectFloatingBtn() {
+      if (document.getElementById('wr-chat-btn')) return;
+      var btn = document.createElement('button');
+      btn.id = 'wr-chat-btn';
+      btn.title = 'Ask the Windrose AI assistant';
+      btn.setAttribute('onclick', 'wrChatToggle()');
+      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI — Chat with Windrose';
+      document.body.appendChild(btn);
+    }
+
+    function injectTopbarBtn() {
+      if (document.getElementById('wr-topbar-chat')) return;
+      var topbar = document.getElementById('topbar');
+      if (!topbar) return;
+      var btn = document.createElement('button');
+      btn.id = 'wr-topbar-chat';
+      btn.textContent = '⚡ Ask AI';
+      btn.setAttribute('onclick', 'wrChatToggle()');
+      // Insert before the last child (Reserve button) so it sits beside it
+      var last = topbar.lastElementChild;
+      last ? topbar.insertBefore(btn, last) : topbar.appendChild(btn);
+    }
+
+    function injectHeaderBtn() {
+      if (document.getElementById('wr-header-chat')) return;
+      var header = document.querySelector('.site-header');
+      if (!header) return;
+      var searchDiv = header.querySelector('.header-search');
+      var btn = document.createElement('button');
+      btn.id = 'wr-header-chat';
+      btn.textContent = '⚡ Ask AI';
+      btn.setAttribute('onclick', 'wrChatToggle()');
+      searchDiv ? header.insertBefore(btn, searchDiv) : header.appendChild(btn);
+    }
+
+    function run() {
+      injectPanelHTML();
+      injectTopbarBtn();
+      injectHeaderBtn();
+      injectFloatingBtn();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+  })();
 })();

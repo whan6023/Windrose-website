@@ -20,65 +20,65 @@
   ═══════════════════════════════════════════════════════════════════════════ */
 
   var CHARGING = [
-    {lat:53.6,lng:0.2,name:'Immingham',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Rosper Rd DN40 · Open 24h'},
-    {lat:58.4408,lng:14.187,name:'Ödeshög',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Lievägen 9, Ödeshög · Open 24h'},
-    {lat:57.2653,lng:11.938,name:'Varberg',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Pollengatan 10 · Open 24h'},
-    {lat:56.1429,lng:12.5343,name:'Åstorp',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Bronsgatan 12 · 5★'},
-    {lat:52.502,lng:6.2213,name:'Waddinxveen',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Overslagweg 1 · Open 24h'},
-    {lat:51.4082,lng:6.1435,name:'Venlo',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · James Cookweg 31 · 4.5★'},
-    {lat:51.3102,lng:4.5426,name:'Antwerp Goordijk',op:'Milence',kw:400,units:5,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Noorderlaan 626 · Open 24h'},
-    {lat:51.1224,lng:3.9657,name:'Ghent',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Yvonne Fontainestraat · 5★'},
-    {lat:50.9918,lng:5.7741,name:'Maasmechelen',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Truck Charging Station · Open 24h'},
-    {lat:51.8449,lng:12.0028,name:'Vockerode',op:'Milence',kw:300,units:2,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 4.3★'},
-    {lat:53.5347,lng:9.7407,name:'Hamburg Port',op:'Milence',kw:1200,units:6,con:'MCS',color:'#60a5fa',note:'Milence · Port of Hamburg · Open 24h'},
-    {lat:51.6,lng:7.2,name:'Recklinghausen',op:'Milence',kw:400,units:3,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h'},
-    {lat:51.298,lng:9.3583,name:'Kassel–Lohfelden',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h'},
-    {lat:50.9429,lng:11.6593,name:'Hermsdorfer Kreuz',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 4.9★'},
-    {lat:50.5673,lng:7.6991,name:'Mogendorf',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 4.6★'},
-    {lat:50.4367,lng:7.4657,name:'Koblenz',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★'},
-    {lat:50.1592,lng:11.3222,name:'Himmelkron',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 4.5★'},
-    {lat:49.3633,lng:9.7667,name:'Kirchberg a.d. Jagst',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★'},
-    {lat:48.498,lng:11.3222,name:'Munich Allianz Arena',op:'Milence',kw:400,units:2,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h'},
-    {lat:51.0367,lng:2.5917,name:'Dunkirk',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h'},
-    {lat:50.649,lng:3.3241,name:'Lille Lesquin',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★'},
-    {lat:49.4204,lng:4.2574,name:'Reims',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h'},
-    {lat:49.3796,lng:1.5741,name:'Heudebouville',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h'},
-    {lat:49.351,lng:0.1287,name:'Mondeville',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 5★'},
-    {lat:49.2857,lng:2.8185,name:'Saint-Witz',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Truck Charging Station · Open 24h'},
-    {lat:48.9265,lng:6.0657,name:'Gondreville',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★'},
-    {lat:45.298,lng:4.8926,name:'Malataverne',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 5★'},
-    {lat:44.3347,lng:3.4472,name:'Béziers',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 5★'},
-    {lat:43.8408,lng:3.1102,name:'Perpignan',op:'Milence',kw:400,units:3,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★'},
-    {lat:45.7796,lng:9.5593,name:'Piacenza',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Truck Charging Station · 5★'},
-    {lat:45.8122,lng:10.6093,name:'Bagnolo San Vito',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h'},
-    {lat:43.0082,lng:-0.5194,name:'Zaragoza',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h'},
-    {lat:57.8286,lng:11.9639,name:'Landvetter',op:'Milence',kw:400,units:6,con:'CCS + MCS',color:'#34d399',note:'Milence · includes 1×1,400 kW MCS · Open 24h'},
-    {lat:52.502,lng:6.2213,name:'Zwolle',op:'Milence',kw:400,units:4,con:'CCS + MCS',color:'#34d399',note:'Milence Charging Hub · 5★ · includes 1×1,400 kW MCS'},
-    {lat:51.2898,lng:4.4454,name:'Antwerp Ketenis',op:'Milence',kw:400,units:10,con:'CCS + MCS',color:'#34d399',note:'Milence Charging Hub · 4.8★ · largest site (22 bays) · 2×1,400 kW MCS'},
-    {lat:60.0327,lng:10.4926,name:'Vestby E18',op:'Circle K',kw:1000,units:2,con:'MCS + CCS2',color:'#34d399',note:'Circle K Charge · Open 24h'},
-    {lat:57.9388,lng:13.6944,name:'Jönköping E4',op:'Recharge',kw:1000,units:2,con:'MCS + CCS2',color:'#34d399',note:'Recharge at Hagaleden · Open 24h'},
-    {lat:56.1837,lng:10.0,name:'Aarhus E45',op:'Circle K',kw:1000,units:2,con:'MCS + CCS2',color:'#34d399',note:'Circle K Aarhus · Open 24h'},
-    {lat:51.9143,lng:4.6269,name:'Rotterdam',op:'Shell Recharge',kw:1000,units:4,con:'MCS + CCS2',color:'#34d399',note:'Shell Recharge · Open 24h'},
-    {lat:51.502,lng:0.7185,name:'Thurrock M25',op:'BP Pulse',kw:1000,units:2,con:'MCS',color:'#34d399',note:'bp pulse · Open 24h'},
-    {lat:48.9878,lng:2.6306,name:'Paris Rungis',op:'TotalEnergies',kw:1000,units:4,con:'MCS + CCS2',color:'#34d399',note:'TotalEnergies · Open 24h'},
-    {lat:46.3429,lng:4.9444,name:'Lyon A7',op:'TotalEnergies',kw:1000,units:2,con:'MCS',color:'#34d399',note:'TotalEnergies A7 · Open 24h'},
-    {lat:34.074,lng:-117.323,name:'Colton CA',op:'Greenlane',kw:400,units:8,con:'CCS',color:'#60a5fa',note:'Greenlane Center™ · I-10/I-215 Corridor · Open 24/7'},
-    {lat:33.608,lng:-114.596,name:'Blythe CA',op:'Greenlane',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Greenlane · I-10 Corridor · Open 24/7'},
-    {lat:35.264,lng:-116.071,name:'Baker CA',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Plus™ · I-15 Corridor · Coming Soon'},
-    {lat:33.830,lng:-116.545,name:'Palm Springs CA',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Center™ · I-10 Corridor · Coming Soon'},
-    {lat:36.175,lng:-115.137,name:'Las Vegas NV',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Plus™ · Coming Soon'},
-    {lat:33.770,lng:-118.193,name:'Long Beach CA',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Plus™ · Port of Long Beach · Coming Soon'},
-    {lat:37.820,lng:-121.275,name:'Lathrop CA',op:'Terawatt',kw:350,units:10,con:'CCS',color:'#60a5fa',note:'Terawatt · I-5 Corridor'},
-    {lat:34.064,lng:-117.395,name:'Bloomington CA',op:'Terawatt',kw:350,units:10,con:'CCS',color:'#60a5fa',note:'Terawatt · I-10 Corridor'},
-    {lat:37.522,lng:-122.040,name:'Newark CA',op:'Terawatt',kw:350,units:8,con:'CCS',color:'#60a5fa',note:'Terawatt · I-880 Corridor'},
-    {lat:32.570,lng:-117.030,name:'Otay Mesa CA',op:'Terawatt',kw:350,units:8,con:'CCS',color:'#60a5fa',note:'Terawatt · San Diego–Tijuana border'},
-    {lat:34.108,lng:-117.289,name:'San Bernardino CA',op:'EV Realty',kw:1200,units:2,con:'MCS',color:'#f59e0b',note:'EV Realty × Kempower · MCS Interoperability Hub · I-10/I-215'},
-    {lat:51.531,lng:4.464,name:'Roosendaal',op:'Autel',kw:1200,units:2,con:'MCS',color:'#f59e0b',note:'Autel Energy · 1.2 MW MCS Validation Site · Netherlands'},
-    {lat:50.39,lng:3.62,name:'Onnaing (Valenciennes)',op:'ENGIE Vianeo',kw:400,units:4,con:'CCS + MCS',color:'#34d399',note:'ENGIE Vianeo · A2/A23 Hauts-de-France · Future Windrose production site'},
-    {lat:-33.94,lng:-70.72,name:'Los Lagartos',op:'Chile Electric Highway',kw:350,units:4,con:'CCS',color:'#fb923c',note:'Chile High Power Electric Highway · Route 5 Sur'},
-    {lat:-34.71,lng:-71.02,name:'La Platina',op:'Chile Electric Highway',kw:350,units:4,con:'CCS',color:'#fb923c',note:'Chile High Power Electric Highway · Route 5 Sur'},
-    {lat:-35.1,lng:-71.32,name:'Itahue',op:'Chile Electric Highway',kw:350,units:4,con:'CCS',color:'#fb923c',note:'Chile High Power Electric Highway · Maule Region'},
-    {lat:-36.6,lng:-71.93,name:'Copelec',op:'Copelec',kw:350,units:10,con:'CCS',color:'#fb923c',note:'Copelec · Route 5 Sur · Ñuble Region · 5 double dispensers'}
+    {lat:53.6,lng:0.2,name:'Immingham',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Rosper Rd DN40 · Open 24h',co:'United Kingdom',flag:'🇬🇧'},
+    {lat:58.4408,lng:14.187,name:'Ödeshög',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Lievägen 9, Ödeshög · Open 24h',co:'Sweden',flag:'🇸🇪'},
+    {lat:57.2653,lng:11.938,name:'Varberg',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Pollengatan 10 · Open 24h',co:'Sweden',flag:'🇸🇪'},
+    {lat:56.1429,lng:12.5343,name:'Åstorp',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Bronsgatan 12 · 5★',co:'Sweden',flag:'🇸🇪'},
+    {lat:52.502,lng:6.2213,name:'Waddinxveen',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Overslagweg 1 · Open 24h',co:'Netherlands',flag:'🇳🇱'},
+    {lat:51.4082,lng:6.1435,name:'Venlo',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · James Cookweg 31 · 4.5★',co:'Netherlands',flag:'🇳🇱'},
+    {lat:51.3102,lng:4.5426,name:'Antwerp Goordijk',op:'Milence',kw:400,units:5,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Noorderlaan 626 · Open 24h',co:'Belgium',flag:'🇧🇪'},
+    {lat:51.1224,lng:3.9657,name:'Ghent',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Yvonne Fontainestraat · 5★',co:'Belgium',flag:'🇧🇪'},
+    {lat:50.9918,lng:5.7741,name:'Maasmechelen',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Truck Charging Station · Open 24h',co:'Belgium',flag:'🇧🇪'},
+    {lat:51.8449,lng:12.0028,name:'Vockerode',op:'Milence',kw:300,units:2,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 4.3★',co:'Germany',flag:'🇩🇪'},
+    {lat:53.5347,lng:9.7407,name:'Hamburg Port',op:'Milence',kw:1200,units:6,con:'MCS',color:'#60a5fa',note:'Milence · Port of Hamburg · Open 24h',co:'Germany',flag:'🇩🇪'},
+    {lat:51.6,lng:7.2,name:'Recklinghausen',op:'Milence',kw:400,units:3,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h',co:'Germany',flag:'🇩🇪'},
+    {lat:51.298,lng:9.3583,name:'Kassel–Lohfelden',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h',co:'Germany',flag:'🇩🇪'},
+    {lat:50.9429,lng:11.6593,name:'Hermsdorfer Kreuz',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 4.9★',co:'Germany',flag:'🇩🇪'},
+    {lat:50.5673,lng:7.6991,name:'Mogendorf',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 4.6★',co:'Germany',flag:'🇩🇪'},
+    {lat:50.4367,lng:7.4657,name:'Koblenz',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★',co:'Germany',flag:'🇩🇪'},
+    {lat:50.1592,lng:11.3222,name:'Himmelkron',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 4.5★',co:'Germany',flag:'🇩🇪'},
+    {lat:49.3633,lng:9.7667,name:'Kirchberg a.d. Jagst',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★',co:'Germany',flag:'🇩🇪'},
+    {lat:48.498,lng:11.3222,name:'Munich Allianz Arena',op:'Milence',kw:400,units:2,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h',co:'Germany',flag:'🇩🇪'},
+    {lat:51.0367,lng:2.5917,name:'Dunkirk',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h',co:'France',flag:'🇫🇷'},
+    {lat:50.649,lng:3.3241,name:'Lille Lesquin',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★',co:'France',flag:'🇫🇷'},
+    {lat:49.4204,lng:4.2574,name:'Reims',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · Open 24h',co:'France',flag:'🇫🇷'},
+    {lat:49.3796,lng:1.5741,name:'Heudebouville',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h',co:'France',flag:'🇫🇷'},
+    {lat:49.351,lng:0.1287,name:'Mondeville',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 5★',co:'France',flag:'🇫🇷'},
+    {lat:49.2857,lng:2.8185,name:'Saint-Witz',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Truck Charging Station · Open 24h',co:'France',flag:'🇫🇷'},
+    {lat:48.9265,lng:6.0657,name:'Gondreville',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★',co:'France',flag:'🇫🇷'},
+    {lat:45.298,lng:4.8926,name:'Malataverne',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 5★',co:'France',flag:'🇫🇷'},
+    {lat:44.3347,lng:3.4472,name:'Béziers',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence · 5★',co:'France',flag:'🇫🇷'},
+    {lat:43.8408,lng:3.1102,name:'Perpignan',op:'Milence',kw:400,units:3,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · 5★',co:'France',flag:'🇫🇷'},
+    {lat:45.7796,lng:9.5593,name:'Piacenza',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Truck Charging Station · 5★',co:'Italy',flag:'🇮🇹'},
+    {lat:45.8122,lng:10.6093,name:'Bagnolo San Vito',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h',co:'Italy',flag:'🇮🇹'},
+    {lat:43.0082,lng:-0.5194,name:'Zaragoza',op:'Milence',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Milence Charging Hub · Open 24h',co:'Spain',flag:'🇪🇸'},
+    {lat:57.8286,lng:11.9639,name:'Landvetter',op:'Milence',kw:400,units:6,con:'CCS + MCS',color:'#34d399',note:'Milence · includes 1×1,400 kW MCS · Open 24h',co:'Sweden',flag:'🇸🇪'},
+    {lat:52.502,lng:6.2213,name:'Zwolle',op:'Milence',kw:400,units:4,con:'CCS + MCS',color:'#34d399',note:'Milence Charging Hub · 5★ · includes 1×1,400 kW MCS',co:'Netherlands',flag:'🇳🇱'},
+    {lat:51.2898,lng:4.4454,name:'Antwerp Ketenis',op:'Milence',kw:400,units:10,con:'CCS + MCS',color:'#34d399',note:'Milence Charging Hub · 4.8★ · largest site (22 bays) · 2×1,400 kW MCS',co:'Belgium',flag:'🇧🇪'},
+    {lat:60.0327,lng:10.4926,name:'Vestby E18',op:'Circle K',kw:1000,units:2,con:'MCS + CCS2',color:'#34d399',note:'Circle K Charge · Open 24h',co:'Norway',flag:'🇳🇴'},
+    {lat:57.9388,lng:13.6944,name:'Jönköping E4',op:'Recharge',kw:1000,units:2,con:'MCS + CCS2',color:'#34d399',note:'Recharge at Hagaleden · Open 24h',co:'Sweden',flag:'🇸🇪'},
+    {lat:56.1837,lng:10.0,name:'Aarhus E45',op:'Circle K',kw:1000,units:2,con:'MCS + CCS2',color:'#34d399',note:'Circle K Aarhus · Open 24h',co:'Denmark',flag:'🇩🇰'},
+    {lat:51.9143,lng:4.6269,name:'Rotterdam',op:'Shell Recharge',kw:1000,units:4,con:'MCS + CCS2',color:'#34d399',note:'Shell Recharge · Open 24h',co:'Netherlands',flag:'🇳🇱'},
+    {lat:51.502,lng:0.7185,name:'Thurrock M25',op:'BP Pulse',kw:1000,units:2,con:'MCS',color:'#34d399',note:'bp pulse · Open 24h',co:'United Kingdom',flag:'🇬🇧'},
+    {lat:48.9878,lng:2.6306,name:'Paris Rungis',op:'TotalEnergies',kw:1000,units:4,con:'MCS + CCS2',color:'#34d399',note:'TotalEnergies · Open 24h',co:'France',flag:'🇫🇷'},
+    {lat:46.3429,lng:4.9444,name:'Lyon A7',op:'TotalEnergies',kw:1000,units:2,con:'MCS',color:'#34d399',note:'TotalEnergies A7 · Open 24h',co:'France',flag:'🇫🇷'},
+    {lat:34.074,lng:-117.323,name:'Colton CA',op:'Greenlane',kw:400,units:8,con:'CCS',color:'#60a5fa',note:'Greenlane Center™ · I-10/I-215 Corridor · Open 24/7',co:'United States',flag:'🇺🇸'},
+    {lat:33.608,lng:-114.596,name:'Blythe CA',op:'Greenlane',kw:400,units:4,con:'CCS',color:'#60a5fa',note:'Greenlane · I-10 Corridor · Open 24/7',co:'United States',flag:'🇺🇸'},
+    {lat:35.264,lng:-116.071,name:'Baker CA',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Plus™ · I-15 Corridor · Coming Soon',co:'United States',flag:'🇺🇸'},
+    {lat:33.830,lng:-116.545,name:'Palm Springs CA',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Center™ · I-10 Corridor · Coming Soon',co:'United States',flag:'🇺🇸'},
+    {lat:36.175,lng:-115.137,name:'Las Vegas NV',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Plus™ · Coming Soon',co:'United States',flag:'🇺🇸'},
+    {lat:33.770,lng:-118.193,name:'Long Beach CA',op:'Greenlane',kw:400,units:6,con:'CCS',color:'#60a5fa',note:'Greenlane Plus™ · Port of Long Beach · Coming Soon',co:'United States',flag:'🇺🇸'},
+    {lat:37.820,lng:-121.275,name:'Lathrop CA',op:'Terawatt',kw:350,units:10,con:'CCS',color:'#60a5fa',note:'Terawatt · I-5 Corridor',co:'United States',flag:'🇺🇸'},
+    {lat:34.064,lng:-117.395,name:'Bloomington CA',op:'Terawatt',kw:350,units:10,con:'CCS',color:'#60a5fa',note:'Terawatt · I-10 Corridor',co:'United States',flag:'🇺🇸'},
+    {lat:37.522,lng:-122.040,name:'Newark CA',op:'Terawatt',kw:350,units:8,con:'CCS',color:'#60a5fa',note:'Terawatt · I-880 Corridor',co:'United States',flag:'🇺🇸'},
+    {lat:32.570,lng:-117.030,name:'Otay Mesa CA',op:'Terawatt',kw:350,units:8,con:'CCS',color:'#60a5fa',note:'Terawatt · San Diego–Tijuana border',co:'United States',flag:'🇺🇸'},
+    {lat:34.108,lng:-117.289,name:'San Bernardino CA',op:'EV Realty',kw:1200,units:2,con:'MCS',color:'#f59e0b',note:'EV Realty × Kempower · MCS Interoperability Hub · I-10/I-215',co:'United States',flag:'🇺🇸'},
+    {lat:51.531,lng:4.464,name:'Roosendaal',op:'Autel',kw:1200,units:2,con:'MCS',color:'#f59e0b',note:'Autel Energy · 1.2 MW MCS Validation Site · Netherlands',co:'Netherlands',flag:'🇳🇱'},
+    {lat:50.39,lng:3.62,name:'Onnaing (Valenciennes)',op:'ENGIE Vianeo',kw:400,units:4,con:'CCS + MCS',color:'#34d399',note:'ENGIE Vianeo · A2/A23 Hauts-de-France · Future Windrose production site',co:'France',flag:'🇫🇷'},
+    {lat:-33.94,lng:-70.72,name:'Los Lagartos',op:'Chile Electric Highway',kw:350,units:4,con:'CCS',color:'#fb923c',note:'Chile High Power Electric Highway · Route 5 Sur',co:'Chile',flag:'🇨🇱'},
+    {lat:-34.71,lng:-71.02,name:'La Platina',op:'Chile Electric Highway',kw:350,units:4,con:'CCS',color:'#fb923c',note:'Chile High Power Electric Highway · Route 5 Sur',co:'Chile',flag:'🇨🇱'},
+    {lat:-35.1,lng:-71.32,name:'Itahue',op:'Chile Electric Highway',kw:350,units:4,con:'CCS',color:'#fb923c',note:'Chile High Power Electric Highway · Maule Region',co:'Chile',flag:'🇨🇱'},
+    {lat:-36.6,lng:-71.93,name:'Copelec',op:'Copelec',kw:350,units:10,con:'CCS',color:'#fb923c',note:'Copelec · Route 5 Sur · Ñuble Region · 5 double dispensers',co:'Chile',flag:'🇨🇱'}
   ];
 
   var SITES_ALL = [
@@ -158,6 +158,29 @@
 
   var SERVICE = SITES_ALL.filter(function(s){ return !s.c || s.dealer; });
   var PARTS   = SITES_ALL.filter(function(s){ return !!s.c || s.dealer; });
+
+  var DEALERS = [
+    {n:'Xos — Los Angeles, CA',      r:'Official Windrose Dealer · United States', co:'United States',  lat:34.1193721, lng:-118.2524796},
+    {n:'Team Verksted — Oslo',        r:'Official Windrose Dealer · Norway',        co:'Norway',         lat:59.9508814, lng:10.8832674},
+    {n:'Trailerlogistics — Santiago', r:'Official Windrose Dealer · Chile',         co:'Chile',          lat:-33.29,     lng:-70.9}
+  ];
+
+  var CUSTOMERS = [
+    {n:'CEVA Logistics',       r:'Spain · Europe',            co:'Spain',        lat:36.14,   lng:-5.45},
+    {n:'ATC Transport',        r:'Netherlands · Europe',      co:'Netherlands',  lat:51.39,   lng:6.17},
+    {n:'TJA Transportes',      r:'Portugal · Europe',         co:'Portugal',     lat:41.55,   lng:-8.42},
+    {n:'Customer · Norway',    r:'Norway · Europe',           co:'Norway',       lat:59.91,   lng:10.75},
+    {n:'Danske Fragtmænd',     r:'Denmark · Europe',          co:'Denmark',      lat:56.45,   lng:9.40},
+    {n:'Kuehne+Nagel',         r:'China · Asia Pacific',      co:'China',        lat:31.23,   lng:121.47},
+    {n:'KLN Kerry Logistics',  r:'China · Asia Pacific',      co:'China',        lat:23.13,   lng:113.26},
+    {n:'Decathlon',            r:'China · Asia Pacific',      co:'China',        lat:39.08,   lng:117.20},
+    {n:'DSV',                  r:'UAE · Middle East',         co:'UAE',          lat:25.20,   lng:55.27},
+    {n:'CEVA \xd7 Lenovo',     r:'Kazakhstan · Central Asia', co:'Kazakhstan',   lat:43.22,   lng:76.85},
+    {n:'Bluescope',            r:'Australia · Oceania',       co:'Australia',    lat:-34.47,  lng:150.89},
+    {n:'New Energy Transport', r:'Australia · Oceania',       co:'Australia',    lat:-33.90,  lng:150.93},
+    {n:'Customer · New Zealand',r:'New Zealand · Oceania',   co:'New Zealand',  lat:-36.85,  lng:174.76},
+    {n:'Customer · Chile',     r:'Chile · South America',     co:'Chile',        lat:-33.45,  lng:-70.65}
+  ];
 
   var MFG_CITIES = {
     shiyan:   {lon:110.8,  lat:32.6,  role:'cn',  label:'Shiyan',          lx:-55, ly:0,   partner:'Hande',   partnerRole:'Electric Drive Axle'},
@@ -274,6 +297,7 @@
   ═══════════════════════════════════════════════════════════════════════════ */
 
   window.WindroseGlobe = {
+    CHARGING: CHARGING,
     init: function (containerId, opts) {
       opts = opts || {};
       var el = document.getElementById(containerId);
@@ -285,6 +309,7 @@
       el.style.position = 'relative';
       el.style.background = '#040c1a';
       el.style.overflow = 'hidden';
+      el.style.touchAction = 'none';
 
       // Fill viewport height minus nav bars (~130px for topbar+langrow+nav)
       var _initH = Math.max(320, window.innerHeight - 130);
@@ -304,18 +329,20 @@
       // SVG container
       var svgEl = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svgEl.setAttribute('width', '100%');
-      svgEl.style.cssText = 'display:block;cursor:grab;width:100%;height:100%;';
+      svgEl.style.cssText = 'display:block;cursor:grab;width:100%;height:100%;touch-action:none;';
       el.appendChild(svgEl);
 
       // Load world
       fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
         .then(function(r){ return r.json(); })
         .then(function(world) {
-          var api = buildGlobe(svgEl, el, world, availLayers, activeLayers, bar, tooltip, opts);
+          var api = opts.flat
+            ? buildFlatMap(svgEl, el, world, availLayers, activeLayers, bar, tooltip, opts)
+            : buildGlobe(svgEl, el, world, availLayers, activeLayers, bar, tooltip, opts);
           if (typeof opts.onReady === 'function') opts.onReady(api);
         })
         .catch(function() {
-          el.innerHTML += '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:2rem;">Globe requires internet connection</p>';
+          el.innerHTML += '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:2rem;">Map requires internet connection</p>';
         });
     }
   };
@@ -326,7 +353,9 @@
     ccs:      {label:'⚡ CCS',                 color:'#60a5fa'},
     service:  {label:'🔧 After-Sales Service', color:'#4affb0'},
     parts:    {label:'📦 Spare Parts',         color:'#b07aff'},
-    shipping: {label:'🚢 Supply Chain',        color:'#f59e0b'}
+    shipping: {label:'🚢 Supply Chain',        color:'#f59e0b'},
+    dealers:  {label:'🏢 Dealers',             color:'#f59e0b'},
+    customers:{label:'🚛 Customers',           color:'#4affb0'}
   };
 
   function buildLayerBar(availLayers, activeLayers) {
@@ -354,6 +383,31 @@
     var svgEl = null; // closed over, set after svg created
     bar._setSvg = function(s){ svgEl = s; };
     return bar;
+  }
+
+  /* ─── Places panel helpers ────────────────────────────────────────────── */
+  var _placesCache = {};
+
+  function _timeAgo(isoStr) {
+    if (!isoStr) return null;
+    var ms = Date.now() - new Date(isoStr).getTime();
+    var days = Math.floor(ms / 86400000);
+    if (days < 1)  return 'today';
+    if (days < 7)  return days + ' day' + (days > 1 ? 's' : '') + ' ago';
+    var weeks = Math.floor(days / 7);
+    if (weeks < 5) return weeks + ' week' + (weeks > 1 ? 's' : '') + ' ago';
+    var months = Math.floor(days / 30);
+    if (months < 13) return months + ' month' + (months > 1 ? 's' : '') + ' ago';
+    var years = Math.floor(days / 365);
+    return years + ' year' + (years > 1 ? 's' : '') + ' ago';
+  }
+
+  function _stars(rating) {
+    if (!rating) return '';
+    var full = Math.round(rating);
+    var s = '';
+    for (var i = 1; i <= 5; i++) s += i <= full ? '★' : '☆';
+    return s;
   }
 
   /* ─── Core globe ──────────────────────────────────────────────────────── */
@@ -486,7 +540,7 @@
         .style('cursor','pointer')
         .on('mousemove', function(ev, d) { showTip(ev, buildChargingTip(d)); })
         .on('mouseleave', function() { hideTip(); })
-        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+        .on('click', function(ev, d) { hideTip(); showStationPanel(d); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
     });
     // CCS charging layer
     var ccsDots = ptLayer.append('g').attr('class','wg-layer-ccs');
@@ -499,7 +553,7 @@
         .style('cursor','pointer')
         .on('mousemove', function(ev, d) { showTip(ev, buildChargingTip(d)); })
         .on('mouseleave', function() { hideTip(); })
-        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+        .on('click', function(ev, d) { hideTip(); showStationPanel(d); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
     });
 
     // Service
@@ -652,6 +706,8 @@
 
     /* ── Drag ────────────────────────────────────────────────────────────── */
     svg.call(d3.drag()
+      .clickDistance(4)
+      .filter(function(ev) { return !ev.touches || ev.touches.length === 1; })
       .on('start', function(){ svg.style('cursor','grabbing'); hideTip(); })
       .on('drag', function(ev) {
         rot[0] += ev.dx * 0.4;
@@ -769,13 +825,15 @@
     var _pinchDist = null;
     svgEl.addEventListener('touchstart', function(ev) {
       if (ev.touches.length === 2) {
+        ev.preventDefault();
         var dx = ev.touches[0].clientX - ev.touches[1].clientX;
         var dy = ev.touches[0].clientY - ev.touches[1].clientY;
         _pinchDist = Math.sqrt(dx*dx + dy*dy);
       }
-    }, {passive: true});
+    }, {passive: false});
     svgEl.addEventListener('touchmove', function(ev) {
       if (ev.touches.length !== 2 || !_pinchDist) return;
+      ev.preventDefault();
       var dx = ev.touches[0].clientX - ev.touches[1].clientX;
       var dy = ev.touches[0].clientY - ev.touches[1].clientY;
       var d = Math.sqrt(dx*dx + dy*dy);
@@ -783,7 +841,7 @@
       _pinchDist = d;
       proj.scale(scaleBase * scaleK);
       redraw();
-    }, {passive: true});
+    }, {passive: false});
     svgEl.addEventListener('touchend', function(){ _pinchDist = null; }, {passive: true});
 
     /* ── Resize ──────────────────────────────────────────────────────────── */
@@ -815,12 +873,86 @@
     function hideTip() { tooltip.style.display = 'none'; }
     svgEl.addEventListener('mouseleave', hideTip);
 
+    /* ── Station info panel (Google Maps data on click) ─────────────────── */
+    var stationPanel = document.createElement('div');
+    stationPanel.style.cssText = 'position:absolute;bottom:48px;left:8px;width:230px;background:rgba(4,10,22,0.97);border:1px solid rgba(74,158,255,0.35);border-radius:8px;overflow:hidden;z-index:30;display:none;font-family:"DM Sans",sans-serif;box-shadow:0 4px 24px rgba(0,0,0,0.7);';
+    container.appendChild(stationPanel);
+
+    function hidePanel() { stationPanel.style.display = 'none'; }
+
+    function renderPanel(s, gmaps) {
+      var photoHtml = '';
+      if (gmaps && gmaps.found && gmaps.photoRef) {
+        var proxyUrl = '/.netlify/functions/places?photo=' + encodeURIComponent(gmaps.photoRef);
+        photoHtml = '<div style="height:120px;background:#050e1e;overflow:hidden;position:relative;">'
+          + '<img src="' + proxyUrl + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.parentNode.style.display=\'none\'">'
+          + '</div>';
+      }
+
+      var ratingHtml = '';
+      if (gmaps && gmaps.found && gmaps.rating) {
+        ratingHtml = '<div style="display:flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap;">'
+          + '<span style="color:#fbbf24;font-size:0.8rem;letter-spacing:-0.5px;">' + _stars(gmaps.rating) + '</span>'
+          + '<span style="color:rgba(200,220,255,0.7);font-size:0.78rem;">' + gmaps.rating.toFixed(1) + '</span>'
+          + '<span style="color:rgba(160,190,230,0.4);font-size:0.75rem;">· ' + (gmaps.reviewCount || 0).toLocaleString() + ' reviews</span>'
+          + '</div>';
+      }
+
+      var lastReviewHtml = '';
+      if (gmaps && gmaps.found && gmaps.lastReviewDate) {
+        var ago = _timeAgo(gmaps.lastReviewDate);
+        if (ago) lastReviewHtml = '<div style="color:rgba(150,180,220,0.45);font-size:0.72rem;margin-top:3px;">Last reviewed ' + ago + '</div>';
+      }
+
+      var showerHtml = '';
+      if (gmaps && gmaps.found && gmaps.hasShower === true) {
+        showerHtml = '<div style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;background:rgba(0,180,120,0.12);border:1px solid rgba(0,200,120,0.2);border-radius:4px;padding:2px 7px;font-size:0.72rem;color:#4ade80;">🚿 Showers</div>';
+      }
+
+      var loadingHtml = (!gmaps) ? '<div style="color:rgba(150,180,220,0.4);font-size:0.72rem;margin-top:6px;">Loading Google Maps data…</div>' : '';
+      var noDataHtml  = (gmaps && !gmaps.found) ? '<div style="color:rgba(150,180,220,0.3);font-size:0.72rem;margin-top:6px;">No Google Maps listing found</div>' : '';
+
+      stationPanel.innerHTML = photoHtml
+        + '<div style="padding:10px 12px 12px;">'
+        + '<div style="display:flex;align-items:flex-start;justify-content:space-between;">'
+        +   '<div><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1rem;font-weight:700;color:' + s.color + ';line-height:1.2;">' + s.name + '</div>'
+        +   '<div style="color:rgba(180,200,255,0.45);font-size:0.72rem;letter-spacing:0.07em;text-transform:uppercase;margin-top:2px;">' + s.op + '</div></div>'
+        +   '<button onclick="this.closest(\'[style*=z-index:30]\').style.display=\'none\'" style="background:none;border:none;color:rgba(140,170,210,0.5);font-size:1rem;cursor:pointer;padding:0 0 0 6px;line-height:1;margin-top:-2px;" title="Close">✕</button>'
+        + '</div>'
+        + '<div style="color:rgba(200,220,255,0.55);font-size:0.78rem;margin-top:5px;">' + s.kw + ' kW · ' + s.units + ' units · ' + s.con + '</div>'
+        + ratingHtml + lastReviewHtml + showerHtml + loadingHtml + noDataHtml
+        + '</div>';
+    }
+
+    function showStationPanel(s) {
+      renderPanel(s, null);
+      stationPanel.style.display = 'block';
+
+      var cacheKey = s.lat + ',' + s.lng;
+      if (_placesCache[cacheKey]) {
+        renderPanel(s, _placesCache[cacheKey]);
+        return;
+      }
+
+      var url = '/.netlify/functions/places?lat=' + s.lat + '&lng=' + s.lng + '&name=' + encodeURIComponent(s.name);
+      fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          _placesCache[cacheKey] = data;
+          if (stationPanel.style.display !== 'none') renderPanel(s, data);
+        })
+        .catch(function() {
+          _placesCache[cacheKey] = { found: false };
+          if (stationPanel.style.display !== 'none') renderPanel(s, { found: false });
+        });
+    }
+
     function buildChargingTip(s) {
       return '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;color:' + s.color + ';margin-bottom:3px;">' + s.name + '</div>'
         + '<div style="color:rgba(180,200,255,0.55);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:5px;">' + s.op + '</div>'
         + '<div style="color:rgba(200,220,255,0.8);font-size:0.85rem;">' + s.kw + ' kW · ' + s.units + ' units · ' + s.con + '</div>'
         + (s.note ? '<div style="color:rgba(200,220,255,0.5);font-size:0.8rem;margin-top:3px;">' + s.note + '</div>' : '')
-        + (opts.onDotClick ? '<div style="color:rgba(74,158,255,0.55);font-size:0.75rem;margin-top:4px;">Click to view ↓</div>' : '');
+        + '<div style="color:rgba(74,158,255,0.55);font-size:0.75rem;margin-top:4px;">Click for photos &amp; reviews ↓</div>';
     }
     function buildSiteTip(s, col) {
       return '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;color:' + col + ';margin-bottom:3px;">' + s.n + '</div>'
@@ -895,6 +1027,632 @@
         else activeLayers.delete(id);
         applyLayerVisibility();
         // Sync layer bar button if present
+        var btn = bar.querySelector('[data-layer="' + id + '"]');
+        if (btn) { btn.style.opacity = active ? '1' : '0.3'; btn.style.background = active ? 'rgba(255,255,255,0.06)' : 'none'; }
+      }
+    };
+  }
+
+  /* ─── Flat 2-D map (Natural Earth projection + d3.zoom) ──────────────── */
+  function buildFlatMap(svgEl, container, world, availLayers, activeLayers, bar, tooltip, opts) {
+    bar._setSvg(svgEl);
+
+    var W = container.offsetWidth || 800;
+
+    var svg = d3.select(svgEl);
+
+    // Fit by width so there's no dead space top/bottom; derive exact pixel height from bounds
+    function fitByWidth(w) {
+      var p = d3.geoNaturalEarth1().fitWidth(w, {type: 'Sphere'});
+      var b = d3.geoPath().projection(p).bounds({type: 'Sphere'});
+      var h = Math.ceil(b[1][1] - b[0][1]);
+      // Shift translate so map top is at y=0
+      var t = p.translate();
+      p.translate([t[0], t[1] - b[0][1]]);
+      return {proj: p, h: h};
+    }
+
+    var fit = fitByWidth(W);
+    var proj = fit.proj;
+    var H = fit.h;
+    svgEl.setAttribute('height', H);
+    container.style.height = H + 'px';
+
+    var pathFn = d3.geoPath().projection(proj);
+
+    // Root group — zoom/pan transforms are applied here
+    var root = svg.append('g');
+
+    // Ocean background (oversized so it covers during pan)
+    root.append('rect')
+      .attr('x', -W * 3).attr('y', -H * 3)
+      .attr('width', W * 7).attr('height', H * 7)
+      .attr('fill', '#040c1a');
+
+    // Graticule
+    root.append('path')
+      .datum(d3.geoGraticule()())
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(74,158,255,0.06)')
+      .attr('stroke-width', 0.4)
+      .attr('d', pathFn);
+
+    // Land
+    root.append('path')
+      .datum(topojson.feature(world, world.objects.countries))
+      .attr('fill', '#0f2340').attr('stroke', '#1d4a6e').attr('stroke-width', 0.5)
+      .attr('d', pathFn);
+
+    // Country name labels
+    var countryNameLayer = root.append('g').attr('class', 'wg-country-names');
+    topojson.feature(world, world.objects.countries).features.forEach(function(feat) {
+      var name = COUNTRY_NAMES[+feat.id];
+      if (!name) return;
+      var c = d3.geoCentroid(feat);
+      if (!c || isNaN(c[0]) || isNaN(c[1])) return;
+      var xy = proj(c);
+      if (!xy) return;
+      countryNameLayer.append('text')
+        .attr('x', xy[0]).attr('y', xy[1])
+        .attr('text-anchor', 'middle')
+        .attr('fill', 'rgba(180,210,255,0.45)')
+        .attr('font-size', 7.5)
+        .attr('font-family', 'Barlow Condensed,sans-serif')
+        .attr('font-weight', 400)
+        .attr('letter-spacing', '0.06em')
+        .attr('pointer-events', 'none')
+        .text(name);
+    });
+
+    var ptLayer     = root.append('g').attr('class', 'wg-points');
+    var circleLayer = root.append('g').attr('class', 'wg-circle');
+
+    // Cluster overlay — sibling of root, positioned in SVG screen-coords (not zoom-transformed)
+    var clusterG = svg.append('g').attr('class', 'wg-clusters');
+
+    // ── Point layers ─────────────────────────────────────────────────────────
+    var mcsDots = ptLayer.append('g').attr('class', 'wg-layer-mcs');
+    CHARGING.filter(function(s){ return s.con && s.con.indexOf('MCS') !== -1; }).forEach(function(s) {
+      var xy = proj([s.lng, s.lat]);
+      if (!xy) return;
+      mcsDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 5)
+        .attr('fill', '#f59e0b').attr('stroke', 'rgba(255,255,255,0.7)').attr('stroke-width', 0.8)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildChargingTip(d)); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); showStationPanel(d); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    var ccsDots = ptLayer.append('g').attr('class', 'wg-layer-ccs');
+    CHARGING.filter(function(s){ return s.con && s.con.indexOf('CCS') !== -1; }).forEach(function(s) {
+      var xy = proj([s.lng, s.lat]);
+      if (!xy) return;
+      ccsDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 4.5)
+        .attr('fill', '#60a5fa').attr('stroke', 'rgba(255,255,255,0.7)').attr('stroke-width', 0.8)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildChargingTip(d)); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); showStationPanel(d); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    var serviceDots = ptLayer.append('g').attr('class', 'wg-layer-service');
+    SERVICE.forEach(function(s) {
+      var xy = proj([s.lng != null ? s.lng : s.lon, s.lat]);
+      if (!xy) return;
+      serviceDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 4)
+        .attr('fill', '#4affb0').attr('stroke', 'rgba(255,255,255,0.6)').attr('stroke-width', 0.7)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildSiteTip(d, '#4affb0')); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    var partsDots = ptLayer.append('g').attr('class', 'wg-layer-parts');
+    PARTS.forEach(function(s) {
+      var xy = proj([s.lng != null ? s.lng : s.lon, s.lat]);
+      if (!xy) return;
+      partsDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 4)
+        .attr('fill', '#b07aff').attr('stroke', 'rgba(255,255,255,0.6)').attr('stroke-width', 0.7)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildSiteTip(d, '#b07aff')); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    var dealerDots = ptLayer.append('g').attr('class', 'wg-layer-dealers');
+    DEALERS.forEach(function(s) {
+      var xy = proj([s.lng, s.lat]);
+      if (!xy) return;
+      dealerDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 7)
+        .attr('fill', '#f59e0b').attr('stroke', 'rgba(255,255,255,0.9)').attr('stroke-width', 1.8)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildSiteTip(d, '#f59e0b')); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    var customerDots = ptLayer.append('g').attr('class', 'wg-layer-customers');
+    CUSTOMERS.forEach(function(s) {
+      var xy = proj([s.lng, s.lat]);
+      if (!xy) return;
+      customerDots.append('circle')
+        .datum(s)
+        .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', 5)
+        .attr('fill', '#4affb0').attr('stroke', 'rgba(255,255,255,0.7)').attr('stroke-width', 1)
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev, d) { showTip(ev, buildSiteTip(d, '#4affb0')); })
+        .on('mouseleave', function() { hideTip(); })
+        .on('click', function(ev, d) { hideTip(); if (typeof opts.onDotClick === 'function') opts.onDotClick(d); });
+    });
+
+    // ── Location count badge ──────────────────────────────────────────────────
+    var countEl;
+    if (opts.showLayerBar !== false) {
+      countEl = document.createElement('span');
+      countEl.style.cssText = 'font-family:"DM Sans",sans-serif;font-size:0.75rem;color:rgba(200,216,240,0.5);padding:0 2px 0 8px;white-space:nowrap;align-self:center;border-left:1px solid rgba(74,158,255,0.18);margin-left:4px;';
+      bar.appendChild(countEl);
+    } else {
+      countEl = document.createElement('div');
+      countEl.style.cssText = 'position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:10;padding:4px 14px;background:rgba(6,15,30,0.9);border:1px solid rgba(74,158,255,0.2);border-radius:20px;backdrop-filter:blur(6px);font-family:"DM Sans",sans-serif;font-size:0.75rem;color:rgba(200,216,240,0.65);white-space:nowrap;pointer-events:none;';
+      container.appendChild(countEl);
+    }
+    function updateLocationCount() {
+      var hasMcs = activeLayers.has('mcs'), hasCcs = activeLayers.has('ccs');
+      var hasSvc = activeLayers.has('service'), hasPrt = activeLayers.has('parts');
+      var n = 0;
+      if (hasMcs || hasCcs) n += CHARGING.filter(function(s){
+        return (hasMcs && s.con && s.con.indexOf('MCS') !== -1) ||
+               (hasCcs && s.con && s.con.indexOf('CCS') !== -1);
+      }).length;
+      if (hasSvc || hasPrt) n += SITES_ALL.filter(function(s){
+        return (hasSvc && (!s.c || s.dealer)) || (hasPrt && (!!s.c || s.dealer));
+      }).length;
+      if (activeLayers.has('dealers'))   n += DEALERS.length;
+      if (activeLayers.has('customers')) n += CUSTOMERS.length;
+      countEl.textContent = n ? n + ' locations' : '';
+    }
+    updateLocationCount();
+    svgEl.addEventListener('layertoggle', updateLocationCount);
+
+    // ── Clustering (screen-space greedy; bubbles live in clusterG, not root) ──
+    var CLUSTER_K  = 2.5;  // zoom scale below which dots collapse into bubbles
+    var CLUSTER_PX = 40;   // screen-pixel proximity threshold
+    var searchFilter = '';
+
+    function _chargingForLayers() {
+      return CHARGING.filter(function(s) {
+        return (activeLayers.has('mcs') && s.con && s.con.indexOf('MCS') !== -1) ||
+               (activeLayers.has('ccs') && s.con && s.con.indexOf('CCS') !== -1);
+      });
+    }
+
+    function computeClusters(sites, transform) {
+      var pts = sites.map(function(s) {
+        var xy = proj([s.lng, s.lat]);
+        if (!xy) return null;
+        return {s: s, sx: transform.applyX(xy[0]), sy: transform.applyY(xy[1])};
+      }).filter(Boolean);
+      var used = new Array(pts.length).fill(false);
+      var clusters = [];
+      pts.forEach(function(pt, i) {
+        if (used[i]) return;
+        var cl = {pts: [pt], sumSx: pt.sx, sumSy: pt.sy,
+                  hasMcs: !!(pt.s.con && pt.s.con.indexOf('MCS') !== -1)};
+        pts.forEach(function(pt2, j) {
+          if (i === j || used[j]) return;
+          var dx = pt2.sx - pt.sx, dy = pt2.sy - pt.sy;
+          if (dx * dx + dy * dy < CLUSTER_PX * CLUSTER_PX) {
+            cl.pts.push(pt2); cl.sumSx += pt2.sx; cl.sumSy += pt2.sy;
+            if (pt2.s.con && pt2.s.con.indexOf('MCS') !== -1) cl.hasMcs = true;
+            used[j] = true;
+          }
+        });
+        used[i] = true;
+        cl.sx = cl.sumSx / cl.pts.length;
+        cl.sy = cl.sumSy / cl.pts.length;
+        clusters.push(cl);
+      });
+      return clusters;
+    }
+
+    function updateClusters(transform) {
+      if (!opts.cluster) return;
+      var k = transform.k;
+      if (k >= CLUSTER_K) {
+        // Reveal individual dots with per-layer visibility
+        ptLayer.style('display', null);
+        mcsDots.style('display',      activeLayers.has('mcs')       ? null : 'none');
+        ccsDots.style('display',      activeLayers.has('ccs')       ? null : 'none');
+        serviceDots.style('display',  activeLayers.has('service')   ? null : 'none');
+        partsDots.style('display',    activeLayers.has('parts')     ? null : 'none');
+        dealerDots.style('display',   activeLayers.has('dealers')   ? null : 'none');
+        customerDots.style('display', activeLayers.has('customers') ? null : 'none');
+        clusterG.selectAll('*').remove();
+        return;
+      }
+      // Cluster mode: hide individual dots, show bubbles
+      ptLayer.style('display', 'none');
+      var sites = _chargingForLayers();
+      if (searchFilter) {
+        var ql = searchFilter.toLowerCase();
+        sites = sites.filter(function(s) {
+          return (s.name || '').toLowerCase().indexOf(ql) !== -1 ||
+                 (s.op   || '').toLowerCase().indexOf(ql) !== -1 ||
+                 (s.note || '').toLowerCase().indexOf(ql) !== -1;
+        });
+      }
+      var cls = computeClusters(sites, transform);
+      clusterG.selectAll('g.wg-cl').remove();
+      var grps = clusterG.selectAll('g.wg-cl').data(cls).enter()
+        .append('g').attr('class', 'wg-cl')
+        .attr('transform', function(d) { return 'translate(' + d.sx + ',' + d.sy + ')'; })
+        .style('cursor', 'pointer');
+
+      // Outer glow ring
+      grps.append('circle').attr('class', 'cl-ring')
+        .attr('r', function(d) { return d.pts.length === 1 ? 11 : 18; })
+        .attr('fill', 'none')
+        .attr('stroke', function(d) { return d.hasMcs ? 'rgba(245,158,11,0.28)' : 'rgba(96,165,250,0.28)'; })
+        .attr('stroke-width', 2);
+      // Core circle
+      grps.append('circle').attr('class', 'cl-core')
+        .attr('r', function(d) { return d.pts.length === 1 ? 7 : 13; })
+        .attr('fill', function(d) { return d.hasMcs ? '#f59e0b' : '#60a5fa'; })
+        .attr('stroke', 'rgba(255,255,255,0.85)').attr('stroke-width', 1.5);
+      // Count label
+      grps.append('text')
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+        .attr('font-family', '"DM Sans",sans-serif').attr('font-weight', '700')
+        .attr('fill', '#fff').attr('pointer-events', 'none')
+        .attr('font-size', function(d) { return d.pts.length > 1 ? 9 : 0; })
+        .text(function(d) { return d.pts.length > 1 ? d.pts.length : ''; });
+
+      grps.on('click', function(ev, cl) {
+        ev.stopPropagation(); hideTip();
+        var currentT = d3.zoomTransform(svgEl);
+        var px = (cl.sx - currentT.x) / currentT.k;
+        var py = (cl.sy - currentT.y) / currentT.k;
+        // Single bubble at near-threshold zoom → open station panel
+        if (cl.pts.length === 1 && currentT.k >= CLUSTER_K - 0.5) {
+          showStationPanel(cl.pts[0].s);
+          if (typeof opts.onDotClick === 'function') opts.onDotClick(cl.pts[0].s);
+          return;
+        }
+        var newK = cl.pts.length === 1 ? CLUSTER_K + 0.5 : Math.min(currentT.k * 3, 20);
+        if (newK < CLUSTER_K + 0.1) newK = CLUSTER_K + 0.5;
+        svg.transition().duration(600)
+          .call(zoomBehavior.transform,
+                d3.zoomIdentity.translate(W/2 - newK*px, H/2 - newK*py).scale(newK));
+      });
+      grps.on('mouseover', function(ev, cl) {
+        d3.select(this).select('.cl-core')
+          .attr('fill', function(d) { return d.hasMcs ? '#fbbf24' : '#93c5fd'; });
+        if (cl.pts.length === 1) showTip(ev, buildChargingTip(cl.pts[0].s));
+      });
+      grps.on('mousemove', function(ev, cl) { if (cl.pts.length === 1) moveTip(ev); });
+      grps.on('mouseout', function(ev, cl) {
+        d3.select(this).select('.cl-core')
+          .attr('fill', function(d) { return d.hasMcs ? '#f59e0b' : '#60a5fa'; });
+        hideTip();
+      });
+    }
+
+    // ── Search bar overlay ────────────────────────────────────────────────────
+    if (opts.searchable) {
+      var searchWrap = document.createElement('div');
+      searchWrap.style.cssText = 'position:absolute;top:10px;right:10px;z-index:20;display:flex;align-items:center;gap:7px;background:rgba(4,10,22,0.85);border:1px solid rgba(74,158,255,0.28);border-radius:22px;padding:5px 12px 5px 10px;backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,0.4);';
+      searchWrap.innerHTML = '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;opacity:0.5;">'
+        + '<circle cx="6.5" cy="6.5" r="5" stroke="#c8d8f0" stroke-width="1.6"/>'
+        + '<line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="#c8d8f0" stroke-width="1.6" stroke-linecap="round"/>'
+        + '</svg>'
+        + '<input type="text" placeholder="Search locations…" autocomplete="off" style="background:none;border:none;outline:none;color:#c8d8f0;font-family:\'DM Sans\',sans-serif;font-size:0.78rem;width:150px;caret-color:#4a9eff;">'
+        + '<span style="color:rgba(200,216,240,0.4);font-size:0.72rem;white-space:nowrap;min-width:5ch;text-align:right;"></span>';
+      container.appendChild(searchWrap);
+      var _sInput = searchWrap.querySelector('input');
+      var _sCount = searchWrap.querySelector('span');
+
+      function _applySearch(q) {
+        searchFilter = q.trim();
+        var currentT = d3.zoomTransform(svgEl);
+        if (opts.cluster && currentT.k < CLUSTER_K) {
+          updateClusters(currentT);
+        } else {
+          var lq = searchFilter.toLowerCase();
+          ptLayer.selectAll('circle').each(function(d) {
+            if (!d || d.n) return; // skip service/parts (have .n not .name)
+            var match = !searchFilter ||
+                        (d.name || '').toLowerCase().indexOf(lq) !== -1 ||
+                        (d.op   || '').toLowerCase().indexOf(lq) !== -1 ||
+                        (d.note || '').toLowerCase().indexOf(lq) !== -1;
+            d3.select(this).style('opacity', match ? null : '0.06');
+          });
+        }
+        if (searchFilter) {
+          var matches = _chargingForLayers().filter(function(s) {
+            var lq2 = searchFilter.toLowerCase();
+            return (s.name || '').toLowerCase().indexOf(lq2) !== -1 ||
+                   (s.op   || '').toLowerCase().indexOf(lq2) !== -1 ||
+                   (s.note || '').toLowerCase().indexOf(lq2) !== -1;
+          });
+          _sCount.textContent = matches.length ? matches.length + ' found' : 'none';
+          if (matches.length > 0) {
+            var first = matches[0];
+            var fxy = proj([first.lng, first.lat]);
+            if (fxy) {
+              var nk = Math.max(currentT.k, CLUSTER_K + 0.5);
+              svg.transition().duration(500)
+                .call(zoomBehavior.transform,
+                      d3.zoomIdentity.translate(W/2 - nk*fxy[0], H/2 - nk*fxy[1]).scale(nk));
+            }
+          }
+        } else {
+          _sCount.textContent = '';
+          ptLayer.selectAll('circle').style('opacity', null);
+        }
+      }
+
+      _sInput.addEventListener('input', function() { _applySearch(this.value); });
+      _sInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { this.value = ''; _applySearch(''); }
+      });
+    }
+
+    // ── Region jump chips ─────────────────────────────────────────────────────
+    if (opts.regions) {
+      var REGIONS = [
+        {label: 'World',    lng: null},
+        {label: 'Europe',   lng: 15,   lat: 52,  k: 3.0},
+        {label: 'Norway',   lng: 10,   lat: 63,  k: 5.5},
+        {label: 'Americas', lng: -88,  lat: 22,  k: 2.2},
+        {label: 'Chile',    lng: -70,  lat: -31, k: 5.5},
+      ];
+      var chipWrap = document.createElement('div');
+      chipWrap.style.cssText = 'position:absolute;bottom:10px;left:10px;z-index:20;display:flex;gap:5px;flex-wrap:wrap;max-width:calc(100% - 60px);';
+      var _chipBase = 'background:rgba(4,10,22,0.82);border:1px solid rgba(74,158,255,0.22);border-radius:14px;padding:4px 11px;font-family:"DM Sans",sans-serif;font-size:0.74rem;color:rgba(180,210,255,0.75);cursor:pointer;white-space:nowrap;backdrop-filter:blur(6px);line-height:1.4;';
+      var _chipOn   = 'background:rgba(74,158,255,0.18);border-color:rgba(74,158,255,0.52);color:#c8e0ff;';
+      var _activeChip = null;
+
+      REGIONS.forEach(function(r) {
+        var btn = document.createElement('button');
+        btn.textContent = r.label;
+        var isWorld = !r.lng;
+        btn.style.cssText = _chipBase + (isWorld ? _chipOn : '');
+        if (isWorld) _activeChip = btn;
+        btn.addEventListener('click', function() {
+          if (_activeChip) _activeChip.style.cssText = _chipBase;
+          btn.style.cssText = _chipBase + _chipOn;
+          _activeChip = btn;
+          if (!r.lng) {
+            svg.transition().duration(650).call(zoomBehavior.transform, d3.zoomIdentity);
+          } else {
+            var rxy = proj([r.lng, r.lat]);
+            svg.transition().duration(650)
+              .call(zoomBehavior.transform,
+                    d3.zoomIdentity.translate(W/2 - r.k*rxy[0], H/2 - r.k*rxy[1]).scale(r.k));
+          }
+        });
+        chipWrap.appendChild(btn);
+      });
+      container.appendChild(chipWrap);
+    }
+
+    // ── Layer visibility ──────────────────────────────────────────────────────
+    function applyLayerVisibility() {
+      var currentT = d3.zoomTransform(svgEl);
+      if (opts.cluster && currentT.k < CLUSTER_K) {
+        ptLayer.style('display', 'none');
+        updateClusters(currentT);
+      } else {
+        ptLayer.style('display', null);
+        mcsDots.style('display',      activeLayers.has('mcs')       ? null : 'none');
+        ccsDots.style('display',      activeLayers.has('ccs')       ? null : 'none');
+        serviceDots.style('display',  activeLayers.has('service')   ? null : 'none');
+        partsDots.style('display',    activeLayers.has('parts')     ? null : 'none');
+        dealerDots.style('display',   activeLayers.has('dealers')   ? null : 'none');
+        customerDots.style('display', activeLayers.has('customers') ? null : 'none');
+      }
+    }
+    applyLayerVisibility();
+    svgEl.addEventListener('layertoggle', function() { applyLayerVisibility(); });
+
+    // ── Tooltip helpers ───────────────────────────────────────────────────────
+    function showTip(ev, html) {
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+      moveTip(ev);
+    }
+    function moveTip(ev) {
+      var x = ev.clientX + 14, y = ev.clientY - 10;
+      var tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+      if (x + tw > window.innerWidth - 8) x = ev.clientX - tw - 14;
+      if (y + th > window.innerHeight - 8) y = ev.clientY - th - 4;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top  = y + 'px';
+    }
+    function hideTip() { tooltip.style.display = 'none'; }
+    svgEl.addEventListener('mouseleave', hideTip);
+
+    // ── Station info panel (Google Maps data on click) ────────────────────────
+    var stationPanel = document.createElement('div');
+    stationPanel.style.cssText = 'position:absolute;bottom:48px;left:8px;width:230px;background:rgba(4,10,22,0.97);border:1px solid rgba(74,158,255,0.35);border-radius:8px;overflow:hidden;z-index:30;display:none;font-family:"DM Sans",sans-serif;box-shadow:0 4px 24px rgba(0,0,0,0.7);';
+    container.appendChild(stationPanel);
+
+    function renderPanel(s, gmaps) {
+      var photoHtml = '';
+      if (gmaps && gmaps.found && gmaps.photoRef) {
+        var proxyUrl = '/.netlify/functions/places?photo=' + encodeURIComponent(gmaps.photoRef);
+        photoHtml = '<div style="height:120px;background:#050e1e;overflow:hidden;position:relative;">'
+          + '<img src="' + proxyUrl + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.parentNode.style.display=\'none\'">'
+          + '</div>';
+      }
+      var ratingHtml = '';
+      if (gmaps && gmaps.found && gmaps.rating) {
+        ratingHtml = '<div style="display:flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap;">'
+          + '<span style="color:#fbbf24;font-size:0.8rem;letter-spacing:-0.5px;">' + _stars(gmaps.rating) + '</span>'
+          + '<span style="color:rgba(200,220,255,0.7);font-size:0.78rem;">' + gmaps.rating.toFixed(1) + '</span>'
+          + '<span style="color:rgba(160,190,230,0.4);font-size:0.75rem;">· ' + (gmaps.reviewCount || 0).toLocaleString() + ' reviews</span>'
+          + '</div>';
+      }
+      var lastReviewHtml = '';
+      if (gmaps && gmaps.found && gmaps.lastReviewDate) {
+        var ago = _timeAgo(gmaps.lastReviewDate);
+        if (ago) lastReviewHtml = '<div style="color:rgba(150,180,220,0.45);font-size:0.72rem;margin-top:3px;">Last reviewed ' + ago + '</div>';
+      }
+      var showerHtml = '';
+      if (gmaps && gmaps.found && gmaps.hasShower === true) {
+        showerHtml = '<div style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;background:rgba(0,180,120,0.12);border:1px solid rgba(0,200,120,0.2);border-radius:4px;padding:2px 7px;font-size:0.72rem;color:#4ade80;">🚶 Showers</div>';
+      }
+      var loadingHtml = (!gmaps) ? '<div style="color:rgba(150,180,220,0.4);font-size:0.72rem;margin-top:6px;">Loading Google Maps data…</div>' : '';
+      var noDataHtml  = (gmaps && !gmaps.found) ? '<div style="color:rgba(150,180,220,0.3);font-size:0.72rem;margin-top:6px;">No Google Maps listing found</div>' : '';
+      stationPanel.innerHTML = photoHtml
+        + '<div style="padding:10px 12px 12px;">'
+        + '<div style="display:flex;align-items:flex-start;justify-content:space-between;">'
+        +   '<div><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:1rem;font-weight:700;color:' + s.color + ';line-height:1.2;">' + s.name + '</div>'
+        +   '<div style="color:rgba(180,200,255,0.45);font-size:0.72rem;letter-spacing:0.07em;text-transform:uppercase;margin-top:2px;">' + s.op + '</div></div>'
+        +   '<button onclick="this.closest(\'[style*=z-index:30]\').style.display=\'none\'" style="background:none;border:none;color:rgba(140,170,210,0.5);font-size:1rem;cursor:pointer;padding:0 0 0 6px;line-height:1;margin-top:-2px;" title="Close">✕</button>'
+        + '</div>'
+        + '<div style="color:rgba(200,220,255,0.55);font-size:0.78rem;margin-top:5px;">' + s.kw + ' kW · ' + s.units + ' units · ' + s.con + '</div>'
+        + ratingHtml + lastReviewHtml + showerHtml + loadingHtml + noDataHtml
+        + '</div>';
+    }
+
+    function showStationPanel(s) {
+      renderPanel(s, null);
+      stationPanel.style.display = 'block';
+      var cacheKey = s.lat + ',' + s.lng;
+      if (_placesCache[cacheKey]) { renderPanel(s, _placesCache[cacheKey]); return; }
+      var url = '/.netlify/functions/places?lat=' + s.lat + '&lng=' + s.lng + '&name=' + encodeURIComponent(s.name);
+      fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(data) { _placesCache[cacheKey] = data; if (stationPanel.style.display !== 'none') renderPanel(s, data); })
+        .catch(function() { _placesCache[cacheKey] = {found:false}; if (stationPanel.style.display !== 'none') renderPanel(s, {found:false}); });
+    }
+
+    function buildChargingTip(s) {
+      return '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;color:' + s.color + ';margin-bottom:3px;">' + s.name + '</div>'
+        + '<div style="color:rgba(180,200,255,0.55);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:5px;">' + s.op + '</div>'
+        + '<div style="color:rgba(200,220,255,0.8);font-size:0.85rem;">' + s.kw + ' kW · ' + s.units + ' units · ' + s.con + '</div>'
+        + (s.note ? '<div style="color:rgba(200,220,255,0.5);font-size:0.8rem;margin-top:3px;">' + s.note + '</div>' : '')
+        + '<div style="color:rgba(74,158,255,0.55);font-size:0.75rem;margin-top:4px;">Click for photos &amp; reviews ↓</div>';
+    }
+    function buildSiteTip(s, col) {
+      return '<div style="font-family:Barlow Condensed,sans-serif;font-size:1rem;font-weight:700;color:' + col + ';margin-bottom:3px;">' + s.n + '</div>'
+        + '<div style="color:rgba(180,200,255,0.55);font-size:0.78rem;margin-bottom:4px;">' + s.r + '</div>'
+        + (s.a ? '<div style="font-size:0.82rem;color:rgba(200,220,255,0.7);">📍 ' + s.a + '</div>' : '')
+        + (s.p ? '<div style="font-size:0.82rem;color:rgba(200,220,255,0.7);">📞 ' + s.p + '</div>' : '')
+        + (s.h ? '<div style="font-size:0.82rem;color:rgba(180,200,255,0.45);margin-top:2px;">🕐 ' + s.h + '</div>' : '')
+        + (opts.onDotClick ? '<div style="color:rgba(74,158,255,0.55);font-size:0.75rem;margin-top:4px;">Click to view ↓</div>' : '');
+    }
+
+    // ── d3.zoom (pan + scroll zoom + pinch) ───────────────────────────────────
+    // Store base radius/stroke-width so scaleDots can divide by current zoom k
+    ptLayer.selectAll('circle').each(function() {
+      var sel = d3.select(this);
+      this.__baseR  = +sel.attr('r');
+      this.__baseSW = +(sel.attr('stroke-width') || 0.7);
+    });
+    function scaleDots(k) {
+      ptLayer.selectAll('circle')
+        .attr('r', function() { return this.__baseR / k; })
+        .attr('stroke-width', function() { return this.__baseSW / k; });
+    }
+    var zoomBehavior = d3.zoom()
+      .scaleExtent([0.5, 20])
+      .on('start', function() { svg.style('cursor', 'grabbing'); hideTip(); })
+      .on('zoom', function(ev) {
+        root.attr('transform', ev.transform);
+        scaleDots(ev.transform.k);
+        updateClusters(ev.transform);
+      })
+      .on('end', function() { svg.style('cursor', 'grab'); });
+    svg.call(zoomBehavior);
+
+    // Draw initial clusters (zoom is identity = k:1, which is < CLUSTER_K)
+    updateClusters(d3.zoomIdentity);
+
+    // ── Zoom buttons (+/−/reset) ──────────────────────────────────────────────
+    var zoomBtnStyle = 'width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:rgba(6,15,30,0.88);border:1px solid rgba(74,158,255,0.25);color:#c8d8f0;font-size:1rem;cursor:pointer;transition:background 0.15s,border-color 0.15s;font-family:sans-serif;line-height:1;padding:0;';
+    var zoomWrap = document.createElement('div');
+    zoomWrap.style.cssText = 'position:absolute;bottom:10px;right:10px;z-index:12;display:flex;flex-direction:column;gap:3px;';
+    function makeZBtn(label, fn) {
+      var b = document.createElement('button');
+      b.textContent = label; b.style.cssText = zoomBtnStyle;
+      b.title = label === '+' ? 'Zoom in' : label === '−' ? 'Zoom out' : 'Reset view';
+      b.addEventListener('mouseover', function(){ this.style.background='rgba(74,158,255,0.18)'; this.style.borderColor='rgba(74,158,255,0.5)'; });
+      b.addEventListener('mouseout',  function(){ this.style.background='rgba(6,15,30,0.88)';    this.style.borderColor='rgba(74,158,255,0.25)'; });
+      b.addEventListener('click', fn);
+      return b;
+    }
+    zoomWrap.appendChild(makeZBtn('+', function(){ svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.4); }));
+    zoomWrap.appendChild(makeZBtn('−', function(){ svg.transition().duration(250).call(zoomBehavior.scaleBy, 1/1.4); }));
+    zoomWrap.appendChild(makeZBtn('⊙', function(){ svg.transition().duration(350).call(zoomBehavior.transform, d3.zoomIdentity); }));
+    container.appendChild(zoomWrap);
+
+    // ── ResizeObserver ────────────────────────────────────────────────────────
+    var _ro = window.ResizeObserver ? new ResizeObserver(function() {
+      var nW = container.offsetWidth;
+      if (Math.abs(nW - W) < 4) return;
+      W = nW;
+      var reFit = fitByWidth(W);
+      var sc = reFit.proj.scale(), tr = reFit.proj.translate();
+      proj.scale(sc).translate(tr);
+      H = reFit.h;
+      svgEl.setAttribute('height', H);
+      container.style.height = H + 'px';
+      root.selectAll('path').each(function(d) {
+        if (d) d3.select(this).attr('d', pathFn(d) || '');
+      });
+      ptLayer.selectAll('circle').each(function(d) {
+        if (!d) return;
+        var lon = d.lng != null ? d.lng : d.lon;
+        var xy = proj([lon, d.lat]);
+        if (xy) d3.select(this).attr('cx', xy[0]).attr('cy', xy[1]);
+      });
+      svg.call(zoomBehavior.transform, d3.zoomIdentity);
+      updateClusters(d3.zoomIdentity);
+    }) : null;
+    if (_ro) _ro.observe(container);
+
+    // ── Public API ────────────────────────────────────────────────────────────
+    return {
+      drawCircle: function(lat, lng, radiusKm, color) {
+        circleLayer.selectAll('*').remove();
+        var deg = radiusKm / 111.32;
+        var circlePoly = d3.geoCircle().center([lng, lat]).radius(deg)();
+        var strokeColor = color ? color.replace('0.15)', '0.8)').replace('0.12)', '0.8)') : '#4a9eff';
+        circleLayer.append('path')
+          .datum(circlePoly)
+          .attr('fill', color || 'rgba(74,158,255,0.15)')
+          .attr('stroke', strokeColor)
+          .attr('stroke-width', 1.5)
+          .attr('stroke-dasharray', '6 4')
+          .attr('d', pathFn);
+      },
+      clearCircle: function() { circleLayer.selectAll('*').remove(); },
+      rotateTo: function(lat, lng, duration) {
+        var xy = proj([lng, lat]);
+        if (!xy) return;
+        var tx = W / 2 - xy[0];
+        var ty = H / 2 - xy[1];
+        svg.transition().duration(duration || 700)
+          .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty));
+      },
+      drawRoute: function() {},
+      clearRoute: function() {},
+      toggleLayer: function(id, active) {
+        if (active) activeLayers.add(id);
+        else activeLayers.delete(id);
+        applyLayerVisibility();
         var btn = bar.querySelector('[data-layer="' + id + '"]');
         if (btn) { btn.style.opacity = active ? '1' : '0.3'; btn.style.background = active ? 'rgba(255,255,255,0.06)' : 'none'; }
       }

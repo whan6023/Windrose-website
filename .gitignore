@@ -3,3 +3,5 @@ node_modules/
 .netlify/
 *\ (1)*
 package-lock.json
+test_*.js
+verify_*.js

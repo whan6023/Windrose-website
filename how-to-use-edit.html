@@ -716,7 +716,7 @@ function setLang(lang) {
 
 <!-- TOPBAR -->
 <div id="topbar">
-  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;">Updated: 23 June 2026, 03:01 CST</span>
+  <span class="version-timestamp" style="font-size: 0.875rem; letter-spacing:0.1em; color:rgba(200,220,255,0.45); white-space:nowrap; flex-shrink:0;">Updated: 27 June 2026</span>
   <div id="gs-wrap" style="position:relative;flex:1 1 auto;max-width:340px;min-width:120px;">
     <input id="gs-input" type="text" autocomplete="off" spellcheck="false"
       placeholder="🔍  Search Windrose…"
@@ -2526,11 +2526,6 @@ function openStripeModal() { window.open('https://buy.stripe.com/5kQ00jaZOfFidW2
 <!-- FOOTER -->
 <footer style="background:#040b14; border-top:1px solid var(--border); padding:clamp(1.5rem,5vw,4rem) clamp(1.5rem,5vw,4rem) 0;">
 
-  <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-bottom:3rem;">
-    <a href="index.html" style="font-size:1.25rem; text-decoration:none; color:var(--accent); font-family:Barlow Condensed,sans-serif; letter-spacing:0.05em;">Windrose</a>
-    <p style="font-size:0.875rem; color:var(--muted); max-width:360px; line-height:1.65; margin:0;" data-i18n="footer.tagline">Building the electric trucks that move the world — cleaner, smarter, and further.</p>
-  </div>
-
   <!-- TABLE OF CONTENTS -->
   <div aria-label="Site map" role="navigation" style="border-top:1px solid var(--border); padding-top:2.5rem; margin-bottom:3rem;">
     <div style="font-family:Barlow Condensed,sans-serif; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1.25rem;" data-i18n="footer.toc.label">Site Map</div>
@@ -2682,9 +2677,23 @@ function openStripeModal() { window.open('https://buy.stripe.com/5kQ00jaZOfFidW2
   }
 
   // Click or Escape to skip
-  splash.addEventListener('click', function(){
+  splash.addEventListener('click', function(e){
     document.body.style.overflow = '';
     dismiss();
+    // Pass through to a link underneath if the user clicked on one
+    splash.style.pointerEvents = 'none';
+    var el = document.elementFromPoint(e.clientX, e.clientY);
+    splash.style.pointerEvents = '';
+    if (el) {
+      var a = el.closest ? el.closest('a[href]') : null;
+      if (!a && el.tagName === 'A' && el.href) a = el;
+      if (a && a.href) {
+        var dest = a.getAttribute('href');
+        if (dest && dest !== '#' && !dest.startsWith('#')) {
+          window.location.href = a.href;
+        }
+      }
+    }
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){ document.body.style.overflow = ''; dismiss(); }
