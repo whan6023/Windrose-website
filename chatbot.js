@@ -192,10 +192,10 @@
   }
 
   var LANG_NAMES = {
-    'en':'English\',\'es\':\'Spanish\',\'fr\':\'French\',\'de\':\'German\',\'zh\':\'Chinese (Simplified)',
-    'nl':'Dutch\',\'no\':\'Norwegian\',\'sv\':\'Swedish\',\'fi\':\'Finnish',
-    'da':'Danish\',\'pl\':\'Polish\',\'it\':\'Italian\',\'pt\':\'Portuguese',
-    'ja':'Japanese\',\'ko\':\'Korean'
+    'en':'English', 'es':'Spanish', 'fr':'French', 'de':'German',
+    'zh':'Chinese (Simplified)', 'nl':'Dutch', 'no':'Norwegian',
+    'sv':'Swedish', 'fi':'Finnish', 'da':'Danish', 'pl':'Polish',
+    'it':'Italian', 'pt':'Portuguese', 'ja':'Japanese', 'ko':'Korean'
   };
 
   window.FAQ_LANGS = window.FAQ_LANGS || {}; var FAQ_LANGS = {
