@@ -1334,17 +1334,49 @@ p { font-size: 0.875rem; line-height: 1.75; color: var(--muted); }
 .badge-cn   { background: rgba(220,30,30,0.18); color: #ff8a8a; border: 1px solid rgba(220,30,30,0.35); }
 .badge-me   { background: rgba(0,130,80,0.22);  color: #6ecf9e; border: 1px solid rgba(0,130,80,0.4); }
 
-/* Coming-soon service manual cards */
-.om-card-soon {
-  opacity: 0.52; cursor: default; pointer-events: none;
-  position: relative;
+/* Featured service manual card (US live) */
+.sm-featured {
+  grid-column: 1 / -1;
+  max-width: 380px;
 }
-.om-card-soon:hover { transform: none; border-color: var(--border); background: var(--card-bg); }
-.om-soon-pill {
-  display: inline-block; margin-top: auto; padding-top: 0.6rem;
+
+/* Coming-soon compact block */
+.sm-soon-block {
+  grid-column: 1 / -1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.sm-soon-block-header {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--muted); border-top: 1px solid var(--border); width: 100%;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); padding: 0.6rem 1rem;
+  background: rgba(74,158,255,0.04);
+  border-bottom: 1px solid var(--border);
+}
+.sm-soon-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.sm-soon-row:last-child { border-bottom: none; }
+.sm-soon-region {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.08em;
+  color: var(--muted); flex: 0 0 130px;
+}
+.sm-soon-markets { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sm-chip {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.04em;
+  color: var(--muted); opacity: 0.7;
+  background: rgba(74,158,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.15rem 0.5rem;
+}
+@media (max-width: 600px) {
+  .sm-soon-region { flex: 0 0 90px; font-size: 0.7rem; }
+  .sm-chip { font-size: 0.72rem; }
 }
 
 /* Language-matched card highlight */
@@ -2602,111 +2634,57 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="om-nav-header">
   <div class="eyebrow">Service Manual</div>
   <h2>Choose Your Market</h2>
-  <p>Each edition is specific to the homologated vehicle model for that market — regulations, units, and component specifications vary by region. Default language is English. Opens in a new tab.</p>
+  <p>Each edition covers the homologated vehicle model for that market. Regulations, units, and component specifications vary by region.</p>
 </div>
 <div class="om-nav-grid" id="sm-nav-grid">
 
-  <!-- ── North America ─────────────────────────────────── -->
-  <div class="om-group-label">North America</div>
-
-  <a class="om-card" data-edition="en-us" href="/service-manual-us/" target="_blank" rel="noopener">
+  <!-- ── Live edition ───────────────────────────────────── -->
+  <a class="om-card sm-featured" data-edition="en-us" href="/service-manual-us/" target="_blank" rel="noopener">
     <div class="om-card-flag">🇺🇸</div>
-    <div class="om-card-badge badge-us">US Homologated</div>
+    <div class="om-card-badge badge-us">US Homologated · Available Now</div>
     <div class="om-card-title">United States</div>
-    <div class="om-card-sub">English · Imperial units (mph, PSI, °F, lb-ft) · EPA &amp; CARB · NHTSA / FMVSS</div>
+    <div class="om-card-sub">English · Imperial units · EPA &amp; CARB · NHTSA / FMVSS</div>
     <div class="om-card-arrow">Open <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
   </a>
 
-  <div class="om-card om-card-soon" data-edition="en-ca">
-    <div class="om-card-flag">🇨🇦</div>
-    <div class="om-card-badge badge-ca">CA Homologated</div>
-    <div class="om-card-title">Canada</div>
-    <div class="om-card-sub">English · French · Metric · Transport Canada / CMVSS</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <div class="om-card om-card-soon" data-edition="es-mx">
-    <div class="om-card-flag">🇲🇽</div>
-    <div class="om-card-badge badge-lang">MX Homologated</div>
-    <div class="om-card-title">Mexico</div>
-    <div class="om-card-sub">Spanish · Metric · NOM / SCT regulations</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <!-- ── South America ────────────────────────────────── -->
-  <div class="om-group-label">South America</div>
-
-  <div class="om-card om-card-soon" data-edition="es-cl">
-    <div class="om-card-flag">🇨🇱</div>
-    <div class="om-card-badge badge-lang">CL Homologated</div>
-    <div class="om-card-title">Chile</div>
-    <div class="om-card-sub">Spanish · Metric · MINTRATEL / SEC regulations</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <!-- ── Europe ────────────────────────────────────────── -->
-  <div class="om-group-label">Europe</div>
-
-  <div class="om-card om-card-soon" data-edition="en-eu">
-    <div class="om-card-flag">🌍</div>
-    <div class="om-card-badge badge-eu">EU Homologated</div>
-    <div class="om-card-title">European Union</div>
-    <div class="om-card-sub">English · German · French · Dutch + more · Metric · ECE/UNECE · EU type-approval</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <div class="om-card om-card-soon" data-edition="en-gb">
-    <div class="om-card-flag">🇬🇧</div>
-    <div class="om-card-badge badge-uk">UK Homologated</div>
-    <div class="om-card-title">United Kingdom</div>
-    <div class="om-card-sub">English · Metric · DVSA / GBWVTA · Construction &amp; Use Regs 1986</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <!-- ── Asia Pacific ───────────────────────────────────── -->
-  <div class="om-group-label">Asia Pacific</div>
-
-  <div class="om-card om-card-soon" data-edition="en-au">
-    <div class="om-card-flag">🇦🇺</div>
-    <div class="om-card-badge badge-au">AU Homologated</div>
-    <div class="om-card-title">Australia</div>
-    <div class="om-card-sub">English · Metric · NHVR / ADR / RVSA 2018</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <div class="om-card om-card-soon" data-edition="en-nz">
-    <div class="om-card-flag">🇳🇿</div>
-    <div class="om-card-badge badge-au">NZ Homologated</div>
-    <div class="om-card-title">New Zealand</div>
-    <div class="om-card-sub">English · Metric · NZTA / Land Transport Act</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <div class="om-card om-card-soon" data-edition="zh-cn">
-    <div class="om-card-flag">🇨🇳</div>
-    <div class="om-card-badge badge-cn">CN Homologated</div>
-    <div class="om-card-title">China</div>
-    <div class="om-card-sub">Chinese (Simplified) · Metric · GB standards · MIIT type-approval</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <!-- ── Middle East ────────────────────────────────────── -->
-  <div class="om-group-label">Middle East &amp; Africa</div>
-
-  <div class="om-card om-card-soon" data-edition="ar-ae">
-    <div class="om-card-flag">🇦🇪</div>
-    <div class="om-card-badge badge-me">GCC Homologated</div>
-    <div class="om-card-title">GCC / UAE</div>
-    <div class="om-card-sub">Arabic · English · Metric · GSO / ESMA standards</div>
-    <div class="om-soon-pill">Coming Soon</div>
-  </div>
-
-  <div class="om-card om-card-soon" data-edition="he-il">
-    <div class="om-card-flag">🇮🇱</div>
-    <div class="om-card-badge badge-me">IL Homologated</div>
-    <div class="om-card-title">Israel</div>
-    <div class="om-card-sub">Hebrew · English · Metric · Ministry of Transport standards</div>
-    <div class="om-soon-pill">Coming Soon</div>
+  <!-- ── Coming soon block ───────────────────────────────── -->
+  <div class="sm-soon-block">
+    <div class="sm-soon-block-header">More markets coming soon</div>
+    <div class="sm-soon-row">
+      <span class="sm-soon-region">North America</span>
+      <span class="sm-soon-markets">
+        <span class="sm-chip">🇨🇦 Canada</span>
+        <span class="sm-chip">🇲🇽 Mexico</span>
+      </span>
+    </div>
+    <div class="sm-soon-row">
+      <span class="sm-soon-region">South America</span>
+      <span class="sm-soon-markets">
+        <span class="sm-chip">🇨🇱 Chile</span>
+      </span>
+    </div>
+    <div class="sm-soon-row">
+      <span class="sm-soon-region">Europe</span>
+      <span class="sm-soon-markets">
+        <span class="sm-chip">🌍 EU</span>
+        <span class="sm-chip">🇬🇧 UK</span>
+      </span>
+    </div>
+    <div class="sm-soon-row">
+      <span class="sm-soon-region">Asia Pacific</span>
+      <span class="sm-soon-markets">
+        <span class="sm-chip">🇦🇺 Australia</span>
+        <span class="sm-chip">🇳🇿 New Zealand</span>
+        <span class="sm-chip">🇨🇳 China</span>
+      </span>
+    </div>
+    <div class="sm-soon-row">
+      <span class="sm-soon-region">Middle East</span>
+      <span class="sm-soon-markets">
+        <span class="sm-chip">🇦🇪 GCC / UAE</span>
+        <span class="sm-chip">🇮🇱 Israel</span>
+      </span>
+    </div>
   </div>
 
 </div>
