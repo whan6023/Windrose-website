@@ -943,6 +943,10 @@ SPECIFICATIONS: Vehicle dimensions: length 318.90 in, width 100.20 in, height 15
         /* Topbar Ask AI button style — shown in blue topbar on all pages */
         '#wr-topbar-chat{display:flex!important;align-items:center!important;gap:5px!important;background:rgba(255,255,255,0.12)!important;border:1px solid rgba(255,255,255,0.28)!important;border-radius:4px!important;color:#fff!important;font-family:Barlow Condensed,Arial Narrow,Arial,sans-serif!important;font-size:0.85rem!important;font-weight:700!important;letter-spacing:0.07em!important;padding:3px 12px!important;cursor:pointer!important;white-space:nowrap!important;transition:background .15s,border-color .15s!important;}' +
         '#wr-topbar-chat:hover{background:rgba(255,255,255,0.22)!important;border-color:rgba(255,255,255,0.5)!important;}' +
+        /* Language toggle in topbar — left side, all pages */
+        '#wr-lang-toggle{flex-shrink:0!important;background:rgba(255,255,255,0.10)!important;border:1px solid rgba(255,255,255,0.28)!important;border-radius:4px!important;color:#fff!important;font-family:Barlow Condensed,Arial Narrow,Arial,sans-serif!important;font-size:0.82rem!important;letter-spacing:0.04em!important;padding:3px 8px!important;cursor:pointer!important;outline:none!important;max-width:175px!important;transition:background .15s,border-color .15s!important;appearance:auto!important;}' +
+        '#wr-lang-toggle:hover{background:rgba(255,255,255,0.18)!important;border-color:rgba(255,255,255,0.5)!important;}' +
+        '#wr-lang-toggle option{background:#0d1f38!important;color:#f0f4ff!important;}' +
         /* ── Mobile: full-screen chat experience ── */
         '@media(max-width:960px){' +
           /* Lock scroll behind the full-screen panel */
@@ -989,6 +993,35 @@ SPECIFICATIONS: Vehicle dimensions: length 318.90 in, width 100.20 in, height 15
       document.body.appendChild(btn);
     }
 
+    function injectLangToggle() {
+      if (document.getElementById('wr-lang-toggle')) return;
+      var topbar = document.getElementById('topbar');
+      var manualTopbar = document.getElementById('manual-topbar');
+
+      if (topbar) {
+        // Main site: clone the existing lang-select from lang-row
+        var orig = document.getElementById('lang-select');
+        if (!orig) return;
+        var sel = orig.cloneNode(true);
+        sel.id = 'wr-lang-toggle';
+        sel.addEventListener('change', function() {
+          orig.value = sel.value;
+          if (window.setLang) window.setLang(sel.value);
+        });
+        topbar.insertBefore(sel, topbar.firstChild);
+      } else if (manualTopbar) {
+        // Manual pages: clone the edition select from manual-lang-row
+        var origSel = document.querySelector('#manual-edition-select-wrap select');
+        if (!origSel) return;
+        var sel = origSel.cloneNode(true);
+        sel.id = 'wr-lang-toggle';
+        sel.addEventListener('change', function() {
+          window.location.href = sel.value;
+        });
+        manualTopbar.insertBefore(sel, manualTopbar.firstChild);
+      }
+    }
+
     function injectTopbarBtn() {
       if (document.getElementById('wr-topbar-chat')) return;
       var topbar = document.getElementById('topbar') || document.getElementById('manual-topbar');
@@ -1017,6 +1050,7 @@ SPECIFICATIONS: Vehicle dimensions: length 318.90 in, width 100.20 in, height 15
 
     function run() {
       injectPanelHTML();
+      injectLangToggle();
       injectTopbarBtn();
       injectHeaderBtn();
       injectFloatingBtn();
