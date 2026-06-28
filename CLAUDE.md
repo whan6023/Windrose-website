@@ -70,6 +70,26 @@ Runs on push to `main` (manual files) or via `workflow_dispatch`. Uses Claude Ha
 ### `deploy-notify.yml`
 Runs on every push to `main`. Waits 90s for Netlify, then smoke-checks HTTP status of windrose.ai and 4 spot-check manual pages. Posts summary to GitHub Actions job summary.
 
+## E700 Truck BOM & Supplier Map
+
+The E700 truck Bill of Materials is tracked in Google Sheets (requires Windrose Google login):
+**https://docs.google.com/spreadsheets/d/1VWscb-AHY1bAsdrS4uFOULbo0HWtVRLroe5JR_kQoKE/edit?usp=sharing**
+
+The sheet contains: part numbers, supplier names, quantities per vehicle, and unit prices.
+
+An interactive supplier map artifact (HTML, self-contained) lives in the scratchpad of session `ef157706-c30c-5f0c-bead-548858096446` at:
+`/tmp/claude-0/-home-user-Windrose-website/ef157706-c30c-5f0c-bead-548858096446/scratchpad/supplier-map.html`
+
+Published artifact URL: `https://claude.ai/code/artifact/98a10ab4-012f-4cec-80a1-b1977bcd91b3`
+
+### BOM data notes (as of June 2026)
+- Source JS: `tparts_slim.js` — 644 part entries (QC/T 25-2014 taxonomy)
+- NMC/NCM battery entries removed: 2101001, 2101500, 2101600 — Windrose uses LFP only
+- 154 of 644 entries have no supplier (`ss` field absent)
+- No-supplier breakdown by 系: 系1:1, 系2:24, 系3:69, 系4:9, 系5:15, 系6:3, 系7:15, 系8:18
+- Notable unsourced parts: 3506800 (relay valve), 3512020 (safety valve), 3600200 (lighting controller), 3703500 (DC converter), 7900500 (AR-HUD), 2107110 (CCS1 charging cable — US market), 8210101/8210201 (physical exterior mirrors — US market)
+- Quantities and full pricing require the Google Sheet above — TPARTS data has prices for ~30% of entries only
+
 ## Past structural issues (fixed June 2026)
 These were repaired — do not reintroduce:
 - Missing `<main>` wrapper: EU, UK, AU had `</section>` instead
