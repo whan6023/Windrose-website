@@ -982,7 +982,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       panel.id = 'wr-chat-panel';
       panel.style.display = 'none';
       panel.innerHTML =
-        '<div id="wr-chat-header"><span>⚡ Windrose Assistant</span><button id="wr-chat-close" onclick="wrChatToggle()">✕</button></div>' +
+        '<div id="wr-chat-header"><span>⚡ Windrose Assistant <span style="font-size:.75em;opacity:.55;font-weight:400;letter-spacing:.02em;">· Powered by Claude</span></span><button id="wr-chat-close" onclick="wrChatToggle()">✕</button></div>' +
         '<div id="wr-chat-msgs"><div class="wr-msg bot">Hi! I\'m the Windrose AI assistant. Ask me anything about your E700 — charging, driving, specs, maintenance, or troubleshooting.</div></div>' +
         '<div id="wr-chat-suggestions">' +
           '<span class="wr-chip" onclick="wrAskChip(\'charge\')">Charging?</span>' +
@@ -1000,7 +1000,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       btn.id = 'wr-chat-btn';
       btn.title = 'Ask the Windrose AI assistant';
       btn.setAttribute('onclick', 'wrChatToggle()');
-      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI';
+      btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Ask AI <span style="font-size:.75em;opacity:.6;font-weight:400;">· Powered by Claude</span>';
       document.body.appendChild(btn);
     }
 
@@ -1010,7 +1010,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       if (!topbar) return;
       var btn = document.createElement('button');
       btn.id = 'wr-topbar-chat';
-      btn.textContent = '⚡ Ask AI';
+      btn.innerHTML = '⚡ Ask AI <span style="font-size:.75em;opacity:.65;font-weight:400;letter-spacing:.02em;">· Powered by Claude</span>';
       btn.setAttribute('onclick', 'wrChatToggle()');
       // Insert before the last child (Reserve button) so it sits beside it
       var last = topbar.lastElementChild;
@@ -1024,7 +1024,7 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
       var searchDiv = header.querySelector('.header-search');
       var btn = document.createElement('button');
       btn.id = 'wr-header-chat';
-      btn.textContent = '⚡ Ask AI';
+      btn.innerHTML = '⚡ Ask AI <span style="font-size:.75em;opacity:.6;font-weight:400;letter-spacing:.02em;">· Powered by Claude</span>';
       btn.setAttribute('onclick', 'wrChatToggle()');
       searchDiv ? header.insertBefore(btn, searchDiv) : header.appendChild(btn);
     }
