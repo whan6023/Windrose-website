@@ -94,11 +94,18 @@ Published artifact URL: `https://claude.ai/code/artifact/98a10ab4-012f-4cec-80a1
 - Notable unsourced parts: 3506800 (relay valve), 3512020 (safety valve), 3600200 (lighting controller), 3703500 (DC converter), 7900500 (AR-HUD), 2107110 (CCS1 charging cable — US market), 8210101/8210201 (physical exterior mirrors — US market)
 - Quantities and full pricing require the Google Sheet above — TPARTS data has prices for ~30% of entries only
 
-### Pending data to add to artifact
-Google Sheets is inaccessible from the remote execution environment (datacenter IP blocked by Google — 403 on all export URLs regardless of sharing settings). To add the following, the user must export the relevant sheet tab as CSV and paste it into chat:
-- **Unit price per supplier × part** (单价) — to replace/supplement TPARTS partial pricing
-- **开发费 + 模具费 per supplier** (development fee + tooling/mold fee) — lump-sum figures negotiated per supplier deal; not in TPARTS data at all
-- **Payment status per supplier** — total amount owed and amount already paid (已付款 vs 未付款); not in TPARTS data
+### BOM sheet export
+Full Google Sheets content saved to **`bom-data/bom-sheet-export.md`** (221 KB markdown table, fetched via Google Drive MCP in session `ef157706-c30c-5f0c-bead-548858096446`). Re-fetch with the Google Drive MCP tool `read_file_content` using fileId `1VWscb-AHY1bAsdrS4uFOULbo0HWtVRLroe5JR_kQoKE` if data goes stale.
+
+**Column schema** (main BOM tab):
+装置号 | 装置号+车型号 | 零部件号 | 零部件名称 | 供应商名称 | Quantity | 26年价格（含税单价） | 26年价格（未税单价） | 采购数量（按20台整车） | 采购金额合计（含税总价） | 单位 | 零件类型 | 供货状态 | 收货地址 | 责任工程师 | 责任部门 | 付款条件 | 订单状态 | 预计交货时间 | 付款计划1（月份） | 付款金额 | 付款计划2（月份） | 付款金额 | 其他备注说明 | Total cost per truck | 4月预付款 | 5月预付款 | 8月付款 | Parent ID
+
+**Pending work**: Parse `bom-data/bom-sheet-export.md` to extract per-supplier:
+- 单价 (unit price, 含税/未税) per part
+- 付款条件 (payment terms) and 订单状态 per part
+- 4月/5月/8月 预付款 columns — amounts already scheduled/paid
+- Notes on 未付 (unpaid) balances (appear in 其他备注说明 column)
+- 开发费 + 模具费 — search file for these terms; may be on a separate tab
 
 ## Past structural issues (fixed June 2026)
 These were repaired — do not reintroduce:
