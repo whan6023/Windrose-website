@@ -98,6 +98,7 @@ Published artifact URL: `https://claude.ai/code/artifact/98a10ab4-012f-4cec-80a1
 Google Sheets is inaccessible from the remote execution environment (datacenter IP blocked by Google — 403 on all export URLs regardless of sharing settings). To add the following, the user must export the relevant sheet tab as CSV and paste it into chat:
 - **Unit price per supplier × part** (单价) — to replace/supplement TPARTS partial pricing
 - **开发费 + 模具费 per supplier** (development fee + tooling/mold fee) — lump-sum figures negotiated per supplier deal; not in TPARTS data at all
+- **Payment status per supplier** — total amount owed and amount already paid (已付款 vs 未付款); not in TPARTS data
 
 ## Past structural issues (fixed June 2026)
 These were repaired — do not reintroduce:
