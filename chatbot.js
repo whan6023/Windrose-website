@@ -956,6 +956,11 @@ Curb Weight/GVW: Curb weight ~24,747 lb (11,226 kg). Max GVW 49,000 kg (single t
         /* Header "Ask AI" — owner's manual pages */
         '#wr-header-chat{background:rgba(0,180,255,.15)!important;border:1px solid rgba(0,180,255,.4)!important;border-radius:4px!important;color:#a0c8ff!important;font-size:13px!important;font-weight:600!important;padding:5px 12px!important;cursor:pointer!important;white-space:nowrap!important;flex-shrink:0!important;}' +
         '#wr-header-chat:hover{background:rgba(0,180,255,.28)!important;color:#fff!important;}' +
+        /* ── Mobile topbar: hide search bar, keep AI + Reserve only ── */
+        '@media(max-width:600px){' +
+          '#topbar #gs-wrap{display:none!important;}' +
+          '#wr-topbar-chat span{display:none!important;}' +
+        '}' +
         /* ── Mobile: full-screen chat experience ── */
         '@media(max-width:960px){' +
           /* Floating pill hidden on mobile — top header button is the entry point */
