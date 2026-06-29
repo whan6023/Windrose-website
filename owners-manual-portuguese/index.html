@@ -8,20 +8,38 @@
 <link href="styles.css" rel="stylesheet"/>
 <script src="../owners-manual-lang.js"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="site-header">
-<div class="header-left">
-<button aria-label="Toggle navigation" class="nav-toggle" id="navToggle">☰</button>
-<h1>Windrose – Manual do Proprietário</h1>
+
+<!-- ── MANUAL HEADER: topbar + lang-row + topnav ── -->
+<div id="manual-topbar">
+  <span class="manual-edition-name">Windrose – Manual do Proprietário</span>
+  <a href="https://windrose.ai" target="_blank" rel="noopener">windrose.ai ↗</a>
 </div>
-<div class="header-search">
+<div id="manual-lang-row">
+  <div id="manual-edition-select-wrap"></div>
+</div>
+<nav id="manual-topnav">
+  <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+  <a href="../" class="logo">Windrose</a>
+  <ul class="nav-links">
+    <li><a href="../how-to-buy.html">How to Buy</a></li>
+    <li><a href="../how-to-use.html">How to Use</a></li>
+    <li><a href="../how-to-service.html">How to Service</a></li>
+    <li><a href="../technology.html">Technology</a></li>
+    <li><a href="../how-to-build.html">How to Build</a></li>
+    <li><a href="../about-us.html">About Us</a></li>
+  </ul>
+</nav>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-inner">
+<div class="sidebar-search">
 <input autocomplete="off" id="searchInput" placeholder="Pesquisar manual… (ex.: carregamento, EPB, inclinação, pressão dos pneus)" type="search"/>
 <div class="search-results" id="searchResults"></div>
 </div>
-</header>
-<nav class="sidebar" id="sidebar">
-<div class="sidebar-inner">
+
 <div class="nav-filter">
 <input id="navFilter" placeholder="Filtrar secções…" type="text"/>
 </div><ul class="nav-chapters">
