@@ -354,6 +354,8 @@
     service:  {label:'🔧 After-Sales Service', color:'#4affb0'},
     parts:    {label:'📦 Spare Parts',         color:'#b07aff'},
     shipping: {label:'🚢 Supply Chain',        color:'#f59e0b'},
+    assembly: {label:'🏭 Assembly Sites',      color:'#4a9eff'},
+    logistics:{label:'🚢 Logistics Destinations',color:'#34d399'},
     dealers:  {label:'🏢 Dealers',             color:'#f59e0b'},
     customers:{label:'🚛 Customers',           color:'#4affb0'}
   };
@@ -514,9 +516,11 @@
         .attr('pointer-events','none')
         .text(name);
     });
-    var routeLayer  = g.append('g').attr('class','wg-routes');
-    var arcticLayer = g.append('g').attr('class','wg-arctic');
-    var cityLayer   = g.append('g').attr('class','wg-cities');
+    var routeLayer    = g.append('g').attr('class','wg-routes');
+    var arcticLayer   = g.append('g').attr('class','wg-arctic');
+    var assemblyLayer = g.append('g').attr('class','wg-assembly');
+    var logisticsLayer= g.append('g').attr('class','wg-logistics');
+    var cityLayer     = g.append('g').attr('class','wg-cities'); // kept for legacy; unused in new maps
     var ptLayer     = g.append('g').attr('class','wg-points');
     var circleLayer      = g.append('g').attr('class','wg-circle');
     var drivingRouteLayer = g.append('g').attr('class','wg-driving-route');
@@ -599,12 +603,14 @@
       .attr('stroke-dasharray','6 8').attr('opacity',0.7)
       .attr('d', pathFn);
 
-    // Manufacturing cities
+    // Manufacturing cities — split into assembly (hub/cn) and logistics (eu/us/au) layers
     var cityEntries = Object.keys(MFG_CITIES).map(function(k){ var c=MFG_CITIES[k]; c.key=k; return c; });
     cityEntries.forEach(function(c) {
-      var col = MFG_HUB_COL[c.role] || '#4a9eff';
+      var isAssembly = c.role === 'hub' || c.role === 'cn';
+      var targetLayer = isAssembly ? assemblyLayer : logisticsLayer;
+      var col = isAssembly ? '#4a9eff' : '#34d399';
       var r = c.role === 'hub' ? 7 : 5;
-      cityLayer.append('circle')
+      targetLayer.append('circle')
         .datum(c).attr('r', r)
         .attr('fill', col).attr('stroke','rgba(255,255,255,0.8)').attr('stroke-width',1.2)
         .style('cursor','pointer')
@@ -657,15 +663,17 @@
           .attr('display', vis ? null : 'none');
       });
 
-      // City dots and labels
-      cityLayer.selectAll('circle').each(function(d) {
-        if (!d) return;
-        var xy = proj([d.lon, d.lat]);
-        var vis = xy && isVisible(d.lon, d.lat);
-        d3.select(this)
-          .attr('cx', xy ? xy[0] : -999)
-          .attr('cy', xy ? xy[1] : -999)
-          .attr('display', vis ? null : 'none');
+      // City dots — assembly and logistics layers
+      [assemblyLayer, logisticsLayer, cityLayer].forEach(function(lyr) {
+        lyr.selectAll('circle').each(function(d) {
+          if (!d) return;
+          var xy = proj([d.lon, d.lat]);
+          var vis = xy && isVisible(d.lon, d.lat);
+          d3.select(this)
+            .attr('cx', xy ? xy[0] : -999)
+            .attr('cy', xy ? xy[1] : -999)
+            .attr('display', vis ? null : 'none');
+        });
       });
       cityLayer.selectAll('text').each(function(d) {
         if (!d) return;
@@ -697,9 +705,14 @@
       serviceDots.style('display',  activeLayers.has('service')  ? null : 'none');
       partsDots.style('display',    activeLayers.has('parts')    ? null : 'none');
       var shippingVis = activeLayers.has('shipping') ? null : 'none';
-      routeLayer.style('display',   shippingVis);
-      arcticLayer.style('display',  shippingVis);
-      cityLayer.style('display',    shippingVis);
+      var hasAssembly  = activeLayers.has('assembly');
+      var hasLogistics = activeLayers.has('logistics');
+      var routeVis = (shippingVis === null || hasAssembly || hasLogistics) ? null : 'none';
+      routeLayer.style('display',    routeVis);
+      arcticLayer.style('display',   routeVis);
+      cityLayer.style('display',     shippingVis);
+      assemblyLayer.style('display', hasAssembly  ? null : 'none');
+      logisticsLayer.style('display',hasLogistics ? null : 'none');
     }
     applyLayerVisibility();
     svgEl.addEventListener('layertoggle', function() { applyLayerVisibility(); });

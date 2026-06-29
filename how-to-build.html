@@ -1345,8 +1345,8 @@ document.addEventListener('DOMContentLoaded', function(){
     antwerp: 'https://newsroom.portofantwerpbruges.com/en/press-releases/port-of-antwerp-bruges-welcomes-windrose-for-european-assembly-of-electric-trucks'
   };
   WindroseGlobe.init('sc-map', {
-    layers: ['shipping'],
-    defaultLayers: ['shipping'],
+    layers: ['assembly', 'logistics'],
+    defaultLayers: ['assembly', 'logistics'],
     onCityClick: function(key) {
       if (CITY_URL_MAP[key]) { window.open(CITY_URL_MAP[key], '_blank', 'noopener'); return; }
       var id = CITY_CARD_MAP[key];
