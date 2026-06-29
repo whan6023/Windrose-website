@@ -1020,35 +1020,6 @@ TECHNICAL ABBREVIATIONS: BTMS=Battery Thermal Management System; CMS=Charging Ma
       document.body.appendChild(btn);
     }
 
-    function injectLangToggle() {
-      if (document.getElementById('wr-lang-toggle')) return;
-      var topbar = document.getElementById('topbar');
-      var manualTopbar = document.getElementById('manual-topbar');
-
-      if (topbar) {
-        // Main site: clone the existing lang-select from lang-row
-        var orig = document.getElementById('lang-select');
-        if (!orig) return;
-        var sel = orig.cloneNode(true);
-        sel.id = 'wr-lang-toggle';
-        sel.addEventListener('change', function() {
-          orig.value = sel.value;
-          if (window.setLang) window.setLang(sel.value);
-        });
-        topbar.insertBefore(sel, topbar.firstChild);
-      } else if (manualTopbar) {
-        // Manual pages: clone the edition select from manual-lang-row
-        var origSel = document.querySelector('#manual-edition-select-wrap select');
-        if (!origSel) return;
-        var sel = origSel.cloneNode(true);
-        sel.id = 'wr-lang-toggle';
-        sel.addEventListener('change', function() {
-          window.location.href = sel.value;
-        });
-        manualTopbar.insertBefore(sel, manualTopbar.firstChild);
-      }
-    }
-
     function injectTopbarBtn() {
       if (document.getElementById('wr-topbar-chat')) return;
       var topbar = document.getElementById('topbar') || document.getElementById('manual-topbar');
@@ -1077,7 +1048,6 @@ TECHNICAL ABBREVIATIONS: BTMS=Battery Thermal Management System; CMS=Charging Ma
 
     function run() {
       injectPanelHTML();
-      injectLangToggle();
       injectTopbarBtn();
       injectHeaderBtn();
       injectFloatingBtn();
