@@ -6,7 +6,7 @@
   // Inject related-link styles once
   (function() {
     var s = document.createElement('style');
-    s.textContent = '.wr-related{font-size:0.78rem!important;padding:0.5rem 0.8rem!important;background:rgba(0,80,180,0.08)!important;border:1px solid rgba(0,150,255,0.15)!important;border-radius:8px!important;color:#8ab0d8!important;line-height:1.7!important;}.wr-related a{color:#60aaff!important;text-decoration:none!important;display:block!important;}.wr-related a:hover{color:#90ccff!important;text-decoration:underline!important;}.wr-related strong{color:#7ab!important;font-size:0.72rem!important;letter-spacing:0.05em!important;}';
+    s.textContent = '.wr-related{font-size:0.78rem!important;padding:0.5rem 0.8rem!important;background:rgba(0,80,180,0.08)!important;border:1px solid rgba(0,150,255,0.15)!important;border-radius:8px!important;color:#8ab0d8!important;line-height:1.7!important;}.wr-related a{color:#7fd4ff!important;text-decoration:none!important;display:block!important;}.wr-related a:hover{color:#b0e6ff!important;text-decoration:underline!important;}.wr-related strong{color:rgba(220,235,255,0.7)!important;font-size:0.72rem!important;letter-spacing:0.05em!important;display:block!important;margin-bottom:0.15rem!important;}';
     document.head.appendChild(s);
   })();
 
@@ -799,14 +799,12 @@ TECHNICAL ABBREVIATIONS: BTMS=Battery Thermal Management System; CMS=Charging Ma
     if (window.gsClose) window.gsClose();
     var panel = document.getElementById('wr-chat-panel');
     if (!panel) return;
-    // On desktop, anchor the panel below the search bar
+    // On desktop/tablet, anchor the panel below the search bar, centered horizontally
     var gsWrap = document.getElementById('gs-wrap');
     if (gsWrap && window.innerWidth >= 640) {
       var rect = gsWrap.getBoundingClientRect();
-      var panelW = 600;
-      var left = Math.round(rect.left);
-      left = Math.min(left, window.innerWidth - panelW - 10);
-      left = Math.max(left, 10);
+      var panelW = Math.min(600, window.innerWidth - 20);
+      var left = Math.round((window.innerWidth - panelW) / 2);
       panel.style.setProperty('top', Math.round(rect.bottom + 6) + 'px', 'important');
       panel.style.setProperty('left', left + 'px', 'important');
       panel.style.setProperty('right', 'auto', 'important');
