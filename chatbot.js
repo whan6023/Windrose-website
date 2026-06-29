@@ -771,12 +771,18 @@ TECHNICAL ABBREVIATIONS: BTMS=Battery Thermal Management System; CMS=Charging Ma
 
   window.wrChatToggle = function() {
     open = !open;
-    document.getElementById('wr-chat-panel').style.display = open ? 'flex' : 'none';
+    var panel = document.getElementById('wr-chat-panel');
+    panel.style.display = open ? 'flex' : 'none';
     if (open) {
       document.getElementById('wr-chat-input').focus();
       document.body.classList.add('wr-chat-open');
     } else {
       document.body.classList.remove('wr-chat-open');
+      // Clear anchored-to-searchbar positioning so next open via floating btn uses default position
+      if (panel.dataset.anchored) {
+        ['top','left','right','bottom','width','max-height'].forEach(function(p) { panel.style.removeProperty(p); });
+        delete panel.dataset.anchored;
+      }
     }
   };
 
@@ -786,13 +792,30 @@ TECHNICAL ABBREVIATIONS: BTMS=Battery Thermal Management System; CMS=Charging Ma
   };
 
   // Unified entry point — called by the search bar AI button and Enter key in unified-search.js.
-  // Routes through the chatbot panel so there is only one AI experience on the site.
+  // Opens the chatbot panel anchored directly below the search box.
   window.gsAskAI = function() {
     var gsi = document.getElementById('gs-input');
     var q = gsi ? gsi.value.trim() : '';
     if (window.gsClose) window.gsClose();
     var panel = document.getElementById('wr-chat-panel');
-    if (panel && panel.style.display !== 'flex') wrChatToggle();
+    if (!panel) return;
+    // On desktop, anchor the panel below the search bar
+    var gsWrap = document.getElementById('gs-wrap');
+    if (gsWrap && window.innerWidth >= 640) {
+      var rect = gsWrap.getBoundingClientRect();
+      var panelW = 600;
+      var left = Math.round(rect.left);
+      left = Math.min(left, window.innerWidth - panelW - 10);
+      left = Math.max(left, 10);
+      panel.style.setProperty('top', Math.round(rect.bottom + 6) + 'px', 'important');
+      panel.style.setProperty('left', left + 'px', 'important');
+      panel.style.setProperty('right', 'auto', 'important');
+      panel.style.setProperty('bottom', 'auto', 'important');
+      panel.style.setProperty('width', panelW + 'px', 'important');
+      panel.style.setProperty('max-height', 'calc(100vh - ' + Math.round(rect.bottom + 20) + 'px)', 'important');
+      panel.dataset.anchored = '1';
+    }
+    if (panel.style.display !== 'flex') wrChatToggle();
     if (q) wrAsk(q);
   };
 
