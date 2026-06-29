@@ -7221,9 +7221,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!el || el.dataset.ready) return;
     el.dataset.ready='1';
 
-    // Initialise globe showing service + parts by default
+    // Initialise flat map showing service + parts by default
     var globeApi = null;
     WindroseGlobe.init('svc-map', {
+      flat: true,
       layers: ['service','parts','mcs','ccs'],
       defaultLayers: ['service','parts'],
       showLayerBar: false,
