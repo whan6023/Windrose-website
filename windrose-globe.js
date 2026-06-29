@@ -185,19 +185,19 @@
   var MFG_CITIES = {
     shiyan:   {lon:110.8,  lat:32.6,  role:'cn',  label:'Shiyan',          lx:-55, ly:0,   partner:'Hande',   partnerRole:'Electric Drive Axle'},
     hefei:    {lon:117.3,  lat:31.9,  role:'cn',  label:'Hefei',           lx:-55, ly:14,  partner:'CALB',    partnerRole:'Battery System'},
-    shanghai: {lon:121.5,  lat:31.2,  role:'hub', label:'Suzhou/Shanghai', lx:14,  ly:-18, partner:'Zhenghe', partnerRole:'Truck Cab'},
+    shanghai: {lon:121.5,  lat:31.2,  role:'hub', label:'Suzhou/Shanghai', lx:14,  ly:-18, partner:'Zhenghe', partnerRole:'Truck Cab',       assembly:true},
     australia:{lon:134,    lat:-24,   role:'au',  label:'Australia',       lx:12,  ly:18},
     chile:    {lon:-70.7,  lat:-33.4, role:'au',  label:'Chile',           lx:-14, ly:18},
     vancouver:{lon:-123.1, lat:49.3,  role:'us',  label:'Vancouver',       lx:10,  ly:-30, partner:'Canada Launch', partnerRole:'Market Entry'},
-    la:       {lon:-118.2, lat:34,    role:'hub', label:'Los Angeles',     lx:10,  ly:18},
-    antwerp:  {lon:4.4,    lat:51.2,  role:'hub', label:'Antwerp',         lx:14,  ly:-28, partner:'Antwerp Port',  partnerRole:'European Assembly'},
-    uk:       {lon:-1.5,   lat:52.5,  role:'eu',  label:'UK',              lx:-22, ly:-14, partner:'HORIBA MIRA',   partnerRole:'Validation & Testing'},
+    la:       {lon:-118.2, lat:34,    role:'hub', label:'Los Angeles',     lx:10,  ly:18,  assembly:true},
+    antwerp:  {lon:4.4,    lat:51.2,  role:'hub', label:'Antwerp',         lx:14,  ly:-28, partner:'Antwerp Port',  partnerRole:'European Assembly', assembly:true},
+    uk:       {lon:-1.5,   lat:52.5,  role:'eu',  label:'UK',              lx:-22, ly:-14, partner:'HORIBA MIRA',   partnerRole:'Validation & Testing', assembly:true},
     finland:  {lon:25,     lat:62,    role:'eu',  label:'Finland',         lx:10,  ly:-18},
     oslo:     {lon:10.7,   lat:59.9,  role:'eu',  label:'Oslo',            lx:14,  ly:-14},
-    france:   {lon:2.3,    lat:48.9,  role:'eu',  label:'France',          lx:-22, ly:22},
-    seattle:  {lon:-122.3, lat:47.6,  role:'us',  label:'Seattle',         lx:-55, ly:14,  partner:'Aertssen', partnerRole:'Manufacturing'},
+    france:   {lon:3.52,   lat:50.36, role:'eu',  label:'Valenciennes',    lx:-22, ly:22,  assembly:true},
+    seattle:  {lon:-122.3, lat:47.6,  role:'us',  label:'Seattle',         lx:-55, ly:14,  partner:'Aertssen', partnerRole:'Manufacturing', assembly:true},
     laredo:   {lon:-99.5,  lat:27.5,  role:'us',  label:'Laredo TX',       lx:10,  ly:44},
-    savannah: {lon:-81.1,  lat:32.1,  role:'us',  label:'Savannah',        lx:10,  ly:28,  partner:'Aertssen', partnerRole:'Manufacturing'}
+    savannah: {lon:-81.1,  lat:32.1,  role:'us',  label:'Savannah',        lx:10,  ly:28,  partner:'Aertssen', partnerRole:'Manufacturing', assembly:true}
   };
 
   var MFG_HUB_COL = {hub:'#4a9eff', cn:'#f59e0b', eu:'#34d399', us:'#a78bfa', au:'#fb923c'};
@@ -606,7 +606,7 @@
     // Manufacturing cities — split into assembly (hub/cn) and logistics (eu/us/au) layers
     var cityEntries = Object.keys(MFG_CITIES).map(function(k){ var c=MFG_CITIES[k]; c.key=k; return c; });
     cityEntries.forEach(function(c) {
-      var isAssembly = c.role === 'hub' || c.role === 'cn';
+      var isAssembly = c.assembly === true;
       var targetLayer = isAssembly ? assemblyLayer : logisticsLayer;
       var col = isAssembly ? '#4a9eff' : '#34d399';
       var r = c.role === 'hub' ? 7 : 5;
