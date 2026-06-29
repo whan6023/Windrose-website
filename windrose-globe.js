@@ -195,7 +195,7 @@
     finland:  {lon:25,     lat:62,    role:'eu',  label:'Finland',         lx:10,  ly:-18},
     oslo:     {lon:10.7,   lat:59.9,  role:'eu',  label:'Oslo',            lx:14,  ly:-14},
     france:   {lon:3.52,   lat:50.36, role:'eu',  label:'Valenciennes',    lx:-22, ly:22,  assembly:true},
-    seattle:  {lon:-122.3, lat:47.6,  role:'us',  label:'Seattle',         lx:-55, ly:14,  partner:'Aertssen', partnerRole:'Manufacturing', assembly:true},
+    seattle:  {lon:-122.44, lat:47.25, role:'us',  label:'Tacoma',          lx:-55, ly:14,  partner:'Aertssen', partnerRole:'Manufacturing', assembly:true},
     laredo:   {lon:-99.5,  lat:27.5,  role:'us',  label:'Laredo TX',       lx:10,  ly:44},
     savannah: {lon:-81.1,  lat:32.1,  role:'us',  label:'Savannah',        lx:10,  ly:28,  partner:'Aertssen', partnerRole:'Manufacturing', assembly:true}
   };

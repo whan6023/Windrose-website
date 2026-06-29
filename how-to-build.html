@@ -1338,12 +1338,12 @@ document.addEventListener('DOMContentLoaded', function(){
     shiyan:   'supplier-hande',
     hefei:    'supplier-calb',
     shanghai: 'supplier-zhenghe',
-    seattle:  'supplier-aertssen',
-    savannah: 'supplier-aertssen'
+    antwerp:  'supplier-antwerp',
+    france:   'supplier-france',
+    seattle:  'supplier-tacoma',
+    savannah: 'supplier-savannah'
   };
-  var CITY_URL_MAP = {
-    antwerp: 'https://newsroom.portofantwerpbruges.com/en/press-releases/port-of-antwerp-bruges-welcomes-windrose-for-european-assembly-of-electric-trucks'
-  };
+  var CITY_URL_MAP = {};
   WindroseGlobe.init('sc-map', {
     layers: ['assembly', 'logistics'],
     defaultLayers: ['assembly', 'logistics'],
@@ -1456,14 +1456,39 @@ document.addEventListener('DOMContentLoaded', function(){
       <p style="font-size:0.85rem;color:var(--muted);line-height:1.5;margin:-0.25rem 0 0.85rem;font-style:italic;">Zhenghe cab structure — European cab homologation certified</p><!-- zhenghe-photo-added -->
       <p class="sc-desc" data-i18n="suppliers.zhenghe.desc">Driver cab structures and bodywork for the tractor unit.</p>
     </div>
-    <div class="supplier-card" id="supplier-aertssen">
-      <div class="sc-role">US Manufacturing</div>
+    <div class="supplier-card" id="supplier-antwerp">
+      <div class="sc-role">Belgium Assembly</div>
+      <div class="sc-name">Antwerp</div>
+      <div style="margin:0.4rem 0 0.6rem;padding:0.35rem 0.6rem;background:rgba(74,158,255,0.07);border:1px solid rgba(74,158,255,0.18);border-radius:6px;display:flex;align-items:center;gap:0.4rem;">
+        <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-family:DM Mono,monospace;">Customer</span>
+        <span style="font-size:0.85rem;color:var(--off-white);font-family:DM Sans,sans-serif;font-weight:600;">Van Wellen Group</span>
+      </div>
+      <p class="sc-desc">European assembly hub at the Port of Antwerp-Bruges, serving Van Wellen Group's fleet operations.</p>
+    </div>
+    <div class="supplier-card" id="supplier-france">
+      <div class="sc-role">France Assembly</div>
+      <div class="sc-name">Valenciennes</div>
+      <div style="margin:0.4rem 0 0.6rem;padding:0.35rem 0.6rem;background:rgba(74,158,255,0.07);border:1px solid rgba(74,158,255,0.18);border-radius:6px;display:flex;align-items:center;gap:0.4rem;">
+        <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-family:DM Mono,monospace;">Customer</span>
+        <span style="font-size:0.85rem;color:var(--off-white);font-family:DM Sans,sans-serif;font-weight:600;">PRD</span>
+      </div>
+      <p class="sc-desc">Assembly site in Valenciennes, northern France, serving PRD's logistics operations.</p>
+    </div>
+    <div class="supplier-card" id="supplier-tacoma">
+      <div class="sc-role">US Assembly · Tacoma, WA</div>
       <div class="sc-name">Aertssen</div>
       <div style="margin:0.75rem -1.5rem 0.85rem;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
         <img src="images/aertssen-assembly.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" onerror="this.closest('div').style.display='none'">
       </div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.5;margin:-0.25rem 0 0.85rem;font-style:italic;">Dual-coast assembly — Rincon, Georgia &amp; Tacoma, Washington</p>
-      <p class="sc-desc">Final assembly of North American units at two US sites, enabling domestic delivery and Buy America compliance.</p>
+      <p class="sc-desc">Final assembly of North American units at Tacoma, Washington, enabling domestic delivery and Buy America compliance.</p>
+    </div>
+    <div class="supplier-card" id="supplier-savannah">
+      <div class="sc-role">US Assembly · Savannah, GA</div>
+      <div class="sc-name">Aertssen</div>
+      <div style="margin:0.75rem -1.5rem 0.85rem;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <img src="images/aertssen-assembly.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" onerror="this.closest('div').style.display='none'">
+      </div>
+      <p class="sc-desc">Final assembly of North American units at Rincon, Georgia (Savannah metro), enabling domestic delivery and Buy America compliance.</p>
     </div>
   </div>
 </section>
