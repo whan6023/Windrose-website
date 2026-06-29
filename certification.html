@@ -4714,7 +4714,6 @@ var HOMOLOG_NAMES = {
     'cn_direct_multi','cn_recog_multi','au_direct_multi','au_recog_multi'
   ]);
   var svgSel, pathEls, zoomBeh, currentZoom = 1;
-  var rot = [-20, -25, 0];
   var _worldData = null; // cached TopoJSON for resize redraws
 
   /* ── Bootstrap ── */
@@ -4888,23 +4887,6 @@ var HOMOLOG_NAMES = {
   /* ── Draw ── */
   function draw(world, el) {
     var W = el.offsetWidth || 960, H = el.offsetHeight || 480;
-    // Shrink container + parent wrapper to globe diameter — same logic as WindroseGlobe
-    var _tightW = Math.ceil(2 * H / 2.05) + 6;
-    if (W > _tightW) {
-      el.style.maxWidth = _tightW + 'px';
-      el.style.marginLeft = 'auto';
-      el.style.marginRight = 'auto';
-      var _par = el.parentElement;
-      if (_par && _par !== document.body && !/^(SECTION|MAIN|ARTICLE|HEADER|FOOTER)$/.test(_par.tagName)) {
-        var _parDisplay = window.getComputedStyle(_par).display;
-        if (_parDisplay !== 'flex' && _parDisplay !== 'grid') {
-          _par.style.maxWidth = _tightW + 'px';
-          _par.style.marginLeft = 'auto';
-          _par.style.marginRight = 'auto';
-        }
-      }
-      W = el.offsetWidth || _tightW;
-    }
     svgSel = d3.select(el).append('svg')
       .attr('width','100%').attr('height','100%')
       .style('cursor','grab').style('display','block');
@@ -4925,16 +4907,10 @@ var HOMOLOG_NAMES = {
         .attr('stroke',h.s).attr('stroke-width',2.5).attr('opacity',0.85);
     });
 
-    var proj = d3.geoOrthographic()
-      .scale(Math.min(W,H)/2.05)
-      .translate([W/2, H/2])
-      .rotate(rot)
-      .clipAngle(90);
-    var pathFn = d3.geoPath().projection(proj);
     var countries = topojson.feature(world, world.objects.countries);
-
-    // Sphere background
-    var sphereBg = g.append('path').datum({type:'Sphere'}).attr('fill','#06111f').attr('d', pathFn);
+    var proj = d3.geoNaturalEarth1()
+      .fitSize([W, H], countries);
+    var pathFn = d3.geoPath().projection(proj);
 
     // Countries
     pathEls = g.selectAll('path.country')
@@ -4953,20 +4929,6 @@ var HOMOLOG_NAMES = {
         var a2 = NUM2A2[+d.id];
         if (!a2 || !CERT[a2]) return;
         showCountry(a2);
-        // Rotate globe to center on this country's geographic centroid
-        var geoCentroid = d3.geoCentroid(d);
-        var targetRot = [-geoCentroid[0], -geoCentroid[1], 0];
-        var startRot = rot.slice();
-        d3.transition().duration(700).tween('rotate', function() {
-          var ir = d3.interpolate(startRot, targetRot);
-          return function(t) {
-            rot = ir(t);
-            proj.rotate(rot);
-            sphereBg.attr('d', pathFn);
-            pathEls.attr('d', pathFn);
-            updateLabels();
-          };
-        });
       })
       .on('mousemove', function(ev, d) {
         var a2 = NUM2A2[+d.id], t = a2 && CERT[a2]; if (!t) return;
@@ -5024,18 +4986,14 @@ var HOMOLOG_NAMES = {
     }
     updateLabels();
 
-    // Drag rotation
+    // Pan behavior
     svgSel.call(d3.drag()
       .on('start', function() { svgSel.style('cursor','grabbing'); })
       .on('drag', function(ev) {
-        rot[0] += ev.dx * 0.4;
-        rot[1] -= ev.dy * 0.4;
-        rot[1] = Math.max(-90, Math.min(90, rot[1]));
-        proj.rotate(rot);
-        sphereBg.attr('d', pathFn);
+        var t = proj.translate();
+        proj.translate([t[0] + ev.dx, t[1] + ev.dy]);
         pathEls.attr('d', pathFn);
         updateLabels();
-        // Hide tooltip on drag
         var tt = document.getElementById('homolog-tooltip');
         if (tt) tt.style.display = 'none';
       })
@@ -5043,9 +5001,9 @@ var HOMOLOG_NAMES = {
     );
 
     // Wheel zoom + pinch-to-zoom
-    var _initScale = proj.scale(), _curScale = _initScale;
+    var _initScale = proj.scale(), _initTranslate = proj.translate().slice(), _curScale = _initScale;
     var _minScale = _initScale * 0.5, _maxScale = _initScale * 5;
-    function _applyZoom() { proj.scale(_curScale); sphereBg.attr('d',pathFn); pathEls.attr('d',pathFn); updateLabels(); }
+    function _applyZoom() { proj.scale(_curScale); pathEls.attr('d',pathFn); updateLabels(); }
     el.addEventListener('wheel', function(ev) {
       ev.preventDefault();
       _curScale = Math.max(_minScale, Math.min(_maxScale, _curScale * (ev.deltaY < 0 ? 1.12 : 0.9)));
@@ -5082,32 +5040,12 @@ var HOMOLOG_NAMES = {
     _rewireBtn('homolog-zoom-in',  function() { _curScale = Math.min(_maxScale, _curScale * 1.4); _applyZoom(); });
     _rewireBtn('homolog-zoom-out', function() { _curScale = Math.max(_minScale, _curScale / 1.4); _applyZoom(); });
     _rewireBtn('homolog-reset', function() {
-      _curScale = _initScale; _applyZoom();
-      var startRot = rot.slice();
-      var targetRot = [-20, -25, 0];
-      d3.transition().duration(500).tween('rotate', function() {
-        var ir = d3.interpolate(startRot, targetRot);
-        return function(t) {
-          rot = ir(t);
-          proj.rotate(rot);
-          sphereBg.attr('d', pathFn);
-          pathEls.attr('d', pathFn);
-          updateLabels();
-        };
-      });
+      _curScale = _initScale;
+      proj.scale(_initScale).translate(_initTranslate.slice());
+      pathEls.attr('d', pathFn);
+      updateLabels();
     });
 
-    // Touch hint
-    if ('ontouchstart' in window) {
-      var hint = document.createElement('div');
-      hint.textContent = 'Drag to rotate globe';
-      hint.style.cssText = 'position:absolute;bottom:40px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:rgba(255,255,255,0.7);font-size:0.875rem;padding:4px 10px;border-radius:20px;pointer-events:none;z-index:5;opacity:0;transition:opacity 0.3s;white-space:nowrap;';
-      el.appendChild(hint);
-      el.addEventListener('touchstart', function() {
-        hint.style.opacity='1';
-        setTimeout(function(){hint.style.opacity='0';}, 2000);
-      }, {once:true, passive:true});
-    }
     // Tag the SVG with the width it was drawn at
     if (svgSel) svgSel.attr('data-drawn-w', W);
     window.showCountry = showCountry;
@@ -5121,7 +5059,6 @@ var HOMOLOG_NAMES = {
     var existing = el.querySelector('svg');
     if (existing) existing.remove();
     svgSel = null; pathEls = null; zoomBeh = null; currentZoom = 1;
-    rot = [-20, -25, 0]; // reset rotation on resize
     draw(world, el);
   }
 
