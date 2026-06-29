@@ -36,9 +36,16 @@
 </nav>
 <nav class="sidebar" id="sidebar">
 <div class="sidebar-inner">
-<div class="sidebar-search">
+<div class="ai-search" id="aiSearchPanel">
+<form class="ai-search-form" id="aiSearchForm">
 <input autocomplete="off" id="searchInput" placeholder="Search manual… (e.g. charging, EPB, gradeability, tire pressure)" type="search"/>
+<button class="ai-search-btn" id="aiSearchBtn" title="Ask AI" type="submit">&#10022;</button>
+</form>
 <div class="search-results" id="searchResults"></div>
+<div class="ai-answer" id="aiAnswer">
+<div class="ai-answer-hd"><span>&#10022; AI</span><button class="ai-close" id="aiClose" type="button">&times;</button></div>
+<div class="ai-answer-body" id="aiAnswerBody"></div>
+</div>
 </div>
 
 <div class="nav-filter">
@@ -11013,8 +11020,13 @@ fetch('search-index.json')
 
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
+const aiSearchForm = document.getElementById('aiSearchForm');
+const aiAnswer = document.getElementById('aiAnswer');
+const aiAnswerBody = document.getElementById('aiAnswerBody');
+const aiClose = document.getElementById('aiClose');
 
 searchInput.addEventListener('input', function() {
+ aiAnswer.style.display = 'none';
  const q = this.value.trim().toLowerCase();
  if (q.length < 2) { searchResults.innerHTML = ''; searchResults.style.display = 'none'; return; }
   const terms = q.split(/\s+/);
@@ -11032,12 +11044,12 @@ searchInput.addEventListener('input', function() {
  }
  return { ...entry, score, matchRatio: score / (terms.length * 4) };
  })
- .filter(e => e.score >= terms.length) // at least 1 point per term
+ .filter(e => e.score >= terms.length)
  .sort((a, b) => b.score - a.score)
  .slice(0, 15);
 
  if (matches.length === 0) {
- searchResults.innerHTML = '<div class="sr-empty">No results found</div>';
+ searchResults.innerHTML = '<div class="sr-empty">No results — press Enter to ask AI</div>';
  } else {
  searchResults.innerHTML = matches.map(m =>
  `<a class="sr-item" href="${m.html_anchor}">
@@ -11050,13 +11062,46 @@ searchInput.addEventListener('input', function() {
  searchResults.style.display = 'block';
 });
 
+aiSearchForm.addEventListener('submit', function(e) {
+ e.preventDefault();
+ const q = searchInput.value.trim();
+ if (!q) return;
+ searchResults.style.display = 'none';
+ aiAnswer.style.display = 'block';
+ aiAnswerBody.innerHTML = '<div class="ai-thinking">Searching with AI…</div>';
+ fetch('/netlify/functions/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+   system: 'You are a concise technical assistant for the Windrose E700 Owner's Manual. Answer questions accurately based on manual content. Use bullet points (•) for lists. Keep answers brief and direct.',
+   messages: [{ role: 'user', content: q }],
+   max_tokens: 500
+  })
+ })
+ .then(r => r.json())
+ .then(data => {
+  const text = (data.content && data.content[0] && data.content[0].text) || 'No answer found.';
+  aiAnswerBody.textContent = text;
+ })
+ .catch(() => {
+  aiAnswerBody.innerHTML = 'Could not connect to AI. Try keyword results above or email <a href="mailto:support@windrose.ai">support@windrose.ai</a>.';
+ });
+});
+
+aiClose.addEventListener('click', function() {
+ aiAnswer.style.display = 'none';
+ searchInput.value = '';
+ searchResults.style.display = 'none';
+ searchResults.innerHTML = '';
+});
+
 searchResults.addEventListener('click', function(e) {
  const item = e.target.closest('.sr-item');
  if (item) { searchResults.style.display = 'none'; searchInput.value = ''; }
 });
 
 document.addEventListener('click', function(e) {
- if (!e.target.closest('.header-search')) searchResults.style.display = 'none';
+ if (!e.target.closest('.ai-search')) searchResults.style.display = 'none';
 });
 
 // ── Keyboard shortcut: Ctrl/Cmd+K to focus search ────────────

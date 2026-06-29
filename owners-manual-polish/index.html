@@ -35,9 +35,16 @@
 </nav>
 <nav class="sidebar" id="sidebar">
 <div class="sidebar-inner">
-<div class="sidebar-search">
+<div class="ai-search" id="aiSearchPanel">
+<form class="ai-search-form" id="aiSearchForm">
 <input autocomplete="off" id="searchInput" placeholder="Szukaj w instrukcji… (np. ładowanie, EPB, zdolność pokonywania wzniesień, ciśnienie w oponach)" type="search"/>
+<button class="ai-search-btn" id="aiSearchBtn" title="Ask AI" type="submit">&#10022;</button>
+</form>
 <div class="search-results" id="searchResults"></div>
+<div class="ai-answer" id="aiAnswer">
+<div class="ai-answer-hd"><span>&#10022; AI</span><button class="ai-close" id="aiClose" type="button">&times;</button></div>
+<div class="ai-answer-body" id="aiAnswerBody"></div>
+</div>
 </div>
 
 <div class="nav-filter">
