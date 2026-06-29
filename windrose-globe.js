@@ -1565,6 +1565,13 @@
       ptLayer.selectAll('circle')
         .attr('r', function() { return this.__baseR / k; })
         .attr('stroke-width', function() { return this.__baseSW / k; });
+      // Keep circle ring outline and center dot constant visual size
+      circleLayer.selectAll('path')
+        .attr('stroke-width', 1.5 / k)
+        .attr('stroke-dasharray', (6 / k) + ' ' + (4 / k));
+      circleLayer.selectAll('circle')
+        .attr('r', 5 / k)
+        .attr('stroke-width', 1 / k);
     }
     var zoomBehavior = d3.zoom()
       .scaleExtent([0.5, 20])
@@ -1630,13 +1637,25 @@
         var deg = radiusKm / 111.32;
         var circlePoly = d3.geoCircle().center([lng, lat]).radius(deg)();
         var strokeColor = color ? color.replace('0.15)', '0.8)').replace('0.12)', '0.8)') : '#4a9eff';
+        var k = d3.zoomTransform(svgEl).k;
         circleLayer.append('path')
           .datum(circlePoly)
           .attr('fill', color || 'rgba(74,158,255,0.15)')
           .attr('stroke', strokeColor)
-          .attr('stroke-width', 1.5)
-          .attr('stroke-dasharray', '6 4')
+          .attr('stroke-width', 1.5 / k)
+          .attr('stroke-dasharray', (6 / k) + ' ' + (4 / k))
           .attr('d', pathFn);
+        // Center dot — stays constant size via scaleDots on zoom
+        var xy = proj([lng, lat]);
+        if (xy) {
+          circleLayer.append('circle')
+            .attr('data-lng', lng).attr('data-lat', lat)
+            .attr('cx', xy[0]).attr('cy', xy[1])
+            .attr('r', 5 / k)
+            .attr('fill', strokeColor)
+            .attr('stroke', 'rgba(255,255,255,0.8)')
+            .attr('stroke-width', 1 / k);
+        }
       },
       clearCircle: function() { circleLayer.selectAll('*').remove(); },
       rotateTo: function(lat, lng, duration) {
