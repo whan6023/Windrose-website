@@ -23,7 +23,8 @@ This contract is made between:
 
 ## Scope of Work
 
-Media introductions and relationship support.
+- Media introductions and relationship support.
+- Investor introductions (introductions to prospective investors), compensated separately on a success-fee basis as set out under *Consideration — Investor Introductions (Success Fee)* below.
 
 ## Definition
 
@@ -97,6 +98,26 @@ This is an **equity-based engagement**. In consideration for the Services, the C
 8. **Governing documents.** The Options, and any shares acquired on their exercise, are subject to the rules of the ESOP, the Client's articles of association, and any shareholders' agreement in force. The Contractor (and/or Ben Kilbey, as applicable) agrees to enter into and be bound by the ESOP option agreement, and such shareholders' agreement and deed of adherence as may be required, as a condition of grant and of exercise.
 
 9. **Eligibility and tax treatment.** The parties acknowledge that the Services are being provided by the Contractor (a company) and/or by Ben Kilbey as a consultant rather than as an employee or director of the Client. The grant must therefore be made under a part of the ESOP that permits options to consultants/non-employees: tax-advantaged EMI options are generally available only to qualifying employees, so a non-tax-advantaged (unapproved) option, or another route the ESOP allows, may be required. The parties shall confirm the correct grantee (Contractor vs. individual) and the applicable option type before grant. _[Recommend specific tax/legal advice — options to a consultant have income-tax, NIC and ERS-reporting implications, and may have VAT implications for the underlying supply of Services, which should be confirmed before signing.]_
+
+## Consideration — Investor Introductions (Success Fee)
+
+Separately from the option-based consideration for PR/communications work above, the Contractor will be compensated for **investor introductions** on a success-fee basis as follows:
+
+1. **Success fee.** Where the Contractor introduces a prospective investor to the Client and that introduction results in a closed deal under which the Client actually receives investment monies, the Client shall pay the Contractor a fee equal to **2% of the Net Proceeds received** by the Client from that investor.
+
+2. **Trigger — money received.** The fee is earned and payable only on completion of the relevant transaction and **only to the extent funds are actually received** by the Client. No fee is payable on commitments, term sheets, or amounts pledged but not received. Where funds are received in tranches, the fee is payable pro rata on each tranche as and when received.
+
+3. **Net Proceeds.** "Net Proceeds" means the gross investment monies actually received by the Client from the introduced investor, less _[define deductions — e.g. any amounts repayable, and any third-party placement/broker/legal/professional fees directly attributable to that investment]_. _[Confirm whether 2% applies to equity investment only, or also to debt/convertible/grant funding.]_
+
+4. **Attribution.** An investor is "introduced by the Contractor" where the Contractor is the **effective cause** of the Client first being put in contact with that investor. _[Recommend maintaining an agreed written list of introduced investors to avoid disputes; consider excluding investors already known to or in active discussion with the Client.]_
+
+5. **Payment timing.** The success fee shall be invoiced on receipt of the relevant funds by the Client and paid within **14 days** of the Client's receipt of those funds (or of the relevant tranche).
+
+6. **Tail period.** The success fee remains payable on deals with introduced investors that close within _[e.g. 12]_ months after termination of this Agreement, provided the introduction was made during the term.
+
+7. **VAT.** The success fee is exclusive of VAT, which shall be added where properly chargeable.
+
+8. **Regulatory.** The parties acknowledge that introducing investors and arranging investment deals for a fee may be a regulated activity and/or financial promotion under applicable law (including, in the UK, the Financial Services and Markets Act 2000). Each party shall ensure its activities under this clause are conducted in compliance with applicable financial-services regulation. _[Recommend specific regulatory advice — fee-bearing investor introductions can require authorisation or an exemption.]_
 
 ## Expenses
 
