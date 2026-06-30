@@ -15,6 +15,9 @@ EU Entity Transfer — R155 / R156 · WH13 Swedish WVTA `e5*2018/858*00525`
 | CoP | Conformity of Production | 生产一致性 |
 | TS | Technical Service | 技术服务机构 |
 | R155 / R156 | UN Regulation No. 155 / 156 | 联合国第155 / 156号法规 |
+| R160 | UN Regulation No. 160 — Event Data Recorder | 联合国第160号法规 |
+| EDR | Event Data Recorder — crash "black box"; UN R160 / EU GSR (EU) 2019/2144 (not the IT term "Endpoint Detection and Response") | 事件数据记录系统（"黑匣子"） |
+| GSR | General Safety Regulation (EU) 2019/2144 | 通用安全法规 |
 
 ## Cybersecurity (R155) / 网络安全
 | Acronym | Full name | 中文 |
