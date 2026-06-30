@@ -6,7 +6,7 @@
   // Inject related-link styles once
   (function() {
     var s = document.createElement('style');
-    s.textContent = '.wr-related{font-size:0.78rem!important;padding:0.5rem 0.8rem!important;background:rgba(0,80,180,0.08)!important;border:1px solid rgba(0,150,255,0.15)!important;border-radius:8px!important;color:#8ab0d8!important;line-height:1.7!important;}.wr-related a{color:#7fd4ff!important;text-decoration:none!important;display:block!important;}.wr-related a:hover{color:#b0e6ff!important;text-decoration:underline!important;}.wr-related strong{color:rgba(220,235,255,0.7)!important;font-size:0.72rem!important;letter-spacing:0.05em!important;display:block!important;margin-bottom:0.15rem!important;}';
+    s.textContent = '.wr-related{font-size:0.82rem!important;padding:0.5rem 0.75rem!important;background:rgba(0,30,80,0.35)!important;border:none!important;border-left:3px solid rgba(74,158,255,0.7)!important;border-radius:0 6px 6px 0!important;max-width:85%!important;align-self:flex-start!important;}.wr-related-lbl{display:block!important;font-size:0.68rem!important;letter-spacing:0.1em!important;text-transform:uppercase!important;color:rgba(140,180,255,0.5)!important;margin-bottom:0.35rem!important;font-family:Barlow Condensed,sans-serif!important;}.wr-related a{color:#90c8ff!important;text-decoration:underline!important;text-underline-offset:2px!important;display:block!important;padding:0.18rem 0!important;line-height:1.45!important;}.wr-related a:hover{color:#c8e8ff!important;}';
     document.head.appendChild(s);
   })();
 
@@ -187,8 +187,8 @@
   function addRelated(q) {
     var results = findRelated(q);
     if (!results.length) return;
-    var links = results.map(function(r) { return '<a href="' + r.u + '">📖 ' + r.t + '</a>'; }).join('');
-    addMsg('<strong>Related pages</strong>' + links, 'bot related', true);
+    var links = results.map(function(r) { return '<a href="' + r.u + '">→ ' + r.t + '</a>'; }).join('');
+    addMsg('<span class="wr-related-lbl">Related pages</span>' + links, 'bot related', true);
   }
 
   var LANG_NAMES = {
