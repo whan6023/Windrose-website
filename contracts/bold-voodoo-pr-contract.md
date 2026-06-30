@@ -76,23 +76,27 @@ Meetings may take place on an ad hoc basis where reasonably required, subject to
 
 ---
 
-## Consideration — Equity (Shares)
+## Consideration — Share Options (ESOP)
 
-This is a **shares-based engagement**. In consideration for the Services, the Contractor will be compensated in equity in the Client rather than in cash fees.
+This is an **equity-based engagement**. In consideration for the Services, the Contractor (and/or Ben Kilbey personally as the individual delivering the Services) will be compensated through the grant of options to acquire shares in the Client under the Client's Employee Share Option Plan (the **"ESOP"** or **"Plan"**), rather than in cash fees. All options granted under this agreement (the **"Options"**) are subject to, and governed by, the rules of the ESOP and the form of option agreement issued under it; in the event of any conflict, the rules of the ESOP prevail.
 
-1. **Core engagement.** In consideration for each execution of the Services, the Client shall issue (or procure the transfer of) to the Contractor fully paid _[CLASS — e.g. ordinary]_ shares of £_[NOMINAL VALUE]_ each in the capital of the Client (the **"Shares"**) with an aggregate value equal to **£2,000 per execution**, calculated at the Agreed Share Price defined below.
+1. **Core engagement.** In consideration for each execution of the Services, the Client shall grant Options over _[CLASS — e.g. ordinary]_ shares in the capital of the Client having an aggregate value equal to **£2,000 per execution**, calculated at the Agreed Share Value defined below.
 
-2. **Additional work.** Additional work undertaken by Ben Kilbey beyond the agreed allocations shall be compensated in Shares with an aggregate value equal to **£2,500 per execution**, calculated at the Agreed Share Price — unless otherwise negotiated.
+2. **Additional work.** Additional work undertaken by Ben Kilbey beyond the agreed allocations shall be compensated through the grant of Options having an aggregate value equal to **£2,500 per execution**, calculated at the Agreed Share Value — unless otherwise negotiated.
 
-3. **Agreed Share Price.** For the purpose of converting the £ values above into a number of Shares, the price per Share shall be _[the price per share of the Client's most recent priced funding round / £\_\_\_ per share / as otherwise agreed in writing]_ (the **"Agreed Share Price"**). _[Define how fractional entitlements are rounded.]_
+3. **Agreed Share Value and number of Options.** For the purpose of converting the £ values above into a number of Options, the value per underlying share shall be _[the price per share of the Client's most recent priced funding round / the latest agreed market value of the shares / £\_\_\_ per share, as otherwise agreed in writing]_ (the **"Agreed Share Value"**). The number of Options granted for each execution shall be the relevant £ amount divided by the Agreed Share Value. _[Confirm whether "worth £2,000 / £2,500" is intended to mean Options over shares with that aggregate market value (the default assumed here), or Options with that fair (Black-Scholes/economic) value — these give materially different option numbers. Define how fractional entitlements are rounded.]_
 
-4. **Issuance / transfer mechanics.** The relevant Shares shall be issued or transferred to the Contractor within 14 days of each execution of the Services (or of agreement of the relevant additional work). The Client shall deliver to the Contractor a share certificate (or equivalent evidence of entry on the register of members) for the Shares so issued or transferred.
+4. **Exercise price.** The exercise (strike) price per share shall be _[the Agreed Share Value (i.e. granted at market value) / the nominal value / £\_\_\_ as agreed]_, as determined under and permitted by the rules of the ESOP.
 
-5. **Overall cap.** The aggregate value of Shares issued or transferred under this agreement shall not exceed **£24,000** unless the parties agree otherwise in writing.
+5. **Grant mechanics.** The relevant Options shall be granted within 14 days of each execution of the Services (or of agreement of the relevant additional work). The Client shall deliver to the Contractor (or to Ben Kilbey, as applicable) an option certificate or option agreement under the ESOP evidencing the grant.
 
-6. **Governing documents.** The Shares shall be subject to the Client's articles of association and to any shareholders' agreement in force, and the Contractor agrees to enter into and be bound by such shareholders' agreement (and any deed of adherence) as a condition of receiving the Shares. _[Confirm whether the Shares are subject to vesting, leaver provisions, drag/tag, or pre-emption rights.]_
+6. **Vesting and exercise.** The Options shall vest and become exercisable in accordance with the vesting schedule, exercise conditions and exercise window set out in the ESOP and the relevant option agreement. _[Specify the vesting schedule (e.g. immediate on grant per execution, or time-based), and the treatment of leaver, exit/exchange, and change-of-control events.]_
 
-7. **Tax and VAT.** Each party is responsible for its own tax arising in connection with the issue, transfer or holding of the Shares. The parties acknowledge that the supply of the Services may give rise to VAT obligations notwithstanding that consideration is provided in non-cash form; the VAT treatment of share consideration shall be confirmed between the parties (and their advisers) and any VAT properly chargeable shall be dealt with in accordance with applicable law. _[Recommend the parties take specific tax/accounting advice — share-for-services arrangements have employment-tax, ERS and VAT implications that should be confirmed before signing.]_
+7. **Overall cap.** The aggregate value of Options granted under this agreement (measured by the aggregate Agreed Share Value of the underlying shares) shall not exceed **£24,000** unless the parties agree otherwise in writing.
+
+8. **Governing documents.** The Options, and any shares acquired on their exercise, are subject to the rules of the ESOP, the Client's articles of association, and any shareholders' agreement in force. The Contractor (and/or Ben Kilbey, as applicable) agrees to enter into and be bound by the ESOP option agreement, and such shareholders' agreement and deed of adherence as may be required, as a condition of grant and of exercise.
+
+9. **Eligibility and tax treatment.** The parties acknowledge that the Services are being provided by the Contractor (a company) and/or by Ben Kilbey as a consultant rather than as an employee or director of the Client. The grant must therefore be made under a part of the ESOP that permits options to consultants/non-employees: tax-advantaged EMI options are generally available only to qualifying employees, so a non-tax-advantaged (unapproved) option, or another route the ESOP allows, may be required. The parties shall confirm the correct grantee (Contractor vs. individual) and the applicable option type before grant. _[Recommend specific tax/legal advice — options to a consultant have income-tax, NIC and ERS-reporting implications, and may have VAT implications for the underlying supply of Services, which should be confirmed before signing.]_
 
 ## Expenses
 
@@ -119,7 +123,7 @@ This is a **shares-based engagement**. In consideration for the Services, the Co
 
 ## Limitation of Liability
 
-1. **Limitation of Liability.** To the fullest extent permitted by law, the total liability of the **Contractor** (Bold Voodoo Ltd) to the **Client** (Windrose) under or in connection with this Agreement, whether arising in contract, tort (including negligence), or otherwise, shall not exceed an amount equal to the total value of the consideration (the Shares) provided by the Client to the Contractor under this Agreement, which shall not exceed **£24,000** (the **"Liability Cap"**).
+1. **Limitation of Liability.** To the fullest extent permitted by law, the total liability of the **Contractor** (Bold Voodoo Ltd) to the **Client** (Windrose) under or in connection with this Agreement, whether arising in contract, tort (including negligence), or otherwise, shall not exceed an amount equal to the total value of the consideration (the Options, measured by the aggregate Agreed Share Value of the underlying shares) granted by the Client to the Contractor under this Agreement, which shall not exceed **£24,000** (the **"Liability Cap"**).
 
 2. **Exclusion of Indirect or Consequential Damages.** In no event shall either party be liable to the other for any loss of profits, loss of business, loss of data, or any other indirect, special, punitive, incidental, or consequential damages, even if advised of the possibility of such damages.
 
