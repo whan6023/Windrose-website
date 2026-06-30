@@ -8,13 +8,13 @@
 # Internal-only WVTA transition material — block from public serving.
 # These files are version-controlled but must not be reachable on the live site.
 [[redirects]]
-  from = "/cert/wvta-status.html"
+  from = "/cert/windrose-wvta-plan.html"
   to = "/404.html"
   status = 404
   force = true
 
 [[redirects]]
-  from = "/cert/wvta-status"
+  from = "/cert/windrose-wvta-plan"
   to = "/404.html"
   status = 404
   force = true
