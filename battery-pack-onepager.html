@@ -44,6 +44,10 @@
     color:var(--green);border:1px solid rgba(74,255,158,.4);border-radius:3px;padding:6px 12px;white-space:nowrap;
   }
 
+  /* ---- Hero image ---- */
+  .hero-img{margin:0 0 38px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#6b7a8d;line-height:0}
+  .hero-img img{width:100%;height:auto;display:block;max-height:420px;object-fit:cover}
+
   /* ---- Top stat strip ---- */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:42px}
   .stat{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
@@ -122,6 +126,11 @@
     </div>
     <div class="badge">— Confidential —</div>
   </header>
+
+  <!-- Hero image -->
+  <figure class="hero-img">
+    <img src="images/battery-pack.jpg" alt="Windrose LFP battery pack exploded view showing cell and module structure" loading="lazy">
+  </figure>
 
   <!-- Headline stats -->
   <div class="stats">
