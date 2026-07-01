@@ -113,10 +113,39 @@
   .tcard{border-top:3px solid var(--accent)}
   table th,table td{text-align:right}
   .legend i{margin-left:0}
+
+  /* ---- Language switcher ---- */
+  .langbar{direction:ltr;display:flex;flex-wrap:wrap;gap:5px 8px;justify-content:center;align-items:center;margin:0 0 30px;padding:2px 0 20px;border-bottom:1px solid var(--border)}
+  .langbar a{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.03em;color:var(--muted);text-decoration:none;padding:3px 8px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
+  .langbar a:hover{color:var(--off-white);background:rgba(74,158,255,.12)}
+  .langbar a[aria-current="page"]{color:var(--dark);background:var(--accent);font-weight:500}
 </style>
 </head>
 <body>
 <div class="wrap">
+
+  <nav class="langbar" aria-label="Language">
+    <a href="battery-pack-onepager.html">English</a>
+    <a href="battery-pack-onepager-german.html">Deutsch</a>
+    <a href="battery-pack-onepager-french.html">Français</a>
+    <a href="battery-pack-onepager-spanish.html">Español</a>
+    <a href="battery-pack-onepager-italian.html">Italiano</a>
+    <a href="battery-pack-onepager-portuguese.html">Português</a>
+    <a href="battery-pack-onepager-dutch.html">Nederlands</a>
+    <a href="battery-pack-onepager-swedish.html">Svenska</a>
+    <a href="battery-pack-onepager-norsk.html">Norsk</a>
+    <a href="battery-pack-onepager-danish.html">Dansk</a>
+    <a href="battery-pack-onepager-finnish.html">Suomi</a>
+    <a href="battery-pack-onepager-polish.html">Polski</a>
+    <a href="battery-pack-onepager-icelandic.html">Íslenska</a>
+    <a href="battery-pack-onepager-turkish.html">Türkçe</a>
+    <a href="battery-pack-onepager-korean.html">한국어</a>
+    <a href="battery-pack-onepager-japanese.html">日本語</a>
+    <a href="battery-pack-onepager-chinese-traditional.html">繁體中文</a>
+    <a href="battery-pack-onepager-chinese-simplified.html">简体中文</a>
+    <a href="battery-pack-onepager-hebrew.html">עברית</a>
+    <a href="battery-pack-onepager-arabic.html" aria-current="page">العربية</a>
+  </nav>
 
   <header class="hero">
     <div>
